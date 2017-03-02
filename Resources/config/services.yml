@@ -1,0 +1,4 @@
+services:
+#    high_charts.example:
+#        class: Validaide\HighChartsBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
