@@ -1,4 +1,6 @@
 services:
-#    high_charts.example:
-#        class: Validaide\HighChartsBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    highcharts.twig_extension.highcharts:
+        class:  HighChartsBundle\Twig\HighChartsExtension
+        public: true
+        tags:
+            - { name: twig.extension }
