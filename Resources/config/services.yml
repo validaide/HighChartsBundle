@@ -1,6 +1,5 @@
 services:
-    highcharts.twig_extension.highcharts:
-        class:  HighChartsBundle\Twig\HighChartsExtension
-        public: true
+    validaide.highcharts.twig_extension.highcharts:
+        class:  Validaide\HighChartsBundle\Twig\HighChartsExtension
         tags:
             - { name: twig.extension }

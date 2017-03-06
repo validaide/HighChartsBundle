@@ -4,7 +4,7 @@ namespace HighChartsBundle\Twig;
 
 use Validaide\HighChartsBundle\Graph;
 
-class SupplierExtension extends \Twig_Extension
+class HighChartsExtension extends \Twig_Extension
 {
     public function getFunctions()
     {
