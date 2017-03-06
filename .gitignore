@@ -1,0 +1,8 @@
+.idea
+
+# Ignore Composer repositories
+composer.lock
+vendor/
+
+# Ignore Bower repositories
+bower_components/

@@ -1,0 +1,20 @@
+{
+  "name": "HighChartsBundle",
+  "homepage": "https://github.com/validaide/HighChartsBundle",
+  "authors": [
+    "Mark Bijl <mark.bijl@validaide.com>"
+  ],
+  "description": "HighCharts integration for Symfony3",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "highcharts": "^5.0.7"
+  }
+}
