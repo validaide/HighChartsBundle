@@ -1,6 +1,6 @@
 <?php
 
-namespace HighChartsBundle\Twig;
+namespace Validaide\HighChartsBundle\Twig;
 
 use Validaide\HighChartsBundle\Graph;
 

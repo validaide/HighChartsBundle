@@ -1,9 +1,10 @@
 <?php
 
-namespace HighChartsBundle\Twig;
+namespace Validaide\HighChartsBundle\Templating;
 
 use Symfony\Component\Templating\Helper\Helper;
 use Validaide\HighChartsBundle\Graph;
+use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 
 class GraphHelper extends Helper
 {
