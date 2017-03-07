@@ -1,5 +1,16 @@
 services:
-    validaide.highcharts.twig_extension.highcharts:
-        class:  Validaide\HighChartsBundle\Twig\HighChartsExtension
-        tags:
-            - { name: twig.extension }
+  ########################
+  # HELPERS              #
+  ########################
+  validaide.highcharts.helper.graph:
+    class:  Validaide\HighChartsBundle\Templating\GraphHelper
+
+  ########################
+  # TWIG EXTENSIONS      #
+  ########################
+  validaide.highcharts.twig_extension.highcharts:
+    class:  Validaide\HighChartsBundle\Twig\HighChartsExtension
+    arguments:
+      - '@validaide.highcharts.helper.graph'
+    tags:
+      - { name: twig.extension }
