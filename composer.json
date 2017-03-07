@@ -2,7 +2,11 @@
   "name": "validaide/highchartsbundle",
   "type": "symfony-bundle",
   "description": "HighCharts integration for your Symfony3 project.",
-  "keywords": ["highcharts","symfony","bundle"],
+  "keywords": [
+    "highcharts",
+    "symfony",
+    "bundle"
+  ],
   "authors": [
     {
       "name": "Marcel Tuinstra",
@@ -27,8 +31,8 @@
     "symfony/twig-bundle": "~3.0"
   },
   "autoload": {
-    "autoload": {
-      "psr-4": { "Validaide\\HighChartsBundle\\": "" }
+    "psr-4": {
+      "Validaide\\HighChartsBundle\\": ""
     }
   },
   "repositories": [
