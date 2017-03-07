@@ -27,8 +27,8 @@
     "symfony/twig-bundle": "~3.0"
   },
   "autoload": {
-    "psr-0": {
-      "Validaide\\HighChartsBundle": ""
+    "autoload": {
+      "psr-4": { "Validaide\\HighChartsBundle\\": "" }
     }
   },
   "repositories": [
