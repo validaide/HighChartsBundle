@@ -8,7 +8,7 @@ class GraphRenderer
 {
     public function render(Graph $graph)
     {
-
+        return $this->renderHtml($graph).$this->renderJavascript($graph);
     }
 
     public function renderHtml(Graph $graph)
