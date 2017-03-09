@@ -20,6 +20,11 @@ class Series
     private $color = null;
 
     /**
+     * @var string|null
+     */
+    private $type = null;
+
+    /**
      * @var array|null
      */
     private $data = null;
@@ -71,6 +76,22 @@ class Series
     /**
      * @return null|string
      */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param null|string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return null|string
+     */
     public function getColor()
     {
         return $this->color;
@@ -98,6 +119,11 @@ class Series
             $result['color'] = $this->color;
         }
 
+        if (!is_null($this->type)) {
+            $result['type'] = $this->type;
+        }
+
         return $result;
     }
+
 }
