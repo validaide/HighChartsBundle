@@ -3,7 +3,7 @@ services:
   # HELPERS              #
   ########################
   validaide.highcharts.helper.graph:
-    class:  Validaide\HighChartsBundle\Templating\GraphHelper
+    class:  Validaide\HighChartsBundle\Templating\Helper\GraphHelper
 
   ########################
   # TWIG EXTENSIONS      #
