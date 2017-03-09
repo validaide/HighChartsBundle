@@ -1,9 +1,17 @@
 services:
   ########################
+  # RENDERERS            #
+  ########################
+  validaide.highcharts.renderer.graph:
+    class:  Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer
+
+  ########################
   # HELPERS              #
   ########################
   validaide.highcharts.helper.graph:
     class:  Validaide\HighChartsBundle\Templating\Helper\GraphHelper
+    arguments:
+      - '@validaide.highcharts.renderer.graph'
 
   ########################
   # TWIG EXTENSIONS      #
