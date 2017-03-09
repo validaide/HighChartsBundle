@@ -30,11 +30,12 @@ class GraphHelper extends Helper
      */
     public function getFunctions()
     {
-        return [
-            new \Twig_SimpleFunction('highcharts', [$this, 'render'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('highcharts_container', [$this, 'renderHtml'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('highcharts_js', [$this, 'renderJavascript'], ['is_safe' => ['html']]),
-        ];
+        $functions = [];
+        foreach ($this->getMapping() as $name => $method) {
+            $functions[] = new \Twig_SimpleFunction($name, [$this, $method], ['is_safe' => ['html']]);
+        }
+
+        return $functions;
     }
 
     /**
@@ -73,5 +74,17 @@ class GraphHelper extends Helper
     public function getName()
     {
         return 'highcharts';
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getMapping()
+    {
+        return [
+            'highcharts'           => 'render',
+            'highcharts_container' => 'renderHtml',
+            'highcharts_js'        => 'renderJavascript',
+        ];
     }
 }
