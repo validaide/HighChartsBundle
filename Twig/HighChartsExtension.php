@@ -3,7 +3,7 @@
 namespace Validaide\HighChartsBundle\Twig;
 
 use Validaide\HighChartsBundle\Graph;
-use Validaide\HighChartsBundle\Templating\GraphHelper;
+use Validaide\HighChartsBundle\Templating\Helper\GraphHelper;
 
 class HighChartsExtension extends \Twig_Extension
 {
