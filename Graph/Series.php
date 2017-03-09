@@ -15,6 +15,11 @@ class Series
     private $name = '';
 
     /**
+     * @var string|null
+     */
+    private $color = null;
+
+    /**
      * @var array|null
      */
     private $data = null;
@@ -64,13 +69,35 @@ class Series
     }
 
     /**
+     * @return null|string
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param null|string $color
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+    }
+
+    /**
      * @return string
      */
     public function toArray()
     {
-        return [
+        $result = [
             'name' => $this->name,
             'data' => $this->data,
         ];
+
+        if (!is_null($this->color)) {
+            $result['color'] = $this->color;
+        }
+
+        return $result;
     }
 }
