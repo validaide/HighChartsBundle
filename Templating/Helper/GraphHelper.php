@@ -39,26 +39,32 @@ class GraphHelper extends Helper
 
     /**
      * @param Graph $graph
+     *
+     * @return string
      */
     public function render(Graph $graph)
     {
-        $this->graphRender->render($graph);
+        return $this->graphRender->render($graph);
     }
 
     /**
      * @param Graph $graph
+     *
+     * @return string
      */
     public function renderHtml(Graph $graph)
     {
-        $this->graphRender->renderHtml($graph);
+        return $this->graphRender->renderHtml($graph);
     }
 
     /**
      * @param Graph $graph
+     *
+     * @return string
      */
     public function renderJavascript(Graph $graph)
     {
-        $this->graphRender->renderJavascript($graph);
+        return $this->graphRender->renderJavascript($graph);
     }
 
     /**
