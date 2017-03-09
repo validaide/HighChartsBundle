@@ -1,6 +1,6 @@
 <?php
 
-namespace Validaide\HighChartsBundle\Templating;
+namespace Validaide\HighChartsBundle\Templating\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
 use Validaide\HighChartsBundle\Graph;

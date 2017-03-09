@@ -6,3 +6,6 @@ vendor/
 
 # Ignore Bower repositories
 bower_components/
+
+# Ignore build files
+var/build/
