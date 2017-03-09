@@ -20,12 +20,22 @@ class GraphRenderer
         $this->javascriptRenderer = new JavascriptRenderer($this->formatter);
     }
 
+    /**
+     * @param Graph $graph
+     *
+     * @return string
+     */
     public function render(Graph $graph)
     {
         return $this->renderHtml($graph) . $this->formatter->renderNewline() .
             $this->renderJavascript($graph);
     }
 
+    /**
+     * @param Graph $graph
+     *
+     * @return string
+     */
     public function renderHtml(Graph $graph)
     {
         $styleSheet = $this->styleSheetRenderer->render('width', $graph->getWidth()) . $this->styleSheetRenderer->render('height', $graph->getHeight());
@@ -33,6 +43,11 @@ class GraphRenderer
         return $this->tagRenderer->render('div', null, ['id' => $graph->getHtmlId(), 'style' => $styleSheet]);
     }
 
+    /**
+     * @param Graph $graph
+     *
+     * @return string
+     */
     public function renderJavascript(Graph $graph)
     {
         $json              = $graph->toJson();
@@ -40,6 +55,8 @@ class GraphRenderer
         $code              = $this->javascriptRenderer->renderVariable($graph->getJsChartId(), $highChartInitCode);
         $jquery            = $this->formatter->renderJQuery($code);
 
+//        return $this->tagRenderer->render('script', null, ['src' => 'https://code.highcharts.com/highcharts.js']) .$this->formatter->renderNewline() .
+//            $this->tagRenderer->render('script', $jquery, ['type' => "text/javascript"]);
         return $this->tagRenderer->render('script', $jquery, ['type' => "text/javascript"]);
     }
 }

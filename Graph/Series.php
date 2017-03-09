@@ -34,6 +34,38 @@ class Series
     /**
      * @return string
      */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param array|null $data
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * @return string
+     */
     public function toArray()
     {
         return [

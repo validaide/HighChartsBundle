@@ -14,11 +14,12 @@ class ClimateGraphTest extends TestCase
 {
     const TYPE          = 'column';
     const TITLE         = 'Climate Graph: Rio de Janeiro';
-    const Y_AXIS_TITLE  = 'Months';
+    const Y_AXIS_TITLE  = 'Temperature';
+    const X_AXIS_TITLE  = 'Months';
     const SERIES_1_NAME = 'Minimum Temperature';
     const SERIES_2_NAME = 'Maximum Temperature';
 
-    public static function getYAxisCategories()
+    public static function getXAxisCategories()
     {
         $months = [];
         for ($m = 1; $m <= 12; $m++) {
@@ -52,11 +53,16 @@ var graph = Highcharts.chart("graph_container",
     "title": {
         "text": "[TITLE]"
     },
+    "xAxis": {
+        "title": {
+            "text": "[X_AXIS_TITLE]"
+        },
+        "categories": [X_AXIS_CATEGORIES]
+    },
     "yAxis": {
         "title": {
             "text": "[Y_AXIS_TITLE]"
-        },
-        "categories": [Y_AXIS_CATEGORIES]
+        }
     },
     "series": [
         {
@@ -77,8 +83,9 @@ EOF;
         $replacements = [
             'TYPE'              => self::TYPE,
             'TITLE'             => self::TITLE,
+            'X_AXIS_TITLE'      => self::X_AXIS_TITLE,
+            'X_AXIS_CATEGORIES' => $this->traverse(json_encode(self::getXAxisCategories(), JSON_PRETTY_PRINT), 12),
             'Y_AXIS_TITLE'      => self::Y_AXIS_TITLE,
-            'Y_AXIS_CATEGORIES' => $this->traverse(json_encode(self::getYAxisCategories(), JSON_PRETTY_PRINT), 12),
             'SERIES_1_NAME'     => self::SERIES_1_NAME,
             'SERIES_2_NAME'     => self::SERIES_2_NAME,
             'SERIES_1_DATA'     => $this->traverse(json_encode(self::getSeriesData(0), JSON_PRETTY_PRINT), 16),
@@ -89,9 +96,8 @@ EOF;
             $expected = str_replace('[' . $search . ']', $replacement, $expected);
         }
 
-//        file_put_contents('test1.txt',$expected);
-//        file_put_contents('test2.txt',$graphRenderer->render(new ClimateGraph()));
-//        die;
+        file_put_contents('test1.txt',$expected);
+        file_put_contents('test2.txt',$graphRenderer->render(new ClimateGraph()));
 
         $this->assertSame(
             $expected,
@@ -138,8 +144,9 @@ class ClimateGraph extends Graph
     {
         $this->setType(ClimateGraphTest::TYPE);
         $this->setTitle(ClimateGraphTest::TITLE);
+        $this->setXAxisTitle(ClimateGraphTest::X_AXIS_TITLE);
         $this->setYAxisTitle(ClimateGraphTest::Y_AXIS_TITLE);
-        $this->setYAxisCategories(ClimateGraphTest::getYAxisCategories());
+        $this->setXAxisCategories(ClimateGraphTest::getXAxisCategories());
 
         $this->addSeries(new Series(ClimateGraphTest::SERIES_1_NAME, ClimateGraphTest::getSeriesData(0)));
         $this->addSeries(new Series(ClimateGraphTest::SERIES_2_NAME, ClimateGraphTest::getSeriesData(1)));

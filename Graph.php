@@ -250,7 +250,9 @@ class Graph
         if (isset($this->xAxisTitle)) {
             $builder->setValue('[xAxis]', ['title' => ['text' => $this->xAxisTitle]]);
         }
-
+        if (isset($this->xAxisCategories)) {
+            $builder->setValue('[xAxis][categories]', $this->xAxisCategories);
+        }
         if (isset($this->yAxisTitle)) {
             $builder->setValue('[yAxis]', ['title' => ['text' => $this->yAxisTitle]]);
         }
