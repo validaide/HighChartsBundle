@@ -47,7 +47,15 @@ class GraphRendererTest extends TestCase
 <script type="text/javascript">
 $(function () {
 var graph = Highcharts.chart("graph_container", 
-{"chart":{"type":"line"},"title":{"text":""}}
+{
+    "chart": {
+        "type": "line"
+    },
+    "title": {
+        "text": ""
+    },
+    "series": []
+}
 );
 });
 </script>

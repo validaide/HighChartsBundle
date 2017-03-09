@@ -57,7 +57,6 @@ var graph = Highcharts.chart("graph_container",
             "text": "[Y_AXIS_TITLE]"
         },
         "categories": [Y_AXIS_CATEGORIES]
-        }
     },
     "series": [
         {
@@ -69,6 +68,7 @@ var graph = Highcharts.chart("graph_container",
             "data": [SERIES_2_DATA]
         }
     ]
+}
 );
 });
 </script>
@@ -81,11 +81,17 @@ EOF;
             'Y_AXIS_CATEGORIES' => $this->traverse(json_encode(self::getYAxisCategories(), JSON_PRETTY_PRINT), 12),
             'SERIES_1_NAME'     => self::SERIES_1_NAME,
             'SERIES_2_NAME'     => self::SERIES_2_NAME,
+            'SERIES_1_DATA'     => $this->traverse(json_encode(self::getSeriesData(0), JSON_PRETTY_PRINT), 16),
+            'SERIES_2_DATA'     => $this->traverse(json_encode(self::getSeriesData(1), JSON_PRETTY_PRINT), 16),
         ];
 
         foreach ($replacements as $search => $replacement) {
             $expected = str_replace('[' . $search . ']', $replacement, $expected);
         }
+
+//        file_put_contents('test1.txt',$expected);
+//        file_put_contents('test2.txt',$graphRenderer->render(new ClimateGraph()));
+//        die;
 
         $this->assertSame(
             $expected,
@@ -97,21 +103,32 @@ EOF;
     {
         $result    = '';
         $lineCount = 0;
+        $numLines  = count(preg_split('/\n|\r/', $input));
         foreach (preg_split("/((\r?\n)|(\r\n?))/", $input) as $line) {
             $lineCount++;
             if ($lineCount == 1) {
                 $result .= $line . "\n";
                 continue;
             }
+            if ($lineCount == $numLines) {
+                $result .= $this->prependSpaces($line, $repeat - 4);
+                continue;
+            }
 
             $line = trim($line);
-            for ($count = 0; $count < $repeat; $count++) {
-                $line = " " . $line;
-            }
-            $result .= $line . "\n";
+            $result .= $this->prependSpaces($line, $repeat) . "\n";
         }
 
         return $result;
+    }
+
+    public function prependSpaces($input, $repeat = 1)
+    {
+        for ($count = 0; $count < $repeat; $count++) {
+            $input = " " . $input;
+        }
+
+        return $input;
     }
 }
 

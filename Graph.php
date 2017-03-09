@@ -63,7 +63,7 @@ class Graph
     /**
      * @var array|null
      */
-    private $series = null;
+    private $series = [];
 
     /**
      * @return string
