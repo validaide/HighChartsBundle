@@ -25,6 +25,11 @@ class Series
     private $type = null;
 
     /**
+     * @var int|null
+     */
+    private $yAxis = null;
+
+    /**
      * @var array|null
      */
     private $data = null;
@@ -106,13 +111,28 @@ class Series
     }
 
     /**
+     * @return int|null
+     */
+    public function getYAxis()
+    {
+        return $this->yAxis;
+    }
+
+    /**
+     * @param int|null $yAxis
+     */
+    public function setYAxis($yAxis)
+    {
+        $this->yAxis = $yAxis;
+    }
+
+    /**
      * @return string
      */
     public function toArray()
     {
         $result = [
             'name' => $this->name,
-            'data' => $this->data,
         ];
 
         if (!is_null($this->color)) {
@@ -123,7 +143,12 @@ class Series
             $result['type'] = $this->type;
         }
 
+        if (!is_null($this->yAxis)) {
+            $result['yAxis'] = $this->yAxis;
+        }
+
+        $result['data'] = $this->data;
+
         return $result;
     }
-
 }

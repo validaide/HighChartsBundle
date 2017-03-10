@@ -54,6 +54,7 @@ var graph = Highcharts.chart("graph_container",
     "title": {
         "text": ""
     },
+    "yAxis": [],
     "series": []
 }
 );

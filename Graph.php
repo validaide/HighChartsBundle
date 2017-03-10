@@ -3,6 +3,7 @@
 namespace Validaide\HighChartsBundle;
 
 use Ivory\JsonBuilder\JsonBuilder;
+use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\Series;
 
 /**
@@ -46,19 +47,14 @@ class Graph
     private $xAxisTitle = null;
 
     /**
-     * @var string
-     */
-    private $yAxisTitle = null;
-
-    /**
      * @var array|null
      */
     private $xAxisCategories = null;
 
     /**
-     * @var array|null
+     * @var array
      */
-    private $yAxisCategories = null;
+    private $yAxis = [];
 
     /**
      * @var array|null
@@ -130,19 +126,27 @@ class Graph
     }
 
     /**
-     * @return string
+     * @return array|null
      */
-    public function getYAxisTitle(): string
+    public function getXAxisCategories()
     {
-        return $this->yAxisTitle;
+        return $this->xAxisCategories;
     }
 
     /**
-     * @param string $yAxisTitle
+     * @param array|null $xAxisCategories
      */
-    public function setYAxisTitle(string $yAxisTitle)
+    public function setXAxisCategories($xAxisCategories)
     {
-        $this->yAxisTitle = $yAxisTitle;
+        $this->xAxisCategories = $xAxisCategories;
+    }
+
+    /**
+     * @param Axis $axis
+     */
+    public function addYAxis(Axis $axis)
+    {
+        $this->yAxis[] = $axis;
     }
 
     /**
@@ -193,39 +197,6 @@ class Graph
         $this->type = $type;
     }
 
-    /**
-     * @return array|null
-     */
-    public function getXAxisCategories()
-    {
-        return $this->xAxisCategories;
-    }
-
-    /**
-     * @param array|null $xAxisCategories
-     */
-    public function setXAxisCategories($xAxisCategories)
-    {
-        $this->xAxisCategories = $xAxisCategories;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getYAxisCategories()
-    {
-        return $this->yAxisCategories;
-    }
-
-    /**
-     * @param array|null $yAxisCategories
-     */
-    public function setYAxisCategories($yAxisCategories)
-    {
-        $this->yAxisCategories = $yAxisCategories;
-    }
-
-
     public function addSeries(Series $series)
     {
         $this->series[] = $series;
@@ -253,11 +224,12 @@ class Graph
         if (isset($this->xAxisCategories)) {
             $builder->setValue('[xAxis][categories]', $this->xAxisCategories);
         }
-        if (isset($this->yAxisTitle)) {
-            $builder->setValue('[yAxis]', ['title' => ['text' => $this->yAxisTitle]]);
-        }
-        if (isset($this->yAxisCategories)) {
-            $builder->setValue('[yAxis][categories]', $this->yAxisCategories);
+        if (isset($this->yAxis)) {
+            $yAxis = [];
+            foreach ($this->yAxis as $axis) {
+                $yAxis[] = $axis->toArray();
+            }
+            $builder->setValue('[yAxis]', $yAxis);
         }
 
         $seriesData = [];
