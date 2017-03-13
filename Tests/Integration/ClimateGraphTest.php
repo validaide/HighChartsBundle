@@ -126,10 +126,15 @@ class ClimateGraph extends Graph
         $this->getCredits()->setText(ClimateGraphTest::CREDITS_TEXT);
         $this->getCredits()->setHref(ClimateGraphTest::CREDITS_HREF);
 
+        // Tooltip
+        $this->tooltip->setShared(true);
+
         // xAxis
         $this->getXAxis()->getTitle()->setText(ClimateGraphTest::X_AXIS_TITLE);
         $this->getXAxis()->setCategories(ClimateGraphTest::getXAxisCategories());
+        $this->getXAxis()->setCrosshair(true);
 
+        // yAxis
         $yAxisTemp = new Axis();
         $yAxisTemp->getTitle()->setText(ClimateGraphTest::Y_AXIS_TEMPERATURE_TITLE);
         $yAxisTemp->setOpposite(true);

@@ -18,6 +18,11 @@ class Axis
     private $opposite;
 
     /**
+     * @var bool
+     */
+    private $crosshair;
+
+    /**
      * @var array|null
      */
     private $categories = null;
@@ -60,6 +65,22 @@ class Axis
     }
 
     /**
+     * @return bool
+     */
+    public function isCrosshair(): bool
+    {
+        return $this->crosshair;
+    }
+
+    /**
+     * @param bool $crosshair
+     */
+    public function setCrosshair(bool $crosshair)
+    {
+        $this->crosshair = $crosshair;
+    }
+
+    /**
      * @return array|null
      */
     public function getCategories()
@@ -92,6 +113,10 @@ class Axis
 
         if (!is_null($this->categories)) {
             $result['categories'] = $this->categories;
+        }
+
+        if (!is_null($this->crosshair)) {
+            $result['crosshair'] = $this->crosshair;
         }
 
         return $result;

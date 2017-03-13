@@ -14,11 +14,15 @@ var graph = Highcharts.chart("graph_container",
     "title": {
         "text": "[TITLE]"
     },
+    "tooltip": {
+        "shared": true
+    },
     "xAxis": {
         "title": {
             "text": "[X_AXIS_TITLE]"
         },
-        "categories": [X_AXIS_CATEGORIES]
+        "categories": [X_AXIS_CATEGORIES],
+        "crosshair": true
     },
     "yAxis": [
         {

@@ -7,6 +7,7 @@ use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\Credits;
 use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\Graph\Title;
+use Validaide\HighChartsBundle\Graph\Tooltip;
 
 /**
  * Class: Graph
@@ -64,6 +65,11 @@ class Graph
     private $credits;
 
     /**
+     * @var Tooltip
+     */
+    public $tooltip;
+
+    /**
      * Graph constructor.
      */
     public function __construct()
@@ -71,6 +77,7 @@ class Graph
         $this->xAxis   = new Axis();
         $this->title   = new Title();
         $this->credits = new Credits();
+        $this->tooltip = new Tooltip();
     }
 
     /**
@@ -211,6 +218,7 @@ class Graph
             ],
             'credits' => $this->credits->toArray(),
             'title'   => $this->title->toArray(),
+            'tooltip' => $this->tooltip->toArray(),
             'xAxis'   => $this->xAxis->toArray(),
         ]);
 
