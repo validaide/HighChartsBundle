@@ -43,28 +43,12 @@ class GraphRendererTest extends TestCase
     {
         $graph = new Graph();
 
-        $expected = <<<'EOF'
-<script type="text/javascript">
-$(function () {
-var graph = Highcharts.chart("graph_container", 
-{
-    "chart": {
-        "type": "line"
-    },
-    "title": {
-        "text": ""
-    },
-    "yAxis": [],
-    "series": []
-}
-);
-});
-</script>
-EOF;
-
+        $expected  = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'GraphRendererTest.txt');
+        $generated = $this->graphRenderer->renderJavascript($graph);
+        file_put_contents('graph_renderer_test_generated.txt', $generated);
         $this->assertSame(
             $expected,
-            $this->graphRenderer->renderJavascript($graph)
+            $generated
         );
     }
 }

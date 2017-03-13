@@ -6,6 +6,11 @@ var graph = Highcharts.chart("graph_container",
     "chart": {
         "type": "[TYPE]"
     },
+    "credits": {
+        "enabled": true,
+        "href": "[CREDITS_HREF]",
+        "text": "[CREDITS_TEXT]"
+    },
     "title": {
         "text": "[TITLE]"
     },

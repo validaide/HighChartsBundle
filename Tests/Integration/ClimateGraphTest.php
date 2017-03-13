@@ -15,6 +15,8 @@ class ClimateGraphTest extends TestCase
 {
     const TYPE                     = 'column';
     const TITLE                    = 'Climate Graph: Rio de Janeiro';
+    const CREDITS_TEXT             = 'Validaide';
+    const CREDITS_HREF             = 'validaide.com';
     const Y_AXIS_TEMPERATURE_TITLE = 'Temperature';
     const Y_AXIS_RAINFALL_TITLE    = 'Rainfall (mm)';
     const X_AXIS_TITLE             = 'Months';
@@ -50,6 +52,8 @@ class ClimateGraphTest extends TestCase
         $replacements = [
             'TYPE'                     => self::TYPE,
             'TITLE'                    => self::TITLE,
+            'CREDITS_TEXT'             => self::CREDITS_TEXT,
+            'CREDITS_HREF'             => self::CREDITS_HREF,
             'X_AXIS_TITLE'             => self::X_AXIS_TITLE,
             'X_AXIS_CATEGORIES'        => $this->traverse(json_encode(self::getXAxisCategories(), JSON_PRETTY_PRINT), 12),
             'Y_AXIS_TEMPERATURE_TITLE' => self::Y_AXIS_TEMPERATURE_TITLE,
@@ -112,16 +116,25 @@ class ClimateGraph extends Graph
 {
     public function __construct()
     {
+        parent::__construct();
+
         $this->setType(ClimateGraphTest::TYPE);
-        $this->setTitle(ClimateGraphTest::TITLE);
-        $this->setXAxisTitle(ClimateGraphTest::X_AXIS_TITLE);
-        $this->setXAxisCategories(ClimateGraphTest::getXAxisCategories());
+        $this->getTitle()->setText(ClimateGraphTest::TITLE);
+
+        // Credits
+        $this->getCredits()->setEnabled(true);
+        $this->getCredits()->setText(ClimateGraphTest::CREDITS_TEXT);
+        $this->getCredits()->setHref(ClimateGraphTest::CREDITS_HREF);
+
+        // xAxis
+        $this->getXAxis()->getTitle()->setText(ClimateGraphTest::X_AXIS_TITLE);
+        $this->getXAxis()->setCategories(ClimateGraphTest::getXAxisCategories());
 
         $yAxisTemp = new Axis();
-        $yAxisTemp->setTitle(ClimateGraphTest::Y_AXIS_TEMPERATURE_TITLE);
+        $yAxisTemp->getTitle()->setText(ClimateGraphTest::Y_AXIS_TEMPERATURE_TITLE);
         $yAxisTemp->setOpposite(true);
         $yAxisRainfall = new Axis();
-        $yAxisRainfall->setTitle(ClimateGraphTest::Y_AXIS_RAINFALL_TITLE);
+        $yAxisRainfall->getTitle()->setText(ClimateGraphTest::Y_AXIS_RAINFALL_TITLE);
 
         $this->addYAxis($yAxisTemp);
         $this->addYAxis($yAxisRainfall);

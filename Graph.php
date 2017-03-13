@@ -4,7 +4,9 @@ namespace Validaide\HighChartsBundle;
 
 use Ivory\JsonBuilder\JsonBuilder;
 use Validaide\HighChartsBundle\Graph\Axis;
+use Validaide\HighChartsBundle\Graph\Credits;
 use Validaide\HighChartsBundle\Graph\Series;
+use Validaide\HighChartsBundle\Graph\Title;
 
 /**
  * Class: Graph
@@ -37,19 +39,14 @@ class Graph
     private $type = 'line';
 
     /**
-     * @var string
+     * @var Title
      */
-    private $title = '';
+    private $title;
 
     /**
-     * @var string
+     * @var Axis
      */
-    private $xAxisTitle = null;
-
-    /**
-     * @var array|null
-     */
-    private $xAxisCategories = null;
+    private $xAxis;
 
     /**
      * @var array
@@ -60,6 +57,21 @@ class Graph
      * @var array|null
      */
     private $series = [];
+
+    /**
+     * @var Credits
+     */
+    private $credits;
+
+    /**
+     * Graph constructor.
+     */
+    public function __construct()
+    {
+        $this->xAxis   = new Axis();
+        $this->title   = new Title();
+        $this->credits = new Credits();
+    }
 
     /**
      * @return string
@@ -94,51 +106,19 @@ class Graph
     }
 
     /**
-     * @return string
+     * @return Title
      */
-    public function getTitle(): string
+    public function getTitle(): Title
     {
         return $this->title;
     }
 
     /**
-     * @param string $title
+     * @return Axis
      */
-    public function setTitle(string $title)
+    public function getXAxis(): Axis
     {
-        $this->title = $title;
-    }
-
-    /**
-     * @return string
-     */
-    public function getXAxisTitle(): string
-    {
-        return $this->xAxisTitle;
-    }
-
-    /**
-     * @param string $xAxisTitle
-     */
-    public function setXAxisTitle(string $xAxisTitle)
-    {
-        $this->xAxisTitle = $xAxisTitle;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getXAxisCategories()
-    {
-        return $this->xAxisCategories;
-    }
-
-    /**
-     * @param array|null $xAxisCategories
-     */
-    public function setXAxisCategories($xAxisCategories)
-    {
-        $this->xAxisCategories = $xAxisCategories;
+        return $this->xAxis;
     }
 
     /**
@@ -203,6 +183,22 @@ class Graph
     }
 
     /**
+     * @return Credits
+     */
+    public function getCredits(): Credits
+    {
+        return $this->credits;
+    }
+
+    /**
+     * @param Credits $credits
+     */
+    public function setCredits(Credits $credits)
+    {
+        $this->credits = $credits;
+    }
+
+    /**
      * @return string
      */
     public function toJson()
@@ -210,20 +206,14 @@ class Graph
         $builder = new JsonBuilder();
         $builder->setJsonEncodeOptions($builder->getJsonEncodeOptions() | JSON_PRETTY_PRINT);
         $builder->setValues([
-            'chart' => [
+            'chart'   => [
                 'type' => $this->type,
             ],
-            'title' => [
-                'text' => $this->title,
-            ],
+            'credits' => $this->credits->toArray(),
+            'title'   => $this->title->toArray(),
+            'xAxis'   => $this->xAxis->toArray(),
         ]);
 
-        if (isset($this->xAxisTitle)) {
-            $builder->setValue('[xAxis]', ['title' => ['text' => $this->xAxisTitle]]);
-        }
-        if (isset($this->xAxisCategories)) {
-            $builder->setValue('[xAxis][categories]', $this->xAxisCategories);
-        }
         if (isset($this->yAxis)) {
             $yAxis = [];
             foreach ($this->yAxis as $axis) {
@@ -237,8 +227,9 @@ class Graph
         foreach ($this->series as $series) {
             $seriesData[] = $series->toArray();
         }
-        $builder->setValue('[series]',$seriesData);
+        $builder->setValue('[series]', $seriesData);
 
         return $builder->build();
     }
+
 }

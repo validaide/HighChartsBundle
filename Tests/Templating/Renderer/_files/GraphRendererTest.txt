@@ -1,0 +1,18 @@
+<script type="text/javascript">
+$(function () {
+var graph = Highcharts.chart("graph_container", 
+{
+    "chart": {
+        "type": "line"
+    },
+    "credits": [],
+    "title": [],
+    "xAxis": {
+        "title": []
+    },
+    "yAxis": [],
+    "series": []
+}
+);
+});
+</script>
