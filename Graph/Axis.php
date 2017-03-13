@@ -27,9 +27,15 @@ class Axis
      */
     private $categories = null;
 
+    /**
+     * @var Labels
+     */
+    public $labels;
+
     public function __construct()
     {
-        $this->title = new Title();
+        $this->title  = new Title();
+        $this->labels = new Labels();
     }
 
     /**
@@ -105,6 +111,10 @@ class Axis
 
         if (!is_null($this->title)) {
             $result['title'] = $this->title->toArray();
+        }
+
+        if (!is_null($this->labels)) {
+            $result['labels'] = $this->labels->toArray();
         }
 
         if (!is_null($this->opposite)) {

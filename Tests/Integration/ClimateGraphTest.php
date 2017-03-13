@@ -138,8 +138,10 @@ class ClimateGraph extends Graph
         $yAxisTemp = new Axis();
         $yAxisTemp->getTitle()->setText(ClimateGraphTest::Y_AXIS_TEMPERATURE_TITLE);
         $yAxisTemp->setOpposite(true);
+        $yAxisTemp->labels->setFormat('{value}°C');
         $yAxisRainfall = new Axis();
         $yAxisRainfall->getTitle()->setText(ClimateGraphTest::Y_AXIS_RAINFALL_TITLE);
+        $yAxisRainfall->labels->setFormat('{value} mm');
 
         $this->addYAxis($yAxisTemp);
         $this->addYAxis($yAxisRainfall);

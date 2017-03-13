@@ -21,6 +21,7 @@ var graph = Highcharts.chart("graph_container",
         "title": {
             "text": "[X_AXIS_TITLE]"
         },
+        "labels": [],
         "categories": [X_AXIS_CATEGORIES],
         "crosshair": true
     },
@@ -29,11 +30,17 @@ var graph = Highcharts.chart("graph_container",
             "title": {
                 "text": "[Y_AXIS_TEMPERATURE_TITLE]"
             },
+            "labels": {
+                "format": "{value}\u00b0C"
+            },
             "opposite": true
         },
         {
             "title": {
                 "text": "[Y_AXIS_RAINFALL_TITLE]"
+            },
+            "labels": {
+                "format": "{value} mm"
             }
         }
     ],
