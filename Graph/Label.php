@@ -2,7 +2,8 @@
 
 namespace Validaide\HighChartsBundle\Graph;
 
-use Validaide\HighChartsBundle\ValueObject\HorizontalAligment;
+use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;
+use Validaide\HighChartsBundle\ValueObject\VerticalAlignment;
 
 /**
  * Class: Label
@@ -10,7 +11,7 @@ use Validaide\HighChartsBundle\ValueObject\HorizontalAligment;
 class Label
 {
     /**
-     * @var HorizontalAligment
+     * @var HorizontalAlignment
      */
     private $align;
 
@@ -30,7 +31,7 @@ class Label
     private $text;
 
     /**
-     * @var HorizontalAligment
+     * @var HorizontalAlignment
      */
     private $textAlign;
 
@@ -40,22 +41,22 @@ class Label
     private $useHtml;
 
     /**
-     * @var
+     * @var VerticalAlignment
      */
     private $verticalAlign;
 
     /**
-     * @return HorizontalAligment
+     * @return HorizontalAlignment
      */
-    public function getAlign(): HorizontalAligment
+    public function getAlign(): HorizontalAlignment
     {
         return $this->align;
     }
 
     /**
-     * @param HorizontalAligment $align
+     * @param HorizontalAlignment $align
      */
-    public function setAlign(HorizontalAligment $align)
+    public function setAlign(HorizontalAlignment $align)
     {
         $this->align = $align;
     }
@@ -77,17 +78,17 @@ class Label
     }
 
     /**
-     * @return HorizontalAligment
+     * @return HorizontalAlignment
      */
-    public function getTextAlign(): HorizontalAligment
+    public function getTextAlign(): HorizontalAlignment
     {
         return $this->textAlign;
     }
 
     /**
-     * @param HorizontalAligment $textAlign
+     * @param HorizontalAlignment $textAlign
      */
-    public function setTextAlign(HorizontalAligment $textAlign)
+    public function setTextAlign(HorizontalAlignment $textAlign)
     {
         $this->textAlign = $textAlign;
     }
@@ -109,6 +110,22 @@ class Label
     }
 
     /**
+     * @return VerticalAlignment
+     */
+    public function getVerticalAlign(): VerticalAlignment
+    {
+        return $this->verticalAlign;
+    }
+
+    /**
+     * @param VerticalAlignment $verticalAlign
+     */
+    public function setVerticalAlign(VerticalAlignment $verticalAlign)
+    {
+        $this->verticalAlign = $verticalAlign;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -127,7 +144,11 @@ class Label
         if (!is_null($this->useHtml)) {
             $result['useHtml'] = $this->useHtml;
         }
+        if (!is_null($this->verticalAlign)) {
+            $result['verticalAlign'] = (string)$this->verticalAlign;
+        }
 
         return $result;
     }
+
 }

@@ -3,13 +3,13 @@
 namespace Validaide\HighChartsBundle\ValueObject;
 
 /**
- * HorizontalAligment
+ * VerticalAlignment
  */
-class HorizontalAligment
+class VerticalAlignment
 {
-    const ALIGN_LEFT   = "left";
-    const ALIGN_RIGHT  = "right";
-    const ALIGN_CENTER = "center";
+    const ALIGN_TOP    = "top";
+    const ALIGN_MIDDLE = "middle";
+    const ALIGN_BOTTOM = "bottom";
 
     /**
      * @var string
@@ -24,7 +24,7 @@ class HorizontalAligment
     public function __construct($align)
     {
         if (!in_array($align, $this->getAlignments())) {
-            throw new \InvalidArgumentException('This alignment is not allowed: ' . $align);
+            throw new \InvalidArgumentException('This vertical alignment is not allowed: ' . $align);
         }
 
         $this->align = $align;
@@ -44,9 +44,9 @@ class HorizontalAligment
     public function getAlignments()
     {
         return [
-            self::ALIGN_LEFT,
-            self::ALIGN_RIGHT,
-            self::ALIGN_CENTER,
+            self::ALIGN_TOP,
+            self::ALIGN_MIDDLE,
+            self::ALIGN_BOTTOM,
         ];
     }
 }

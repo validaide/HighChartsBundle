@@ -35,7 +35,8 @@ var graph = Highcharts.chart("graph_container",
                     "align": "right",
                     "text": "MAX",
                     "textAlign": "right",
-                    "useHtml": false
+                    "useHtml": false,
+                    "verticalAlign": "bottom"
                 },
                 "value": 10,
                 "width": 1
@@ -48,7 +49,8 @@ var graph = Highcharts.chart("graph_container",
                     "align": "left",
                     "text": "MIN",
                     "textAlign": "left",
-                    "useHtml": false
+                    "useHtml": false,
+                    "verticalAlign": "top"
                 },
                 "value": 4,
                 "width": 1
@@ -77,13 +79,21 @@ var graph = Highcharts.chart("graph_container",
     "series": [
         {
             "name": "[SERIES_1_NAME]",
+            "color": "#0000FF",
             "yAxis": [SERIES_1_Y_AXIS],
             "data": [SERIES_1_DATA]
         },
         {
             "name": "[SERIES_2_NAME]",
+            "color": "#FF0000",
             "yAxis": [SERIES_2_Y_AXIS],
             "data": [SERIES_2_DATA]
+        },
+        {
+            "name": "[SERIES_3_NAME]",
+            "color": "lightblue",
+            "yAxis": [SERIES_3_Y_AXIS],
+            "data": [SERIES_3_DATA]
         }
     ]
 }

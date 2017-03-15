@@ -3,6 +3,7 @@
 namespace Validaide\HighChartsBundle\Graph;
 
 use Ivory\JsonBuilder\JsonBuilder;
+use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**
  * Class: Graph
@@ -15,7 +16,7 @@ class Series
     private $name = '';
 
     /**
-     * @var string|null
+     * @var Color
      */
     private $color = null;
 
@@ -95,7 +96,7 @@ class Series
     }
 
     /**
-     * @return null|string
+     * @return null|Color
      */
     public function getColor()
     {
@@ -103,9 +104,9 @@ class Series
     }
 
     /**
-     * @param null|string $color
+     * @param Color $color
      */
-    public function setColor($color)
+    public function setColor(Color $color)
     {
         $this->color = $color;
     }
@@ -136,7 +137,7 @@ class Series
         ];
 
         if (!is_null($this->color)) {
-            $result['color'] = $this->color;
+            $result['color'] = (string)$this->color;
         }
 
         if (!is_null($this->type)) {
