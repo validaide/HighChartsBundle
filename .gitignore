@@ -8,4 +8,5 @@ vendor/
 bower_components/
 
 # Ignore build files
-var/build/*.*
+var/build
+!var/build/.gitkeep
