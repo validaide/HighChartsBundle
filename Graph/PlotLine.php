@@ -201,6 +201,9 @@ class PlotLine
         if (!is_null($this->dashStyle)) {
             $result['dashStyle'] = (string)$this->dashStyle;
         }
+        if (!is_null($this->id)) {
+            $result['id'] = $this->id;
+        }
         if (!is_null($this->label)) {
             $result['label'] = $this->label->toArray();
         }

@@ -10,6 +10,7 @@ use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 use PHPUnit\Framework\TestCase;
 use Validaide\HighChartsBundle\ValueObject\Color;
 use Validaide\HighChartsBundle\ValueObject\DashStyle;
+use Validaide\HighChartsBundle\ValueObject\HorizontalAligment;
 
 /**
  * @author Mark Bijl <mark.bijl@validaide.com>
@@ -137,17 +138,25 @@ class ClimateGraph extends Graph
         $this->getXAxis()->setCategories(ClimateGraphTest::getXAxisCategories());
         $this->getXAxis()->setCrosshair(true);
         $maxTempPlotLine = new PlotLine();
+        $maxTempPlotLine->setId('plot_line_max');
         $maxTempPlotLine->setValue(max(ClimateGraphTest::getSeriesData(0)));
         $maxTempPlotLine->setWidth(1);
         $maxTempPlotLine->setColor(new Color("#FF0000"));
         $maxTempPlotLine->setDashStyle(new DashStyle(DashStyle::DASH_STYLE_SOLID));
         $maxTempPlotLine->getLabel()->setText('MAX');
+        $maxTempPlotLine->getLabel()->setAlign(new HorizontalAligment(HorizontalAligment::ALIGN_RIGHT));
+        $maxTempPlotLine->getLabel()->setTextAlign(new HorizontalAligment(HorizontalAligment::ALIGN_RIGHT));
+        $maxTempPlotLine->getLabel()->setUseHtml(false);
         $minTempPlotLine = new PlotLine();
+        $minTempPlotLine->setId('plot_line_min');
         $minTempPlotLine->setValue(min(ClimateGraphTest::getSeriesData(0)));
         $minTempPlotLine->setWidth(1);
         $minTempPlotLine->setColor(new Color("#0000FF"));
         $minTempPlotLine->setDashStyle(new DashStyle(DashStyle::DASH_STYLE_DOT));
         $minTempPlotLine->getLabel()->setText('MIN');
+        $minTempPlotLine->getLabel()->setAlign(new HorizontalAligment(HorizontalAligment::ALIGN_LEFT));
+        $minTempPlotLine->getLabel()->setTextAlign(new HorizontalAligment(HorizontalAligment::ALIGN_LEFT));
+        $minTempPlotLine->getLabel()->setUseHtml(false);
         $this->getXAxis()->addPlotLine($maxTempPlotLine);
         $this->getXAxis()->addPlotLine($minTempPlotLine);
 

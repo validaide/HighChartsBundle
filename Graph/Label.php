@@ -2,13 +2,15 @@
 
 namespace Validaide\HighChartsBundle\Graph;
 
+use Validaide\HighChartsBundle\ValueObject\HorizontalAligment;
+
 /**
  * Class: Label
  */
 class Label
 {
     /**
-     * @var string
+     * @var HorizontalAligment
      */
     private $align;
 
@@ -28,7 +30,7 @@ class Label
     private $text;
 
     /**
-     * @var string
+     * @var HorizontalAligment
      */
     private $textAlign;
 
@@ -41,6 +43,22 @@ class Label
      * @var
      */
     private $verticalAlign;
+
+    /**
+     * @return HorizontalAligment
+     */
+    public function getAlign(): HorizontalAligment
+    {
+        return $this->align;
+    }
+
+    /**
+     * @param HorizontalAligment $align
+     */
+    public function setAlign(HorizontalAligment $align)
+    {
+        $this->align = $align;
+    }
 
     /**
      * @return string
@@ -59,14 +77,55 @@ class Label
     }
 
     /**
+     * @return HorizontalAligment
+     */
+    public function getTextAlign(): HorizontalAligment
+    {
+        return $this->textAlign;
+    }
+
+    /**
+     * @param HorizontalAligment $textAlign
+     */
+    public function setTextAlign(HorizontalAligment $textAlign)
+    {
+        $this->textAlign = $textAlign;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUseHtml(): bool
+    {
+        return $this->useHtml;
+    }
+
+    /**
+     * @param bool $useHtml
+     */
+    public function setUseHtml(bool $useHtml)
+    {
+        $this->useHtml = $useHtml;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
     {
         $result = [];
 
+        if (!is_null($this->align)) {
+            $result['align'] = (string)$this->align;
+        }
         if (!is_null($this->text)) {
             $result['text'] = $this->text;
+        }
+        if (!is_null($this->textAlign)) {
+            $result['textAlign'] = (string)$this->textAlign;
+        }
+        if (!is_null($this->useHtml)) {
+            $result['useHtml'] = $this->useHtml;
         }
 
         return $result;

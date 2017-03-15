@@ -30,8 +30,12 @@ var graph = Highcharts.chart("graph_container",
             {
                 "color": "#FF0000",
                 "dashStyle": "Solid",
+                "id": "plot_line_max",
                 "label": {
-                    "text": "MAX"
+                    "align": "right",
+                    "text": "MAX",
+                    "textAlign": "right",
+                    "useHtml": false
                 },
                 "value": 10,
                 "width": 1
@@ -39,8 +43,12 @@ var graph = Highcharts.chart("graph_container",
             {
                 "color": "#0000FF",
                 "dashStyle": "Dot",
+                "id": "plot_line_min",
                 "label": {
-                    "text": "MIN"
+                    "align": "left",
+                    "text": "MIN",
+                    "textAlign": "left",
+                    "useHtml": false
                 },
                 "value": 4,
                 "width": 1
