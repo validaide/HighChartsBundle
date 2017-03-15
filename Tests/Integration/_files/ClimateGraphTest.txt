@@ -23,7 +23,15 @@ var graph = Highcharts.chart("graph_container",
         },
         "labels": [],
         "categories": [X_AXIS_CATEGORIES],
-        "crosshair": true
+        "crosshair": true,
+        "plotLines": [
+            {
+                "value": 10
+            },
+            {
+                "value": 4
+            }
+        ]
     },
     "yAxis": [
         {

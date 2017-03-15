@@ -4,6 +4,7 @@ namespace Validaide\HighChartsBundle\Tests\Integration;
 
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Graph\Axis;
+use Validaide\HighChartsBundle\Graph\PlotLine;
 use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 use PHPUnit\Framework\TestCase;
@@ -70,8 +71,8 @@ class ClimateGraphTest extends TestCase
             $expected = str_replace('[' . $search . ']', $replacement, $expected);
         }
 
-        file_put_contents('test1.txt', $expected);
-        file_put_contents('test2.txt', $graphRenderer->render(new ClimateGraph()));
+        file_put_contents('climate_graph_test_expected.txt', $expected);
+        file_put_contents('climate_graph_test_rendered.txt', $graphRenderer->render(new ClimateGraph()));
 
         $this->assertSame(
             $expected,
@@ -133,6 +134,12 @@ class ClimateGraph extends Graph
         $this->getXAxis()->getTitle()->setText(ClimateGraphTest::X_AXIS_TITLE);
         $this->getXAxis()->setCategories(ClimateGraphTest::getXAxisCategories());
         $this->getXAxis()->setCrosshair(true);
+        $maxTempPlotLine = new PlotLine();
+        $maxTempPlotLine->setValue(max(ClimateGraphTest::getSeriesData(0)));
+        $minTempPlotLine = new PlotLine();
+        $minTempPlotLine->setValue(min(ClimateGraphTest::getSeriesData(0)));
+        $this->getXAxis()->addPlotLine($maxTempPlotLine);
+        $this->getXAxis()->addPlotLine($minTempPlotLine);
 
         // yAxis
         $yAxisTemp = new Axis();

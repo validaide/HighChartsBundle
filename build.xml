@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Validaide" default="build">
+    <property name="build.dir" location="${basedir}/var/build"/>
+
+    <record name="${build.dir}/build.log" loglevel="verbose" action="start"/>
+    <target name="unittest" depends="prepare,phpunit"/>
+
+    <target name="clean" description="Cleanup build artifacts">
+        <delete dir="${build.dir}/phpunit"/>
+        <delete dir="${build.dir}/coverage"/>
+    </target>
+
+    <target name="prepare" depends="clean,composer,bower" description="Prepare for build">
+        <mkdir dir="${build.dir}/phpunit"/>
+        <mkdir dir="${build.dir}/coverage"/>
+    </target>
+
+    <!-- We use a locally installed composer: ensure it is installed on the OS running this file -->
+    <target name="composer" description="Install composer dependencies">
+        <exec executable="composer" failonerror="true">
+            <arg value="install"/>
+            <arg value="--dev"/>
+            <arg value="--prefer-dist"/>
+            <arg value="--no-progress"/>
+
+            <env key="SYMFONY_ENV" value="test"/>
+        </exec>
+    </target>
+
+    <!-- We use a locally installed bower: ensure it is installed on the OS running this file -->
+    <target name="bower" description="Install bower dependencies">
+        <exec executable="bower" failonerror="true">
+            <arg value="install"/>
+        </exec>
+    </target>
+
+    <target name="phpunit" description="Run unit tests with PHPUnit">
+        <!--We use a local composer installation, see target 'composer'-->
+        <exec executable="./vendor/bin/phpunit" failonerror="true">
+        </exec>
+    </target>
+</project>

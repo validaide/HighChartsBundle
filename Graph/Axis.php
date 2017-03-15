@@ -32,6 +32,11 @@ class Axis
      */
     public $labels;
 
+    /**
+     * @var PlotLine[]
+     */
+    private $plotLines;
+
     public function __construct()
     {
         $this->title  = new Title();
@@ -103,6 +108,30 @@ class Axis
     }
 
     /**
+     * @param PlotLine $plotLine
+     */
+    public function addPlotLine(PlotLine $plotLine)
+    {
+        $this->plotLines[] = $plotLine;
+    }
+
+    /**
+     * @return PlotLine[]
+     */
+    public function getPlotLines(): array
+    {
+        return $this->plotLines;
+    }
+
+    /**
+     * @param PlotLine[] $plotLines
+     */
+    public function setPlotLines(array $plotLines)
+    {
+        $this->plotLines = $plotLines;
+    }
+
+    /**
      * @return string
      */
     public function toArray()
@@ -127,6 +156,16 @@ class Axis
 
         if (!is_null($this->crosshair)) {
             $result['crosshair'] = $this->crosshair;
+        }
+
+        if (!is_null($this->plotLines)) {
+            $plotLines = [];
+            /** @var PlotLine $plotLine */
+            foreach ($this->plotLines as $plotLine) {
+                $plotLines[] = $plotLine->toArray();
+            }
+
+            $result['plotLines'] = $plotLines;
         }
 
         return $result;
