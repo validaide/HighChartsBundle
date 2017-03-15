@@ -10,7 +10,9 @@ var graph = Highcharts.chart("graph_container",
     "tooltip": [],
     "xAxis": {
         "title": [],
-        "labels": []
+        "labels": {
+            "format": "{value}"
+        }
     },
     "yAxis": [],
     "series": []

@@ -12,7 +12,7 @@ class Labels
     /**
      * @var
      */
-    private $format;
+    private $format = self::DEFAULT_FORMAT;
 
     /**
      * @return mixed

@@ -21,7 +21,9 @@ var graph = Highcharts.chart("graph_container",
         "title": {
             "text": "[X_AXIS_TITLE]"
         },
-        "labels": [],
+        "labels": {
+            "format": "{value}"
+        },
         "categories": [X_AXIS_CATEGORIES],
         "crosshair": true,
         "plotLines": [
