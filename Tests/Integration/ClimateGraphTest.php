@@ -151,6 +151,8 @@ class ClimateGraph extends Graph
         $maxTempPlotLine->setWidth(1);
         $maxTempPlotLine->setColor(new Color("#FF0000"));
         $maxTempPlotLine->setDashStyle(new DashStyle(DashStyle::DASH_STYLE_SOLID));
+        $maxTempPlotLine->setZIndex(4);
+        $maxTempPlotLine->setClassName('class-temperature-max');
         $maxTempPlotLine->getLabel()->setText('MAX');
         $maxTempPlotLine->getLabel()->setAlign(new HorizontalAlignment(HorizontalAlignment::ALIGN_RIGHT));
         $maxTempPlotLine->getLabel()->setTextAlign(new HorizontalAlignment(HorizontalAlignment::ALIGN_RIGHT));
@@ -162,6 +164,8 @@ class ClimateGraph extends Graph
         $minTempPlotLine->setWidth(1);
         $minTempPlotLine->setColor(new Color("#0000FF"));
         $minTempPlotLine->setDashStyle(new DashStyle(DashStyle::DASH_STYLE_DOT));
+        $minTempPlotLine->setZIndex(5);
+        $minTempPlotLine->setClassName('class-temperature-min');
         $minTempPlotLine->getLabel()->setText('MIN');
         $minTempPlotLine->getLabel()->setAlign(new HorizontalAlignment(HorizontalAlignment::ALIGN_LEFT));
         $minTempPlotLine->getLabel()->setTextAlign(new HorizontalAlignment(HorizontalAlignment::ALIGN_LEFT));

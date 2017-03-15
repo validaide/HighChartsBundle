@@ -29,6 +29,7 @@ var graph = Highcharts.chart("graph_container",
         "plotLines": [
             {
                 "color": "#FF0000",
+                "className": "class-temperature-max",
                 "dashStyle": "Solid",
                 "id": "plot_line_max",
                 "label": {
@@ -39,10 +40,12 @@ var graph = Highcharts.chart("graph_container",
                     "verticalAlign": "bottom"
                 },
                 "value": 10,
-                "width": 1
+                "width": 1,
+                "zIndex": 4
             },
             {
                 "color": "#0000FF",
+                "className": "class-temperature-min",
                 "dashStyle": "Dot",
                 "id": "plot_line_min",
                 "label": {
@@ -53,7 +56,8 @@ var graph = Highcharts.chart("graph_container",
                     "verticalAlign": "top"
                 },
                 "value": 4,
-                "width": 1
+                "width": 1,
+                "zIndex": 5
             }
         ]
     },

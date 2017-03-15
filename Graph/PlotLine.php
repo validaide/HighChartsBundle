@@ -198,6 +198,9 @@ class PlotLine
         if (!is_null($this->color)) {
             $result['color'] = (string)$this->color;
         }
+        if (!is_null($this->className)) {
+            $result['className'] = $this->className;
+        }
         if (!is_null($this->dashStyle)) {
             $result['dashStyle'] = (string)$this->dashStyle;
         }
