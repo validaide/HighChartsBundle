@@ -26,10 +26,16 @@ var graph = Highcharts.chart("graph_container",
         "crosshair": true,
         "plotLines": [
             {
-                "value": 10
+                "color": "#FF0000",
+                "dashStyle": "Solid",
+                "value": 10,
+                "width": 1
             },
             {
-                "value": 4
+                "color": "#0000FF",
+                "dashStyle": "Dot",
+                "value": 4,
+                "width": 1
             }
         ]
     },

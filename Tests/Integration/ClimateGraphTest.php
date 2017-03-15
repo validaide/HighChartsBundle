@@ -8,6 +8,8 @@ use Validaide\HighChartsBundle\Graph\PlotLine;
 use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 use PHPUnit\Framework\TestCase;
+use Validaide\HighChartsBundle\ValueObject\Color;
+use Validaide\HighChartsBundle\ValueObject\DashStyle;
 
 /**
  * @author Mark Bijl <mark.bijl@validaide.com>
@@ -136,8 +138,14 @@ class ClimateGraph extends Graph
         $this->getXAxis()->setCrosshair(true);
         $maxTempPlotLine = new PlotLine();
         $maxTempPlotLine->setValue(max(ClimateGraphTest::getSeriesData(0)));
+        $maxTempPlotLine->setWidth(1);
+        $maxTempPlotLine->setColor(new Color("#FF0000"));
+        $maxTempPlotLine->setDashStyle(new DashStyle(DashStyle::DASH_STYLE_SOLID));
         $minTempPlotLine = new PlotLine();
         $minTempPlotLine->setValue(min(ClimateGraphTest::getSeriesData(0)));
+        $minTempPlotLine->setWidth(1);
+        $minTempPlotLine->setColor(new Color("#0000FF"));
+        $minTempPlotLine->setDashStyle(new DashStyle(DashStyle::DASH_STYLE_DOT));
         $this->getXAxis()->addPlotLine($maxTempPlotLine);
         $this->getXAxis()->addPlotLine($minTempPlotLine);
 

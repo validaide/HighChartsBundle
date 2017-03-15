@@ -2,6 +2,9 @@
 
 namespace Validaide\HighChartsBundle\Graph;
 
+use Validaide\HighChartsBundle\ValueObject\Color;
+use Validaide\HighChartsBundle\ValueObject\DashStyle;
+
 /**
  * Class: PlotLine
  */
@@ -15,12 +18,12 @@ class PlotLine
     /**
      * @var Color
      */
-    // private $color;
+    private $color;
 
     /**
      * @var DashStyle
      */
-    // private $dashStyle;
+    private $dashStyle;
 
     // private $events;
 
@@ -134,12 +137,50 @@ class PlotLine
     }
 
     /**
+     * @return Color
+     */
+    public function getColor(): Color
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param Color $color
+     */
+    public function setColor(Color $color)
+    {
+        $this->color = $color;
+    }
+
+    /**
+     * @return DashStyle
+     */
+    public function getDashStyle(): DashStyle
+    {
+        return $this->dashStyle;
+    }
+
+    /**
+     * @param DashStyle $dashStyle
+     */
+    public function setDashStyle(DashStyle $dashStyle)
+    {
+        $this->dashStyle = $dashStyle;
+    }
+
+    /**
      * @return string
      */
     public function toArray()
     {
         $result = [];
 
+        if (!is_null($this->color)) {
+            $result['color'] = (string)$this->color;
+        }
+        if (!is_null($this->dashStyle)) {
+            $result['dashStyle'] = (string)$this->dashStyle;
+        }
         if (!is_null($this->value)) {
             $result['value'] = $this->value;
         }
