@@ -35,7 +35,7 @@ class PlotLine
     /**
      * @var Label
      */
-    // private $label;
+    private $label;
 
     /**
      * @var int
@@ -169,6 +169,26 @@ class PlotLine
     }
 
     /**
+     * @return Label
+     */
+    public function getLabel(): Label
+    {
+        if (is_null($this->label)) {
+            $this->label = new Label();
+        }
+
+        return $this->label;
+    }
+
+    /**
+     * @param Label $label
+     */
+    public function setLabel(Label $label)
+    {
+        $this->label = $label;
+    }
+
+    /**
      * @return string
      */
     public function toArray()
@@ -180,6 +200,9 @@ class PlotLine
         }
         if (!is_null($this->dashStyle)) {
             $result['dashStyle'] = (string)$this->dashStyle;
+        }
+        if (!is_null($this->label)) {
+            $result['label'] = $this->label->toArray();
         }
         if (!is_null($this->value)) {
             $result['value'] = $this->value;

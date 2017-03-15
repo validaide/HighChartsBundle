@@ -30,12 +30,18 @@ var graph = Highcharts.chart("graph_container",
             {
                 "color": "#FF0000",
                 "dashStyle": "Solid",
+                "label": {
+                    "text": "MAX"
+                },
                 "value": 10,
                 "width": 1
             },
             {
                 "color": "#0000FF",
                 "dashStyle": "Dot",
+                "label": {
+                    "text": "MIN"
+                },
                 "value": 4,
                 "width": 1
             }

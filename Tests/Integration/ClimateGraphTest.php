@@ -141,11 +141,13 @@ class ClimateGraph extends Graph
         $maxTempPlotLine->setWidth(1);
         $maxTempPlotLine->setColor(new Color("#FF0000"));
         $maxTempPlotLine->setDashStyle(new DashStyle(DashStyle::DASH_STYLE_SOLID));
+        $maxTempPlotLine->getLabel()->setText('MAX');
         $minTempPlotLine = new PlotLine();
         $minTempPlotLine->setValue(min(ClimateGraphTest::getSeriesData(0)));
         $minTempPlotLine->setWidth(1);
         $minTempPlotLine->setColor(new Color("#0000FF"));
         $minTempPlotLine->setDashStyle(new DashStyle(DashStyle::DASH_STYLE_DOT));
+        $minTempPlotLine->getLabel()->setText('MIN');
         $this->getXAxis()->addPlotLine($maxTempPlotLine);
         $this->getXAxis()->addPlotLine($minTempPlotLine);
 
