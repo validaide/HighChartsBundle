@@ -190,10 +190,10 @@ class Label
             $result['verticalAlign'] = (string)$this->verticalAlignment;
         }
         if (!is_null($this->x)) {
-            $result['x'] = (string)$this->x;
+            $result['x'] = $this->x;
         }
         if (!is_null($this->y)) {
-            $result['y'] = (string)$this->y;
+            $result['y'] = $this->y;
         }
 
         return $result;
