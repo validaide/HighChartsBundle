@@ -155,9 +155,11 @@ class ClimateGraph extends Graph
         $maxTempPlotLine->setClassName('class-temperature-max');
         $maxTempPlotLine->getLabel()->setText('MAX');
         $maxTempPlotLine->getLabel()->setAlign(new HorizontalAlignment(HorizontalAlignment::ALIGN_RIGHT));
-        $maxTempPlotLine->getLabel()->setTextAlign(new HorizontalAlignment(HorizontalAlignment::ALIGN_RIGHT));
+        $maxTempPlotLine->getLabel()->setTextAlignment(new HorizontalAlignment(HorizontalAlignment::ALIGN_RIGHT));
         $maxTempPlotLine->getLabel()->setUseHtml(false);
-        $maxTempPlotLine->getLabel()->setVerticalAlign(new VerticalAlignment(VerticalAlignment::ALIGN_BOTTOM));
+        $maxTempPlotLine->getLabel()->setVerticalAlignment(new VerticalAlignment(VerticalAlignment::ALIGN_BOTTOM));
+        $maxTempPlotLine->getLabel()->setX(0);
+        $maxTempPlotLine->getLabel()->setY(0);
         $minTempPlotLine = new PlotLine();
         $minTempPlotLine->setId('plot_line_min');
         $minTempPlotLine->setValue(min(ClimateGraphTest::getSeriesData(0)));
@@ -168,9 +170,9 @@ class ClimateGraph extends Graph
         $minTempPlotLine->setClassName('class-temperature-min');
         $minTempPlotLine->getLabel()->setText('MIN');
         $minTempPlotLine->getLabel()->setAlign(new HorizontalAlignment(HorizontalAlignment::ALIGN_LEFT));
-        $minTempPlotLine->getLabel()->setTextAlign(new HorizontalAlignment(HorizontalAlignment::ALIGN_LEFT));
+        $minTempPlotLine->getLabel()->setTextAlignment(new HorizontalAlignment(HorizontalAlignment::ALIGN_LEFT));
         $minTempPlotLine->getLabel()->setUseHtml(false);
-        $minTempPlotLine->getLabel()->setVerticalAlign(new VerticalAlignment(VerticalAlignment::ALIGN_TOP));
+        $minTempPlotLine->getLabel()->setVerticalAlignment(new VerticalAlignment(VerticalAlignment::ALIGN_TOP));
 
         $this->getXAxis()->addPlotLine($maxTempPlotLine);
         $this->getXAxis()->addPlotLine($minTempPlotLine);

@@ -37,7 +37,9 @@ var graph = Highcharts.chart("graph_container",
                     "text": "MAX",
                     "textAlign": "right",
                     "useHtml": false,
-                    "verticalAlign": "bottom"
+                    "verticalAlign": "bottom",
+                    "x": "0",
+                    "y": "0"
                 },
                 "value": 10,
                 "width": 1,

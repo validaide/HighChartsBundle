@@ -33,7 +33,7 @@ class Label
     /**
      * @var HorizontalAlignment
      */
-    private $textAlign;
+    private $textAlignment;
 
     /**
      * @var bool
@@ -43,7 +43,17 @@ class Label
     /**
      * @var VerticalAlignment
      */
-    private $verticalAlign;
+    private $verticalAlignment;
+
+    /**
+     * @var int
+     */
+    private $x;
+
+    /**
+     * @var int
+     */
+    private $y;
 
     /**
      * @return HorizontalAlignment
@@ -80,17 +90,17 @@ class Label
     /**
      * @return HorizontalAlignment
      */
-    public function getTextAlign(): HorizontalAlignment
+    public function getTextAlignment(): HorizontalAlignment
     {
-        return $this->textAlign;
+        return $this->textAlignment;
     }
 
     /**
-     * @param HorizontalAlignment $textAlign
+     * @param HorizontalAlignment $textAlignment
      */
-    public function setTextAlign(HorizontalAlignment $textAlign)
+    public function setTextAlignment(HorizontalAlignment $textAlignment)
     {
-        $this->textAlign = $textAlign;
+        $this->textAlignment = $textAlignment;
     }
 
     /**
@@ -112,17 +122,49 @@ class Label
     /**
      * @return VerticalAlignment
      */
-    public function getVerticalAlign(): VerticalAlignment
+    public function getVerticalAlignment(): VerticalAlignment
     {
-        return $this->verticalAlign;
+        return $this->verticalAlignment;
     }
 
     /**
-     * @param VerticalAlignment $verticalAlign
+     * @param VerticalAlignment $verticalAlignment
      */
-    public function setVerticalAlign(VerticalAlignment $verticalAlign)
+    public function setVerticalAlignment(VerticalAlignment $verticalAlignment)
     {
-        $this->verticalAlign = $verticalAlign;
+        $this->verticalAlignment = $verticalAlignment;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getX()
+    {
+        return $this->x;
+    }
+
+    /**
+     * @param int $x
+     */
+    public function setX(int $x)
+    {
+        $this->x = $x;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getY()
+    {
+        return $this->y;
+    }
+
+    /**
+     * @param int $y
+     */
+    public function setY(int $y)
+    {
+        $this->y = $y;
     }
 
     /**
@@ -138,14 +180,20 @@ class Label
         if (!is_null($this->text)) {
             $result['text'] = $this->text;
         }
-        if (!is_null($this->textAlign)) {
-            $result['textAlign'] = (string)$this->textAlign;
+        if (!is_null($this->textAlignment)) {
+            $result['textAlign'] = (string)$this->textAlignment;
         }
         if (!is_null($this->useHtml)) {
             $result['useHtml'] = $this->useHtml;
         }
-        if (!is_null($this->verticalAlign)) {
-            $result['verticalAlign'] = (string)$this->verticalAlign;
+        if (!is_null($this->verticalAlignment)) {
+            $result['verticalAlign'] = (string)$this->verticalAlignment;
+        }
+        if (!is_null($this->x)) {
+            $result['x'] = (string)$this->x;
+        }
+        if (!is_null($this->y)) {
+            $result['y'] = (string)$this->y;
         }
 
         return $result;

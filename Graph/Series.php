@@ -2,7 +2,6 @@
 
 namespace Validaide\HighChartsBundle\Graph;
 
-use Ivory\JsonBuilder\JsonBuilder;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**
