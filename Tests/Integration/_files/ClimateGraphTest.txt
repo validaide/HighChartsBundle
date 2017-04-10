@@ -63,6 +63,9 @@ var graph = Highcharts.chart("graph_container",
             }
         ]
     },
+    "legend": {
+        "enabled": true
+    },
     "yAxis": [
         {
             "title": {
