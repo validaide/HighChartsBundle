@@ -70,6 +70,11 @@ class Graph
     public $tooltip;
 
     /**
+     * @var bool
+     */
+    public $legend = true;
+
+    /**
      * Graph constructor.
      */
     public function __construct()
@@ -206,6 +211,22 @@ class Graph
     }
 
     /**
+     * @return boolean
+     */
+    public function isLegend()
+    {
+        return $this->legend;
+    }
+
+    /**
+     * @param boolean $legend
+     */
+    public function setLegend($legend)
+    {
+        $this->legend = $legend;
+    }
+
+    /**
      * @return string
      */
     public function toJson()
@@ -220,6 +241,7 @@ class Graph
             'title'   => $this->title->toArray(),
             'tooltip' => $this->tooltip->toArray(),
             'xAxis'   => $this->xAxis->toArray(),
+            'legend'  => ['enabled' => $this->isLegend()]
         ]);
 
         if (isset($this->yAxis)) {
@@ -239,5 +261,4 @@ class Graph
 
         return $builder->build();
     }
-
 }
