@@ -3,7 +3,8 @@ $(function () {
 var graph = Highcharts.chart("graph_container", 
 {
     "chart": {
-        "type": "line"
+        "type": "line",
+        "plotShadow": false
     },
     "credits": [],
     "title": [],
@@ -16,6 +17,13 @@ var graph = Highcharts.chart("graph_container",
     },
     "legend": {
         "enabled": true
+    },
+    "plotOptions": {
+        "pie": {
+           "dataLabels": {
+               "enabled": false
+           }
+        }
     },
     "yAxis": [],
     "series": []
