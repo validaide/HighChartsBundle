@@ -40,6 +40,11 @@ class Graph
     private $type = 'line';
 
     /**
+     * @var bool
+     */
+    private $plotShadow = false;
+
+    /**
      * @var Title
      */
     private $title;
@@ -236,12 +241,20 @@ class Graph
         $builder->setValues([
             'chart'   => [
                 'type' => $this->type,
+                'plotShadow' => $this->plotShadow,
             ],
             'credits' => $this->credits->toArray(),
             'title'   => $this->title->toArray(),
             'tooltip' => $this->tooltip->toArray(),
             'xAxis'   => $this->xAxis->toArray(),
-            'legend'  => ['enabled' => $this->isLegend()]
+            'legend'  => ['enabled' => $this->isLegend()],
+            'plotOptions' => [
+                'pie' => [
+                    'dataLabels' => [
+                        'enabled' => false
+                    ]
+                ]
+            ]
         ]);
 
         if (isset($this->yAxis)) {
