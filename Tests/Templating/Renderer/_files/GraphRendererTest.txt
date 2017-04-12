@@ -20,9 +20,9 @@ var graph = Highcharts.chart("graph_container",
     },
     "plotOptions": {
         "pie": {
-           "dataLabels": {
-               "enabled": false
-           }
+            "dataLabels": {
+                "enabled": false
+            }
         }
     },
     "yAxis": [],
