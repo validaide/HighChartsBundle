@@ -47,6 +47,11 @@ class Axis
      */
     private $plotLines;
 
+    /**
+     * @var float
+     */
+    private $tickInterval;
+
     public function __construct()
     {
         $this->title  = new Title();
@@ -174,11 +179,35 @@ class Axis
     }
 
     /**
+     * @return float
+     */
+    public function getTickInterval(): float
+    {
+        return $this->tickInterval;
+    }
+
+    /**
+     * @param float $tickInterval
+     */
+    public function setTickInterval(float $tickInterval)
+    {
+        $this->tickInterval = $tickInterval;
+    }
+
+    /**
      * @return string
      */
     public function toArray()
     {
         $result = [];
+
+        if (!is_null($this->categories)) {
+            $result['categories'] = $this->categories;
+        }
+
+        if (!is_null($this->crosshair)) {
+            $result['crosshair'] = $this->crosshair;
+        }
 
         if (!is_null($this->title)) {
             $result['title'] = $this->title->toArray();
@@ -200,14 +229,6 @@ class Axis
             $result['max'] = $this->max;
         }
 
-        if (!is_null($this->categories)) {
-            $result['categories'] = $this->categories;
-        }
-
-        if (!is_null($this->crosshair)) {
-            $result['crosshair'] = $this->crosshair;
-        }
-
         if (!is_null($this->plotLines)) {
             $plotLines = [];
             /** @var PlotLine $plotLine */
@@ -216,6 +237,10 @@ class Axis
             }
 
             $result['plotLines'] = $plotLines;
+        }
+
+        if (!is_null($this->tickInterval)) {
+            $result['tickInterval'] = $this->tickInterval;
         }
 
         return $result;
