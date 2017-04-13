@@ -10,10 +10,10 @@ var graph = Highcharts.chart("graph_container",
     "title": [],
     "tooltip": [],
     "xAxis": {
-        "title": [],
         "labels": {
             "format": "{value}"
-        }
+        },
+        "title": []
     },
     "legend": {
         "enabled": true
