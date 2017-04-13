@@ -28,6 +28,16 @@ class Axis
     private $categories = null;
 
     /**
+     * @var float
+     */
+    private $min;
+
+    /**
+     * @var float
+     */
+    private $max;
+
+    /**
      * @var Labels
      */
     public $labels;
@@ -108,6 +118,38 @@ class Axis
     }
 
     /**
+     * @return float
+     */
+    public function getMin(): float
+    {
+        return $this->min;
+    }
+
+    /**
+     * @param float $min
+     */
+    public function setMin(float $min)
+    {
+        $this->min = $min;
+    }
+
+    /**
+     * @return float
+     */
+    public function getMax(): float
+    {
+        return $this->max;
+    }
+
+    /**
+     * @param float $max
+     */
+    public function setMax(float $max)
+    {
+        $this->max = $max;
+    }
+
+    /**
      * @param PlotLine $plotLine
      */
     public function addPlotLine(PlotLine $plotLine)
@@ -148,6 +190,14 @@ class Axis
 
         if (!is_null($this->opposite)) {
             $result['opposite'] = $this->opposite;
+        }
+
+        if (!is_null($this->min)) {
+            $result['min'] = $this->min;
+        }
+
+        if (!is_null($this->max)) {
+            $result['max'] = $this->max;
         }
 
         if (!is_null($this->categories)) {
