@@ -201,6 +201,8 @@ class Axis
     {
         $result = [];
 
+        // List elements alphabetically
+
         if (!is_null($this->categories)) {
             $result['categories'] = $this->categories;
         }
@@ -209,16 +211,8 @@ class Axis
             $result['crosshair'] = $this->crosshair;
         }
 
-        if (!is_null($this->title)) {
-            $result['title'] = $this->title->toArray();
-        }
-
         if (!is_null($this->labels)) {
             $result['labels'] = $this->labels->toArray();
-        }
-
-        if (!is_null($this->opposite)) {
-            $result['opposite'] = $this->opposite;
         }
 
         if (!is_null($this->min)) {
@@ -227,6 +221,10 @@ class Axis
 
         if (!is_null($this->max)) {
             $result['max'] = $this->max;
+        }
+
+        if (!is_null($this->opposite)) {
+            $result['opposite'] = $this->opposite;
         }
 
         if (!is_null($this->plotLines)) {
@@ -241,6 +239,10 @@ class Axis
 
         if (!is_null($this->tickInterval)) {
             $result['tickInterval'] = $this->tickInterval;
+        }
+
+        if (!is_null($this->title)) {
+            $result['title'] = $this->title->toArray();
         }
 
         return $result;
