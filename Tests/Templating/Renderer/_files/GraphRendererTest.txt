@@ -18,13 +18,6 @@ var graph = Highcharts.chart("graph_container",
     "legend": {
         "enabled": true
     },
-    "plotOptions": {
-        "pie": {
-            "dataLabels": {
-                "enabled": false
-            }
-        }
-    },
     "yAxis": [],
     "series": []
 }
