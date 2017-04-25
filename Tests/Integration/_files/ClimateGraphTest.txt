@@ -4,7 +4,8 @@ $(function () {
 var graph = Highcharts.chart("graph_container", 
 {
     "chart": {
-        "type": "[TYPE]"
+        "type": "[TYPE]",
+        "plotShadow": false
     },
     "credits": {
         "enabled": true,
@@ -18,14 +19,11 @@ var graph = Highcharts.chart("graph_container",
         "shared": true
     },
     "xAxis": {
-        "title": {
-            "text": "[X_AXIS_TITLE]"
-        },
+        "categories": [X_AXIS_CATEGORIES],
+        "crosshair": true,
         "labels": {
             "format": "{value}"
         },
-        "categories": [X_AXIS_CATEGORIES],
-        "crosshair": true,
         "plotLines": [
             {
                 "color": "#FF0000",
@@ -61,24 +59,30 @@ var graph = Highcharts.chart("graph_container",
                 "width": 1,
                 "zIndex": 5
             }
-        ]
+        ],
+        "title": {
+            "text": "[X_AXIS_TITLE]"
+        }
+    },
+    "legend": {
+        "enabled": true
     },
     "yAxis": [
         {
-            "title": {
-                "text": "[Y_AXIS_TEMPERATURE_TITLE]"
-            },
             "labels": {
                 "format": "{value}\u00b0C"
             },
-            "opposite": true
+            "opposite": true,
+            "title": {
+                "text": "[Y_AXIS_TEMPERATURE_TITLE]"
+            }
         },
         {
-            "title": {
-                "text": "[Y_AXIS_RAINFALL_TITLE]"
-            },
             "labels": {
                 "format": "{value} mm"
+            },
+            "title": {
+                "text": "[Y_AXIS_RAINFALL_TITLE]"
             }
         }
     ],

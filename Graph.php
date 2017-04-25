@@ -7,7 +7,9 @@ use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\Credits;
 use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\Graph\Title;
+use Validaide\HighChartsBundle\Graph\Legend;
 use Validaide\HighChartsBundle\Graph\Tooltip;
+use Validaide\HighChartsBundle\Graph\PlotOptions;
 
 /**
  * Class: Graph
@@ -40,6 +42,11 @@ class Graph
     private $type = 'line';
 
     /**
+     * @var bool
+     */
+    private $plotShadow = false;
+
+    /**
      * @var Title
      */
     private $title;
@@ -70,6 +77,16 @@ class Graph
     public $tooltip;
 
     /**
+     * @var Legend
+     */
+    public $legend;
+
+    /**
+     * @var PlotOptions
+     */
+    public $plotOptions;
+
+    /**
      * @var string
      */
     private $zoomType;
@@ -83,6 +100,7 @@ class Graph
         $this->title   = new Title();
         $this->credits = new Credits();
         $this->tooltip = new Tooltip();
+        $this->legend  = new Legend();
     }
 
     /**
@@ -211,6 +229,54 @@ class Graph
     }
 
     /**
+     * @return Legend
+     */
+    public function getLegend()
+    {
+        return $this->legend;
+    }
+
+    /**
+     * @param Legend $legend
+     */
+    public function setLegend(Legend $legend)
+    {
+        $this->legend = $legend;
+    }
+
+    /**
+     * @return Tooltip
+     */
+    public function getTooltip()
+    {
+        return $this->tooltip;
+    }
+
+    /**
+     * @param Tooltip $tooltip
+     */
+    public function setTooltip(Tooltip $tooltip)
+    {
+        $this->tooltip = $tooltip;
+    }
+
+    /**
+     * @return PlotOptions
+     */
+    public function getPlotOptions()
+    {
+        return $this->plotOptions;
+    }
+
+    /**
+     * @param PlotOptions $plotOptions
+     */
+    public function setPlotOptions(PlotOptions $plotOptions)
+    {
+        $this->plotOptions = $plotOptions;
+    }
+
+    /**
      * @return string
      */
     public function getZoomType(): string
@@ -234,14 +300,22 @@ class Graph
         $builder = new JsonBuilder();
         $builder->setJsonEncodeOptions($builder->getJsonEncodeOptions() | JSON_PRETTY_PRINT);
         $builder->setValues([
+            'chart'       => [
+                'type'       => $this->type,
+                'plotShadow' => $this->plotShadow,
             'chart'   => [
                 'type'     => $this->type,
             ],
-            'credits' => $this->credits->toArray(),
-            'title'   => $this->title->toArray(),
-            'tooltip' => $this->tooltip->toArray(),
-            'xAxis'   => $this->xAxis->toArray(),
+            'credits'     => $this->credits->toArray(),
+            'title'       => $this->title->toArray(),
+            'tooltip'     => $this->tooltip->toArray(),
+            'xAxis'       => $this->xAxis->toArray(),
+            'legend'      => $this->legend->toArray(),
         ]);
+
+        if (is_object($this->plotOptions)) {
+            $builder->setValue('[plotOptions]', $this->plotOptions->toArray());
+        }
 
         if(isset($this->zoomType)) {
             $builder->setValue('[charts]', $this->zoomType);
@@ -250,6 +324,7 @@ class Graph
         if (isset($this->yAxis)) {
             $yAxis = [];
             foreach ($this->yAxis as $axis) {
+                /** @var Axis $axis */
                 $yAxis[] = $axis->toArray();
             }
             $builder->setValue('[yAxis]', $yAxis);
@@ -264,5 +339,4 @@ class Graph
 
         return $builder->build();
     }
-
 }

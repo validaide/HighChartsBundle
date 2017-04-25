@@ -28,6 +28,16 @@ class Axis
     private $categories = null;
 
     /**
+     * @var float
+     */
+    private $min;
+
+    /**
+     * @var float
+     */
+    private $max;
+
+    /**
      * @var Labels
      */
     public $labels;
@@ -36,6 +46,11 @@ class Axis
      * @var PlotLine[]
      */
     private $plotLines;
+
+    /**
+     * @var float
+     */
+    private $tickInterval;
 
     /**
      * @var string
@@ -113,6 +128,38 @@ class Axis
     }
 
     /**
+     * @return float
+     */
+    public function getMin(): float
+    {
+        return $this->min;
+    }
+
+    /**
+     * @param float $min
+     */
+    public function setMin(float $min)
+    {
+        $this->min = $min;
+    }
+
+    /**
+     * @return float
+     */
+    public function getMax(): float
+    {
+        return $this->max;
+    }
+
+    /**
+     * @param float $max
+     */
+    public function setMax(float $max)
+    {
+        $this->max = $max;
+    }
+
+    /**
      * @param PlotLine $plotLine
      */
     public function addPlotLine(PlotLine $plotLine)
@@ -153,23 +200,29 @@ class Axis
     }
 
     /**
+     * @return float
+     */
+    public function getTickInterval(): float
+    {
+        return $this->tickInterval;
+    }
+
+    /**
+     * @param float $tickInterval
+     */
+    public function setTickInterval(float $tickInterval)
+    {
+        $this->tickInterval = $tickInterval;
+    }
+
+    /**
      * @return string
      */
     public function toArray()
     {
         $result = [];
 
-        if (!is_null($this->title)) {
-            $result['title'] = $this->title->toArray();
-        }
-
-        if (!is_null($this->labels)) {
-            $result['labels'] = $this->labels->toArray();
-        }
-
-        if (!is_null($this->opposite)) {
-            $result['opposite'] = $this->opposite;
-        }
+        // List elements alphabetically
 
         if (!is_null($this->categories)) {
             $result['categories'] = $this->categories;
@@ -177,6 +230,22 @@ class Axis
 
         if (!is_null($this->crosshair)) {
             $result['crosshair'] = $this->crosshair;
+        }
+
+        if (!is_null($this->labels)) {
+            $result['labels'] = $this->labels->toArray();
+        }
+
+        if (!is_null($this->min)) {
+            $result['min'] = $this->min;
+        }
+
+        if (!is_null($this->max)) {
+            $result['max'] = $this->max;
+        }
+
+        if (!is_null($this->opposite)) {
+            $result['opposite'] = $this->opposite;
         }
 
         if (!is_null($this->plotLines)) {
@@ -187,6 +256,14 @@ class Axis
             }
 
             $result['plotLines'] = $plotLines;
+        }
+
+        if (!is_null($this->tickInterval)) {
+            $result['tickInterval'] = $this->tickInterval;
+        }
+
+        if (!is_null($this->title)) {
+            $result['title'] = $this->title->toArray();
         }
 
         if (!is_null($this->type)) {
