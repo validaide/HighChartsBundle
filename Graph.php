@@ -303,8 +303,6 @@ class Graph
             'chart'       => [
                 'type'       => $this->type,
                 'plotShadow' => $this->plotShadow,
-            'chart'   => [
-                'type'     => $this->type,
             ],
             'credits'     => $this->credits->toArray(),
             'title'       => $this->title->toArray(),
