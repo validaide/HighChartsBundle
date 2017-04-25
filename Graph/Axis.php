@@ -37,6 +37,11 @@ class Axis
      */
     private $plotLines;
 
+    /**
+     * @var string
+     */
+    private $type;
+
     public function __construct()
     {
         $this->title  = new Title();
@@ -134,6 +139,22 @@ class Axis
     /**
      * @return string
      */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType(string $type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return string
+     */
     public function toArray()
     {
         $result = [];
@@ -166,6 +187,10 @@ class Axis
             }
 
             $result['plotLines'] = $plotLines;
+        }
+
+        if (!is_null($this->type)) {
+            $result['type'] = $this->type;
         }
 
         return $result;

@@ -70,6 +70,11 @@ class Graph
     public $tooltip;
 
     /**
+     * @var string
+     */
+    private $zoomType;
+
+    /**
      * Graph constructor.
      */
     public function __construct()
@@ -208,19 +213,39 @@ class Graph
     /**
      * @return string
      */
+    public function getZoomType(): string
+    {
+        return $this->zoomType;
+    }
+
+    /**
+     * @param string $zoomType
+     */
+    public function setZoomType(string $zoomType)
+    {
+        $this->zoomType = $zoomType;
+    }
+
+    /**
+     * @return string
+     */
     public function toJson()
     {
         $builder = new JsonBuilder();
         $builder->setJsonEncodeOptions($builder->getJsonEncodeOptions() | JSON_PRETTY_PRINT);
         $builder->setValues([
             'chart'   => [
-                'type' => $this->type,
+                'type'     => $this->type,
             ],
             'credits' => $this->credits->toArray(),
             'title'   => $this->title->toArray(),
             'tooltip' => $this->tooltip->toArray(),
             'xAxis'   => $this->xAxis->toArray(),
         ]);
+
+        if(isset($this->zoomType)) {
+            $builder->setValue('[charts]', $this->zoomType);
+        }
 
         if (isset($this->yAxis)) {
             $yAxis = [];
