@@ -12,7 +12,10 @@ use Validaide\HighChartsBundle\Graph\Tooltip;
 use Validaide\HighChartsBundle\Graph\PlotOptions;
 
 /**
- * Class: Graph
+ * Class Graph
+ *
+ * @author Mark Bijl <mark.bijl@validaide.com>
+ * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
  */
 class Graph
 {
@@ -300,22 +303,22 @@ class Graph
         $builder = new JsonBuilder();
         $builder->setJsonEncodeOptions($builder->getJsonEncodeOptions() | JSON_PRETTY_PRINT);
         $builder->setValues([
-            'chart'       => [
+            'chart'   => [
                 'type'       => $this->type,
                 'plotShadow' => $this->plotShadow,
             ],
-            'credits'     => $this->credits->toArray(),
-            'title'       => $this->title->toArray(),
-            'tooltip'     => $this->tooltip->toArray(),
-            'xAxis'       => $this->xAxis->toArray(),
-            'legend'      => $this->legend->toArray(),
+            'credits' => $this->credits->toArray(),
+            'title'   => $this->title->toArray(),
+            'tooltip' => $this->tooltip->toArray(),
+            'xAxis'   => $this->xAxis->toArray(),
+            'legend'  => $this->legend->toArray(),
         ]);
 
         if (is_object($this->plotOptions)) {
             $builder->setValue('[plotOptions]', $this->plotOptions->toArray());
         }
 
-        if(isset($this->zoomType)) {
+        if (isset($this->zoomType)) {
             $builder->setValue('[charts]', $this->zoomType);
         }
 
