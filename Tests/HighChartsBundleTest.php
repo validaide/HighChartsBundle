@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
-class IvoryGoogleMapBundleTest extends TestCase
+class HighChartsBundleTest extends TestCase
 {
     /**
      * @var HighChartsBundle
