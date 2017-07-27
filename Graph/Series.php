@@ -34,6 +34,9 @@ class Series
      */
     private $data = null;
 
+    /** @var null */
+    private $tooltip = null;
+
     /**
      * Series constructor.
      *
@@ -76,6 +79,22 @@ class Series
     public function setData($data)
     {
         $this->data = $data;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getTooltip()
+    {
+        return $this->tooltip;
+    }
+
+    /**
+     * @param array|null $tooltip
+     */
+    public function setTooltip($tooltip)
+    {
+        $this->tooltip = $tooltip;
     }
 
     /**
@@ -145,6 +164,10 @@ class Series
 
         if (!is_null($this->yAxis)) {
             $result['yAxis'] = $this->yAxis;
+        }
+
+        if (!is_null($this->tooltip)) {
+            $result['tooltip'] = $this->tooltip;
         }
 
         $result['data'] = $this->data;
