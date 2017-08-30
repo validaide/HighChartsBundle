@@ -43,6 +43,8 @@ class HighChartsExtension extends \Twig_Extension
 
     /**
      * @param Graph $graph
+     *
+     * @return string
      */
     public function render(Graph $graph)
     {
@@ -51,14 +53,18 @@ class HighChartsExtension extends \Twig_Extension
 
     /**
      * @param Graph $graph
+     *
+     * @return string
      */
-    public function renderStatic(Graph $graph)
+    public function renderStatic(Graph $graph, $options = [])
     {
-        return $this->imageRenderer->render($graph);
+        return $this->imageRenderer->render($graph, $options);
     }
 
     /**
      * @param Graph $graph
+     *
+     * @return string
      */
     public function renderHtml(Graph $graph)
     {
