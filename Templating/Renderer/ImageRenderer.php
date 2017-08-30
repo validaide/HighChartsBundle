@@ -57,6 +57,6 @@ class ImageRenderer
 
         $process = new Process($command);
         $process->mustRun();
-        return "<img src='".$outfile."'/>'";
+        return $outfile;
     }
 }
