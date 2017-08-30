@@ -4,6 +4,7 @@ namespace Validaide\HighChartsBundle\Twig;
 
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Helper\GraphHelper;
+use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
 
 class HighChartsExtension extends \Twig_Extension
 {
@@ -13,11 +14,18 @@ class HighChartsExtension extends \Twig_Extension
     private $graphHelper;
 
     /**
-     * @param GraphHelper $graphHelper
+     * @var ImageRenderer
      */
-    public function __construct(GraphHelper $graphHelper)
+    private $imageRenderer;
+
+    /**
+     * @param GraphHelper $graphHelper
+     * @param ImageRenderer $imageRenderer
+     */
+    public function __construct(GraphHelper $graphHelper, ImageRenderer $imageRenderer)
     {
         $this->graphHelper = $graphHelper;
+        $this->imageRenderer = $imageRenderer;
     }
 
     /**
@@ -27,6 +35,7 @@ class HighChartsExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction('highcharts', [$this, 'render'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('highcharts_static', [$this, 'renderStatic'], ['is_safe' => ['html']]),
             new \Twig_SimpleFunction('highcharts_container', [$this, 'renderHtml'], ['is_safe' => ['html']]),
             new \Twig_SimpleFunction('highcharts_js', [$this, 'renderJavascript'], ['is_safe' => ['html']]),
         ];
@@ -38,6 +47,14 @@ class HighChartsExtension extends \Twig_Extension
     public function render(Graph $graph)
     {
         return $this->graphHelper->render($graph);
+    }
+
+    /**
+     * @param Graph $graph
+     */
+    public function renderStatic(Graph $graph)
+    {
+        return $this->imageRenderer->render($graph);
     }
 
     /**
