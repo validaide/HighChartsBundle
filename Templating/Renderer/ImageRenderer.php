@@ -11,6 +11,7 @@ use Validaide\HighChartsBundle\Graph;
 class ImageRenderer
 {
     const ALLOWED_OPTIONS = ['width', 'scale'];
+    const COMMAND         = '/usr/local/bin/highcharts-export-server';
 
     /**
      * ImageRenderer constructor.
@@ -20,7 +21,7 @@ class ImageRenderer
     public function __construct()
     {
         // Sanity check before this logic can be used
-        $command = 'highcharts-export-server';
+        $command = self::COMMAND;
         $process = new Process($command);
         $process->run();
         $code = $process->getExitCode();
@@ -53,7 +54,7 @@ class ImageRenderer
             }
         }
 
-        $command = sprintf('highcharts-export-server -infile %s -outfile %s %s', $infile, $outfile, $optionString);
+        $command = sprintf('%s -infile %s -outfile %s %s', self::COMMAND, $infile, $outfile, $optionString);
 
         $process = new Process($command);
         $process->mustRun();
