@@ -14,24 +14,6 @@ class ImageRenderer
     const COMMAND         = '/usr/local/bin/highcharts-export-server';
 
     /**
-     * ImageRenderer constructor.
-     *
-     * @throws \Exception
-     */
-    public function __construct()
-    {
-        // Sanity check before this logic can be used
-        $command = self::COMMAND;
-        $process = new Process($command);
-        $process->run();
-        $code = $process->getExitCode();
-
-        if ($code != 0) {
-            throw new \Exception("An error occured while running the highcharts conversion tool. Did you install it? Code: $code");
-        }
-    }
-
-    /**
      * @param Graph $graph
      * @param array $options
      *
@@ -39,6 +21,8 @@ class ImageRenderer
      */
     public function render(Graph $graph, $options = [])
     {
+        $this->_sanityCheck();
+
         $json = $graph->toJson();
 
         $prefix  = "highcharts";
@@ -59,5 +43,21 @@ class ImageRenderer
         $process = new Process($command);
         $process->mustRun();
         return $outfile;
+    }
+
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    private function _sanityCheck()
+    {
+        $command = self::COMMAND;
+        $process = new Process($command);
+        $process->run();
+        $code = $process->getExitCode();
+
+        if ($code != 0) {
+            throw new \Exception("An error occured while running the highcharts conversion tool. Did you install it? Code: $code");
+        }
     }
 }
