@@ -24,7 +24,7 @@ class ImageRenderer
      */
     public function __construct($binary)
     {
-        $this->binary = $binary;
+        $this->binary = 'export PATH=$PATH:/usr/local/bin;'. $binary;
     }
 
     /**
