@@ -1,0 +1,2 @@
+parameters:
+    export_service: "/usr/local/bin/highcharts-export-server"

@@ -11,7 +11,21 @@ use Validaide\HighChartsBundle\Graph;
 class ImageRenderer
 {
     const ALLOWED_OPTIONS = ['width', 'scale'];
-    const COMMAND         = '/usr/local/bin/highcharts-export-server';
+
+    /**
+     * @var string
+     */
+    private $binary;
+
+    /**
+     * ImageRenderer constructor.
+     *
+     * @param $binary
+     */
+    public function __construct($binary)
+    {
+        $this->binary = $binary;
+    }
 
     /**
      * @param Graph $graph
@@ -38,7 +52,7 @@ class ImageRenderer
             }
         }
 
-        $command = sprintf('%s -infile %s -outfile %s %s', self::COMMAND, $infile, $outfile, $optionString);
+        $command = sprintf('%s -infile %s -outfile %s %s', $this->binary, $infile, $outfile, $optionString);
 
         $process = new Process($command);
         $process->mustRun();
@@ -51,7 +65,7 @@ class ImageRenderer
      */
     private function _sanityCheck()
     {
-        $command = self::COMMAND;
+        $command = $this->binary;
         $process = new Process($command);
         $process->run();
         $code = $process->getExitCode();
