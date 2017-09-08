@@ -54,8 +54,8 @@ class ClimateGraphTest extends TestCase
      */
     public static function getSeriesData($seriesIndex = 1)
     {
-        $series[0] = [5, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 4];
-        $series[1] = [15, 17, 18, 19, 20, 19, 18, 17, 16, 15, 14, 14];
+        $series[0] = [5.2, 7.3434, 8.23, 9.976967, 10.8678, 9.75, 8.3453, 7.56, 6.345, 5.345, 4.75685, 4.45];
+        $series[1] = [15.678, 17.5, 18.45, 19.247, 20.74645, 19.254, 18.234, 17.678, 16.456, 15.94564, 14.5636, 14.743];
         $series[2] = [100, 80, 60, 20, 20, 19, 20, 60, 60, 80, 90, 100];
 
         return $series[$seriesIndex];
@@ -178,9 +178,15 @@ class ClimateGraph extends Graph
         $this->getXAxis()->setCategories(ClimateGraphTest::getXAxisCategories());
         $this->getXAxis()->setCrosshair(true);
 
+        // Define maximums
+        $maxTemp     = max(array_merge(ClimateGraphTest::getSeriesData(0),ClimateGraphTest::getSeriesData(1)));
+        $minTemp     = min(array_merge(ClimateGraphTest::getSeriesData(0),ClimateGraphTest::getSeriesData(1)));
+        $maxRainfall = max(ClimateGraphTest::getSeriesData(2));
+        $minRainfall = 0;
+
         $maxTempPlotLine = new PlotLine();
         $maxTempPlotLine->setId('plot_line_max');
-        $maxTempPlotLine->setValue(max(ClimateGraphTest::getSeriesData(0)));
+        $maxTempPlotLine->setValue($maxTemp);
         $maxTempPlotLine->setWidth(1);
         $maxTempPlotLine->setColor(new Color("#FF0000"));
         $maxTempPlotLine->setDashStyle(new DashStyle(DashStyle::DASH_STYLE_SOLID));
@@ -195,7 +201,7 @@ class ClimateGraph extends Graph
         $maxTempPlotLine->getLabel()->setY(0);
         $minTempPlotLine = new PlotLine();
         $minTempPlotLine->setId('plot_line_min');
-        $minTempPlotLine->setValue(min(ClimateGraphTest::getSeriesData(0)));
+        $minTempPlotLine->setValue($minTemp);
         $minTempPlotLine->setWidth(1);
         $minTempPlotLine->setColor(new Color("#0000FF"));
         $minTempPlotLine->setDashStyle(new DashStyle(DashStyle::DASH_STYLE_DOT));
@@ -209,12 +215,6 @@ class ClimateGraph extends Graph
 
         $this->getXAxis()->addPlotLine($maxTempPlotLine);
         $this->getXAxis()->addPlotLine($minTempPlotLine);
-
-        // Define maximums
-        $maxTemp     = max(array_merge(ClimateGraphTest::getSeriesData(0),ClimateGraphTest::getSeriesData(1)));
-        $minTemp     = min(array_merge(ClimateGraphTest::getSeriesData(0),ClimateGraphTest::getSeriesData(1)));
-        $maxRainfall = max(ClimateGraphTest::getSeriesData(2));
-        $minRainfall = 0;
 
         // yAxis
         $yAxisTemp = new Axis();

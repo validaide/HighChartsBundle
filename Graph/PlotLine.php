@@ -38,7 +38,7 @@ class PlotLine
     private $label;
 
     /**
-     * @var int
+     * @var float
      */
     private $value;
 
@@ -89,17 +89,17 @@ class PlotLine
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getValue(): int
+    public function getValue(): float
     {
         return $this->value;
     }
 
     /**
-     * @param int $value
+     * @param float $value
      */
-    public function setValue(int $value)
+    public function setValue(float $value)
     {
         $this->value = $value;
     }
