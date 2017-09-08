@@ -3,7 +3,9 @@
 namespace Validaide\HighChartsBundle\Graph;
 
 /**
- * Class: Axis
+ * Class Axis
+ *
+ * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Axis
 {
@@ -51,6 +53,16 @@ class Axis
      * @var float
      */
     private $tickInterval;
+
+    /**
+     * @var bool
+     */
+    private $endOnTick;
+
+    /**
+     * @var bool
+     */
+    private $alignTicks;
 
     /**
      * @var string
@@ -216,7 +228,39 @@ class Axis
     }
 
     /**
-     * @return string
+     * @return bool
+     */
+    public function isEndOnTick(): bool
+    {
+        return $this->endOnTick;
+    }
+
+    /**
+     * @param bool $endOnTick
+     */
+    public function setEndOnTick(bool $endOnTick)
+    {
+        $this->endOnTick = $endOnTick;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAlignTicks(): bool
+    {
+        return $this->alignTicks;
+    }
+
+    /**
+     * @param bool $alignTicks
+     */
+    public function setAlignTicks(bool $alignTicks)
+    {
+        $this->alignTicks = $alignTicks;
+    }
+
+    /**
+     * @return array
      */
     public function toArray()
     {
@@ -224,12 +268,20 @@ class Axis
 
         // List elements alphabetically
 
+        if (!is_null($this->alignTicks)) {
+            $result['alignTicks'] = $this->alignTicks;
+        }
+
         if (!is_null($this->categories)) {
             $result['categories'] = $this->categories;
         }
 
         if (!is_null($this->crosshair)) {
             $result['crosshair'] = $this->crosshair;
+        }
+
+        if (!is_null($this->endOnTick)) {
+            $result['endOnTick'] = $this->endOnTick;
         }
 
         if (!is_null($this->labels)) {

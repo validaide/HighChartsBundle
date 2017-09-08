@@ -14,6 +14,8 @@ use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;
 use Validaide\HighChartsBundle\ValueObject\VerticalAlignment;
 
 /**
+ * Class ClimateGraphTest
+ *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class ClimateGraphTest extends TestCase
@@ -32,6 +34,9 @@ class ClimateGraphTest extends TestCase
     const SERIES_3_NAME            = 'Rainfall';
     const SERIES_3_Y_AXIS          = 1;
 
+    /**
+     * @return array
+     */
     public static function getXAxisCategories()
     {
         $months = [];
@@ -42,6 +47,11 @@ class ClimateGraphTest extends TestCase
         return $months;
     }
 
+    /**
+     * @param int $seriesIndex
+     *
+     * @return mixed
+     */
     public static function getSeriesData($seriesIndex = 1)
     {
         $series[0] = [5, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 4];
@@ -51,6 +61,9 @@ class ClimateGraphTest extends TestCase
         return $series[$seriesIndex];
     }
 
+    /**
+     *
+     */
     public function test_render()
     {
         $graphRenderer = new GraphRenderer();
@@ -90,6 +103,12 @@ class ClimateGraphTest extends TestCase
         );
     }
 
+    /**
+     * @param     $input
+     * @param int $repeat
+     *
+     * @return string
+     */
     protected function traverse($input, $repeat = 1)
     {
         $result    = '';
@@ -106,13 +125,19 @@ class ClimateGraphTest extends TestCase
                 continue;
             }
 
-            $line = trim($line);
+            $line   = trim($line);
             $result .= $this->prependSpaces($line, $repeat) . "\n";
         }
 
         return $result;
     }
 
+    /**
+     * @param     $input
+     * @param int $repeat
+     *
+     * @return string
+     */
     public function prependSpaces($input, $repeat = 1)
     {
         for ($count = 0; $count < $repeat; $count++) {
@@ -123,8 +148,16 @@ class ClimateGraphTest extends TestCase
     }
 }
 
+/**
+ * Class ClimateGraph
+ *
+ * @author Mark Bijl <mark.bijl@validaide.com>
+ */
 class ClimateGraph extends Graph
 {
+    /**
+     * ClimateGraph constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -177,13 +210,25 @@ class ClimateGraph extends Graph
         $this->getXAxis()->addPlotLine($maxTempPlotLine);
         $this->getXAxis()->addPlotLine($minTempPlotLine);
 
+        // Define maximums
+        $maxTemp     = max(array_merge(ClimateGraphTest::getSeriesData(0),ClimateGraphTest::getSeriesData(1)));
+        $minTemp     = min(array_merge(ClimateGraphTest::getSeriesData(0),ClimateGraphTest::getSeriesData(1)));
+        $maxRainfall = max(ClimateGraphTest::getSeriesData(2));
+        $minRainfall = 0;
+
         // yAxis
         $yAxisTemp = new Axis();
         $yAxisTemp->getTitle()->setText(ClimateGraphTest::Y_AXIS_TEMPERATURE_TITLE);
+        $yAxisTemp->setAlignTicks(false);
+        $yAxisTemp->setEndOnTick(false);
         $yAxisTemp->setOpposite(true);
+        $yAxisTemp->setMin($minTemp);
+        $yAxisTemp->setMax($maxTemp);
         $yAxisTemp->labels->setFormat('{value}°C');
         $yAxisRainfall = new Axis();
         $yAxisRainfall->getTitle()->setText(ClimateGraphTest::Y_AXIS_RAINFALL_TITLE);
+        $yAxisRainfall->setMin($minRainfall);
+        $yAxisRainfall->setMax($maxRainfall);
         $yAxisRainfall->labels->setFormat('{value} mm');
 
         $this->addYAxis($yAxisTemp);
