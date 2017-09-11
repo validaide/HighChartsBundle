@@ -10,7 +10,6 @@ services:
     arguments:
      - '%export_service%'
 
-
   ########################
   # HELPERS              #
   ########################
@@ -29,4 +28,3 @@ services:
       - '@validaide.highcharts.renderer.image'
     tags:
       - { name: twig.extension }
-

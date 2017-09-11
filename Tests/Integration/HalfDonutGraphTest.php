@@ -28,9 +28,10 @@ class HalfDonutGraphTest extends IntegrationTestCase
     {
         $series[0] = [
             [
-                'y'     => 34.3,
-                'name'  => 'Not Temperature Controlled',
-                'color' => 'red',
+                'y'         => 34.3,
+                'name'      => 'Not Temperature Controlled',
+                'color'     => 'red',
+                'drilldown' => 'A',
             ],
             [
                 'y'     => 7.7,
@@ -84,7 +85,7 @@ class HalfDonutGraph extends Graph
         // Define pie plot options
         $piePlotOptions = new Graph\PlotOptions\Pie();
         $piePlotOptions->setStartAngle(-90);
-        $piePlotOptions->setCenter(['50%','75%']);
+        $piePlotOptions->setCenter(['50%', '75%']);
         $piePlotOptions->setEndAngle(90);
         $piePlotOptions->setInnerSize('50%');
         $piePlotOptions->getDataLabels()->setEnabled(true);
@@ -93,7 +94,7 @@ class HalfDonutGraph extends Graph
         $this->setPlotOptions($piePlotOptions);
 
         // Define common stuff
-        $this->setMargin([0,0,0,0]);
+        $this->setMargin([0, 0, 0, 0]);
         $this->setType(HalfDonutGraphTest::TYPE);
         $this->getTitle()->setText(HalfDonutGraphTest::TITLE);
         $this->getTitle()->setAlign('center');
@@ -108,8 +109,16 @@ class HalfDonutGraph extends Graph
         $this->getCredits()->setText(HalfDonutGraphTest::CREDITS_TEXT);
         $this->getCredits()->setHref(HalfDonutGraphTest::CREDITS_HREF);
 
+        // Main Series
         $temperatureExposureSeries = new Series(HalfDonutGraphTest::SERIES_1_NAME, HalfDonutGraphTest::getSeriesData(0));
-
         $this->addSeries($temperatureExposureSeries);
+
+        $drillDownA = new Series('A', []);
+        $drillDownA->setId('A');
+        $drillDownB = new Series('B', []);
+        $drillDownB->setId('B');
+
+        $this->addDrilldownSeries($drillDownA);
+        $this->addDrilldownSeries($drillDownB);
     }
 }

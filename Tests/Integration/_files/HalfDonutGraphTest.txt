@@ -27,6 +27,18 @@ var graph = Highcharts.chart("graph_container",
     "legend": {
         "enabled": true
     },
+    "drilldown": [
+        {
+            "name": "A",
+            "id": "A",
+            "data": []
+        },
+        {
+            "name": "B",
+            "id": "B",
+            "data": []
+        }
+    ],
     "plotOptions": {
         "pie": {
             "center": [

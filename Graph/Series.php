@@ -10,6 +10,11 @@ use Validaide\HighChartsBundle\ValueObject\Color;
 class Series
 {
     /**
+     * @var string|null
+     */
+    private $id;
+
+    /**
      * @var string
      */
     private $name = '';
@@ -18,6 +23,11 @@ class Series
      * @var Color
      */
     private $color = null;
+
+    /**
+     * @var string
+     */
+    private $drilldown = null;
 
     /**
      * @var string
@@ -54,6 +64,38 @@ class Series
     {
         $this->name = $name;
         $this->data = $data;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param null|string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDrilldown()
+    {
+        return $this->drilldown;
+    }
+
+    /**
+     * @param string $drilldown
+     */
+    public function setDrilldown(string $drilldown)
+    {
+        $this->drilldown = $drilldown;
     }
 
     /**
@@ -177,8 +219,16 @@ class Series
             'name' => $this->name,
         ];
 
+        if (!is_null($this->id)) {
+            $result['id'] = $this->id;
+        }
+
         if (!is_null($this->color)) {
             $result['color'] = (string)$this->color;
+        }
+
+        if (!is_null($this->drilldown)) {
+            $result['drilldown'] = $this->drilldown;
         }
 
         if (!is_null($this->type)) {
