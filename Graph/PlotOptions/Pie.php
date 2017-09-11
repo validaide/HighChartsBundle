@@ -29,9 +29,19 @@ class Pie extends PlotOptions
     public $dataLabels = null;
 
     /**
+     * @var int|string|null
+     */
+    public $innerSize = null;
+
+    /**
      * @var array
      */
     public $center = null;
+
+    /**
+     * @var bool|null
+     */
+    public $showInLegend = null;
 
     /**
      * Pie constructor.
@@ -106,6 +116,38 @@ class Pie extends PlotOptions
     }
 
     /**
+     * @return int|null|string
+     */
+    public function getInnerSize()
+    {
+        return $this->innerSize;
+    }
+
+    /**
+     * @param int|null|string $innerSize
+     */
+    public function setInnerSize($innerSize)
+    {
+        $this->innerSize = $innerSize;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getShowInLegend()
+    {
+        return $this->showInLegend;
+    }
+
+    /**
+     * @param bool|null $showInLegend
+     */
+    public function setShowInLegend($showInLegend)
+    {
+        $this->showInLegend = $showInLegend;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -118,6 +160,14 @@ class Pie extends PlotOptions
             $piePlotOptions['series']['allowPointSelect'] = $this->allowPointSelect;
         }
 
+        if (!is_null($this->center)) {
+            $piePlotOptions['center'] = $this->center;
+        }
+
+        if (!is_null($this->endAngle)) {
+            $piePlotOptions['endAngle'] = $this->endAngle;
+        }
+
         if (!is_null($this->color)) {
             $piePlotOptions['series']['color'] = $this->color;
         }
@@ -126,13 +176,20 @@ class Pie extends PlotOptions
             $piePlotOptions['dataLabels'] = $this->dataLabels->toArray();
         }
 
+        if (!is_null($this->innerSize)) {
+            $piePlotOptions['innerSize'] = $this->innerSize;
+        }
+
         if (!is_null($this->startAngle)) {
             $piePlotOptions['startAngle'] = $this->startAngle;
         }
 
-        if (!is_null($this->endAngle)) {
-            $piePlotOptions['endAngle'] = $this->endAngle;
+        if (!is_null($this->showInLegend)) {
+            $piePlotOptions['showInLegend'] = $this->showInLegend;
         }
+
+        // Ensure we always have a well-sorted list
+        ksort($piePlotOptions);
 
         $result['pie'] = $piePlotOptions;
 

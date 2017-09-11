@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Validaide\HighChartsBundle\Templating\Renderer;
 
 use Symfony\Component\Process\Process;

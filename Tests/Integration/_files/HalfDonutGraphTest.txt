@@ -20,15 +20,21 @@ var graph = Highcharts.chart("graph_container",
     },
     "plotOptions": {
         "pie": {
+            "center": [
+                "50%",
+                "75%"
+            ],
+            "dataLabels": {
+                "enabled": true,
+                "format": "{point.percentage:.1f} %"
+            },
+            "endAngle": 90,
+            "innerSize": "50%",
             "series": {
                 "allowPointSelect": false
             },
-            "dataLabels": {
-                "enabled": true,
-                "format": "<b>{point.name}<\/b>: {point.percentage:.1f} %"
-            },
-            "startAngle": -90,
-            "endAngle": 90
+            "showInLegend": true,
+            "startAngle": -90
         }
     },
     "xAxis": [],

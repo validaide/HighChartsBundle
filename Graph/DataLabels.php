@@ -12,6 +12,11 @@ class DataLabels
     const DEFAULT_FORMAT = "{value}";
 
     /**
+     * @var int|null
+     */
+    private $distance;
+
+    /**
      * @var bool
      */
     private $enabled;
@@ -20,6 +25,22 @@ class DataLabels
      * @var string
      */
     private $format;
+
+    /**
+     * @return int|null
+     */
+    public function getDistance()
+    {
+        return $this->distance;
+    }
+
+    /**
+     * @param int|null $distance
+     */
+    public function setDistance($distance)
+    {
+        $this->distance = $distance;
+    }
 
     /**
      * @return bool|null
@@ -67,6 +88,12 @@ class DataLabels
         if (!is_null($this->format)) {
             $result['format'] = $this->format;
         }
+
+        if (!is_null($this->distance)) {
+            $result['distance'] = $this->distance;
+        }
+
+        ksort($result);
 
         return $result;
     }

@@ -84,10 +84,16 @@ class HalfDonutGraph extends Graph
         // Define pie plot options
         $piePlotOptions = new Graph\PlotOptions\Pie();
         $piePlotOptions->setStartAngle(-90);
+        $piePlotOptions->setCenter(['50%','75%']);
         $piePlotOptions->setEndAngle(90);
+        $piePlotOptions->setInnerSize('50%');
         $piePlotOptions->getDataLabels()->setEnabled(true);
-        $piePlotOptions->getDataLabels()->setFormat('<b>{point.name}</b>: {point.percentage:.1f} %');
+        $piePlotOptions->getDataLabels()->setFormat('{point.percentage:.1f} %');
+        $piePlotOptions->setShowInLegend(true);
+//        $piePlotOptions->getDataLabels()->setDistance(-30);
         $this->setPlotOptions($piePlotOptions);
+
+        $this->getLegend()->setEnabled(true);
 
         // Define common stuff
         $this->setType(HalfDonutGraphTest::TYPE);
@@ -98,9 +104,8 @@ class HalfDonutGraph extends Graph
         $this->getCredits()->setText(HalfDonutGraphTest::CREDITS_TEXT);
         $this->getCredits()->setHref(HalfDonutGraphTest::CREDITS_HREF);
 
-        $tempSeriesMax = new Series(HalfDonutGraphTest::SERIES_1_NAME, HalfDonutGraphTest::getSeriesData(0));
+        $temperatureExposureSeries = new Series(HalfDonutGraphTest::SERIES_1_NAME, HalfDonutGraphTest::getSeriesData(0));
 
-
-        $this->addSeries($tempSeriesMax);
+        $this->addSeries($temperatureExposureSeries);
     }
 }
