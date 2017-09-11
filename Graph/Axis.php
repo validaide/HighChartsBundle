@@ -69,6 +69,9 @@ class Axis
      */
     private $type;
 
+    /**
+     * Axis constructor.
+     */
     public function __construct()
     {
         $this->title  = new Title();
@@ -284,7 +287,7 @@ class Axis
             $result['endOnTick'] = $this->endOnTick;
         }
 
-        if (!is_null($this->labels)) {
+        if (!is_null($this->labels) && !empty($this->labels->toArray())) {
             $result['labels'] = $this->labels->toArray();
         }
 
@@ -314,7 +317,7 @@ class Axis
             $result['tickInterval'] = $this->tickInterval;
         }
 
-        if (!is_null($this->title)) {
+        if (!is_null($this->title) && !empty($this->title->toArray())) {
             $result['title'] = $this->title->toArray();
         }
 

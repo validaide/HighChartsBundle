@@ -18,65 +18,62 @@ var graph = Highcharts.chart("graph_container",
     "tooltip": {
         "shared": true
     },
+    "legend": {
+        "enabled": true
+    },
     "xAxis": {
         "categories": [X_AXIS_CATEGORIES],
         "crosshair": true,
-        "labels": {
-            "format": "{value}"
-        },
-        "plotLines": [
-            {
-                "color": "#FF0000",
-                "className": "class-temperature-max",
-                "dashStyle": "Solid",
-                "id": "plot_line_max",
-                "label": {
-                    "align": "right",
-                    "text": "MAX",
-                    "textAlign": "right",
-                    "useHtml": false,
-                    "verticalAlign": "bottom",
-                    "x": 0,
-                    "y": 0
-                },
-                "value": 20.74645,
-                "width": 1,
-                "zIndex": 4
-            },
-            {
-                "color": "#0000FF",
-                "className": "class-temperature-min",
-                "dashStyle": "Dot",
-                "id": "plot_line_min",
-                "label": {
-                    "align": "left",
-                    "text": "MIN",
-                    "textAlign": "left",
-                    "useHtml": false,
-                    "verticalAlign": "top"
-                },
-                "value": 4.45,
-                "width": 1,
-                "zIndex": 5
-            }
-        ],
         "title": {
             "text": "[X_AXIS_TITLE]"
         }
     },
-    "legend": {
-        "enabled": true
-    },
     "yAxis": [
         {
-            "alignTicks": false,
-            "endOnTick": false,
+            "alignTicks": true,
+            "endOnTick": true,
             "labels": {
                 "format": "{value}\u00b0C"
             },
             "min": 4.45,
             "max": 20.74645,
             "opposite": true,
+            "plotLines": [
+                {
+                    "color": "#FF0000",
+                    "className": "class-temperature-max",
+                    "dashStyle": "Solid",
+                    "id": "plot_line_max",
+                    "label": {
+                        "align": "right",
+                        "text": "MAX",
+                        "textAlign": "right",
+                        "useHtml": false,
+                        "verticalAlign": "bottom",
+                        "x": 0,
+                        "y": 0
+                    },
+                    "value": 20.74645,
+                    "width": 1,
+                    "zIndex": 4
+                },
+                {
+                    "color": "#0000FF",
+                    "className": "class-temperature-min",
+                    "dashStyle": "Dot",
+                    "id": "plot_line_min",
+                    "label": {
+                        "align": "left",
+                        "text": "MIN",
+                        "textAlign": "left",
+                        "useHtml": false,
+                        "verticalAlign": "top"
+                    },
+                    "value": 4.45,
+                    "width": 1,
+                    "zIndex": 5
+                }
+            ],
             "title": {
                 "text": "[Y_AXIS_TEMPERATURE_TITLE]"
             }
@@ -96,12 +93,14 @@ var graph = Highcharts.chart("graph_container",
         {
             "name": "[SERIES_1_NAME]",
             "color": "#0000FF",
+            "type": "line",
             "yAxis": [SERIES_1_Y_AXIS],
             "data": [SERIES_1_DATA]
         },
         {
             "name": "[SERIES_2_NAME]",
             "color": "#FF0000",
+            "type": "line",
             "yAxis": [SERIES_2_Y_AXIS],
             "data": [SERIES_2_DATA]
         },

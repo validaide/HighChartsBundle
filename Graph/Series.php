@@ -20,6 +20,11 @@ class Series
     private $color = null;
 
     /**
+     * @var string
+     */
+    private $innerSize = null;
+
+    /**
      * @var string|null
      */
     private $type = null;
@@ -34,7 +39,9 @@ class Series
      */
     private $data = null;
 
-    /** @var null */
+    /**
+     * @var null
+     */
     private $tooltip = null;
 
     /**
@@ -98,6 +105,22 @@ class Series
     }
 
     /**
+     * @return string
+     */
+    public function getInnerSize(): string
+    {
+        return $this->innerSize;
+    }
+
+    /**
+     * @param string $innerSize
+     */
+    public function setInnerSize(string $innerSize)
+    {
+        $this->innerSize = $innerSize;
+    }
+
+    /**
      * @return null|string
      */
     public function getType()
@@ -146,7 +169,7 @@ class Series
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function toArray()
     {
@@ -164,6 +187,10 @@ class Series
 
         if (!is_null($this->yAxis)) {
             $result['yAxis'] = $this->yAxis;
+        }
+
+        if (!is_null($this->innerSize)) {
+            $result['innerSize'] = $this->innerSize;
         }
 
         if (!is_null($this->tooltip)) {

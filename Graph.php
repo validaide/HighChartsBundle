@@ -47,7 +47,7 @@ class Graph
     /**
      * @var bool
      */
-    private $plotShadow = false;
+    private $plotShadow;
 
     /**
      * @var Title
@@ -264,6 +264,22 @@ class Graph
     }
 
     /**
+     * @return bool
+     */
+    public function isPlotShadow(): bool
+    {
+        return $this->plotShadow;
+    }
+
+    /**
+     * @param bool $plotShadow
+     */
+    public function setPlotShadow(bool $plotShadow)
+    {
+        $this->plotShadow = $plotShadow;
+    }
+
+    /**
      * @return PlotOptions
      */
     public function getPlotOptions()
@@ -304,15 +320,17 @@ class Graph
         $builder->setJsonEncodeOptions($builder->getJsonEncodeOptions() | JSON_PRETTY_PRINT);
         $builder->setValues([
             'chart'   => [
-                'type'       => $this->type,
-                'plotShadow' => $this->plotShadow,
+                'type'       => $this->type
             ],
             'credits' => $this->credits->toArray(),
             'title'   => $this->title->toArray(),
             'tooltip' => $this->tooltip->toArray(),
-            'xAxis'   => $this->xAxis->toArray(),
             'legend'  => $this->legend->toArray(),
         ]);
+
+        if(isset($this->plotShadow)) {
+            $builder->setValue('[chart][plotShadow]',$this->plotShadow);
+        }
 
         if (is_object($this->plotOptions)) {
             $builder->setValue('[plotOptions]', $this->plotOptions->toArray());
@@ -320,6 +338,10 @@ class Graph
 
         if (isset($this->zoomType)) {
             $builder->setValue('[charts]', $this->zoomType);
+        }
+
+        if(isset($this->xAxis)) {
+            $builder->setValue('[xAxis]', $this->xAxis->toArray());
         }
 
         if (isset($this->yAxis)) {

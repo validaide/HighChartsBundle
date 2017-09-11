@@ -3,21 +3,15 @@ $(function () {
 var graph = Highcharts.chart("graph_container", 
 {
     "chart": {
-        "type": "line",
-        "plotShadow": false
+        "type": "line"
     },
     "credits": [],
     "title": [],
     "tooltip": [],
-    "xAxis": {
-        "labels": {
-            "format": "{value}"
-        },
-        "title": []
-    },
     "legend": {
         "enabled": true
     },
+    "xAxis": [],
     "yAxis": [],
     "series": []
 }
