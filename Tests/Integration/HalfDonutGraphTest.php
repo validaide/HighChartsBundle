@@ -14,7 +14,7 @@ use Validaide\HighChartsBundle\Tests\IntegrationTestCase;
 class HalfDonutGraphTest extends IntegrationTestCase
 {
     const TYPE          = 'pie';
-    const TITLE         = 'Temperature Exposure';
+    const TITLE         = 'Temperature<br>Exposure';
     const CREDITS_TEXT  = 'Validaide';
     const CREDITS_HREF  = 'validaide.com';
     const SERIES_1_NAME = 'Temperature Exposure';
@@ -90,14 +90,18 @@ class HalfDonutGraph extends Graph
         $piePlotOptions->getDataLabels()->setEnabled(true);
         $piePlotOptions->getDataLabels()->setFormat('{point.percentage:.1f} %');
         $piePlotOptions->setShowInLegend(true);
-//        $piePlotOptions->getDataLabels()->setDistance(-30);
         $this->setPlotOptions($piePlotOptions);
 
-        $this->getLegend()->setEnabled(true);
-
         // Define common stuff
+        $this->setMargin([0,0,0,0]);
         $this->setType(HalfDonutGraphTest::TYPE);
         $this->getTitle()->setText(HalfDonutGraphTest::TITLE);
+        $this->getTitle()->setAlign('center');
+        $this->getTitle()->setVerticalAlign('middle');
+        $this->getTitle()->setY(60);
+
+        // Legend
+        $this->getLegend()->setEnabled(true);
 
         // Credits
         $this->getCredits()->setEnabled(true);

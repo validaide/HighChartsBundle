@@ -85,6 +85,11 @@ class Graph
     public $legend;
 
     /**
+     * @var array|null
+     */
+    public $margin;
+
+    /**
      * @var PlotOptions
      */
     public $plotOptions;
@@ -210,6 +215,9 @@ class Graph
         $this->type = $type;
     }
 
+    /**
+     * @param Series $series
+     */
     public function addSeries(Series $series)
     {
         $this->series[] = $series;
@@ -245,6 +253,22 @@ class Graph
     public function setLegend(Legend $legend)
     {
         $this->legend = $legend;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getMargin()
+    {
+        return $this->margin;
+    }
+
+    /**
+     * @param array|null $margin
+     */
+    public function setMargin($margin)
+    {
+        $this->margin = $margin;
     }
 
     /**
@@ -330,6 +354,10 @@ class Graph
 
         if(isset($this->plotShadow)) {
             $builder->setValue('[chart][plotShadow]',$this->plotShadow);
+        }
+
+        if(isset($this->margin)) {
+            $builder->setValue('[chart][margin]',$this->margin);
         }
 
         if (is_object($this->plotOptions)) {

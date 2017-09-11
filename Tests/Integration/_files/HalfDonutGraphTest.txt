@@ -4,7 +4,13 @@ $(function () {
 var graph = Highcharts.chart("graph_container", 
 {
     "chart": {
-        "type": "[TYPE]"
+        "type": "[TYPE]",
+        "margin": [
+            0,
+            0,
+            0,
+            0
+        ]
     },
     "credits": {
         "enabled": true,
@@ -12,7 +18,10 @@ var graph = Highcharts.chart("graph_container",
         "text": "[CREDITS_TEXT]"
     },
     "title": {
-        "text": "[TITLE]"
+        "align": "center",
+        "text": "[TITLE]",
+        "verticalAlign": "middle",
+        "y": 60
     },
     "tooltip": [],
     "legend": {
