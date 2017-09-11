@@ -374,7 +374,7 @@ class Graph
         ]);
 
         if (isset($this->drilldown) && !empty($this->drilldown)) {
-            $builder->setValue('[drilldown]', $this->drilldown);
+            $builder->setValue('[drilldown][series]', $this->drilldown);
         }
 
         if (isset($this->plotShadow)) {
