@@ -7,8 +7,6 @@ services:
 
   validaide.highcharts.renderer.image:
     class: Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer
-    arguments:
-     - '%export_service%'
 
   ########################
   # HELPERS              #

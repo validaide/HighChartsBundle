@@ -13,24 +13,11 @@ use Validaide\HighChartsBundle\Graph;
  */
 class ImageRenderer
 {
+    const CMD_HIGHCHARTS_EXPORT_SERVER = 'highcharts-export-server';
+
     const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
 
     const ALLOWED_OPTIONS = ['width', 'scale'];
-
-    /**
-     * @var string
-     */
-    private $pathToBinary;
-
-    /**
-     * ImageRenderer constructor.
-     *
-     * @param string $pathToBinary
-     */
-    public function __construct(string $pathToBinary)
-    {
-        $this->pathToBinary = $pathToBinary;
-    }
 
     /**
      * @param Graph $graph
@@ -57,7 +44,7 @@ class ImageRenderer
             }
         }
 
-        $command = sprintf('%s -infile %s -outfile %s %s', $this->pathToBinary, $infile, $outfile, $optionString);
+        $command = sprintf('%s -infile %s -outfile %s %s', self::CMD_HIGHCHARTS_EXPORT_SERVER, $infile, $outfile, $optionString);
 
         $process = new Process($command);
         $process->mustRun();
@@ -70,8 +57,7 @@ class ImageRenderer
      */
     private function _sanityCheck()
     {
-        $command = $this->pathToBinary;
-        $process = new Process($command);
+        $process = new Process(self::CMD_HIGHCHARTS_EXPORT_SERVER);
         $process->run();
         $code = $process->getExitCode();
 

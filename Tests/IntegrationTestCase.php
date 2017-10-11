@@ -40,7 +40,7 @@ class IntegrationTestCase extends TestCase
         file_put_contents($renderedOutputPath, $renderedOutput);
 
         // And visualize it
-        $imageRenderer = new ImageRenderer('highcharts-export-server');
+        $imageRenderer = new ImageRenderer();
         $tmpFilePath   = $imageRenderer->render($graph, ['scale' => '1.5']);
         $outputPngPath = $this->getTestOutputDirectory() . DIRECTORY_SEPARATOR . $filePrefix . '.png';
 
