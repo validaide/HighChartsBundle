@@ -12,6 +12,7 @@ Require the library in your ```composer.json``` file:
 $ composer require validaide/highchartsbundle
 ```
 
+
 ### Register the Bundle
 
 Now add the Bundle in your ```AppKernel```:
