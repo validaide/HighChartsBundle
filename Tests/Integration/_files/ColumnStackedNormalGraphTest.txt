@@ -47,6 +47,7 @@ var graph = Highcharts.chart("graph_container",
             "color": "#0000FF",
             "type": "column",
             "yAxis": [SERIES_1_Y_AXIS],
+            "visible": true,
             "data": [SERIES_1_DATA]
         },
         {
@@ -54,6 +55,7 @@ var graph = Highcharts.chart("graph_container",
             "color": "#FF0000",
             "type": "column",
             "yAxis": [SERIES_2_Y_AXIS],
+            "visible": true,
             "data": [SERIES_2_DATA]
         },
         {
@@ -61,6 +63,7 @@ var graph = Highcharts.chart("graph_container",
             "color": "lightblue",
             "type": "column",
             "yAxis": [SERIES_3_Y_AXIS],
+            "visible": true,
             "data": [SERIES_3_DATA]
         }
     ]

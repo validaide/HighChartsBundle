@@ -55,6 +55,11 @@ class Series
     private $tooltip = null;
 
     /**
+     * @var true
+     */
+    private $visible = true;
+
+    /**
      * Series constructor.
      *
      * @param $name
@@ -211,6 +216,22 @@ class Series
     }
 
     /**
+     * @return bool
+     */
+    public function getVisible(): bool
+    {
+        return $this->visible;
+    }
+
+    /**
+     * @param bool $visible
+     */
+    public function setVisible(bool $visible)
+    {
+        $this->visible = $visible;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -247,7 +268,8 @@ class Series
             $result['tooltip'] = $this->tooltip;
         }
 
-        $result['data'] = $this->data;
+        $result['visible'] = $this->visible;
+        $result['data']    = $this->data;
 
         return $result;
     }

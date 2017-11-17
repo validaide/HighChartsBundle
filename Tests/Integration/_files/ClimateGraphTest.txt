@@ -95,6 +95,7 @@ var graph = Highcharts.chart("graph_container",
             "color": "#0000FF",
             "type": "line",
             "yAxis": [SERIES_1_Y_AXIS],
+            "visible": true,
             "data": [SERIES_1_DATA]
         },
         {
@@ -102,12 +103,14 @@ var graph = Highcharts.chart("graph_container",
             "color": "#FF0000",
             "type": "line",
             "yAxis": [SERIES_2_Y_AXIS],
+            "visible": [SERIES_2_VISIBLE],
             "data": [SERIES_2_DATA]
         },
         {
             "name": "[SERIES_3_NAME]",
             "color": "lightblue",
             "yAxis": [SERIES_3_Y_AXIS],
+            "visible": true,
             "data": [SERIES_3_DATA]
         }
     ]

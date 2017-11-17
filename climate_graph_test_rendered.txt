@@ -1,0 +1,164 @@
+<div id="graph_container" style="width:100%;height:400px;"></div>
+<script type="text/javascript">
+$(function () {
+var graph = Highcharts.chart("graph_container", 
+{
+    "chart": {
+        "type": "column",
+        "plotShadow": false
+    },
+    "credits": {
+        "enabled": true,
+        "href": "validaide.com",
+        "text": "Validaide"
+    },
+    "title": {
+        "text": "Climate Graph: Rio de Janeiro"
+    },
+    "tooltip": {
+        "shared": true
+    },
+    "xAxis": {
+        "categories": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+        ],
+        "crosshair": true,
+        "labels": {
+            "format": "{value}"
+        },
+        "plotLines": [
+            {
+                "color": "#FF0000",
+                "className": "class-temperature-max",
+                "dashStyle": "Solid",
+                "id": "plot_line_max",
+                "label": {
+                    "align": "right",
+                    "text": "MAX",
+                    "textAlign": "right",
+                    "useHtml": false,
+                    "verticalAlign": "bottom",
+                    "x": 0,
+                    "y": 0
+                },
+                "value": 10,
+                "width": 1,
+                "zIndex": 4
+            },
+            {
+                "color": "#0000FF",
+                "className": "class-temperature-min",
+                "dashStyle": "Dot",
+                "id": "plot_line_min",
+                "label": {
+                    "align": "left",
+                    "text": "MIN",
+                    "textAlign": "left",
+                    "useHtml": false,
+                    "verticalAlign": "top"
+                },
+                "value": 4,
+                "width": 1,
+                "zIndex": 5
+            }
+        ],
+        "title": {
+            "text": "Months"
+        }
+    },
+    "legend": {
+        "enabled": true
+    },
+    "yAxis": [
+        {
+            "labels": {
+                "format": "{value}\u00b0C"
+            },
+            "opposite": true,
+            "title": {
+                "text": "Temperature"
+            }
+        },
+        {
+            "labels": {
+                "format": "{value} mm"
+            },
+            "title": {
+                "text": "Rainfall (mm)"
+            }
+        }
+    ],
+    "series": [
+        {
+            "name": "Minimum Temperature",
+            "color": "#0000FF",
+            "yAxis": 0,
+            "data": [
+                5,
+                7,
+                8,
+                9,
+                10,
+                9,
+                8,
+                7,
+                6,
+                5,
+                4,
+                4
+            ]
+        },
+        {
+            "name": "Maximum Temperature",
+            "color": "#FF0000",
+            "yAxis": 0,
+            "data": [
+                15,
+                17,
+                18,
+                19,
+                20,
+                19,
+                18,
+                17,
+                16,
+                15,
+                14,
+                14
+            ]
+        },
+        {
+            "name": "Rainfall",
+            "color": "lightblue",
+            "yAxis": 1,
+            "data": [
+                100,
+                80,
+                60,
+                20,
+                20,
+                19,
+                20,
+                60,
+                60,
+                80,
+                90,
+                100
+            ]
+        }
+    ]
+}
+);
+});
+</script>

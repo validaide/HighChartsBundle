@@ -32,11 +32,13 @@ var graph = Highcharts.chart("graph_container",
             {
                 "name": "A",
                 "id": "A",
+                "visible": true,
                 "data": []
             },
             {
                 "name": "B",
                 "id": "B",
+                "visible": true,
                 "data": []
             }
         ]
@@ -65,6 +67,7 @@ var graph = Highcharts.chart("graph_container",
     "series": [
         {
             "name": "[SERIES_1_NAME]",
+            "visible": true,
             "data": [SERIES_1_DATA]
         }
     ]

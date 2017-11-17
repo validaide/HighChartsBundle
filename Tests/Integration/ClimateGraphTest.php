@@ -80,6 +80,7 @@ class ClimateGraphTest extends IntegrationTestCase
             'SERIES_2_Y_AXIS'          => self::SERIES_2_Y_AXIS,
             'SERIES_3_NAME'            => self::SERIES_3_NAME,
             'SERIES_3_Y_AXIS'          => self::SERIES_3_Y_AXIS,
+            'SERIES_2_VISIBLE'         => "false",
             'SERIES_1_DATA'            => $this->traverse(json_encode(self::getSeriesData(0), JSON_PRETTY_PRINT), 16),
             'SERIES_2_DATA'            => $this->traverse(json_encode(self::getSeriesData(1), JSON_PRETTY_PRINT), 16),
             'SERIES_3_DATA'            => $this->traverse(json_encode(self::getSeriesData(2), JSON_PRETTY_PRINT), 16),
@@ -186,6 +187,7 @@ class ClimateGraph extends Graph
         $tempSeriesMin->setType('line');
         $tempSeriesMin->setYAxis(ClimateGraphTest::SERIES_2_Y_AXIS);
         $tempSeriesMin->setColor(new Color('#FF0000'));
+        $tempSeriesMin->setVisible(false);
         $rainSeries = new Series(ClimateGraphTest::SERIES_3_NAME, ClimateGraphTest::getSeriesData(2));
         $rainSeries->setYAxis(ClimateGraphTest::SERIES_3_Y_AXIS);
         $rainSeries->setColor(new Color('lightblue'));
