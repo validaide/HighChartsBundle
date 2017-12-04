@@ -19,12 +19,12 @@ class HighChartsExtension extends \Twig_Extension
     private $imageRenderer;
 
     /**
-     * @param GraphHelper $graphHelper
+     * @param GraphHelper   $graphHelper
      * @param ImageRenderer $imageRenderer
      */
     public function __construct(GraphHelper $graphHelper, ImageRenderer $imageRenderer)
     {
-        $this->graphHelper = $graphHelper;
+        $this->graphHelper   = $graphHelper;
         $this->imageRenderer = $imageRenderer;
     }
 
@@ -56,8 +56,12 @@ class HighChartsExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function renderStatic(Graph $graph, $options = [])
+    public function renderStatic(Graph $graph = null, $options = [])
     {
+        if (!$graph) {
+            return null;
+        }
+        
         return $this->imageRenderer->render($graph, $options);
     }
 
