@@ -36,8 +36,8 @@ var graph = Highcharts.chart("graph_container",
             "labels": {
                 "format": "{value}\u00b0C"
             },
-            "min": 4.45000000000000017763568394002504646778106689453125,
-            "max": 20.746449999999999391775418189354240894317626953125,
+            "min": 4.45,
+            "max": 20.74645,
             "opposite": true,
             "plotLines": [
                 {
@@ -54,7 +54,7 @@ var graph = Highcharts.chart("graph_container",
                         "x": 0,
                         "y": 0
                     },
-                    "value": 20.746449999999999391775418189354240894317626953125,
+                    "value": 20.74645,
                     "width": 1,
                     "zIndex": 4
                 },
@@ -70,7 +70,7 @@ var graph = Highcharts.chart("graph_container",
                         "useHtml": false,
                         "verticalAlign": "top"
                     },
-                    "value": 4.45000000000000017763568394002504646778106689453125,
+                    "value": 4.45,
                     "width": 1,
                     "zIndex": 5
                 }
