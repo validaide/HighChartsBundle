@@ -25,7 +25,8 @@ var graph = Highcharts.chart("graph_container",
     },
     "tooltip": [],
     "legend": {
-        "enabled": true
+        "enabled": true,
+        "reversed": false
     },
     "drilldown": {
         "series": [
