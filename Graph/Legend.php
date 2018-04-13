@@ -24,6 +24,11 @@ class Legend
     private $enabled = true;
 
     /**
+     * @var bool
+     */
+    private $reversed = false;
+
+    /**
      * @return boolean
      */
     public function isEnabled(): Bool
@@ -40,6 +45,22 @@ class Legend
     }
 
     /**
+     * @return bool
+     */
+    public function isReversed(): bool
+    {
+        return $this->reversed;
+    }
+
+    /**
+     * @param bool $reversed
+     */
+    public function setReversed(bool $reversed)
+    {
+        $this->reversed = $reversed;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -48,6 +69,10 @@ class Legend
 
         if (!is_null($this->enabled)) {
             $result['enabled'] = (bool)$this->enabled;
+        }
+
+        if (!is_null($this->reversed)) {
+            $result['reversed'] = (bool)$this->reversed;
         }
 
         return $result;
