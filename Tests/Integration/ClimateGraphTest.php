@@ -199,6 +199,8 @@ class ClimateGraph extends Graph
         $tempSeriesMax->setType('line');
         $tempSeriesMax->setYAxis(ClimateGraphTest::SERIES_1_Y_AXIS);
         $tempSeriesMax->setColor(new Color('#0000FF'));
+        $tempSeriesMax->setZIndex(1000);
+        $tempSeriesMax->getMarker()->setEnabled(false);
         $tempSeriesMin = new Series(ClimateGraphTest::SERIES_2_NAME, ClimateGraphTest::getSeriesData(1));
         $tempSeriesMin->setType('line');
         $tempSeriesMin->setYAxis(ClimateGraphTest::SERIES_2_Y_AXIS);

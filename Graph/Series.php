@@ -59,6 +59,12 @@ class Series
      */
     private $visible = true;
 
+    /** @var Marker */
+    private $marker;
+
+    /** @var null|int */
+    private $zIndex;
+
     /**
      * Series constructor.
      *
@@ -232,6 +238,34 @@ class Series
     }
 
     /**
+     * @return Marker
+     */
+    public function getMarker(): Marker
+    {
+        if (is_null($this->marker)) {
+            $this->marker = new Marker();
+        }
+
+        return $this->marker;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getZIndex()
+    {
+        return $this->zIndex;
+    }
+
+    /**
+     * @param int|null $zIndex
+     */
+    public function setZIndex(int $zIndex)
+    {
+        $this->zIndex = $zIndex;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -266,6 +300,13 @@ class Series
 
         if (!is_null($this->tooltip)) {
             $result['tooltip'] = $this->tooltip;
+        }
+
+        if (!is_null($this->marker)) {
+            $result['marker'] = $this->marker->toArray();
+        }
+        if (!is_null($this->zIndex)) {
+            $result['zIndex'] = $this->zIndex;
         }
 
         $result['visible'] = $this->visible;

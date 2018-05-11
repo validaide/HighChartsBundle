@@ -104,6 +104,10 @@ var graph = Highcharts.chart("graph_container",
             "color": "#0000FF",
             "type": "line",
             "yAxis": [SERIES_1_Y_AXIS],
+            "marker": {
+                "enabled": ""
+            },
+            "zIndex": 1000,
             "visible": true,
             "data": [SERIES_1_DATA]
         },
