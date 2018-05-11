@@ -5,6 +5,7 @@ namespace Validaide\HighChartsBundle\Tests\Integration;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\PlotLine;
+use Validaide\HighChartsBundle\Graph\PlotBand;
 use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\Tests\IntegrationTestCase;
 use Validaide\HighChartsBundle\ValueObject\Color;
@@ -65,6 +66,10 @@ class ClimateGraphTest extends IntegrationTestCase
      */
     public function test_render()
     {
+        // NOTE: https://bugs.php.net/bug.php?id=72567
+        // Required for PHP 7.1 json_encode float precision
+        ini_set('serialize_precision', 14);
+
         $replacements = [
             'TYPE'                     => self::TYPE,
             'TITLE'                    => self::TITLE,
@@ -129,6 +134,14 @@ class ClimateGraph extends Graph
         $maxRainfall = max(ClimateGraphTest::getSeriesData(2));
         $minRainfall = 0;
 
+        // Plotbands
+        $tempRangePlotBand = new PlotBand();
+        $tempRangePlotBand->setId('plot_band_temp_range');
+        $tempRangePlotBand->setFrom(2);
+        $tempRangePlotBand->setTo(25);
+        $tempRangePlotBand->setColor(new Color('#FFEEEE'));
+
+        // Plotlines
         $maxTempPlotLine = new PlotLine();
         $maxTempPlotLine->setId('plot_line_max');
         $maxTempPlotLine->setValue($maxTemp);
@@ -167,6 +180,9 @@ class ClimateGraph extends Graph
         $yAxisTemp->setMin($minTemp);
         $yAxisTemp->setMax($maxTemp);
         $yAxisTemp->labels->setFormat('{value}°C');
+        // yAxis PlotBands
+        $yAxisTemp->addPlotBand($tempRangePlotBand);
+        // yAxis PlotLines
         $yAxisTemp->addPlotLine($maxTempPlotLine);
         $yAxisTemp->addPlotLine($minTempPlotLine);
 

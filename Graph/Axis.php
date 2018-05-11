@@ -9,64 +9,43 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 class Axis
 {
-    /**
-     * @var Title
-     */
+    /** @var Title */
     private $title;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $opposite;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $crosshair;
 
-    /**
-     * @var array|null
-     */
+    /** @var array|null */
     private $categories = null;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     private $min;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     private $max;
 
-    /**
-     * @var Labels
-     */
+    /** @var Labels */
     public $labels;
 
-    /**
-     * @var PlotLine[]
-     */
+    /** @var PlotBand[] */
+    private $plotBands;
+
+    /** @var PlotLine[] */
     private $plotLines;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     private $tickInterval;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $endOnTick;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $alignTicks;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $type;
 
     /**
@@ -172,6 +151,30 @@ class Axis
     public function setMax(float $max)
     {
         $this->max = $max;
+    }
+
+    /**
+     * @param PlotBand $plotBand
+     */
+    public function addPlotBand(PlotBand $plotBand)
+    {
+        $this->plotBands[] = $plotBand;
+    }
+
+    /**
+     * @return PlotBand[]
+     */
+    public function getPlotBands(): array
+    {
+        return $this->plotBands;
+    }
+
+    /**
+     * @param PlotBand[] $plotBands
+     */
+    public function setPlotBands(array $plotBands)
+    {
+        $this->plotBands = $plotBands;
     }
 
     /**
@@ -301,6 +304,16 @@ class Axis
 
         if (!is_null($this->opposite)) {
             $result['opposite'] = $this->opposite;
+        }
+
+        if (!is_null($this->plotBands)) {
+            $plotBands = [];
+            /** @var PlotBand $plotBand */
+            foreach ($this->plotBands as $plotBand) {
+                $plotBands[] = $plotBand->toArray();
+            }
+
+            $result['plotBands'] = $plotBands;
         }
 
         if (!is_null($this->plotLines)) {

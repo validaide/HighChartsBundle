@@ -3,57 +3,46 @@
 namespace Validaide\HighChartsBundle\Graph;
 
 use Validaide\HighChartsBundle\ValueObject\Color;
-use Validaide\HighChartsBundle\ValueObject\DashStyle;
 
 /**
- * Class PlotLine
+ * Class PlotBand
  *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
-class PlotLine
+class PlotBand
 {
-    /**
-     * @var string
-     */
+    const COLOR      = 'color';
+    const CLASS_NAME = 'className';
+    const FROM       = 'from';
+    const ID         = 'id';
+    const LABEL      = 'label';
+    const TO         = 'to';
+    const Z_INDEX    = 'zIndex';
+
+    /** @var string */
     private $className;
 
-    /**
-     * @var Color
-     */
+    /** @var Color */
     private $color;
 
-    /**
-     * @var DashStyle
-     */
-    private $dashStyle;
-
-    // private $events;
-
-    /**
-     * @var string
-     */
+    /** @var string */
     private $id;
 
-    /**
-     * @var Label
-     */
+    /** @var Label */
     private $label;
 
-    /**
-     * @var float
-     */
-    private $value;
+    /** @var float */
+    private $from;
 
-    /**
-     * @var int
-     */
-    private $width;
+    /** @var float */
+    private $to;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     private $zIndex;
 
+    /**
+     * PlotBand constructor.
+     */
     public function __construct()
     {
     }
@@ -93,33 +82,33 @@ class PlotLine
     /**
      * @return float
      */
-    public function getValue(): float
+    public function getFrom(): float
     {
-        return $this->value;
+        return $this->from;
     }
 
     /**
-     * @param float $value
+     * @param float $from
      */
-    public function setValue(float $value)
+    public function setFrom(float $from)
     {
-        $this->value = $value;
+        $this->from = $from;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getWidth(): int
+    public function getTo(): float
     {
-        return $this->width;
+        return $this->to;
     }
 
     /**
-     * @param int $width
+     * @param float $to
      */
-    public function setWidth(int $width)
+    public function setTo(float $to)
     {
-        $this->width = $width;
+        $this->to = $to;
     }
 
     /**
@@ -155,22 +144,6 @@ class PlotLine
     }
 
     /**
-     * @return DashStyle
-     */
-    public function getDashStyle(): DashStyle
-    {
-        return $this->dashStyle;
-    }
-
-    /**
-     * @param DashStyle $dashStyle
-     */
-    public function setDashStyle(DashStyle $dashStyle)
-    {
-        $this->dashStyle = $dashStyle;
-    }
-
-    /**
      * @return Label
      */
     public function getLabel(): Label
@@ -191,37 +164,33 @@ class PlotLine
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 
         if (!is_null($this->color)) {
-            $result['color'] = (string)$this->color;
+            $result[self::COLOR] = (string)$this->color;
         }
         if (!is_null($this->className)) {
-            $result['className'] = $this->className;
+            $result[self::CLASS_NAME] = $this->className;
         }
-        if (!is_null($this->dashStyle)) {
-            $result['dashStyle'] = (string)$this->dashStyle;
+        if (!is_null($this->from)) {
+            $result[self::FROM] = $this->from;
         }
         if (!is_null($this->id)) {
-            $result['id'] = $this->id;
+            $result[self::ID] = $this->id;
         }
         if (!is_null($this->label)) {
-            $result['label'] = $this->label->toArray();
+            $result[self::LABEL] = $this->label->toArray();
         }
-        if (!is_null($this->value)) {
-            $result['value'] = $this->value;
-        }
-        if (!is_null($this->width)) {
-            $result['width'] = $this->width;
+        if (!is_null($this->to)) {
+            $result[self::TO] = $this->to;
         }
         if (!is_null($this->zIndex)) {
-            $result['zIndex'] = $this->zIndex;
+            $result[self::Z_INDEX] = $this->zIndex;
         }
-
 
         return $result;
     }

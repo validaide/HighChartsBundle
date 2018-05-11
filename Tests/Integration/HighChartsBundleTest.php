@@ -3,9 +3,6 @@
 namespace Validaide\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use Validaide\HighChartsBundle\Templating\Helper\GraphHelper;
-use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
-use Validaide\HighChartsBundle\Twig\HighChartsExtension;
 
 /**
  * Class HighChartsBundleTest
@@ -25,21 +22,22 @@ class HighChartsBundleTest extends TestCase
         $this->kernel->boot();
     }
 
+    /*****************************************************************************/
+    /* TESTS
+    /*****************************************************************************/
+
     public function test_high_charts_twig_extension_is_available()
     {
-        $this->assertTrue($this->kernel->getContainer()->has('validaide.highcharts.twig_extension.highcharts'));
-        $this->assertInstanceOf(HighChartsExtension::class, $this->kernel->getContainer()->get('validaide.highcharts.twig_extension.highcharts'));
+        $this->assertTrue($this->kernel->getContainer()->has('Validaide\HighChartsBundle\Twig\HighChartsExtension'));
     }
 
     public function test_high_charts_renderer_graph_is_available()
     {
-        $this->assertTrue($this->kernel->getContainer()->has('validaide.highcharts.renderer.graph'));
-        $this->assertInstanceOf(GraphRenderer::class, $this->kernel->getContainer()->get('validaide.highcharts.renderer.graph'));
+        $this->assertTrue($this->kernel->getContainer()->has('Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer'));
     }
 
     public function test_high_charts_helper_graph_is_available()
     {
-        $this->assertTrue($this->kernel->getContainer()->has('validaide.highcharts.helper.graph'));
-        $this->assertInstanceOf(GraphHelper::class, $this->kernel->getContainer()->get('validaide.highcharts.helper.graph'));
+        $this->assertTrue($this->kernel->getContainer()->has('Validaide\HighChartsBundle\Templating\Helper\GraphHelper'));
     }
 }

@@ -2,27 +2,26 @@ services:
   ########################
   # RENDERERS            #
   ########################
-  validaide.highcharts.renderer.graph:
-    class: Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer
 
-  validaide.highcharts.renderer.image:
-    class: Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer
+  Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer: ~
+
+  Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer: ~
 
   ########################
   # HELPERS              #
   ########################
-  validaide.highcharts.helper.graph:
-    class:  Validaide\HighChartsBundle\Templating\Helper\GraphHelper
+
+  Validaide\HighChartsBundle\Templating\Helper\GraphHelper:
     arguments:
-      - '@validaide.highcharts.renderer.graph'
+      - '@Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer'
 
   ########################
   # TWIG EXTENSIONS      #
   ########################
-  validaide.highcharts.twig_extension.highcharts:
-    class:  Validaide\HighChartsBundle\Twig\HighChartsExtension
+
+  Validaide\HighChartsBundle\Twig\HighChartsExtension:
     arguments:
-      - '@validaide.highcharts.helper.graph'
-      - '@validaide.highcharts.renderer.image'
+      - '@Validaide\HighChartsBundle\Templating\Helper\GraphHelper'
+      - '@Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer'
     tags:
       - { name: twig.extension }

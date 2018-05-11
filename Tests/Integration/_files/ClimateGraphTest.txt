@@ -39,6 +39,14 @@ var graph = Highcharts.chart("graph_container",
             "min": 4.45,
             "max": 20.74645,
             "opposite": true,
+            "plotBands": [
+                {
+                    "color": "#FFEEEE",
+                    "from": 2,
+                    "id": "plot_band_temp_range",
+                    "to": 25
+                }
+            ],
             "plotLines": [
                 {
                     "color": "#FF0000",
