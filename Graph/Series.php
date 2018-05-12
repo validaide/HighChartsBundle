@@ -9,54 +9,37 @@ use Validaide\HighChartsBundle\ValueObject\Color;
  */
 class Series
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $name = '';
 
-    /**
-     * @var Color
-     */
+    /** @var Color */
     private $color = null;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $drilldown = null;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $innerSize = null;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $type = null;
 
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $yAxis = null;
 
-    /**
-     * @var array|null
-     */
+    /** @var array|null */
     private $data = null;
 
-    /**
-     * @var null
-     */
+    /** @var null */
     private $tooltip = null;
 
-    /**
-     * @var true
-     */
+    /** @var int */
+    private $pointInterval;
+
+    /** @var true */
     private $visible = true;
 
     /** @var Marker */
@@ -238,6 +221,22 @@ class Series
     }
 
     /**
+     * @return int|null
+     */
+    public function getPointInterval()
+    {
+        return $this->pointInterval;
+    }
+
+    /**
+     * @param int|null $pointInterval
+     */
+    public function setPointInterval(int $pointInterval = null)
+    {
+        $this->pointInterval = $pointInterval;
+    }
+
+    /**
      * @return Marker
      */
     public function getMarker(): Marker
@@ -296,6 +295,10 @@ class Series
 
         if (!is_null($this->innerSize)) {
             $result['innerSize'] = $this->innerSize;
+        }
+
+        if (!is_null($this->pointInterval)) {
+            $result['pointInterval'] = $this->pointInterval;
         }
 
         if (!is_null($this->tooltip)) {
