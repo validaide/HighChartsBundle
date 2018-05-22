@@ -21,7 +21,7 @@
     "MIT"
   ],
   "require": {
-    "php": "^7.0",
+    "php": "^5.6|^7.0",
     "symfony/framework-bundle": "^3.0",
     "symfony/dependency-injection": "~3.0",
     "symfony/options-resolver": "^3.0",
