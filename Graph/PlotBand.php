@@ -31,7 +31,7 @@ class PlotBand
     /** @var Label */
     private $label;
 
-    /** @var float */
+    /** @var float|null */
     private $from;
 
     /** @var float */
@@ -80,17 +80,17 @@ class PlotBand
     }
 
     /**
-     * @return float
+     * @return float|null
      */
-    public function getFrom(): float
+    public function getFrom()
     {
         return $this->from;
     }
 
     /**
-     * @param float $from
+     * @param float|null $from
      */
-    public function setFrom(float $from)
+    public function setFrom(float $from = null)
     {
         $this->from = $from;
     }
