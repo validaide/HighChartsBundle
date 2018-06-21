@@ -37,7 +37,13 @@ class AppKernel extends Kernel
         return $bundles;
     }
 ```
+### Install dependencies 
 
+Run 
+``` bash
+$ composer install
+``` 
+in yourproject root directory
 ## License
 
 The Validaide HighCharts Bundle is under the MIT license. For the full copyright and license information, please read the

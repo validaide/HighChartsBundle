@@ -51,7 +51,7 @@ class GraphRenderer
     public function renderJavascript(Graph $graph)
     {
         $json              = $graph->toJson();
-        $highChartInitCode = 'Highcharts.chart(' . $this->formatter->renderEscape($graph->getHtmlId()) . ', ' . $this->formatter->renderNewline() . $json . $this->formatter->renderNewline() . ')';
+        $highChartInitCode = 'Highcharts.chart(' . $this->formatter->renderEscape($graph->getHtmlId()) . ',' . $this->formatter->renderNewline() . $json . $this->formatter->renderNewline() . ')';
         $code              = $this->javascriptRenderer->renderVariable($graph->getJsChartId(), $highChartInitCode);
         $jquery            = $this->formatter->renderJQuery($code);
 

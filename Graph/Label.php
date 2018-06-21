@@ -72,6 +72,22 @@ class Label
     }
 
     /**
+     * @return int
+     */
+    public function getRotation(): int
+    {
+        return $this->rotation;
+    }
+
+    /**
+     * @param int $rotation
+     */
+    public function setRotation(int $rotation)
+    {
+        $this->rotation = $rotation;
+    }
+
+    /**
      * @return string
      */
     public function getText(): string
@@ -176,6 +192,9 @@ class Label
 
         if (!is_null($this->align)) {
             $result['align'] = (string)$this->align;
+        }
+        if (!is_null($this->rotation)) {
+            $result['rotation'] = $this->rotation;
         }
         if (!is_null($this->text)) {
             $result['text'] = $this->text;

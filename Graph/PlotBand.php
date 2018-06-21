@@ -11,33 +11,59 @@ use Validaide\HighChartsBundle\ValueObject\Color;
  */
 class PlotBand
 {
-    const COLOR      = 'color';
-    const CLASS_NAME = 'className';
-    const FROM       = 'from';
-    const ID         = 'id';
-    const LABEL      = 'label';
-    const TO         = 'to';
-    const Z_INDEX    = 'zIndex';
+    const COLOR        = 'color';
+    const BORDER_COLOR = 'borderColor';
+    const BORDER_WIDTH = 'borderWidth';
+    const CLASS_NAME   = 'className';
+    const FROM         = 'from';
+    const ID           = 'id';
+    const LABEL        = 'label';
+    const TO           = 'to';
+    const Z_INDEX      = 'zIndex';
 
-    /** @var string */
+    /**
+     * @var
+     */
     private $className;
 
-    /** @var Color */
+    /**
+     * @var
+     */
     private $color;
 
-    /** @var string */
+    /**
+     * @var Color
+     */
+    private $borderColor;
+
+    /**
+     * @var int
+     */
+    private $borderWidth;
+
+    /**
+     * @var string
+     */
     private $id;
 
-    /** @var Label */
+    /**
+     * @var Label
+     */
     private $label;
 
-    /** @var float */
+    /**
+     * @var float
+     */
     private $from;
 
-    /** @var float */
+    /**
+     * @var float
+     */
     private $to;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     private $zIndex;
 
     /**
@@ -144,6 +170,39 @@ class PlotBand
     }
 
     /**
+     * @return Color
+     */
+    public function getBorderColor(): Color
+    {
+        return $this->borderColor;
+    }
+
+    /**
+     * @param Color $borderColor
+     */
+    public function setBorderColor(Color $borderColor)
+    {
+        $this->borderWidth = 5;
+        $this->borderColor = $borderColor;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBorderWidth(): int
+    {
+        return $this->borderWidth;
+    }
+
+    /**
+     * @param int $borderWidth
+     */
+    public function setBorderWidth(int $borderWidth)
+    {
+        $this->borderWidth = $borderWidth;
+    }
+
+    /**
      * @return Label
      */
     public function getLabel(): Label
@@ -172,6 +231,12 @@ class PlotBand
 
         if (!is_null($this->color)) {
             $result[self::COLOR] = (string)$this->color;
+        }
+        if (!is_null($this->borderColor)) {
+            $result[self::BORDER_COLOR] = (string)$this->borderColor;
+        }
+        if (!is_null($this->borderWidth)) {
+            $result[self::BORDER_WIDTH] = (string)$this->borderWidth;
         }
         if (!is_null($this->className)) {
             $result[self::CLASS_NAME] = $this->className;

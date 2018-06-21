@@ -1,6 +1,6 @@
 <script type="text/javascript">
 $(function () {
-var graph = Highcharts.chart("graph_container", 
+var graph = Highcharts.chart("graph_container",
 {
     "chart": {
         "type": "line"
