@@ -5,7 +5,7 @@ namespace Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**
- * Class: Graph
+ * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Series
 {
@@ -35,6 +35,9 @@ class Series
 
     /** @var null */
     private $tooltip = null;
+
+    /** @var int|null */
+    private $turboThreshold = null;
 
     /** @var int */
     private $pointInterval;
@@ -173,6 +176,22 @@ class Series
     }
 
     /**
+     * @return int|null
+     */
+    public function getTurboThreshold()
+    {
+        return $this->turboThreshold;
+    }
+
+    /**
+     * @param int|null $turboThreshold
+     */
+    public function setTurboThreshold($turboThreshold)
+    {
+        $this->turboThreshold = $turboThreshold;
+    }
+
+    /**
      * @return null|Color
      */
     public function getColor()
@@ -305,9 +324,14 @@ class Series
             $result['tooltip'] = $this->tooltip;
         }
 
+        if (!is_null($this->turboThreshold)) {
+            $result['turboThreshold'] = $this->turboThreshold;
+        }
+
         if (!is_null($this->marker)) {
             $result['marker'] = $this->marker->toArray();
         }
+
         if (!is_null($this->zIndex)) {
             $result['zIndex'] = $this->zIndex;
         }
