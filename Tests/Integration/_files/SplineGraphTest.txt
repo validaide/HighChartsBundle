@@ -28,7 +28,6 @@ var graph = Highcharts.chart("graph_container",
             {
                 "color": "#FFEEEE",
                 "borderColor": "#FFFFFFF",
-                "borderWidth": "5",
                 "from": 2,
                 "id": "plot_band_x",
                 "to": 4,
