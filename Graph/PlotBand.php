@@ -182,7 +182,6 @@ class PlotBand
      */
     public function setBorderColor(Color $borderColor)
     {
-        $this->borderWidth = 5;
         $this->borderColor = $borderColor;
     }
 
