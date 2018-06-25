@@ -266,6 +266,22 @@ class Axis
     }
 
     /**
+     * @return Labels
+     */
+    public function getLabels(): Labels
+    {
+        return $this->labels;
+    }
+
+    /**
+     * @param Labels $labels
+     */
+    public function setLabels(Labels $labels)
+    {
+        $this->labels = $labels;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
