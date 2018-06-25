@@ -7,22 +7,150 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 class DateTimeLabelFormats
 {
-    /** @var string */
+    /** @var string|null */
     private $millisecond;
-    /** @var string */
+    /** @var string|null */
     private $second;
-    /** @var string */
+    /** @var string|null */
     private $minute;
-    /** @var string */
+    /** @var string|null */
     private $hour;
-    /** @var string */
+    /** @var string|null */
     private $day;
-    /** @var string */
+    /** @var string|null */
     private $week;
-    /** @var string */
+    /** @var string|null */
     private $month;
-    /** @var string */
+    /** @var string|null */
     private $year;
+
+    /**
+     * @return null|string
+     */
+    public function getMillisecond(): string
+    {
+        return $this->millisecond;
+    }
+
+    /**
+     * @param null|string $millisecond
+     */
+    public function setMillisecond(string $millisecond)
+    {
+        $this->millisecond = $millisecond;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getSecond(): string
+    {
+        return $this->second;
+    }
+
+    /**
+     * @param null|string $second
+     */
+    public function setSecond(string $second)
+    {
+        $this->second = $second;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getMinute(): string
+    {
+        return $this->minute;
+    }
+
+    /**
+     * @param null|string $minute
+     */
+    public function setMinute(string $minute)
+    {
+        $this->minute = $minute;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getHour(): string
+    {
+        return $this->hour;
+    }
+
+    /**
+     * @param null|string $hour
+     */
+    public function setHour(string $hour)
+    {
+        $this->hour = $hour;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getDay(): string
+    {
+        return $this->day;
+    }
+
+    /**
+     * @param null|string $day
+     */
+    public function setDay(string $day)
+    {
+        $this->day = $day;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getWeek(): string
+    {
+        return $this->week;
+    }
+
+    /**
+     * @param null|string $week
+     */
+    public function setWeek(string $week)
+    {
+        $this->week = $week;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getMonth(): string
+    {
+        return $this->month;
+    }
+
+    /**
+     * @param null|string $month
+     */
+    public function setMonth(string $month)
+    {
+        $this->month = $month;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getYear(): string
+    {
+        return $this->year;
+    }
+
+    /**
+     * @param null|string $year
+     */
+    public function setYear(string $year)
+    {
+        $this->year = $year;
+    }
 
     /**
      * @return array
