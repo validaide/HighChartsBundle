@@ -11,42 +11,32 @@ class Axis
 {
     /** @var Title */
     private $title;
-
     /** @var bool */
     private $opposite;
-
     /** @var bool */
     private $crosshair;
-
     /** @var array|null */
     private $categories = null;
-
     /** @var float */
     private $min;
-
     /** @var float */
     private $max;
-
     /** @var Labels */
     public $labels;
-
     /** @var PlotBand[] */
     private $plotBands;
-
     /** @var PlotLine[] */
     private $plotLines;
-
     /** @var float */
     private $tickInterval;
-
     /** @var bool */
     private $endOnTick;
-
     /** @var bool */
     private $alignTicks;
-
     /** @var string */
     private $type;
+    /** @var DateTimeLabelFormats */
+    private $dateTimeLabelFormats;
 
     /**
      * Axis constructor.
@@ -282,6 +272,18 @@ class Axis
     }
 
     /**
+     * @return DateTimeLabelFormats
+     */
+    public function getDateTimeLabelFormats(): DateTimeLabelFormats
+    {
+        if (is_null($this->dateTimeLabelFormats)) {
+            $this->dateTimeLabelFormats = new DateTimeLabelFormats();
+        }
+
+        return $this->dateTimeLabelFormats;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -352,6 +354,10 @@ class Axis
 
         if (!is_null($this->type)) {
             $result['type'] = $this->type;
+        }
+
+        if (!is_null($this->dateTimeLabelFormats)) {
+            $result['dateTimeLabelFormats'] = $this->dateTimeLabelFormats->toArray();
         }
 
         return $result;
