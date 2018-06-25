@@ -7,15 +7,12 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 class Tooltip
 {
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $shared;
-
-    /**
-     * @var string
-     */
+    /** @var string */
     private $pointFormat;
+    /** @var string */
+    private $xDateFormat;
 
     /**
      * @return bool
@@ -50,6 +47,22 @@ class Tooltip
     }
 
     /**
+     * @return string|null
+     */
+    public function getXDateFormat()
+    {
+        return $this->xDateFormat;
+    }
+
+    /**
+     * @param string|null $xDateFormat
+     */
+    public function setXDateFormat(string $xDateFormat = null)
+    {
+        $this->xDateFormat = $xDateFormat;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -59,9 +72,11 @@ class Tooltip
         if (!is_null($this->shared)) {
             $result['shared'] = $this->shared;
         }
-
         if (!is_null($this->pointFormat)) {
             $result['pointFormat'] = $this->pointFormat;
+        }
+        if (!is_null($this->pointFormat)) {
+            $result['xDateFormat'] = $this->pointFormat;
         }
 
         return $result;
