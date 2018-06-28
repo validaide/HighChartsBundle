@@ -4,7 +4,7 @@ $(function () {
 var graph = Highcharts.chart("graph_container",
 {
     "chart": {
-        "type": "line",
+        "type": "spline",
         "plotShadow": false
     },
     "credits": [],

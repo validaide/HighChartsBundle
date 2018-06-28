@@ -19,7 +19,7 @@ use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;
  */
 class SplineGraphTest extends IntegrationTestCase
 {
-    const TYPE            = 'line';
+    const TYPE            = 'spline';
     const TITLE           = 'TITLE';
     const Y_AXIS_TITLE    = 'YYYYYY';
     const X_AXIS_TITLE    = 'XXXXXX';
@@ -86,6 +86,10 @@ class SplineGraph extends Graph
         $this->setPlotShadow(false);
         $this->getTitle()->setText(SplineGraphTest::TITLE);
         $this->getLegend()->setEnabled(true);
+
+        $tooltip = new Graph\Tooltip();
+        $tooltip->setBackgroundColor(new Color('#FFFFFFF'));
+        $this->setTooltip($tooltip);
 
         // Plotbands, Plotlines
         $XPlotBand = new PlotBand();

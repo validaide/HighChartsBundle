@@ -51,6 +51,9 @@ class Series
     /** @var null|int */
     private $zIndex;
 
+    /** @var DataLabels */
+    private $dataLabels;
+
     /**
      * Series constructor.
      *
@@ -284,6 +287,22 @@ class Series
     }
 
     /**
+     * @return DataLabels
+     */
+    public function getDataLabels(): DataLabels
+    {
+        return $this->dataLabels;
+    }
+
+    /**
+     * @param DataLabels $dataLabels
+     */
+    public function setDataLabels(DataLabels $dataLabels)
+    {
+        $this->dataLabels = $dataLabels;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -334,6 +353,9 @@ class Series
 
         if (!is_null($this->zIndex)) {
             $result['zIndex'] = $this->zIndex;
+        }
+        if (!is_null($this->dataLabels)) {
+            $result['dataLabels'] = $this->dataLabels;
         }
 
         $result['visible'] = $this->visible;
