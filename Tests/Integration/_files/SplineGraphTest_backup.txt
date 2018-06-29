@@ -11,17 +11,13 @@ var graph = Highcharts.chart("graph_container",
     "title": {
         "text": "TITLE"
     },
-    "tooltip": {
-        "backgroundColor": "#FFFFFFF",
-        "borderRadius": 5,
-        "split": true
-    },
+    "tooltip": [],
     "legend": {
         "enabled": true,
         "reversed": false
     },
     "plotOptions": {
-        "spline": {
+        "series": {
             "allowPointSelect": false,
             "stacking": "normal"
         }
@@ -79,11 +75,6 @@ var graph = Highcharts.chart("graph_container",
             "color": "#0000FF",
             "type": "line",
             "yAxis": 0,
-            "dataLabels": {
-                "borderColor": "#AAA",
-                "borderWidth": 3,
-                "enabled": true
-            },
             "visible": true,
             "data": [
                 0,
