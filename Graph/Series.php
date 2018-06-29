@@ -291,6 +291,9 @@ class Series
      */
     public function getDataLabels(): DataLabels
     {
+        if (is_null($this->dataLabels)) {
+        $this->dataLabels = new Label();
+        }
         return $this->dataLabels;
     }
 
@@ -355,7 +358,7 @@ class Series
             $result['zIndex'] = $this->zIndex;
         }
         if (!is_null($this->dataLabels)) {
-            $result['dataLabels'] = $this->dataLabels;
+            $result['dataLabels'] = $this->dataLabels->toArray();
         }
 
         $result['visible'] = $this->visible;

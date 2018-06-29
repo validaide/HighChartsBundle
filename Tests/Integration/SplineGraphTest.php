@@ -78,9 +78,9 @@ class SplineGraph extends Graph
     {
         parent::__construct();
 
-        $columnPlotOptions = new Graph\PlotOptions\Column();
-        $columnPlotOptions->setStacking(Graph\PlotOptions\Column::STACKING_NORMAL);
-        $this->setPlotOptions($columnPlotOptions);
+        $splinePlotOptions = new Graph\PlotOptions\Spline();
+        $splinePlotOptions->setStacking(Graph\PlotOptions\Spline::STACKING_NORMAL);
+        $this->setPlotOptions($splinePlotOptions);
 
         $this->setType(SplineGraphTest::TYPE);
         $this->setPlotShadow(false);
@@ -89,6 +89,8 @@ class SplineGraph extends Graph
 
         $tooltip = new Graph\Tooltip();
         $tooltip->setBackgroundColor(new Color('#FFFFFFF'));
+        $tooltip->setSplit(true);
+        $tooltip->setBorderRadius(5);
         $this->setTooltip($tooltip);
 
         // Plotbands, Plotlines
@@ -137,6 +139,11 @@ class SplineGraph extends Graph
         $seriesPlotOne->setType('line');
         $seriesPlotOne->setYAxis(SplineGraphTest::SERIES_1_Y_AXIS);
         $seriesPlotOne->setColor(new Color('#0000FF'));
+        $dataLabels = new Graph\DataLabels();
+        $dataLabels->setEnabled(true);
+        $dataLabels->setBorderWidth(3);
+        $dataLabels->setBorderColor(new Color('#AAA'));
+        $seriesPlotOne->setDataLabels($dataLabels);
 
 
         $this->addSeries($seriesPlotOne);

@@ -2,7 +2,9 @@
 
 namespace Validaide\HighChartsBundle\Graph;
 
+use Validaide\HighChartsBundle\Graph\DataLabels\Style;
 use Validaide\HighChartsBundle\ValueObject\Color;
+
 /**
  * Class: Tooltip
  */
@@ -16,6 +18,8 @@ class Tooltip
     private $backgroundColor;
     /** @var int */
     private $borderRadius;
+    /** @var int */
+    private $borderColor;
     /** @var int */
     private $borderWidth;
     /** @var Mixed */
@@ -38,6 +42,8 @@ class Tooltip
     private $outside;
     /** @var int */
     private $padding;
+    /** @var Style */
+    private $style;
     /** @var boolean */
     private $shadow;
     /** @var string */
@@ -50,7 +56,7 @@ class Tooltip
     private $useHTML;
     /** @var int */
     private $valueDecimals;
-     /** @var string */
+    /** @var string */
     private $valuePrefix;
     /** @var string */
     private $valueSuffix;
@@ -89,6 +95,22 @@ class Tooltip
     public function setBackgroundColor(Color $backgroundColor)
     {
         $this->backgroundColor = $backgroundColor;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBorderColor(): int
+    {
+        return $this->borderColor;
+    }
+
+    /**
+     * @param int $borderColor
+     */
+    public function setBorderColor(int $borderColor)
+    {
+        $this->borderColor = $borderColor;
     }
 
     /**
@@ -460,6 +482,22 @@ class Tooltip
     }
 
     /**
+     * @return Style
+     */
+    public function getStyle(): Style
+    {
+        return $this->style;
+    }
+
+    /**
+     * @param Style $style
+     */
+    public function setStyle(Style $style)
+    {
+        $this->style = $style;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -469,34 +507,113 @@ class Tooltip
         if (!is_null($this->shared)) {
             $result['shared'] = $this->shared;
         }
-
         if (!is_null($this->pointFormat)) {
             $result['pointFormat'] = $this->pointFormat;
         }
-
+        if (!is_null($this->animation)) {
+            $result['animation'] = $this->animation;
+        }
+        if (!is_null($this->backgroundColor)) {
+            $result['backgroundColor'] = (string)$this->backgroundColor;
+        }
+        if (!is_null($this->borderColor)) {
+            $result['borderColor'] = (string)$this->borderColor;
+        }
+        if (!is_null($this->borderRadius)) {
+            $result['borderRadius'] = $this->borderRadius;
+        }
+        if (!is_null($this->borderWidth)) {
+            $result['borderWidth'] = $this->borderWidth;
+        }
+        if (!is_null($this->crosshairs)) {
+            $result['crosshairs'] = $this->crosshairs;
+        }
+        if (!is_null($this->dateTimeLabelFormats)) {
+            $result['dateTimeLabelFormats'] = $this->dateTimeLabelFormats;
+        }
+        if (!is_null($this->enabled)) {
+            $result['enabled'] = $this->enabled;
+        }
+        if (!is_null($this->followPointer)) {
+            $result['followPointer'] = $this->followPointer;
+        }
+        if (!is_null($this->followTouchMove)) {
+            $result['followTouchMove'] = $this->followTouchMove;
+        }
+        if (!is_null($this->footerFormat)) {
+            $result['footerFormat'] = $this->footerFormat;
+        }
+        if (!is_null($this->headerFormat)) {
+            $result['headerFormat'] = $this->headerFormat;
+        }
+        if (!is_null($this->hideDelay)) {
+            $result['hideDelay'] = $this->hideDelay;
+        }
+        if (!is_null($this->outside)) {
+            $result['outside'] = $this->outside;
+        }
+        if (!is_null($this->padding)) {
+            $result['padding'] = $this->padding;
+        }
+        if (!is_null($this->shadow)) {
+            $result['shadow'] = $this->shadow;
+        }
+        if (!is_null($this->shape)) {
+            $result['shape'] = $this->shape;
+        }
+        if (!is_null($this->snap)) {
+            $result['snap'] = $this->snap;
+        }
+        if (!is_null($this->split)) {
+            $result['split'] = $this->split;
+        }
+        if (!is_null($this->style)) {
+            $result['style'] = $this->style;
+        }
+        if (!is_null($this->useHTML)) {
+            $result['useHTML'] = $this->useHTML;
+        }
+        if (!is_null($this->valueDecimals)) {
+            $result['valueDecimals'] = $this->valueDecimals;
+        }
+        if (!is_null($this->valuePrefix)) {
+            $result['valuePrefix'] = $this->valuePrefix;
+        }
+        if (!is_null($this->valueSuffix)) {
+            $result['valueSuffix'] = $this->valueSuffix;
+        }
+        if (!is_null($this->xDateFormat)) {
+            $result['xDateFormat'] = $this->xDateFormat;
+        }
         return $result;
     }
+
     /**
      * @TODO
      */
-    public function pointFormatter(){
+    public function pointFormatter()
+    {
 //
 //        A callback function for formatting the HTML output for a single point in the tooltip. Like the pointFormat string, but with more flexibility.
 //        Defaults to undefined.
 //        Context: Point.
     }
+
     /**
      * @TODO
      */
-    public function positioner(){
+    public function positioner()
+    {
 //
 //     A callback function to place the tooltip in a default position. The callback receives three parameters: labelWidth, labelHeight and point, where point contains values for plotX and plotY telling where the reference point is in the plot area. Add chart.plotLeft and chart.plotTop to get the full coordinates.
 //     The return should be an object containing x and y values, for example { x: 100, y: 100 }.
     }
+
     /**
      * @TODO
      */
-    public function formatter(){
+    public function formatter()
+    {
 //      Callback function to format the text of the tooltip from scratch. Return false to disable tooltip for a specific point on series.
 //      A subset of HTML is supported. Unless useHTML is true, the HTML of the tooltip is parsed and converted to SVG, therefore this isn't a complete HTML renderer. The following tags are supported: <b>, <strong>, <i>, <em>, <br/>, <span>. Spans can be styled with a style attribute, but only text-related CSS that is shared with SVG is handled.
 //      Since version 2.1 the tooltip can be shared between multiple series through the shared option. The available data in the formatter differ a bit depending on whether the tooltip is shared or not. In a shared tooltip, all properties except x, which is common for all points, are kept in an array, this.points.

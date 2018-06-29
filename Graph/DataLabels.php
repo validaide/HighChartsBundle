@@ -1,6 +1,7 @@
 <?php
 
 namespace Validaide\HighChartsBundle\Graph;
+
 use Validaide\HighChartsBundle\Graph\DataLabels\Filter;
 use Validaide\HighChartsBundle\Graph\DataLabels\Style;
 use Validaide\HighChartsBundle\ValueObject\Color;
@@ -14,13 +15,13 @@ class DataLabels
 {
     const DEFAULT_FORMAT = "{value}";
 
-     /**
-      * @var string
-      */
+    /**
+     * @var string
+     */
     private $align;
-     /**
-      * @var boolean
-      */
+    /**
+     * @var boolean
+     */
     private $allowOverlap;
     /**
      * @var Color
@@ -34,9 +35,9 @@ class DataLabels
      * @var int
      */
     private $borderRadius;
-     /**
-      * @var int
-      */
+    /**
+     * @var int
+     */
     private $borderWidth;
     /**
      * @var string
@@ -50,17 +51,17 @@ class DataLabels
      * @var boolean
      */
     private $crop;
-      /**
-       * @var boolean
-       */
+    /**
+     * @var boolean
+     */
     private $defer;
-      /**
-       * @var Filter
-       */
+    /**
+     * @var Filter
+     */
     private $filter;
-     /**
-      * @var boolean
-      */
+    /**
+     * @var boolean
+     */
     private $inside;
     /**
      * @var string
@@ -74,21 +75,21 @@ class DataLabels
      * @var int
      */
     private $rotation;
-     /**
-      * @var boolean
-      */
+    /**
+     * @var boolean
+     */
     private $shadow;
-     /**
-      * @var string
-      */
+    /**
+     * @var string
+     */
     private $shape;
-     /**
-      * @var Style
-      */
+    /**
+     * @var Style
+     */
     private $style;
-     /**
-      * @var boolean
-      */
+    /**
+     * @var boolean
+     */
     private $useHTML;
     /**
      * @var string
@@ -102,9 +103,9 @@ class DataLabels
      * @var int
      */
     private $y;
-     /**
-      * @var int
-      */
+    /**
+     * @var int
+     */
     private $zIndex;
     /**
      * @var int|null
@@ -119,6 +120,9 @@ class DataLabels
      */
     private $format;
 
+    public function __construct()
+    {
+    }
     /**
      * @return int|null
      */
@@ -545,15 +549,87 @@ class DataLabels
         if (!is_null($this->enabled)) {
             $result['enabled'] = $this->enabled;
         }
-
         if (!is_null($this->format)) {
             $result['format'] = $this->format;
         }
-
         if (!is_null($this->distance)) {
             $result['distance'] = $this->distance;
         }
-
+        if (!is_null($this->align)) {
+            $result['align'] = $this->align;
+        }
+        if (!is_null($this->allowOverlap)) {
+            $result['allowOverlap'] = $this->allowOverlap;
+        }
+        if (!is_null($this->backgroundColor)) {
+            $result['backgroundColor'] = (string)$this->backgroundColor;
+        }
+        if (!is_null($this->borderColor)) {
+            $result['borderColor'] = (string)$this->borderColor;
+        }
+        if (!is_null($this->borderRadius)) {
+            $result['borderRadius'] = $this->borderRadius;
+        }
+        if (!is_null($this->borderWidth)) {
+            $result['borderWidth'] = $this->borderWidth;
+        }
+        if (!is_null($this->className)) {
+            $result['className'] = $this->className;
+        }
+        if (!is_null($this->color)) {
+            $result['color'] = (string)$this->color;
+        }
+        if (!is_null($this->crop)) {
+            $result['crop'] = $this->crop;
+        }
+        if (!is_null($this->defer)) {
+            $result['defer'] = $this->defer;
+        }
+        if (!is_null($this->enabled)) {
+            $result['enabled'] = $this->enabled;
+        }
+        if (!is_null($this->filter)) {
+            $result['filter'] = $this->filter;
+        }
+        if (!is_null($this->format)) {
+            $result['format'] = $this->format;
+        }
+        if (!is_null($this->inside)) {
+            $result['inside'] = $this->inside;
+        }
+        if (!is_null($this->overflow)) {
+            $result['overflow'] = $this->overflow;
+        }
+        if (!is_null($this->padding)) {
+            $result['padding'] = $this->padding;
+        }
+        if (!is_null($this->rotation)) {
+            $result['rotation'] = $this->rotation;
+        }
+        if (!is_null($this->shadow)) {
+            $result['shadow'] = $this->shadow;
+        }
+        if (!is_null($this->shape)) {
+            $result['shape'] = $this->shape;
+        }
+        if (!is_null($this->style)) {
+            $result['style'] = $this->style;
+        }
+        if (!is_null($this->useHTML)) {
+            $result['useHTML'] = $this->useHTML;
+        }
+        if (!is_null($this->verticalAlign)) {
+            $result['verticalAlign'] = $this->verticalAlign;
+        }
+        if (!is_null($this->x)) {
+            $result['x'] = $this->x;
+        }
+        if (!is_null($this->y)) {
+            $result['y'] = $this->y;
+        }
+        if (!is_null($this->zIndex)) {
+            $result['zIndex'] = $this->zIndex;
+        }
         ksort($result);
 
         return $result;
@@ -562,8 +638,9 @@ class DataLabels
     /**
      * @TODO
      */
-    public function formatter(){
-    //Callback JavaScript function to format the data label. Note that if a format is defined, the format takes precedence and the formatter is ignored. Available data are:
+    public function formatter()
+    {
+        //Callback JavaScript function to format the data label. Note that if a format is defined, the format takes precedence and the formatter is ignored. Available data are:
     }
 }
 
