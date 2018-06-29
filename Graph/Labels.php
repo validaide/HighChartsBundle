@@ -9,13 +9,14 @@ class Labels
 {
     const DEFAULT_FORMAT = "{value}";
 
-    /**
-     * @var
-     */
+    /** @var string|null */
     private $format;
 
+    /** @var string|null */
+    private $formatter;
+
     /**
-     * @return mixed
+     * @return null|string
      */
     public function getFormat()
     {
@@ -23,11 +24,27 @@ class Labels
     }
 
     /**
-     * @param mixed $format
+     * @param string $format
      */
-    public function setFormat($format)
+    public function setFormat(string $format)
     {
         $this->format = $format;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getFormatter(): string
+    {
+        return $this->formatter;
+    }
+
+    /**
+     * @param null|string $formatter
+     */
+    public function setFormatter(string $formatter)
+    {
+        $this->formatter = $formatter;
     }
 
     /**
@@ -39,6 +56,9 @@ class Labels
 
         if (!is_null($this->format)) {
             $result['format'] = $this->format;
+        }
+        if (!is_null($this->formatter)) {
+            $result['formatter'] = $this->formatter;
         }
 
         return $result;
