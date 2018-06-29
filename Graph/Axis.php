@@ -30,6 +30,8 @@ class Axis
     /** @var float */
     private $tickInterval;
     /** @var bool */
+    private $startOnTick;
+    /** @var bool */
     private $endOnTick;
     /** @var bool */
     private $alignTicks;
@@ -272,6 +274,24 @@ class Axis
     }
 
     /**
+     * @return bool
+     */
+    public function isStartOnTick(): bool
+    {
+        return $this->startOnTick;
+    }
+
+    /**
+     * @param bool $startOnTick
+     */
+    public function setStartOnTick(bool $startOnTick)
+    {
+        $this->startOnTick = $startOnTick;
+    }
+
+
+
+    /**
      * @return DateTimeLabelFormats
      */
     public function getDateTimeLabelFormats(): DateTimeLabelFormats
@@ -306,6 +326,10 @@ class Axis
 
         if (!is_null($this->endOnTick)) {
             $result['endOnTick'] = $this->endOnTick;
+        }
+
+        if (!is_null($this->startOnTick)) {
+            $result['startOnTick'] = $this->startOnTick;
         }
 
         if (!is_null($this->labels) && !empty($this->labels->toArray())) {
