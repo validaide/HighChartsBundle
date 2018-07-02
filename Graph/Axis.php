@@ -35,6 +35,10 @@ class Axis
     private $endOnTick;
     /** @var bool */
     private $alignTicks;
+    /** @var float */
+    private $softMin;
+    /** @var float */
+    private $softMax;
     /** @var string */
     private $type;
     /** @var DateTimeLabelFormats */
@@ -289,8 +293,38 @@ class Axis
         $this->startOnTick = $startOnTick;
     }
 
+    /**
+     * @return float|null
+     */
+    public function getSoftMin()
+    {
+        return $this->softMin;
+    }
 
+    /**
+     * @param float $softMin
+     */
+    public function setSoftMin(float $softMin = null)
+    {
+        $this->softMin = $softMin;
+    }
 
+    /**
+     * @return float|null
+     */
+    public function getSoftMax()
+    {
+        return $this->softMax;
+    }
+
+    /**
+     * @param float $softMax
+     */
+    public function setSoftMax(float $softMax = null)
+    {
+        $this->softMax = $softMax;
+    }
+    
     /**
      * @return DateTimeLabelFormats
      */
@@ -378,6 +412,14 @@ class Axis
 
         if (!is_null($this->type)) {
             $result['type'] = $this->type;
+        }
+
+        if (!is_null($this->softMin)) {
+            $result['softMin'] = $this->softMin;
+        }
+
+        if (!is_null($this->softMax)) {
+            $result['softMax'] = $this->softMax;
         }
 
         if (!is_null($this->dateTimeLabelFormats)) {
