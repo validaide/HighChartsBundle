@@ -38,6 +38,17 @@ var graph = Highcharts.chart("graph_container",
                 "zIndex": 2
             }
         ],
+        "plotLines": [
+            {
+                "color": "#FF0000",
+                "label": {
+                    "text": "X-AXIS Plot Line"
+                },
+                "value": 1,
+                "width": 2,
+                "zIndex": 10
+            }
+        ],
         "title": {
             "text": "XXXXXX"
         }
