@@ -1,3 +1,0 @@
-highcharts:
-  resource: "@HighChartsBundle/Controller"
-  type:     annotation

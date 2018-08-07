@@ -45,9 +45,14 @@ class Graph
     private $type = 'line';
 
     /**
+     * @var Series[]
+     */
+    private $drilldown;
+
+    /**
      * @var bool
      */
-    private $plotShadow = false;
+    private $plotShadow;
 
     /**
      * @var Title
@@ -83,6 +88,11 @@ class Graph
      * @var Legend
      */
     public $legend;
+
+    /**
+     * @var array|null
+     */
+    public $margin;
 
     /**
      * @var PlotOptions
@@ -210,6 +220,9 @@ class Graph
         $this->type = $type;
     }
 
+    /**
+     * @param Series $series
+     */
     public function addSeries(Series $series)
     {
         $this->series[] = $series;
@@ -248,6 +261,22 @@ class Graph
     }
 
     /**
+     * @return array|null
+     */
+    public function getMargin()
+    {
+        return $this->margin;
+    }
+
+    /**
+     * @param array|null $margin
+     */
+    public function setMargin($margin)
+    {
+        $this->margin = $margin;
+    }
+
+    /**
      * @return Tooltip
      */
     public function getTooltip()
@@ -261,6 +290,22 @@ class Graph
     public function setTooltip(Tooltip $tooltip)
     {
         $this->tooltip = $tooltip;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPlotShadow(): bool
+    {
+        return $this->plotShadow;
+    }
+
+    /**
+     * @param bool $plotShadow
+     */
+    public function setPlotShadow(bool $plotShadow)
+    {
+        $this->plotShadow = $plotShadow;
     }
 
     /**
@@ -296,6 +341,22 @@ class Graph
     }
 
     /**
+     * @param Series $series
+     */
+    public function addDrilldownSeries(Series $series)
+    {
+        $this->drilldown[] = $series->toArray();
+    }
+
+    /**
+     * @return Series[]
+     */
+    public function getDrilldown(): array
+    {
+        return $this->drilldown;
+    }
+
+    /**
      * @return string
      */
     public function toJson()
@@ -304,15 +365,25 @@ class Graph
         $builder->setJsonEncodeOptions($builder->getJsonEncodeOptions() | JSON_PRETTY_PRINT);
         $builder->setValues([
             'chart'   => [
-                'type'       => $this->type,
-                'plotShadow' => $this->plotShadow,
+                'type' => $this->type,
             ],
             'credits' => $this->credits->toArray(),
             'title'   => $this->title->toArray(),
             'tooltip' => $this->tooltip->toArray(),
-            'xAxis'   => $this->xAxis->toArray(),
             'legend'  => $this->legend->toArray(),
         ]);
+
+        if (isset($this->drilldown) && !empty($this->drilldown)) {
+            $builder->setValue('[drilldown][series]', $this->drilldown);
+        }
+
+        if (isset($this->plotShadow)) {
+            $builder->setValue('[chart][plotShadow]', $this->plotShadow);
+        }
+
+        if (isset($this->margin)) {
+            $builder->setValue('[chart][margin]', $this->margin);
+        }
 
         if (is_object($this->plotOptions)) {
             $builder->setValue('[plotOptions]', $this->plotOptions->toArray());
@@ -320,6 +391,10 @@ class Graph
 
         if (isset($this->zoomType)) {
             $builder->setValue('[charts]', $this->zoomType);
+        }
+
+        if (isset($this->xAxis)) {
+            $builder->setValue('[xAxis]', $this->xAxis->toArray());
         }
 
         if (isset($this->yAxis)) {

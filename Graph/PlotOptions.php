@@ -29,6 +29,11 @@ abstract class PlotOptions
     protected $color;
 
     /**
+     * @var DataLabels
+     */
+    private $dataLabels;
+
+    /**
      * @return bool
      */
     public function getAllowPointSelect(): bool
@@ -59,6 +64,26 @@ abstract class PlotOptions
     {
         $this->color = $color;
     }
+
+    /**
+     * @return DataLabels
+     */
+    public function getDataLabels(): DataLabels
+    {
+        if (is_null($this->dataLabels)) {
+            $this->dataLabels = new Label();
+        }
+        return $this->dataLabels;
+    }
+
+    /**
+     * @param DataLabels $dataLabels
+     */
+    public function setDataLabels(DataLabels $dataLabels)
+    {
+        $this->dataLabels = $dataLabels;
+    }
+
 
     abstract function toArray();
 }

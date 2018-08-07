@@ -8,6 +8,21 @@ namespace Validaide\HighChartsBundle\Graph;
 class Title
 {
     /**
+     * @var string|null
+     */
+    private $align;
+
+    /**
+     * @var string|null
+     */
+    private $verticalAlign;
+
+    /**
+     * @var int|null
+     */
+    private $y;
+
+    /**
      * @var string
      */
     private $text;
@@ -29,7 +44,55 @@ class Title
     }
 
     /**
-     * @return string
+     * @return null|string
+     */
+    public function getAlign()
+    {
+        return $this->align;
+    }
+
+    /**
+     * @param null|string $align
+     */
+    public function setAlign($align)
+    {
+        $this->align = $align;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getVerticalAlign()
+    {
+        return $this->verticalAlign;
+    }
+
+    /**
+     * @param null|string $verticalAlign
+     */
+    public function setVerticalAlign($verticalAlign)
+    {
+        $this->verticalAlign = $verticalAlign;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getY()
+    {
+        return $this->y;
+    }
+
+    /**
+     * @param int|null $y
+     */
+    public function setY($y)
+    {
+        $this->y = $y;
+    }
+
+    /**
+     * @return array
      */
     public function toArray()
     {
@@ -38,6 +101,20 @@ class Title
         if (!is_null($this->text)) {
             $result['text'] = $this->text;
         }
+
+        if (!is_null($this->align)) {
+            $result['align'] = $this->align;
+        }
+
+        if (!is_null($this->verticalAlign)) {
+            $result['verticalAlign'] = $this->verticalAlign;
+        }
+
+        if (!is_null($this->y)) {
+            $result['y'] = $this->y;
+        }
+
+        ksort($result);
 
         return $result;
     }

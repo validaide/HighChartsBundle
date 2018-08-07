@@ -1,0 +1,112 @@
+<div id="graph_container" style="width:100%;height:400px;"></div>
+<script type="text/javascript">
+$(function () {
+var graph = Highcharts.chart("graph_container",
+{
+    "chart": {
+        "type": "spline",
+        "plotShadow": false
+    },
+    "credits": [],
+    "title": {
+        "text": "TITLE"
+    },
+    "tooltip": {
+        "backgroundColor": "#FFFFFFF",
+        "borderRadius": 5,
+        "split": true
+    },
+    "legend": {
+        "enabled": true,
+        "reversed": false
+    },
+    "plotOptions": {
+        "spline": {
+            "allowPointSelect": false,
+            "stacking": "normal"
+        }
+    },
+    "xAxis": {
+        "crosshair": true,
+        "plotBands": [
+            {
+                "color": "#FFEEEE",
+                "borderColor": "#FFFFFFF",
+                "from": 2,
+                "id": "plot_band_x",
+                "to": 4,
+                "zIndex": 2
+            }
+        ],
+        "plotLines": [
+            {
+                "color": "#FF0000",
+                "label": {
+                    "text": "X-AXIS Plot Line"
+                },
+                "value": 1,
+                "width": 2,
+                "zIndex": 10
+            }
+        ],
+        "title": {
+            "text": "XXXXXX"
+        }
+    },
+    "yAxis": [
+        {
+            "plotBands": [
+                {
+                    "color": "#FFEEEE",
+                    "borderColor": "#FFFFFFF",
+                    "borderWidth": "1",
+                    "from": 2,
+                    "id": "plot_band_y",
+                    "label": {
+                        "align": "right",
+                        "rotation": 90,
+                        "text": "LABEL HERE"
+                    },
+                    "to": 4
+                }
+            ],
+            "plotLines": [
+                {
+                    "color": "#FF0000",
+                    "id": "plot_lineY",
+                    "value": 5.5,
+                    "width": 3,
+                    "zIndex": 2
+                }
+            ],
+            "title": {
+                "text": "YYYYYY"
+            }
+        }
+    ],
+    "series": [
+        {
+            "name": "SERIES",
+            "color": "#0000FF",
+            "type": "line",
+            "yAxis": 0,
+            "dataLabels": {
+                "borderColor": "#AAA",
+                "borderWidth": 3,
+                "enabled": true
+            },
+            "visible": true,
+            "data": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        }
+    ]
+}
+);
+});
+</script>

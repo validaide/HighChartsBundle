@@ -5,37 +5,54 @@ namespace Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**
- * Class: Graph
+ * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Series
 {
-    /**
-     * @var string
-     */
+    /** @var string|null */
+    private $id;
+
+    /** @var string */
     private $name = '';
 
-    /**
-     * @var Color
-     */
+    /** @var Color */
     private $color = null;
 
-    /**
-     * @var string|null
-     */
+    /** @var string */
+    private $drilldown = null;
+
+    /** @var string */
+    private $innerSize = null;
+
+    /** @var string|null */
     private $type = null;
 
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $yAxis = null;
 
-    /**
-     * @var array|null
-     */
+    /** @var array|null */
     private $data = null;
 
     /** @var null */
     private $tooltip = null;
+
+    /** @var int|null */
+    private $turboThreshold = null;
+
+    /** @var int */
+    private $pointInterval;
+
+    /** @var true */
+    private $visible = true;
+
+    /** @var Marker */
+    private $marker;
+
+    /** @var null|int */
+    private $zIndex;
+
+    /** @var DataLabels */
+    private $dataLabels;
 
     /**
      * Series constructor.
@@ -47,6 +64,38 @@ class Series
     {
         $this->name = $name;
         $this->data = $data;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param null|string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDrilldown()
+    {
+        return $this->drilldown;
+    }
+
+    /**
+     * @param string $drilldown
+     */
+    public function setDrilldown(string $drilldown)
+    {
+        $this->drilldown = $drilldown;
     }
 
     /**
@@ -98,6 +147,22 @@ class Series
     }
 
     /**
+     * @return string
+     */
+    public function getInnerSize(): string
+    {
+        return $this->innerSize;
+    }
+
+    /**
+     * @param string $innerSize
+     */
+    public function setInnerSize(string $innerSize)
+    {
+        $this->innerSize = $innerSize;
+    }
+
+    /**
      * @return null|string
      */
     public function getType()
@@ -111,6 +176,22 @@ class Series
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getTurboThreshold()
+    {
+        return $this->turboThreshold;
+    }
+
+    /**
+     * @param int|null $turboThreshold
+     */
+    public function setTurboThreshold($turboThreshold)
+    {
+        $this->turboThreshold = $turboThreshold;
     }
 
     /**
@@ -146,7 +227,86 @@ class Series
     }
 
     /**
-     * @return string
+     * @return bool
+     */
+    public function getVisible(): bool
+    {
+        return $this->visible;
+    }
+
+    /**
+     * @param bool $visible
+     */
+    public function setVisible(bool $visible)
+    {
+        $this->visible = $visible;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getPointInterval()
+    {
+        return $this->pointInterval;
+    }
+
+    /**
+     * @param int|null $pointInterval
+     */
+    public function setPointInterval(int $pointInterval = null)
+    {
+        $this->pointInterval = $pointInterval;
+    }
+
+    /**
+     * @return Marker
+     */
+    public function getMarker(): Marker
+    {
+        if (is_null($this->marker)) {
+            $this->marker = new Marker();
+        }
+
+        return $this->marker;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getZIndex()
+    {
+        return $this->zIndex;
+    }
+
+    /**
+     * @param int|null $zIndex
+     */
+    public function setZIndex(int $zIndex)
+    {
+        $this->zIndex = $zIndex;
+    }
+
+    /**
+     * @return DataLabels
+     */
+    public function getDataLabels(): DataLabels
+    {
+        if (is_null($this->dataLabels)) {
+        $this->dataLabels = new Label();
+        }
+        return $this->dataLabels;
+    }
+
+    /**
+     * @param DataLabels $dataLabels
+     */
+    public function setDataLabels(DataLabels $dataLabels)
+    {
+        $this->dataLabels = $dataLabels;
+    }
+
+    /**
+     * @return array
      */
     public function toArray()
     {
@@ -154,8 +314,16 @@ class Series
             'name' => $this->name,
         ];
 
+        if (!is_null($this->id)) {
+            $result['id'] = $this->id;
+        }
+
         if (!is_null($this->color)) {
             $result['color'] = (string)$this->color;
+        }
+
+        if (!is_null($this->drilldown)) {
+            $result['drilldown'] = $this->drilldown;
         }
 
         if (!is_null($this->type)) {
@@ -166,11 +334,35 @@ class Series
             $result['yAxis'] = $this->yAxis;
         }
 
+        if (!is_null($this->innerSize)) {
+            $result['innerSize'] = $this->innerSize;
+        }
+
+        if (!is_null($this->pointInterval)) {
+            $result['pointInterval'] = $this->pointInterval;
+        }
+
         if (!is_null($this->tooltip)) {
             $result['tooltip'] = $this->tooltip;
         }
 
-        $result['data'] = $this->data;
+        if (!is_null($this->turboThreshold)) {
+            $result['turboThreshold'] = $this->turboThreshold;
+        }
+
+        if (!is_null($this->marker)) {
+            $result['marker'] = $this->marker->toArray();
+        }
+
+        if (!is_null($this->zIndex)) {
+            $result['zIndex'] = $this->zIndex;
+        }
+        if (!is_null($this->dataLabels)) {
+            $result['dataLabels'] = $this->dataLabels->toArray();
+        }
+
+        $result['visible'] = $this->visible;
+        $result['data']    = $this->data;
 
         return $result;
     }

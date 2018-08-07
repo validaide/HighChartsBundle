@@ -3,60 +3,50 @@
 namespace Validaide\HighChartsBundle\Graph;
 
 /**
- * Class: Axis
+ * Class Axis
+ *
+ * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Axis
 {
-    /**
-     * @var Title
-     */
+    /** @var Title */
     private $title;
-
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $opposite;
-
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $crosshair;
-
-    /**
-     * @var array|null
-     */
+    /** @var array|null */
     private $categories = null;
-
-    /**
-     * @var float
-     */
+    /** @var float */
     private $min;
-
-    /**
-     * @var float
-     */
+    /** @var float */
     private $max;
-
-    /**
-     * @var Labels
-     */
+    /** @var Labels */
     public $labels;
-
-    /**
-     * @var PlotLine[]
-     */
+    /** @var PlotBand[] */
+    private $plotBands;
+    /** @var PlotLine[] */
     private $plotLines;
-
-    /**
-     * @var float
-     */
+    /** @var float */
     private $tickInterval;
+    /** @var bool */
+    private $startOnTick;
+    /** @var bool */
+    private $endOnTick;
+    /** @var bool */
+    private $alignTicks;
+    /** @var float */
+    private $softMin;
+    /** @var float */
+    private $softMax;
+    /** @var string */
+    private $type;
+    /** @var DateTimeLabelFormats */
+    private $dateTimeLabelFormats;
 
     /**
-     * @var string
+     * Axis constructor.
      */
-    private $type;
-
     public function __construct()
     {
         $this->title  = new Title();
@@ -160,6 +150,30 @@ class Axis
     }
 
     /**
+     * @param PlotBand $plotBand
+     */
+    public function addPlotBand(PlotBand $plotBand)
+    {
+        $this->plotBands[] = $plotBand;
+    }
+
+    /**
+     * @return PlotBand[]
+     */
+    public function getPlotBands(): array
+    {
+        return $this->plotBands;
+    }
+
+    /**
+     * @param PlotBand[] $plotBands
+     */
+    public function setPlotBands(array $plotBands)
+    {
+        $this->plotBands = $plotBands;
+    }
+
+    /**
      * @param PlotLine $plotLine
      */
     public function addPlotLine(PlotLine $plotLine)
@@ -216,13 +230,125 @@ class Axis
     }
 
     /**
-     * @return string
+     * @return bool
+     */
+    public function isEndOnTick(): bool
+    {
+        return $this->endOnTick;
+    }
+
+    /**
+     * @param bool $endOnTick
+     */
+    public function setEndOnTick(bool $endOnTick)
+    {
+        $this->endOnTick = $endOnTick;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAlignTicks(): bool
+    {
+        return $this->alignTicks;
+    }
+
+    /**
+     * @param bool $alignTicks
+     */
+    public function setAlignTicks(bool $alignTicks)
+    {
+        $this->alignTicks = $alignTicks;
+    }
+
+    /**
+     * @return Labels
+     */
+    public function getLabels(): Labels
+    {
+        return $this->labels;
+    }
+
+    /**
+     * @param Labels $labels
+     */
+    public function setLabels(Labels $labels)
+    {
+        $this->labels = $labels;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isStartOnTick(): bool
+    {
+        return $this->startOnTick;
+    }
+
+    /**
+     * @param bool $startOnTick
+     */
+    public function setStartOnTick(bool $startOnTick)
+    {
+        $this->startOnTick = $startOnTick;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getSoftMin()
+    {
+        return $this->softMin;
+    }
+
+    /**
+     * @param float $softMin
+     */
+    public function setSoftMin(float $softMin = null)
+    {
+        $this->softMin = $softMin;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getSoftMax()
+    {
+        return $this->softMax;
+    }
+
+    /**
+     * @param float $softMax
+     */
+    public function setSoftMax(float $softMax = null)
+    {
+        $this->softMax = $softMax;
+    }
+    
+    /**
+     * @return DateTimeLabelFormats
+     */
+    public function getDateTimeLabelFormats(): DateTimeLabelFormats
+    {
+        if (is_null($this->dateTimeLabelFormats)) {
+            $this->dateTimeLabelFormats = new DateTimeLabelFormats();
+        }
+
+        return $this->dateTimeLabelFormats;
+    }
+
+    /**
+     * @return array
      */
     public function toArray()
     {
         $result = [];
 
         // List elements alphabetically
+
+        if (!is_null($this->alignTicks)) {
+            $result['alignTicks'] = $this->alignTicks;
+        }
 
         if (!is_null($this->categories)) {
             $result['categories'] = $this->categories;
@@ -232,7 +358,15 @@ class Axis
             $result['crosshair'] = $this->crosshair;
         }
 
-        if (!is_null($this->labels)) {
+        if (!is_null($this->endOnTick)) {
+            $result['endOnTick'] = $this->endOnTick;
+        }
+
+        if (!is_null($this->startOnTick)) {
+            $result['startOnTick'] = $this->startOnTick;
+        }
+
+        if (!is_null($this->labels) && !empty($this->labels->toArray())) {
             $result['labels'] = $this->labels->toArray();
         }
 
@@ -246,6 +380,16 @@ class Axis
 
         if (!is_null($this->opposite)) {
             $result['opposite'] = $this->opposite;
+        }
+
+        if (!is_null($this->plotBands)) {
+            $plotBands = [];
+            /** @var PlotBand $plotBand */
+            foreach ($this->plotBands as $plotBand) {
+                $plotBands[] = $plotBand->toArray();
+            }
+
+            $result['plotBands'] = $plotBands;
         }
 
         if (!is_null($this->plotLines)) {
@@ -262,12 +406,24 @@ class Axis
             $result['tickInterval'] = $this->tickInterval;
         }
 
-        if (!is_null($this->title)) {
+        if (!is_null($this->title) && !empty($this->title->toArray())) {
             $result['title'] = $this->title->toArray();
         }
 
         if (!is_null($this->type)) {
             $result['type'] = $this->type;
+        }
+
+        if (!is_null($this->softMin)) {
+            $result['softMin'] = $this->softMin;
+        }
+
+        if (!is_null($this->softMax)) {
+            $result['softMax'] = $this->softMax;
+        }
+
+        if (!is_null($this->dateTimeLabelFormats)) {
+            $result['dateTimeLabelFormats'] = $this->dateTimeLabelFormats->toArray();
         }
 
         return $result;

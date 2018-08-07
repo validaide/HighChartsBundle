@@ -3,31 +3,43 @@
 namespace Validaide\HighChartsBundle\Graph;
 
 use Validaide\HighChartsBundle\ValueObject\Color;
-use Validaide\HighChartsBundle\ValueObject\DashStyle;
 
 /**
- * Class PlotLine
+ * Class PlotBand
  *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
-class PlotLine
+class PlotBand
 {
+    const COLOR        = 'color';
+    const BORDER_COLOR = 'borderColor';
+    const BORDER_WIDTH = 'borderWidth';
+    const CLASS_NAME   = 'className';
+    const FROM         = 'from';
+    const ID           = 'id';
+    const LABEL        = 'label';
+    const TO           = 'to';
+    const Z_INDEX      = 'zIndex';
+
     /**
-     * @var string
+     * @var
      */
     private $className;
 
     /**
-     * @var Color
+     * @var
      */
     private $color;
 
     /**
-     * @var DashStyle
+     * @var Color
      */
-    private $dashStyle;
+    private $borderColor;
 
-    // private $events;
+    /**
+     * @var int
+     */
+    private $borderWidth;
 
     /**
      * @var string
@@ -42,18 +54,21 @@ class PlotLine
     /**
      * @var float
      */
-    private $value;
+    private $from;
 
     /**
-     * @var int
+     * @var float
      */
-    private $width;
+    private $to;
 
     /**
      * @var int
      */
     private $zIndex;
 
+    /**
+     * PlotBand constructor.
+     */
     public function __construct()
     {
     }
@@ -93,33 +108,33 @@ class PlotLine
     /**
      * @return float
      */
-    public function getValue(): float
+    public function getFrom(): float
     {
-        return $this->value;
+        return $this->from;
     }
 
     /**
-     * @param float $value
+     * @param float $from
      */
-    public function setValue(float $value)
+    public function setFrom(float $from)
     {
-        $this->value = $value;
+        $this->from = $from;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getWidth(): int
+    public function getTo(): float
     {
-        return $this->width;
+        return $this->to;
     }
 
     /**
-     * @param int $width
+     * @param float $to
      */
-    public function setWidth(int $width)
+    public function setTo(float $to)
     {
-        $this->width = $width;
+        $this->to = $to;
     }
 
     /**
@@ -155,19 +170,35 @@ class PlotLine
     }
 
     /**
-     * @return DashStyle
+     * @return Color
      */
-    public function getDashStyle(): DashStyle
+    public function getBorderColor(): Color
     {
-        return $this->dashStyle;
+        return $this->borderColor;
     }
 
     /**
-     * @param DashStyle $dashStyle
+     * @param Color $borderColor
      */
-    public function setDashStyle(DashStyle $dashStyle)
+    public function setBorderColor(Color $borderColor)
     {
-        $this->dashStyle = $dashStyle;
+        $this->borderColor = $borderColor;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBorderWidth(): int
+    {
+        return $this->borderWidth;
+    }
+
+    /**
+     * @param int $borderWidth
+     */
+    public function setBorderWidth(int $borderWidth)
+    {
+        $this->borderWidth = $borderWidth;
     }
 
     /**
@@ -191,37 +222,39 @@ class PlotLine
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 
         if (!is_null($this->color)) {
-            $result['color'] = (string)$this->color;
+            $result[self::COLOR] = (string)$this->color;
+        }
+        if (!is_null($this->borderColor)) {
+            $result[self::BORDER_COLOR] = (string)$this->borderColor;
+        }
+        if (!is_null($this->borderWidth)) {
+            $result[self::BORDER_WIDTH] = (string)$this->borderWidth;
         }
         if (!is_null($this->className)) {
-            $result['className'] = $this->className;
+            $result[self::CLASS_NAME] = $this->className;
         }
-        if (!is_null($this->dashStyle)) {
-            $result['dashStyle'] = (string)$this->dashStyle;
+        if (!is_null($this->from)) {
+            $result[self::FROM] = $this->from;
         }
         if (!is_null($this->id)) {
-            $result['id'] = $this->id;
+            $result[self::ID] = $this->id;
         }
         if (!is_null($this->label)) {
-            $result['label'] = $this->label->toArray();
+            $result[self::LABEL] = $this->label->toArray();
         }
-        if (!is_null($this->value)) {
-            $result['value'] = $this->value;
-        }
-        if (!is_null($this->width)) {
-            $result['width'] = $this->width;
+        if (!is_null($this->to)) {
+            $result[self::TO] = $this->to;
         }
         if (!is_null($this->zIndex)) {
-            $result['zIndex'] = $this->zIndex;
+            $result[self::Z_INDEX] = $this->zIndex;
         }
-
 
         return $result;
     }

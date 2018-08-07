@@ -1,31 +1,23 @@
 <?php
 
-
 namespace Validaide\HighChartsBundle\Templating\Renderer;
 
-use PHPUnit\Runner\Exception;
-use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 use Validaide\HighChartsBundle\Graph;
 
+/**
+ * Class ImageRenderer
+ *
+ * @author Daniel Attevelt <daniel.attevelt@validaide.com>
+ * @author Mark Bijl <mark.bijl@validaide.com>
+ */
 class ImageRenderer
 {
+    const CMD_HIGHCHARTS_EXPORT_SERVER = 'highcharts-export-server';
+
+    const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
+
     const ALLOWED_OPTIONS = ['width', 'scale'];
-
-    /**
-     * @var string
-     */
-    private $binary;
-
-    /**
-     * ImageRenderer constructor.
-     *
-     * @param $binary
-     */
-    public function __construct($binary)
-    {
-        $this->binary = 'export PATH=$PATH:/usr/local/bin;'. $binary;
-    }
 
     /**
      * @param Graph $graph
@@ -40,8 +32,8 @@ class ImageRenderer
         $json = $graph->toJson();
 
         $prefix  = "highcharts";
-        $infile  = tempnam (  "/tmp/" ,  $prefix );
-        $outfile = $infile.".png"; 
+        $infile  = tempnam("/tmp/", $prefix);
+        $outfile = $infile . ".png";
 
         file_put_contents($infile, $json);
 
@@ -52,26 +44,25 @@ class ImageRenderer
             }
         }
 
-        $command = sprintf('%s -infile %s -outfile %s %s', $this->binary, $infile, $outfile, $optionString);
+        $command = sprintf('%s -infile %s -outfile %s %s', self::CMD_HIGHCHARTS_EXPORT_SERVER, $infile, $outfile, $optionString);
 
         $process = new Process($command);
         $process->mustRun();
+
         return $outfile;
     }
 
     /**
-     * @return array
      * @throws \Exception
      */
     private function _sanityCheck()
     {
-        $command = $this->binary;
-        $process = new Process($command);
+        $process = new Process(self::CMD_HIGHCHARTS_EXPORT_SERVER);
         $process->run();
         $code = $process->getExitCode();
 
         if ($code != 0) {
-            throw new \Exception("An error occured while running the highcharts conversion tool. Did you install it? Code: $code");
+            throw new \Exception(sprintf(self::ERROR_HIGHCHARTS_RENDERED_NOT_FOUND, $code));
         }
     }
 }
