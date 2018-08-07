@@ -6,8 +6,6 @@ use Symfony\Component\Process\Process;
 use Validaide\HighChartsBundle\Graph;
 
 /**
- * Class ImageRenderer
- *
  * @author Daniel Attevelt <daniel.attevelt@validaide.com>
  * @author Mark Bijl <mark.bijl@validaide.com>
  */

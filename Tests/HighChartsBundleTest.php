@@ -1,6 +1,6 @@
 <?php
 
-namespace Validaide\HighChartsBundle\Tests;
+namespace Tests\Validaide\HighChartsBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Validaide\HighChartsBundle\HighChartsBundle;

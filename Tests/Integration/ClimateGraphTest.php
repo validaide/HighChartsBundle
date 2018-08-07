@@ -1,13 +1,13 @@
 <?php
 
-namespace Validaide\HighChartsBundle\Tests\Integration;
+namespace Tests\Validaide\HighChartsBundle\Integration;
 
+use Tests\Validaide\HighChartsBundle\IntegrationTestCase;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Graph\Axis;
-use Validaide\HighChartsBundle\Graph\PlotLine;
 use Validaide\HighChartsBundle\Graph\PlotBand;
+use Validaide\HighChartsBundle\Graph\PlotLine;
 use Validaide\HighChartsBundle\Graph\Series;
-use Validaide\HighChartsBundle\Tests\IntegrationTestCase;
 use Validaide\HighChartsBundle\ValueObject\Color;
 use Validaide\HighChartsBundle\ValueObject\DashStyle;
 use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;

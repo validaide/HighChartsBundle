@@ -2,13 +2,9 @@
 
 namespace Validaide\HighChartsBundle\Graph;
 
-use Validaide\HighChartsBundle\Graph\DataLabels\Filter;
-use Validaide\HighChartsBundle\Graph\DataLabels\Style;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**
- * Class DataLabels
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class DataLabels
@@ -123,6 +119,7 @@ class DataLabels
     public function __construct()
     {
     }
+
     /**
      * @return int|null
      */

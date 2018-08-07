@@ -5,6 +5,9 @@ namespace Validaide\HighChartsBundle\Templating\Renderer;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Formatter\Formatter;
 
+/**
+ * @author Mark Bijl <mark.bijl@validaide.com>
+ */
 class GraphRenderer
 {
     protected $formatter;

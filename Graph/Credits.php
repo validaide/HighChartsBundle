@@ -3,7 +3,7 @@
 namespace Validaide\HighChartsBundle\Graph;
 
 /**
- * Class: Credits
+ * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Credits
 {

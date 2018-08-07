@@ -6,8 +6,6 @@ use Validaide\HighChartsBundle\Graph\DataLabels;
 use Validaide\HighChartsBundle\Graph\PlotOptions;
 
 /**
- * Class Pie
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
  */

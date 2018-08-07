@@ -3,7 +3,7 @@
 namespace Validaide\HighChartsBundle\Graph;
 
 /**
- * Class: Labels
+ * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Labels
 {

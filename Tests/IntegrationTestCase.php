@@ -1,6 +1,6 @@
 <?php
 
-namespace Validaide\HighChartsBundle\Tests;
+namespace Tests\Validaide\HighChartsBundle;
 
 use Symfony\Component\Filesystem\Filesystem;
 use Validaide\HighChartsBundle\Graph;
@@ -9,8 +9,6 @@ use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
 
 /**
- * Class IntegrationTestCase
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class IntegrationTestCase extends TestCase

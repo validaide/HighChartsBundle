@@ -6,8 +6,6 @@ use Validaide\HighChartsBundle\ValueObject\Color;
 use Validaide\HighChartsBundle\ValueObject\DashStyle;
 
 /**
- * Class PlotLine
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class PlotLine
