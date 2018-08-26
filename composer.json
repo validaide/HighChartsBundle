@@ -45,12 +45,18 @@
     "symfony/process": "^3.3"
   },
   "require-dev": {
+    "brianium/paratest": "^1.1",
     "phpunit/phpunit": "^6.3",
     "symfony/phpunit-bridge": "^3.3"
   },
   "autoload": {
     "psr-4": {
       "Validaide\\HighChartsBundle\\": ""
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Validaide\\HighChartsBundle\\": "Tests/"
     }
   },
   "repositories": [

@@ -1,21 +1,10 @@
 <?php
-/**
- * File: Bar.php
- * Date: 20/04/17
- *
- * @package  Validaide
- * @author   Marcel Tuinstra <marcel.tuinstra@valdaide.com>
- * @link     http://www.valdaide.com
- */
 
 namespace Validaide\HighChartsBundle\Graph\PlotOptions;
 
 use Validaide\HighChartsBundle\Graph\PlotOptions;
 
 /**
- * Class: Bar
- *
- * @package  Validaide
  * @author   Marcel Tuinstra <marcel.tuinstra@validaide.com>
  */
 class Bar extends PlotOptions

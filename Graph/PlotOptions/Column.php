@@ -5,8 +5,6 @@ namespace Validaide\HighChartsBundle\Graph\PlotOptions;
 use Validaide\HighChartsBundle\Graph\PlotOptions;
 
 /**
- * Class Column
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Column extends PlotOptions

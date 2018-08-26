@@ -3,7 +3,7 @@
 namespace Validaide\HighChartsBundle\ValueObject;
 
 /**
- * DashStyle
+ * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class DashStyle
 {
@@ -19,17 +19,15 @@ class DashStyle
     const DASH_STYLE_LONG_DASH_DOT      = "LongDashDot";
     const DASH_STYLE_LONG_DASH_DOT_DOT  = "LongDashDotDot";
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $dashStyle;
 
     /**
-     * Color constructor.
+     * DashStyle constructor.
      *
      * @param string $dashStyle
      */
-    public function __construct($dashStyle)
+    public function __construct(string $dashStyle)
     {
         if (!in_array($dashStyle, $this->getDashStyles())) {
             throw new \InvalidArgumentException('This Dash Style is not allowed: ' . $dashStyle);

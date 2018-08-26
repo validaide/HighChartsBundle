@@ -5,8 +5,6 @@ namespace Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**
- * Class PlotBand
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class PlotBand

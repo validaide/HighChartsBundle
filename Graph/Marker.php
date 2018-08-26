@@ -5,8 +5,6 @@ namespace Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**
- * Class Marker
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Marker

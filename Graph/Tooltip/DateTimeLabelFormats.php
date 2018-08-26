@@ -5,8 +5,6 @@ namespace Validaide\HighChartsBundle\Graph\Tooltip;
 use Validaide\HighChartsBundle\Graph\Tooltip;
 
 /**
- * Class DateTimeLabelFormats
- *
  * @author Marian Miczka <marian.miczka@validaide.com>
  */
 class DateTimeLabelFormats extends Tooltip

@@ -1,13 +1,12 @@
 <?php
 
-namespace Validaide\HighChartsBundle\Tests\Integration;
+namespace Tests\Validaide\HighChartsBundle\Integration;
 
+use Tests\Validaide\HighChartsBundle\IntegrationTestCase;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Graph\Axis;
-use Validaide\HighChartsBundle\Graph\PlotLine;
 use Validaide\HighChartsBundle\Graph\PlotOptions\Column;
 use Validaide\HighChartsBundle\Graph\Series;
-use Validaide\HighChartsBundle\Tests\IntegrationTestCase;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**
@@ -33,7 +32,7 @@ class ColumnStackedNormalGraphTest extends IntegrationTestCase
      */
     public static function getXAxisCategories()
     {
-        return ['apples','pears','oranges'];
+        return ['apples', 'pears', 'oranges'];
     }
 
     /**

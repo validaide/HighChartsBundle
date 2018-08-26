@@ -12,8 +12,6 @@ use Validaide\HighChartsBundle\Graph\Tooltip;
 use Validaide\HighChartsBundle\Graph\PlotOptions;
 
 /**
- * Class Graph
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
  */
