@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "006e7adecadcdfdafbdcc24161a87c7c",
+    "content-hash": "5a8aef547456e8e111f97a012713e171",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -3112,6 +3112,46 @@
                 "templating"
             ],
             "time": "2018-07-13T07:18:09+00:00"
+        },
+        {
+            "name": "validaide/html-builder",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/validaide/html-builder.git",
+                "reference": "2cf921f1a666e9458d6ec43d64ae28270c095871"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/2cf921f1a666e9458d6ec43d64ae28270c095871",
+                "reference": "2cf921f1a666e9458d6ec43d64ae28270c095871",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "brianium/paratest": "^1.1",
+                "phpunit/phpunit": "^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Bijl",
+                    "email": "mark.bijl@validaide.com"
+                }
+            ],
+            "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
+            "time": "2018-10-04T06:59:07+00:00"
         }
     ],
     "packages-dev": [
