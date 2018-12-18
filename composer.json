@@ -1,5 +1,6 @@
 {
   "name": "validaide/highchartsbundle",
+  "license": "MIT",
   "type": "symfony-bundle",
   "description": "HighCharts integration for your Symfony3 project.",
   "keywords": [
@@ -17,19 +18,14 @@
       "email": "mark.bijl@validaide.com"
     }
   ],
-  "license": [
-    "MIT"
-  ],
   "config": {
     "sort-packages": true,
     "platform": {
-      "php": "7.0.22"
+      "php": "7.0.30"
     }
   },
   "require": {
     "php": "^7.0",
-    "egeloen/google-map": "^2.0",
-    "egeloen/google-map-bundle": "^3.0",
     "egeloen/json-builder": "^3.0",
     "php-http/guzzle6-adapter": "^1.1",
     "php-http/httplug": "^1.1",
@@ -43,7 +39,7 @@
     "symfony/templating": "^3.4",
     "symfony/twig-bundle": "~3.4",
     "symfony/yaml": "^3.4",
-    "validaide/html-builder": "dev-development"
+    "validaide/html-builder": "1.6.*"
   },
   "require-dev": {
     "brianium/paratest": "^1.1",
