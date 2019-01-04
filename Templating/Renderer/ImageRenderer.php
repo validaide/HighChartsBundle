@@ -47,6 +47,8 @@ class ImageRenderer
         $process = new Process($command);
         $process->mustRun();
 
+        var_dump($process->getExitCodeText());
+
         return $outfile;
     }
 
