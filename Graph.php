@@ -5,6 +5,7 @@ namespace Validaide\HighChartsBundle;
 use Ivory\JsonBuilder\JsonBuilder;
 use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\Credits;
+use Validaide\HighChartsBundle\Graph\Exporting;
 use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\Graph\Title;
 use Validaide\HighChartsBundle\Graph\Legend;
@@ -96,6 +97,11 @@ class Graph
      * @var PlotOptions
      */
     public $plotOptions;
+
+    /**
+     * @var Exporting
+     */
+    public $exporting;
 
     /**
      * @var string
@@ -355,6 +361,22 @@ class Graph
     }
 
     /**
+     * @return Exporting
+     */
+    public function getExporting()
+    {
+        return $this->exporting;
+    }
+
+    /**
+     * @param Exporting $exporting
+     */
+    public function setExporting(Exporting $exporting)
+    {
+        $this->exporting = $exporting;
+    }
+
+    /**
      * @return string
      */
     public function toJson()
@@ -385,6 +407,10 @@ class Graph
 
         if (is_object($this->plotOptions)) {
             $builder->setValue('[plotOptions]', $this->plotOptions->toArray());
+        }
+
+        if (is_object($this->exporting)) {
+            $builder->setValue('[exporting]', $this->exporting->toArray());
         }
 
         if (isset($this->zoomType)) {
