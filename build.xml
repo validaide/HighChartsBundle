@@ -53,6 +53,7 @@
             <fileset dir="${basedir}/var/build">
                 <include name="*.log"/>
                 <include name="*.txt"/>
+                <include name="*.png"/>
             </fileset>
             <fileset dir="${basedir}/var/build/behat/failures">
                 <include name="*.png"/>

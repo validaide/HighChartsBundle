@@ -14,8 +14,6 @@ use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;
 use Validaide\HighChartsBundle\ValueObject\VerticalAlignment;
 
 /**
- * Class ClimateGraphTest
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class ClimateGraphTest extends IntegrationTestCase

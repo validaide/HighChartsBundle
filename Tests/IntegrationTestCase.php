@@ -2,11 +2,12 @@
 
 namespace Tests\Validaide\HighChartsBundle;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Filesystem\Filesystem;
 use Validaide\HighChartsBundle\Graph;
-use PHPUnit\Framework\TestCase;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
+use Validaide\HighChartsBundle\Templating\Renderer\RenderingException;
 
 /**
  * @author Mark Bijl <mark.bijl@validaide.com>
@@ -16,6 +17,8 @@ class IntegrationTestCase extends TestCase
     /**
      * @param Graph $graph
      * @param array $replacements
+     *
+     * @throws \ReflectionException
      */
     protected function assertGraph(Graph $graph, array $replacements)
     {
@@ -39,16 +42,14 @@ class IntegrationTestCase extends TestCase
 
         // And visualize it
         $imageRenderer = new ImageRenderer();
-        $tmpFilePath   = $imageRenderer->render($graph, ['scale' => '1.5']);
         $outputPngPath = $this->getTestOutputDirectory() . DIRECTORY_SEPARATOR . $filePrefix . '.png';
+        try {
+            $temporaryFilePath = $imageRenderer->render($graph, [ImageRenderer::HIGHCHARTS_EXPORT_SERVER_OPTION_SCALE => '1.5'], $outputPngPath);
+        } catch (RenderingException $e) {
+            $this->assertFalse(true, $e->getMessage());
+        }
 
-        $fileSystem = new Filesystem();
-        $fileSystem->copy($tmpFilePath, $outputPngPath);
-
-        $this->assertSame(
-            $expectedOutput,
-            $renderedOutput
-        );
+        $this->assertSame($expectedOutput, $renderedOutput);
     }
 
     /**
