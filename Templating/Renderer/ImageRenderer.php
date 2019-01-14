@@ -20,6 +20,7 @@ class ImageRenderer
 
     const HIGHCHARTS_EXPORT_SERVER_OPTION_WIDTH = 'width';
     const HIGHCHARTS_EXPORT_SERVER_OPTION_SCALE = 'scale';
+    const HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE  = 'type';
 
     const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
 
@@ -50,7 +51,7 @@ class ImageRenderer
 
         // Define the output PNG file path
         if (is_null($outputPath)) {
-            $outfile = $infile . ".png";
+            $outfile = $infile . "." . $options[self::HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE];
         } else {
             $outfile = $outputPath;
         }
@@ -78,6 +79,7 @@ class ImageRenderer
         return [
             self::HIGHCHARTS_EXPORT_SERVER_OPTION_WIDTH,
             self::HIGHCHARTS_EXPORT_SERVER_OPTION_SCALE,
+            self::HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE,
         ];
     }
 
@@ -89,6 +91,7 @@ class ImageRenderer
         return [
             self::HIGHCHARTS_EXPORT_SERVER_OPTION_WIDTH => null,
             self::HIGHCHARTS_EXPORT_SERVER_OPTION_SCALE => null,
+            self::HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE  => 'png',
         ];
     }
 
