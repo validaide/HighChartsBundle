@@ -26,6 +26,7 @@
   },
   "require": {
     "php": "7.2.*",
+    "ext-json": "*",
     "egeloen/json-builder": "^3.0",
     "php-http/guzzle6-adapter": "^1.1",
     "php-http/httplug": "^1.1",
@@ -39,8 +40,7 @@
     "symfony/templating": "^3.4",
     "symfony/twig-bundle": "~3.4",
     "symfony/yaml": "^3.4",
-    "validaide/html-builder": "1.6.*",
-    "ext-json": "*"
+    "validaide/html-builder": "1.7.0"
   },
   "require-dev": {
     "brianium/paratest": "^1.1",
