@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f320c236bfd8791fc382314a3e0e8af",
+    "content-hash": "044983d394ac21a8b87c6752eb5e83f3",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -2332,7 +2332,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -3117,16 +3117,16 @@
         },
         {
             "name": "validaide/html-builder",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "a3c3c52ca87fee805ec4c486d2cfef2faa95c1d4"
+                "reference": "7e803674ec9e66e9035a92f6d143ee495b2822b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/a3c3c52ca87fee805ec4c486d2cfef2faa95c1d4",
-                "reference": "a3c3c52ca87fee805ec4c486d2cfef2faa95c1d4",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/7e803674ec9e66e9035a92f6d143ee495b2822b2",
+                "reference": "7e803674ec9e66e9035a92f6d143ee495b2822b2",
                 "shasum": ""
             },
             "require": {
@@ -3153,7 +3153,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2018-12-18T07:01:08+00:00"
+            "time": "2019-01-24T20:31:48+00:00"
         }
     ],
     "packages-dev": [
@@ -4856,7 +4856,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "7.2.*"
+        "php": "7.2.*",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "platform-overrides": {
