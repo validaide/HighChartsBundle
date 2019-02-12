@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "044983d394ac21a8b87c6752eb5e83f3",
+    "content-hash": "0bf69a86264bcff7b3fc7fd237489d39",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -2332,7 +2332,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -3117,16 +3117,16 @@
         },
         {
             "name": "validaide/html-builder",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "7e803674ec9e66e9035a92f6d143ee495b2822b2"
+                "reference": "81b3345d49140224a470691ed0dcc4f70f5fc04a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/7e803674ec9e66e9035a92f6d143ee495b2822b2",
-                "reference": "7e803674ec9e66e9035a92f6d143ee495b2822b2",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/81b3345d49140224a470691ed0dcc4f70f5fc04a",
+                "reference": "81b3345d49140224a470691ed0dcc4f70f5fc04a",
                 "shasum": ""
             },
             "require": {
@@ -3142,7 +3142,11 @@
                     "": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -3153,7 +3157,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2019-01-24T20:31:48+00:00"
+            "time": "2019-02-12T13:00:54+00:00"
         }
     ],
     "packages-dev": [
