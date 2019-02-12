@@ -40,7 +40,7 @@
     "symfony/templating": "^3.4",
     "symfony/twig-bundle": "~3.4",
     "symfony/yaml": "^3.4",
-    "validaide/html-builder": "1.7.0"
+    "validaide/html-builder": "1.7.1"
   },
   "require-dev": {
     "brianium/paratest": "^1.1",
@@ -61,6 +61,16 @@
     {
       "type": "vcs",
       "url": "https://github.com/validaide/HighChartsBundle.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/validaide/common.git",
+      "no-api": true
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/validaide/html-builder.git",
+      "no-api": true
     }
   ]
 }
