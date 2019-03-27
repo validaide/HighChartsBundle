@@ -42,7 +42,7 @@ class Axis
     /** @var DateTimeLabelFormats */
     private $dateTimeLabelFormats;
     /** @var bool  */
-    private $allowDecimals = true;
+    private $allowDecimals;
 
     /**
      * Axis constructor.
