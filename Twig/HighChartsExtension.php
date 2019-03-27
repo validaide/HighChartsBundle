@@ -6,6 +6,9 @@ use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Helper\GraphHelper;
 use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
 
+/**
+ * @author Mark Bijl <mark.bijl@validaide.com>
+ */
 class HighChartsExtension extends \Twig_Extension
 {
     /**
@@ -61,7 +64,7 @@ class HighChartsExtension extends \Twig_Extension
         if (!$graph) {
             return null;
         }
-        
+
         return $this->imageRenderer->render($graph, $options);
     }
 

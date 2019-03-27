@@ -1,19 +1,8 @@
 <?php
-/**
- * File: Legend.php
- * Date: 20/04/17
- *
- * @package  Validaide
- * @author   Marcel Tuinstra <marcel.tuinstra@valdaide.com>
- * @link     http://www.valdaide.com
- */
 
 namespace Validaide\HighChartsBundle\Graph;
 
 /**
- * Class: Legend
- *
- * @package  Validaide
  * @author   Marcel Tuinstra <marcel.tuinstra@validaide.com>
  */
 class Legend

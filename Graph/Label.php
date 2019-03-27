@@ -6,7 +6,7 @@ use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;
 use Validaide\HighChartsBundle\ValueObject\VerticalAlignment;
 
 /**
- * Class: Label
+ * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Label
 {

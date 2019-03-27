@@ -2,6 +2,9 @@
 
 namespace Validaide\HighChartsBundle\Templating\Renderer;
 
+/**
+ * @author Mark Bijl <mark.bijl@validaide.com>
+ */
 class StyleSheetRenderer extends AbstractTagRenderer
 {
     /**

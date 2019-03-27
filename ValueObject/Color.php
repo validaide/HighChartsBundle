@@ -3,13 +3,11 @@
 namespace Validaide\HighChartsBundle\ValueObject;
 
 /**
- * Color
+ * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Color
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $color;
 
     /**
@@ -17,7 +15,7 @@ class Color
      *
      * @param string $color
      */
-    public function __construct($color)
+    public function __construct(string $color)
     {
         if (is_null($color)) {
             throw new \InvalidArgumentException('NULL objects are not allowed');

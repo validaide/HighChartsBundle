@@ -2,6 +2,9 @@
 
 namespace Validaide\HighChartsBundle\Templating\Formatter;
 
+/**
+ * @author Mark Bijl <mark.bijl@validaide.com>
+ */
 class Formatter
 {
     /**

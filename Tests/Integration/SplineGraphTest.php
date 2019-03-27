@@ -1,14 +1,14 @@
 <?php
 
-namespace Validaide\HighChartsBundle\Tests\Integration;
+namespace Tests\Validaide\HighChartsBundle\Integration;
 
+use Tests\Validaide\HighChartsBundle\IntegrationTestCase;
 use Validaide\HighChartsBundle\Graph;
-use Validaide\HighChartsBundle\Graph\Label;
 use Validaide\HighChartsBundle\Graph\Axis;
+use Validaide\HighChartsBundle\Graph\Label;
 use Validaide\HighChartsBundle\Graph\PlotBand;
 use Validaide\HighChartsBundle\Graph\PlotLine;
 use Validaide\HighChartsBundle\Graph\Series;
-use Validaide\HighChartsBundle\Tests\IntegrationTestCase;
 use Validaide\HighChartsBundle\ValueObject\Color;
 use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;
 
@@ -64,11 +64,12 @@ class SplineGraphTest extends IntegrationTestCase
         $this->assertGraph($climateGraph, $replacements);
     }
 }
-    /**
-     * Class ClimateGraph
-     *
-     * @author Mark Bijl <mark.bijl@validaide.com>
-     */
+
+/**
+ * Class ClimateGraph
+ *
+ * @author Mark Bijl <mark.bijl@validaide.com>
+ */
 class SplineGraph extends Graph
 {
     /**
@@ -94,13 +95,6 @@ class SplineGraph extends Graph
         $this->setTooltip($tooltip);
 
         // Plotbands, Plotlines
-        $XPlotBand = new PlotBand();
-        $XPlotBand->setId('plot_band_x');
-        $XPlotBand->setFrom(2);
-        $XPlotBand->setTo(4);
-        $XPlotBand->setColor(new Color('#FFEEEE'));
-        $XPlotBand->setZIndex(2);
-        $XPlotBand->setBorderColor(new Color('#FFFFFFF'));
 
         $YPlotBand = new PlotBand();
         $YPlotBand->setId('plot_band_y');
@@ -123,10 +117,7 @@ class SplineGraph extends Graph
         $YPlotLine->setColor(new Color('#FF0000'));
         $YPlotLine->setValue(5.5);
 
-        // xAxis
-        $this->getXAxis()->getTitle()->setText(SplineGraphTest::X_AXIS_TITLE);
-        $this->getXAxis()->setCrosshair(true);
-        $this->getXAxis()->addPlotBand($XPlotBand);
+        $this->initXAxis();
 
         // yAxis
         $yAxis = new Axis();
@@ -135,6 +126,11 @@ class SplineGraph extends Graph
         $yAxis->addPlotLine($YPlotLine);
         $this->addYAxis($yAxis);
 
+        $this->initSeries();
+    }
+
+    private function initSeries()
+    {
         $seriesPlotOne = new Series(SplineGraphTest::SERIES_1_NAME, SplineGraphTest::getSeriesData(0));
         $seriesPlotOne->setType('line');
         $seriesPlotOne->setYAxis(SplineGraphTest::SERIES_1_Y_AXIS);
@@ -147,5 +143,34 @@ class SplineGraph extends Graph
 
 
         $this->addSeries($seriesPlotOne);
+    }
+
+    private function initXAxis()
+    {
+        // xAxis
+        $this->getXAxis()->getTitle()->setText(SplineGraphTest::X_AXIS_TITLE);
+        $this->getXAxis()->setCrosshair(true);
+
+        // Plot Bands
+        $XPlotBand = new PlotBand();
+        $XPlotBand->setId('plot_band_x');
+        $XPlotBand->setFrom(2);
+        $XPlotBand->setTo(4);
+        $XPlotBand->setColor(new Color('#FFEEEE'));
+        $XPlotBand->setZIndex(2);
+        $XPlotBand->setBorderColor(new Color('#FFFFFFF'));
+
+        $this->getXAxis()->addPlotBand($XPlotBand);
+
+        // Plot Lines
+
+        $plotLine = new PlotLine();
+        $plotLine->getLabel()->setText('X-AXIS Plot Line');
+        $plotLine->setZIndex(10);
+        $plotLine->setColor(new Color('#FF0000'));
+        $plotLine->setValue(1);
+        $plotLine->setWidth(2);
+
+        $this->getXAxis()->addPlotLine($plotLine);
     }
 }

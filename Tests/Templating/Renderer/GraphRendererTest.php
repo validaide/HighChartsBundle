@@ -1,6 +1,6 @@
 <?php
 
-namespace Validaide\HighChartsBundle\Tests\Templating\Renderer;
+namespace Tests\Validaide\HighChartsBundle\Templating\Renderer;
 
 use PHPUnit\Framework\TestCase;
 use Validaide\HighChartsBundle\Graph;
@@ -11,9 +11,7 @@ use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
  */
 class GraphRendererTest extends TestCase
 {
-    /**
-     * @var GraphRenderer
-     */
+    /** @var GraphRenderer */
     private $graphRenderer;
 
     /**
@@ -24,11 +22,17 @@ class GraphRendererTest extends TestCase
         $this->graphRenderer = new GraphRenderer();
     }
 
+    /**
+     *
+     */
     public function test_graph_renderer()
     {
         $this->assertInstanceOf(GraphRenderer::class, $this->graphRenderer);
     }
 
+    /**
+     *
+     */
     public function test_render_html()
     {
         $graph = new Graph();
@@ -39,6 +43,9 @@ class GraphRendererTest extends TestCase
         );
     }
 
+    /**
+     *
+     */
     public function test_render_javascript()
     {
         $graph = new Graph();

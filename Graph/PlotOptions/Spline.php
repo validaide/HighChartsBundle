@@ -11,8 +11,6 @@ use Validaide\HighChartsBundle\Graph\Tooltip;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**
- * Class Column
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Spline extends PlotOptions
@@ -215,7 +213,6 @@ class Spline extends PlotOptions
      * @var int
      */
     protected $zIndex;
-
 
 
     /**
@@ -987,13 +984,12 @@ class Spline extends PlotOptions
         $this->zIndex = $zIndex;
     }
 
-
     /**
      * @return array
      */
     public function toArray()
     {
-        $result['spline'] = [];
+        $result['spline']  = [];
         $splinePlotOptions = [];
 
         if (!is_null($this->color)) {

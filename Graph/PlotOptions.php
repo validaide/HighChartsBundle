@@ -1,19 +1,8 @@
 <?php
-/**
- * File: PlotOptions.php
- * Date: 20/04/17
- *
- * @package  Validaide
- * @author   Marcel Tuinstra <marcel.tuinstra@valdaide.com>
- * @link     http://www.valdaide.com
- */
 
 namespace Validaide\HighChartsBundle\Graph;
 
 /**
- * Class: PlotOptions
- *
- * @package  VendorName
  * @author   Marcel Tuinstra <marcel.tuinstra@validaide.com>
  */
 abstract class PlotOptions
@@ -73,6 +62,7 @@ abstract class PlotOptions
         if (is_null($this->dataLabels)) {
             $this->dataLabels = new Label();
         }
+
         return $this->dataLabels;
     }
 

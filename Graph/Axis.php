@@ -3,8 +3,6 @@
 namespace Validaide\HighChartsBundle\Graph;
 
 /**
- * Class Axis
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Axis
@@ -326,7 +324,7 @@ class Axis
     {
         $this->softMax = $softMax;
     }
-    
+
     /**
      * @return DateTimeLabelFormats
      */

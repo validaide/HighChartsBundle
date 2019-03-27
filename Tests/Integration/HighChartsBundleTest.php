@@ -1,24 +1,22 @@
 <?php
 
-namespace Validaide\Tests\Integration;
+namespace Tests\Validaide\HighChartsBundle\Integration;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class HighChartsBundleTest
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class HighChartsBundleTest extends TestCase
 {
-    /** @var \AppKernel */
+    /** @var AppKernel */
     private $kernel;
 
     protected function setUp()
     {
         require_once __DIR__ . '/AppKernel.php';
 
-        $this->kernel = new \AppKernel('test', true);
+        $this->kernel = new AppKernel('test', true);
         $this->kernel->boot();
     }
 

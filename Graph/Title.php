@@ -3,29 +3,20 @@
 namespace Validaide\HighChartsBundle\Graph;
 
 /**
- * Class: Title
+ * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Title
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $align;
-
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $verticalAlign;
-
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $y;
-
-    /**
-     * @var string
-     */
+    /** @var string */
     private $text;
+    /** @var int */
+    private $margin;
 
     /**
      * @return string
@@ -92,6 +83,22 @@ class Title
     }
 
     /**
+     * @return int
+     */
+    public function getMargin(): int
+    {
+        return $this->margin;
+    }
+
+    /**
+     * @param int $margin
+     */
+    public function setMargin(int $margin)
+    {
+        $this->margin = $margin;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -104,6 +111,10 @@ class Title
 
         if (!is_null($this->align)) {
             $result['align'] = $this->align;
+        }
+
+        if (!is_null($this->margin)) {
+            $result['margin'] = $this->margin;
         }
 
         if (!is_null($this->verticalAlign)) {

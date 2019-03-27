@@ -1,6 +1,6 @@
 <?php
 
-namespace Validaide\HighChartsBundle\Tests\Templating\Helper;
+namespace Tests\Validaide\HighChartsBundle\Templating\Helper;
 
 use Validaide\HighChartsBundle\Graph;
 use PHPUnit\Framework\TestCase;
