@@ -43,6 +43,8 @@ class Axis
     private $dateTimeLabelFormats;
     /** @var bool  */
     private $allowDecimals;
+    /** @var int */
+    private $rotation;
 
     /**
      * Axis constructor.
@@ -444,6 +446,10 @@ class Axis
 
         if (!is_null($this->dateTimeLabelFormats)) {
             $result['dateTimeLabelFormats'] = $this->dateTimeLabelFormats->toArray();
+        }
+
+        if (!is_null($this->rotation)) {
+            $result['rotation'] = $this->rotation;
         }
 
         return $result;
