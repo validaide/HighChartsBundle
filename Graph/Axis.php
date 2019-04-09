@@ -41,6 +41,10 @@ class Axis
     private $type;
     /** @var DateTimeLabelFormats */
     private $dateTimeLabelFormats;
+    /** @var bool  */
+    private $allowDecimals;
+    /** @var int */
+    private $rotation;
 
     /**
      * Axis constructor.
@@ -336,6 +340,22 @@ class Axis
     }
 
     /**
+     * @return bool
+     */
+    public function getAllowDecimals(): bool
+    {
+        return $this->allowDecimals;
+    }
+
+    /**
+     * @param bool $allowDecimals
+     */
+    public function setAllowDecimals(bool $allowDecimals)
+    {
+        $this->allowDecimals = $allowDecimals;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -346,6 +366,10 @@ class Axis
 
         if (!is_null($this->alignTicks)) {
             $result['alignTicks'] = $this->alignTicks;
+        }
+
+        if (!is_null($this->allowDecimals)) {
+            $result['allowDecimals'] = $this->allowDecimals;
         }
 
         if (!is_null($this->categories)) {
@@ -422,6 +446,10 @@ class Axis
 
         if (!is_null($this->dateTimeLabelFormats)) {
             $result['dateTimeLabelFormats'] = $this->dateTimeLabelFormats->toArray();
+        }
+
+        if (!is_null($this->rotation)) {
+            $result['rotation'] = $this->rotation;
         }
 
         return $result;

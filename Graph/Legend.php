@@ -4,6 +4,7 @@ namespace Validaide\HighChartsBundle\Graph;
 
 /**
  * @author   Marcel Tuinstra <marcel.tuinstra@validaide.com>
+ * @author   Marian Miczka <marian.miczka@validaide.com>
  */
 class Legend
 {
@@ -16,6 +17,21 @@ class Legend
      * @var bool
      */
     private $reversed = false;
+
+    /**
+     * @var string
+     */
+    private $align;
+
+    /**
+     * @var string
+     */
+    private $layout;
+
+    /**
+     * @var string
+     */
+    private $verticalAlign;
 
     /**
      * @return boolean
@@ -50,6 +66,30 @@ class Legend
     }
 
     /**
+     * @param string|null $align
+     */
+    public function setAlign(string $align): void
+    {
+        $this->align = $align;
+    }
+
+    /**
+     * @param string|null $layout
+     */
+    public function setLayout(string $layout): void
+    {
+        $this->layout = $layout;
+    }
+
+    /**
+     * @param string|null $verticalAlign
+     */
+    public function setVerticalAlign(string $verticalAlign): void
+    {
+        $this->verticalAlign = $verticalAlign;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -62,6 +102,18 @@ class Legend
 
         if (!is_null($this->reversed)) {
             $result['reversed'] = (bool)$this->reversed;
+        }
+
+        if (!is_null($this->align)) {
+            $result['align'] = $this->align;
+        }
+
+        if (!is_null($this->layout)) {
+            $result['layout'] = $this->layout;
+        }
+
+        if (!is_null($this->verticalAlign)) {
+            $result['verticalAlign'] = $this->verticalAlign;
         }
 
         return $result;
