@@ -448,7 +448,7 @@ class Graph
         }
 
         if (isset($this->polar)) {
-            $builder->setValue('[chart][polar]', $this->margin);
+            $builder->setValue('[chart][polar]', $this->polar);
         }
 
         if (is_object($this->plotOptions)) {
