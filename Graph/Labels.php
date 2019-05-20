@@ -15,6 +15,9 @@ class Labels
     /** @var string|null */
     private $formatter;
 
+    /** @var bool|null */
+    private $enabled;
+
     /**
      * @return null|string
      */
@@ -48,6 +51,22 @@ class Labels
     }
 
     /**
+     * @return bool|null
+     */
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @param bool|null $enabled
+     */
+    public function setEnabled(?bool $enabled): void
+    {
+        $this->enabled = $enabled;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -59,6 +78,9 @@ class Labels
         }
         if (!is_null($this->formatter)) {
             $result['formatter'] = $this->formatter;
+        }
+        if (!is_null($this->enabled)) {
+            $result['enabled'] = $this->enabled;
         }
 
         return $result;
