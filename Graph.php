@@ -6,6 +6,7 @@ use Ivory\JsonBuilder\JsonBuilder;
 use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\Credits;
 use Validaide\HighChartsBundle\Graph\Exporting;
+use Validaide\HighChartsBundle\Graph\Pane;
 use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\Graph\Title;
 use Validaide\HighChartsBundle\Graph\Legend;
@@ -94,9 +95,19 @@ class Graph
     public $margin;
 
     /**
+     * @var Pane
+     */
+    public $pane;
+
+    /**
      * @var PlotOptions
      */
     public $plotOptions;
+
+    /**
+     * @var bool
+     */
+    public $polar;
 
     /**
      * @var Exporting
@@ -109,7 +120,6 @@ class Graph
     private $zoomType;
 
     /**
-     * Graph constructor.
      */
     public function __construct()
     {
@@ -209,6 +219,22 @@ class Graph
     }
 
     /**
+     * @return bool
+     */
+    public function isPolar(): bool
+    {
+        return $this->polar;
+    }
+
+    /**
+     * @param bool $polar
+     */
+    public function setPolar(bool $polar): void
+    {
+        $this->polar = $polar;
+    }
+
+    /**
      * @return string
      */
     public function getType(): string
@@ -278,6 +304,22 @@ class Graph
     public function setMargin($margin)
     {
         $this->margin = $margin;
+    }
+
+    /**
+     * @return Pane
+     */
+    public function getPane(): Pane
+    {
+        return $this->pane;
+    }
+
+    /**
+     * @param Pane $pane
+     */
+    public function setPane(Pane $pane): void
+    {
+        $this->pane = $pane;
     }
 
     /**
@@ -405,8 +447,16 @@ class Graph
             $builder->setValue('[chart][margin]', $this->margin);
         }
 
+        if (isset($this->polar)) {
+            $builder->setValue('[chart][polar]', $this->polar);
+        }
+
         if (is_object($this->plotOptions)) {
             $builder->setValue('[plotOptions]', $this->plotOptions->toArray());
+        }
+
+        if (is_object($this->pane)) {
+            $builder->setValue('[pane]', $this->pane->toArray());
         }
 
         if (is_object($this->exporting)) {
