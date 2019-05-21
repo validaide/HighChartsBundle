@@ -2,6 +2,8 @@
 
 namespace Validaide\HighChartsBundle\Graph;
 
+use Validaide\HighChartsBundle\Graph\DataLabels\Filter;
+use Validaide\HighChartsBundle\Graph\DataLabels\Style;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**
@@ -610,7 +612,7 @@ class DataLabels
             $result['shape'] = $this->shape;
         }
         if (!is_null($this->style)) {
-            $result['style'] = $this->style;
+            $result['style'] = (array)$this->style;
         }
         if (!is_null($this->useHTML)) {
             $result['useHTML'] = $this->useHTML;
