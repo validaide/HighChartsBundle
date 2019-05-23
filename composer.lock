@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e772a9e7bf0f23c423cce02e08b6389",
+    "content-hash": "0034d5d06acf5c70957be0766ba93dd8",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -2333,7 +2333,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -3118,16 +3118,16 @@
         },
         {
             "name": "validaide/html-builder",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "0495a29fc5520f8f7d1ed4defce1143d24140b29"
+                "reference": "7248123e0b7c07fa95b77eb4026ab40718ab72d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/0495a29fc5520f8f7d1ed4defce1143d24140b29",
-                "reference": "0495a29fc5520f8f7d1ed4defce1143d24140b29",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/7248123e0b7c07fa95b77eb4026ab40718ab72d3",
+                "reference": "7248123e0b7c07fa95b77eb4026ab40718ab72d3",
                 "shasum": ""
             },
             "require": {
@@ -3158,7 +3158,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2019-04-09T19:01:15+00:00"
+            "time": "2019-05-23T07:59:55+00:00"
         }
     ],
     "packages-dev": [

@@ -292,8 +292,9 @@ class Series
     public function getDataLabels(): DataLabels
     {
         if (is_null($this->dataLabels)) {
-        $this->dataLabels = new Label();
+            $this->dataLabels = new Label();
         }
+
         return $this->dataLabels;
     }
 
