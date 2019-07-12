@@ -17,7 +17,7 @@ class GraphRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->graphRenderer = new GraphRenderer();
     }
