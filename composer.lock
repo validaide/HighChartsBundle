@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bcc47c46c8c2288137a43908b5dc45e7",
+    "content-hash": "f5d2534bbbf7167ed25b7048cd26d088",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -3378,24 +3378,24 @@
         },
         {
             "name": "validaide/html-builder",
-            "version": "1.12.0",
+            "version": "dev-development",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "fece21a362211366c85365d8eec63000c7364b27"
+                "reference": "6660a495352311d972d7d1a2aeacb2e17e693954"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/fece21a362211366c85365d8eec63000c7364b27",
-                "reference": "fece21a362211366c85365d8eec63000c7364b27",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/6660a495352311d972d7d1a2aeacb2e17e693954",
+                "reference": "6660a495352311d972d7d1a2aeacb2e17e693954",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2"
             },
             "require-dev": {
-                "brianium/paratest": "^1.1",
-                "phpunit/phpunit": "^6.5"
+                "brianium/paratest": "^3.0",
+                "phpunit/phpunit": "^8.0"
             },
             "type": "library",
             "autoload": {
@@ -3418,7 +3418,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2019-06-24T17:24:32+00:00"
+            "time": "2019-07-12T11:06:53+00:00"
         }
     ],
     "packages-dev": [
@@ -5118,7 +5118,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "validaide/html-builder": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
