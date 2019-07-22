@@ -5,5 +5,9 @@ var/.DS_Store
 # Ignore Composer repositories
 vendor/
 
+# PHPUnit
+/.phpunit.result.cache
+
 # Ignore Bower repositories
 bower_components/
+

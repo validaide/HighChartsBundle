@@ -20,7 +20,7 @@ class GraphHelperTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->graphHelper = new GraphHelper(new GraphRenderer());
     }
