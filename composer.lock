@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5d2534bbbf7167ed25b7048cd26d088",
+    "content-hash": "2ddd7d6f2ac7e76819c2d888ebdb0baa",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -3378,16 +3378,16 @@
         },
         {
             "name": "validaide/html-builder",
-            "version": "dev-development",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "6660a495352311d972d7d1a2aeacb2e17e693954"
+                "reference": "675175dcb15348105f697c77dd167123bcb97bc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/6660a495352311d972d7d1a2aeacb2e17e693954",
-                "reference": "6660a495352311d972d7d1a2aeacb2e17e693954",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/675175dcb15348105f697c77dd167123bcb97bc3",
+                "reference": "675175dcb15348105f697c77dd167123bcb97bc3",
                 "shasum": ""
             },
             "require": {
@@ -3418,7 +3418,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2019-07-12T11:06:53+00:00"
+            "time": "2019-07-22T09:38:17+00:00"
         }
     ],
     "packages-dev": [
@@ -4331,8 +4331,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -5118,9 +5118,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "validaide/html-builder": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
