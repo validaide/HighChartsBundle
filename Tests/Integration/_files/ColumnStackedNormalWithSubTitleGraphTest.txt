@@ -1,0 +1,77 @@
+<div id="graph_container" style="width:100%;height:400px;"></div>
+<script type="text/javascript">
+$(function () {
+var graph = Highcharts.chart("graph_container",
+{
+    "chart": {
+        "type": "[TYPE]",
+        "plotShadow": false
+    },
+    "credits": [],
+    "title": {
+        "text": "[TITLE]"
+    },
+    "tooltip": [],
+    "legend": {
+        "enabled": true,
+        "reversed": false
+    },
+    "subtitle": {
+        "text": "[SUBTITLE]"
+    },
+    "plotOptions": {
+        "series": {
+            "allowPointSelect": false,
+            "stacking": "normal"
+        }
+    },
+    "xAxis": {
+        "categories": [X_AXIS_CATEGORIES],
+        "crosshair": true,
+        "title": {
+            "text": "[X_AXIS_TITLE]"
+        }
+    },
+    "yAxis": [
+        {
+            "alignTicks": true,
+            "endOnTick": true,
+            "labels": {
+                "format": "{value}"
+            },
+            "opposite": true,
+            "title": {
+                "text": "[Y_AXIS_TITLE_FRUIT]"
+            }
+        }
+    ],
+    "series": [
+        {
+            "name": "[SERIES_1_NAME]",
+            "color": "#0000FF",
+            "type": "column",
+            "yAxis": [SERIES_1_Y_AXIS],
+            "visible": true,
+            "data": [SERIES_1_DATA]
+        },
+        {
+            "name": "[SERIES_2_NAME]",
+            "color": "#FF0000",
+            "type": "column",
+            "yAxis": [SERIES_2_Y_AXIS],
+            "visible": true,
+            "data": [SERIES_2_DATA]
+        },
+        {
+            "name": "[SERIES_3_NAME]",
+            "color": "lightblue",
+            "type": "column",
+            "yAxis": [SERIES_3_Y_AXIS],
+            "visible": true,
+            "data": [SERIES_3_DATA]
+        }
+    ]
+}
+);
+});
+</script>
