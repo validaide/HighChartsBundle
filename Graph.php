@@ -8,6 +8,7 @@ use Validaide\HighChartsBundle\Graph\Credits;
 use Validaide\HighChartsBundle\Graph\Exporting;
 use Validaide\HighChartsBundle\Graph\Pane;
 use Validaide\HighChartsBundle\Graph\Series;
+use Validaide\HighChartsBundle\Graph\SubTitle;
 use Validaide\HighChartsBundle\Graph\Title;
 use Validaide\HighChartsBundle\Graph\Legend;
 use Validaide\HighChartsBundle\Graph\Tooltip;
@@ -58,6 +59,11 @@ class Graph
      * @var Title
      */
     private $title;
+
+    /**
+     * @var SubTitle|null
+     */
+    private $subTitle;
 
     /**
      * @var Axis
@@ -123,11 +129,11 @@ class Graph
      */
     public function __construct()
     {
-        $this->xAxis   = new Axis();
-        $this->title   = new Title();
-        $this->credits = new Credits();
-        $this->tooltip = new Tooltip();
-        $this->legend  = new Legend();
+        $this->xAxis    = new Axis();
+        $this->title    = new Title();
+        $this->credits  = new Credits();
+        $this->tooltip  = new Tooltip();
+        $this->legend   = new Legend();
     }
 
     /**
@@ -168,6 +174,22 @@ class Graph
     public function getTitle(): Title
     {
         return $this->title;
+    }
+
+    /**
+     * @return SubTitle|null
+     */
+    public function getSubTitle(): ?SubTitle
+    {
+        return $this->subTitle;
+    }
+
+    /**
+     * @param SubTitle $subTitle
+     */
+    public function setSubTitle(SubTitle $subTitle)
+    {
+        $this->subTitle = $subTitle;
     }
 
     /**
@@ -426,14 +448,18 @@ class Graph
         $builder = new JsonBuilder();
         $builder->setJsonEncodeOptions($builder->getJsonEncodeOptions() | JSON_PRETTY_PRINT);
         $builder->setValues([
-            'chart'   => [
+            'chart'    => [
                 'type' => $this->type,
             ],
-            'credits' => $this->credits->toArray(),
-            'title'   => $this->title->toArray(),
-            'tooltip' => $this->tooltip->toArray(),
-            'legend'  => $this->legend->toArray(),
+            'credits'  => $this->credits->toArray(),
+            'title'    => $this->title->toArray(),
+            'tooltip'  => $this->tooltip->toArray(),
+            'legend'   => $this->legend->toArray(),
         ]);
+
+        if (isset($this->subTitle) && !empty($this->subTitle)) {
+            $builder->setValue('[subTitle]', $this->subTitle->toArray());
+        }
 
         if (isset($this->drilldown) && !empty($this->drilldown)) {
             $builder->setValue('[drilldown][series]', $this->drilldown);
