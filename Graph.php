@@ -458,7 +458,7 @@ class Graph
         ]);
 
         if (isset($this->subTitle) && !empty($this->subTitle)) {
-            $builder->setValue('[subTitle]', $this->subTitle->toArray());
+            $builder->setValue('[subtitle]', $this->subTitle->toArray());
         }
 
         if (isset($this->drilldown) && !empty($this->drilldown)) {
