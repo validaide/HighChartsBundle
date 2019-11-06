@@ -3,9 +3,9 @@
 namespace Validaide\HighChartsBundle\Graph;
 
 /**
- * @author Mark Bijl <mark.bijl@validaide.com>
+ * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
  */
-class Title
+class SubTitle
 {
     /** @var string|null */
     private $align;

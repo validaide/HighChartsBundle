@@ -18,6 +18,7 @@ class ColumnStackedNormalGraphTest extends IntegrationTestCase
 {
     const TYPE               = 'column';
     const TITLE              = 'Test';
+    const SUB_TITLE          = 'Sub Test';
     const Y_AXIS_TITLE_FRUIT = 'Fruit';
     const X_AXIS_TITLE       = 'Months';
     const SERIES_1_NAME      = 'Plot 1';
@@ -52,7 +53,7 @@ class ColumnStackedNormalGraphTest extends IntegrationTestCase
     /**
      *
      */
-    public function test_render()
+    public function test_render_with_title_but_no_subtitle()
     {
         $replacements = [
             'TYPE'               => self::TYPE,
@@ -71,21 +72,68 @@ class ColumnStackedNormalGraphTest extends IntegrationTestCase
             'SERIES_3_DATA'      => $this->traverse(json_encode(self::getSeriesData(2), JSON_PRETTY_PRINT), 16),
         ];
 
-        $columnStackedNormalGraph = new ColumnStackedNormalGraph();
+        $this->assertGraph(new ColumnStackedNormalGraph(), $replacements);
+    }
 
-        $this->assertGraph($columnStackedNormalGraph, $replacements);
+    /**
+     *
+     */
+    public function test_render_with_title_and_subtitle()
+    {
+        $replacements = [
+            'TYPE'               => self::TYPE,
+            'TITLE'              => self::TITLE,
+            'SUBTITLE'           => self::SUB_TITLE,
+            'X_AXIS_TITLE'       => self::X_AXIS_TITLE,
+            'X_AXIS_CATEGORIES'  => $this->traverse(json_encode(self::getXAxisCategories(), JSON_PRETTY_PRINT), 12),
+            'Y_AXIS_TITLE_FRUIT' => self::Y_AXIS_TITLE_FRUIT,
+            'SERIES_1_NAME'      => self::SERIES_1_NAME,
+            'SERIES_1_Y_AXIS'    => self::SERIES_1_Y_AXIS,
+            'SERIES_2_NAME'      => self::SERIES_2_NAME,
+            'SERIES_2_Y_AXIS'    => self::SERIES_2_Y_AXIS,
+            'SERIES_3_NAME'      => self::SERIES_3_NAME,
+            'SERIES_3_Y_AXIS'    => self::SERIES_3_Y_AXIS,
+            'SERIES_1_DATA'      => $this->traverse(json_encode(self::getSeriesData(0), JSON_PRETTY_PRINT), 16),
+            'SERIES_2_DATA'      => $this->traverse(json_encode(self::getSeriesData(1), JSON_PRETTY_PRINT), 16),
+            'SERIES_3_DATA'      => $this->traverse(json_encode(self::getSeriesData(2), JSON_PRETTY_PRINT), 16),
+        ];
+
+        $this->assertGraph(new ColumnStackedNormalWithSubTitleGraph(), $replacements);
+    }
+
+    /**
+     *
+     */
+    public function test_render_with_hidden_title()
+    {
+        $replacements = [
+            'TYPE'               => self::TYPE,
+            'TITLE'              => self::TITLE,
+            'X_AXIS_TITLE'       => self::X_AXIS_TITLE,
+            'X_AXIS_CATEGORIES'  => $this->traverse(json_encode(self::getXAxisCategories(), JSON_PRETTY_PRINT), 12),
+            'Y_AXIS_TITLE_FRUIT' => self::Y_AXIS_TITLE_FRUIT,
+            'SERIES_1_NAME'      => self::SERIES_1_NAME,
+            'SERIES_1_Y_AXIS'    => self::SERIES_1_Y_AXIS,
+            'SERIES_2_NAME'      => self::SERIES_2_NAME,
+            'SERIES_2_Y_AXIS'    => self::SERIES_2_Y_AXIS,
+            'SERIES_3_NAME'      => self::SERIES_3_NAME,
+            'SERIES_3_Y_AXIS'    => self::SERIES_3_Y_AXIS,
+            'SERIES_1_DATA'      => $this->traverse(json_encode(self::getSeriesData(0), JSON_PRETTY_PRINT), 16),
+            'SERIES_2_DATA'      => $this->traverse(json_encode(self::getSeriesData(1), JSON_PRETTY_PRINT), 16),
+            'SERIES_3_DATA'      => $this->traverse(json_encode(self::getSeriesData(2), JSON_PRETTY_PRINT), 16),
+        ];
+
+        $this->assertGraph(new ColumnStackedNormalWithHiddenTitleGraph(), $replacements);
     }
 }
 
 /**
- * Class ClimateGraph
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class ColumnStackedNormalGraph extends Graph
 {
     /**
-     * ClimateGraph constructor.
+     * I am a constructor bot *BEEP* *BOOP*
      */
     public function __construct()
     {
@@ -131,5 +179,39 @@ class ColumnStackedNormalGraph extends Graph
         $this->addSeries($seriesPlotOne);
         $this->addSeries($seriesPears);
         $this->addSeries($seriesOranges);
+    }
+}
+
+/**
+ * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
+ */
+class ColumnStackedNormalWithSubTitleGraph extends ColumnStackedNormalGraph
+{
+    /**
+     * I am a constructor bot *BEEP* *BOOP*
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $subTitle = new Graph\SubTitle();
+        $subTitle->setText(ColumnStackedNormalGraphTest::SUB_TITLE);
+        $this->setSubTitle($subTitle);
+    }
+}
+
+/**
+ * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
+ */
+class ColumnStackedNormalWithHiddenTitleGraph extends ColumnStackedNormalGraph
+{
+    /**
+     * I am a constructor bot *BEEP* *BOOP*
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->getTitle()->setHidden(true);
     }
 }
