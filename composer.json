@@ -32,20 +32,20 @@
     "php-http/httplug": "^1.1",
     "php-http/httplug-bundle": "^1.7",
     "php-http/message": "^1.6",
-    "symfony/console": "^3.4",
-    "symfony/dependency-injection": "~3.4",
-    "symfony/framework-bundle": "^3.4",
-    "symfony/options-resolver": "^3.4",
-    "symfony/process": "^3.4",
-    "symfony/templating": "^3.4",
-    "symfony/twig-bundle": "~3.4",
-    "symfony/yaml": "^3.4",
+    "symfony/console": "^4.2",
+    "symfony/dependency-injection": "^4.2",
+    "symfony/framework-bundle": "^4.2",
+    "symfony/options-resolver": "^4.2",
+    "symfony/process": "^4.2",
+    "symfony/templating": "^4.2",
+    "symfony/twig-bundle": "~4.2",
+    "symfony/yaml": "^4.2",
     "validaide/html-builder": "dev-development"
   },
   "require-dev": {
     "brianium/paratest": "^3.0",
     "phpunit/phpunit": "^8.0",
-    "symfony/phpunit-bridge": "^3.3"
+    "symfony/phpunit-bridge": "^4.2"
   },
   "autoload": {
     "psr-4": {

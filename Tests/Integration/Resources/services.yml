@@ -14,7 +14,7 @@ services:
   # HELPERS              #
   ########################
 
-  Validaide\HighChartsBundle\Templating\Helper\GraphHelper:
+  Validaide\HighChartsBundle\Templating\Helper\GraphHelper: ~
 
   ########################
   # TWIG EXTENSIONS      #

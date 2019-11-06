@@ -2,6 +2,8 @@
 
 namespace Validaide\HighChartsBundle\Twig;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Helper\GraphHelper;
 use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
@@ -9,16 +11,11 @@ use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
 /**
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
-class HighChartsExtension extends \Twig_Extension
+class HighChartsExtension extends AbstractExtension
 {
-    /**
-     * @var GraphHelper
-     */
+    /** @var GraphHelper */
     private $graphHelper;
-
-    /**
-     * @var ImageRenderer
-     */
+    /** @var ImageRenderer */
     private $imageRenderer;
 
     /**
@@ -37,10 +34,10 @@ class HighChartsExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('highcharts', [$this, 'render'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('highcharts_static', [$this, 'renderStatic'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('highcharts_container', [$this, 'renderHtml'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('highcharts_js', [$this, 'renderJavascript'], ['is_safe' => ['html']]),
+            new TwigFunction('highcharts', [$this, 'render'], ['is_safe' => ['html']]),
+            new TwigFunction('highcharts_static', [$this, 'renderStatic'], ['is_safe' => ['html']]),
+            new TwigFunction('highcharts_container', [$this, 'renderHtml'], ['is_safe' => ['html']]),
+            new TwigFunction('highcharts_js', [$this, 'renderJavascript'], ['is_safe' => ['html']]),
         ];
     }
 

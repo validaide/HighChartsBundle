@@ -2,12 +2,12 @@
 
 namespace Tests\Validaide\HighChartsBundle\Integration;
 
+use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
+use Validaide\HighChartsBundle\HighChartsBundle;
 
 /**
- * Class AppKernel
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class AppKernel extends Kernel
@@ -18,9 +18,8 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
-
-            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new \Validaide\HighChartsBundle\HighChartsBundle(),
+            new FrameworkBundle(),
+            new HighChartsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['test'])) {

@@ -17,13 +17,9 @@ class GraphHelper extends Helper
     private $graphRender;
 
     /**
-     * GraphHelper constructor.
-     *
      * @param GraphRenderer $graphRenderer
      */
-    public function __construct(
-        GraphRenderer $graphRenderer
-    )
+    public function __construct(GraphRenderer $graphRenderer)
     {
         $this->graphRender = $graphRenderer;
     }

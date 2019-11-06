@@ -65,7 +65,7 @@ class ImageRenderer
 
         $command = sprintf('%s -infile %s -outfile %s %s', self::CMD_HIGHCHARTS_EXPORT_SERVER, $infile, $outfile, implode(" ", $optionParts));
 
-        $process = new Process($command);
+        $process = Process::fromShellCommandline($command);
         $process->mustRun();
 
         return $outfile;
@@ -100,7 +100,7 @@ class ImageRenderer
      */
     private function _sanityCheck(): void
     {
-        $process = new Process(self::CMD_HIGHCHARTS_EXPORT_SERVER);
+        $process = Process::fromShellCommandline(self::CMD_HIGHCHARTS_EXPORT_SERVER);
         $process->run();
         $code = $process->getExitCode();
 
