@@ -27,25 +27,23 @@
   "require": {
     "php": "7.2.*",
     "ext-json": "*",
-    "egeloen/json-builder": "^3.0",
     "php-http/guzzle6-adapter": "^1.1",
     "php-http/httplug": "^1.1",
     "php-http/httplug-bundle": "^1.7",
     "php-http/message": "^1.6",
-    "symfony/console": "^4.2",
-    "symfony/dependency-injection": "^4.2",
-    "symfony/framework-bundle": "^4.2",
-    "symfony/options-resolver": "^4.2",
-    "symfony/process": "^4.2",
-    "symfony/templating": "^4.2",
-    "symfony/twig-bundle": "~4.2",
-    "symfony/yaml": "^4.2",
+    "symfony/dependency-injection": "^4.3",
+    "symfony/framework-bundle": "^4.3",
+    "symfony/options-resolver": "^4.3",
+    "symfony/process": "^4.3",
+    "symfony/templating": "^4.3",
+    "symfony/twig-bundle": "~4.3",
+    "symfony/yaml": "^4.3",
     "validaide/html-builder": "^2.2"
   },
   "require-dev": {
     "brianium/paratest": "^3.0",
     "phpunit/phpunit": "^8.0",
-    "symfony/phpunit-bridge": "^4.2"
+    "symfony/phpunit-bridge": "^4.3"
   },
   "autoload": {
     "psr-4": {
