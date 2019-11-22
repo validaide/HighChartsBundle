@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Validaide\HighChartsBundle\Integration;
+namespace Validaide\HighChartsBundle\Tests\Integration;
 
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Graph\Series;
-use Tests\Validaide\HighChartsBundle\IntegrationTestCase;
+use Validaide\HighChartsBundle\Tests\IntegrationTestCase;
 
 /**
  * Class HalfDonutGraphTest

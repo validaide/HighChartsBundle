@@ -1,9 +1,12 @@
 <?php
 
-namespace Tests\Validaide\HighChartsBundle\Templating\Renderer;
+namespace Validaide\HighChartsBundle\Tests\Templating\Renderer;
 
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Serializer;
 use Validaide\HighChartsBundle\Graph;
+use Validaide\HighChartsBundle\Serializer\Normalizer\GraphNormalizer;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 
 /**
@@ -19,7 +22,9 @@ class GraphRendererTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->graphRenderer = new GraphRenderer();
+        $normalizers         = [new GraphNormalizer()];
+        $encoders            = [new JsonEncoder()];
+        $this->graphRenderer = new GraphRenderer(new Serializer($normalizers, $encoders));
     }
 
     /**

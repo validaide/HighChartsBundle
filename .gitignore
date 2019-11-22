@@ -1,9 +1,10 @@
 .DS_Store
-var/.DS_Store
+src/var/.DS_Store
 .idea
 
 # Ignore Composer repositories
 vendor/
+var/
 
 # PHPUnit
 /.phpunit.result.cache

@@ -15,12 +15,12 @@ $ composer require validaide/highchartsbundle
 
 ### Register the Bundle
 
-Now add the Bundle in your ```AppKernel```:
+Now add the Bundle in your ```ValidaideHighChartsBundleTestingKernel```:
 
 ``` php
-// app/AppKernel.php
+// app/ValidaideHighChartsBundleTestingKernel.php
 
-class AppKernel extends Kernel
+class ValidaideHighChartsBundleTestingKernel extends Kernel
 {
     public function registerBundles()
     {

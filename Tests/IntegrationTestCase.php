@@ -1,10 +1,13 @@
 <?php
 
-namespace Tests\Validaide\HighChartsBundle;
+namespace Validaide\HighChartsBundle\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Filesystem\Filesystem;
+use ReflectionClass;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Serializer;
 use Validaide\HighChartsBundle\Graph;
+use Validaide\HighChartsBundle\Serializer\Normalizer\GraphNormalizer;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
 use Validaide\HighChartsBundle\Templating\Renderer\RenderingException;
@@ -17,14 +20,15 @@ class IntegrationTestCase extends TestCase
     /**
      * @param Graph $graph
      * @param array $replacements
-     *
-     * @throws \ReflectionException
      */
     protected function assertGraph(Graph $graph, array $replacements)
     {
-        $reflectionClass   = new \ReflectionClass($graph);
+        $normalizers       = [new GraphNormalizer()];
+        $encoders          = [new JsonEncoder()];
+        $serializer        = new Serializer($normalizers, $encoders);
+        $reflectionClass   = new ReflectionClass($graph);
         $expectedInputPath = $this->getTestFilesDirectory() . DIRECTORY_SEPARATOR . $reflectionClass->getShortName() . 'Test.txt';
-        $graphRenderer     = new GraphRenderer();
+        $graphRenderer     = new GraphRenderer($serializer);
         $expectedOutput    = file_get_contents($expectedInputPath);
         $renderedOutput    = $graphRenderer->render($graph);
 
@@ -41,7 +45,7 @@ class IntegrationTestCase extends TestCase
         file_put_contents($renderedOutputPath, $renderedOutput);
 
         // And visualize it
-        $imageRenderer = new ImageRenderer();
+        $imageRenderer = new ImageRenderer($serializer);
         $outputPngPath = $this->getTestOutputDirectory() . DIRECTORY_SEPARATOR . $filePrefix . '.png';
         try {
             $temporaryFilePath = $imageRenderer->render($graph, [ImageRenderer::HIGHCHARTS_EXPORT_SERVER_OPTION_SCALE => '1.5'], $outputPngPath);

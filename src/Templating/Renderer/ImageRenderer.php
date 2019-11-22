@@ -4,6 +4,8 @@ namespace Validaide\HighChartsBundle\Templating\Renderer;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Serializer\Encoder\JsonEncode;
+use Symfony\Component\Serializer\Serializer;
 use Validaide\HighChartsBundle\Graph;
 
 /**
@@ -23,6 +25,17 @@ class ImageRenderer
     const HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE  = 'type';
 
     const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
+
+    /** @var Serializer */
+    private $serializer;
+
+    /**
+     * @param Serializer $serializer
+     */
+    public function __construct(Serializer $serializer)
+    {
+        $this->serializer = $serializer;
+    }
 
     /**
      * @param Graph       $graph
@@ -47,7 +60,7 @@ class ImageRenderer
         $infile = tempnam("/tmp/", $prefix);
 
         // Write the JSON to the JSON file
-        file_put_contents($infile, $graph->toJson());
+        file_put_contents($infile, $this->serializer->serialize($graph, 'json', [JsonEncode::OPTIONS => JSON_PRETTY_PRINT]));
 
         // Define the output PNG file path
         if (is_null($outputPath)) {

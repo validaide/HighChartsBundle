@@ -9,12 +9,10 @@ use Validaide\HighChartsBundle\Templating\Formatter\Formatter;
  */
 class AbstractTagRenderer
 {
-    /** @var Formatter  */
+    /** @var Formatter */
     protected $formatter;
 
     /**
-     * AbstractTagRenderer constructor.
-     *
      * @param Formatter $formatter
      */
     public function __construct(Formatter $formatter)

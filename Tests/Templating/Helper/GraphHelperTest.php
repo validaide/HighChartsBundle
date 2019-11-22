@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Validaide\HighChartsBundle\Templating\Helper;
+namespace Validaide\HighChartsBundle\Tests\Templating\Helper;
 
-use Validaide\HighChartsBundle\Graph;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Serializer\Serializer;
 use Validaide\HighChartsBundle\Templating\Helper\GraphHelper;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 
@@ -22,7 +22,7 @@ class GraphHelperTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->graphHelper = new GraphHelper(new GraphRenderer());
+        $this->graphHelper = new GraphHelper(new GraphRenderer(new Serializer()));
     }
 
     /**

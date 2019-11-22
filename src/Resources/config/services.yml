@@ -4,11 +4,17 @@ services:
     autoconfigure: true
 
   ########################
+  # FORMATTER            #
+  ########################
+
+  Validaide\HighChartsBundle\Templating\Formatter\Formatter:
+
+  ########################
   # RENDERERS            #
   ########################
 
-  Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer: ~
-  Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer: ~
+  Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer:
+    public: true
 
   ########################
   # HELPERS              #

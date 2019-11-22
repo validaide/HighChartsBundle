@@ -22,7 +22,6 @@
         <whitelist>
             <directory suffix=".php">./</directory>
             <exclude>
-                <directory>./Resources</directory>
                 <directory>./Tests</directory>
                 <directory>./vendor</directory>
                 <directory>./var</directory>

@@ -114,7 +114,7 @@
             <arg value="--testsuite"/>
             <arg value="unit"/>
         </exec>
-        <copy file="var/build/phpunit/phpunit-junit.xml" tofile="var/build/phpunit/phpunit-junit-unit.xml"/>
+        <copy file="src/var/build/phpunit/phpunit-junit.xml" tofile="src/var/build/phpunit/phpunit-junit-unit.xml"/>
     </target>
 
     <target name="phpunit-with-coverage" description="Run unit tests with PHPUnit WITH coverage">
@@ -128,8 +128,8 @@
             <arg value="--testsuite"/>
             <arg value="unit"/>
         </exec>
-        <copy file="var/build/phpunit/phpunit-clover.xml" tofile="var/build/phpunit/phpunit-clover-unit.xml"/>
-        <copy file="var/build/phpunit/phpunit-junit.xml" tofile="var/build/phpunit/phpunit-junit-unit.xml"/>
+        <copy file="src/var/build/phpunit/phpunit-clover.xml" tofile="src/var/build/phpunit/phpunit-clover-unit.xml"/>
+        <copy file="src/var/build/phpunit/phpunit-junit.xml" tofile="src/var/build/phpunit/phpunit-junit-unit.xml"/>
     </target>
 
     <target name="phpunit-integration" description="Run integration tests with PHPUnit WITHOUT coverage">
@@ -138,7 +138,7 @@
             <arg value="--testsuite"/>
             <arg value="integration"/>
         </exec>
-        <copy file="var/build/phpunit/phpunit-junit.xml" tofile="var/build/phpunit/phpunit-junit-integration.xml"/>
+        <copy file="src/var/build/phpunit/phpunit-junit.xml" tofile="src/var/build/phpunit/phpunit-junit-integration.xml"/>
     </target>
 
     <target name="phpunit-integration-with-coverage" description="Run integration tests with PHPUnit WITH coverage">
@@ -152,8 +152,8 @@
             <arg value="--testsuite"/>
             <arg value="integration"/>
         </exec>
-        <copy file="var/build/phpunit/phpunit-clover.xml" tofile="var/build/phpunit/phpunit-clover-integration.xml"/>
-        <copy file="var/build/phpunit/phpunit-junit.xml" tofile="var/build/phpunit/phpunit-junit-integration.xml"/>
+        <copy file="src/var/build/phpunit/phpunit-clover.xml" tofile="src/var/build/phpunit/phpunit-clover-integration.xml"/>
+        <copy file="src/var/build/phpunit/phpunit-junit.xml" tofile="src/var/build/phpunit/phpunit-junit-integration.xml"/>
     </target>
 
     <!-- FASTEST + PHPUNIT -->

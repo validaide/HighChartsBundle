@@ -2,17 +2,16 @@
 
 namespace Validaide\HighChartsBundle;
 
-use Ivory\JsonBuilder\JsonBuilder;
 use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\Credits;
 use Validaide\HighChartsBundle\Graph\Exporting;
+use Validaide\HighChartsBundle\Graph\Legend;
 use Validaide\HighChartsBundle\Graph\Pane;
+use Validaide\HighChartsBundle\Graph\PlotOptions;
 use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\Graph\SubTitle;
 use Validaide\HighChartsBundle\Graph\Title;
-use Validaide\HighChartsBundle\Graph\Legend;
 use Validaide\HighChartsBundle\Graph\Tooltip;
-use Validaide\HighChartsBundle\Graph\PlotOptions;
 
 /**
  * @author Mark Bijl <mark.bijl@validaide.com>
@@ -129,11 +128,11 @@ class Graph
      */
     public function __construct()
     {
-        $this->xAxis    = new Axis();
-        $this->title    = new Title();
-        $this->credits  = new Credits();
-        $this->tooltip  = new Tooltip();
-        $this->legend   = new Legend();
+        $this->xAxis   = new Axis();
+        $this->title   = new Title();
+        $this->credits = new Credits();
+        $this->tooltip = new Tooltip();
+        $this->legend  = new Legend();
     }
 
     /**
@@ -441,60 +440,58 @@ class Graph
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function toJson()
+    public function toArray(): array
     {
-        $builder = new JsonBuilder();
-        $builder->setJsonEncodeOptions($builder->getJsonEncodeOptions() | JSON_PRETTY_PRINT);
-        $builder->setValues([
-            'chart'    => [
+        $result = [
+            'chart'   => [
                 'type' => $this->type,
             ],
-            'credits'  => $this->credits->toArray(),
-            'title'    => $this->title->toArray(),
-            'tooltip'  => $this->tooltip->toArray(),
-            'legend'   => $this->legend->toArray(),
-        ]);
+            'credits' => $this->credits->toArray(),
+            'title'   => $this->title->toArray(),
+            'tooltip' => $this->tooltip->toArray(),
+            'legend'  => $this->legend->toArray(),
+        ];
 
         if (isset($this->subTitle) && !empty($this->subTitle)) {
-            $builder->setValue('[subtitle]', $this->subTitle->toArray());
+            $result['subtitle'] = $this->subTitle->toArray();
         }
 
         if (isset($this->drilldown) && !empty($this->drilldown)) {
-            $builder->setValue('[drilldown][series]', $this->drilldown);
+            $result['drilldown']['series'] = $this->drilldown;
         }
 
         if (isset($this->plotShadow)) {
-            $builder->setValue('[chart][plotShadow]', $this->plotShadow);
+            $result['chart']['plotShadow'] = $this->plotShadow;
         }
 
         if (isset($this->margin)) {
-            $builder->setValue('[chart][margin]', $this->margin);
+            $result['chart']['margin'] = $this->margin;
         }
 
         if (isset($this->polar)) {
-            $builder->setValue('[chart][polar]', $this->polar);
+            $result['chart']['polar'] = $this->polar;
         }
 
         if (is_object($this->plotOptions)) {
-            $builder->setValue('[plotOptions]', $this->plotOptions->toArray());
+            $result['plotOptions'] = $this->plotOptions->toArray();
         }
 
         if (is_object($this->pane)) {
-            $builder->setValue('[pane]', $this->pane->toArray());
+            $result['pane'] = $this->pane->toArray();
         }
 
         if (is_object($this->exporting)) {
-            $builder->setValue('[exporting]', $this->exporting->toArray());
+            $result['exporting'] = $this->exporting->toArray();
         }
 
         if (isset($this->zoomType)) {
-            $builder->setValue('[charts]', $this->zoomType);
+            $result['charts'] = $this->zoomType;
         }
 
         if (isset($this->xAxis)) {
-            $builder->setValue('[xAxis]', $this->xAxis->toArray());
+            $result['xAxis'] = $this->xAxis->toArray();
         }
 
         if (isset($this->yAxis)) {
@@ -503,7 +500,7 @@ class Graph
                 /** @var Axis $axis */
                 $yAxis[] = $axis->toArray();
             }
-            $builder->setValue('[yAxis]', $yAxis);
+            $result['yAxis'] = $yAxis;
         }
 
         $seriesData = [];
@@ -511,8 +508,8 @@ class Graph
         foreach ($this->series as $series) {
             $seriesData[] = $series->toArray();
         }
-        $builder->setValue('[series]', $seriesData);
+        $result['series'] = $seriesData;
 
-        return $builder->build();
+        return $result;
     }
 }

@@ -1,19 +1,17 @@
 <?php
 
-namespace Tests\Validaide\HighChartsBundle;
+namespace Validaide\HighChartsBundle\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Validaide\HighChartsBundle\HighChartsBundle;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class HighChartsBundleTest extends TestCase
 {
-    /**
-     * @var HighChartsBundle
-     */
+    /** @var HighChartsBundle */
     private $bundle;
 
     /**
@@ -24,6 +22,13 @@ class HighChartsBundleTest extends TestCase
         $this->bundle = new HighChartsBundle();
     }
 
+    /*****************************************************************************/
+    /* Tests
+    /*****************************************************************************/
+
+    /**
+     *
+     */
     public function testBundle()
     {
         $this->assertInstanceOf(Bundle::class, $this->bundle);

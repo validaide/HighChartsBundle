@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Validaide\HighChartsBundle\Integration;
+namespace Validaide\HighChartsBundle\Tests\Tests\Integration;
 
-use Tests\Validaide\HighChartsBundle\IntegrationTestCase;
+use Validaide\HighChartsBundle\Tests\IntegrationTestCase;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\Label;

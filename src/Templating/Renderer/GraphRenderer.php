@@ -2,7 +2,11 @@
 
 namespace Validaide\HighChartsBundle\Templating\Renderer;
 
+use Symfony\Component\Serializer\Encoder\JsonEncode;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Serializer;
 use Validaide\HighChartsBundle\Graph;
+use Validaide\HighChartsBundle\Serializer\Normalizer\GraphNormalizer;
 use Validaide\HighChartsBundle\Templating\Formatter\Formatter;
 
 /**
@@ -10,13 +14,22 @@ use Validaide\HighChartsBundle\Templating\Formatter\Formatter;
  */
 class GraphRenderer
 {
+    /** @var Serializer */
+    private $serializer;
+    /** @var Formatter */
     protected $formatter;
+    /** @var TagRenderer */
     protected $tagRenderer;
+    /** @var StyleSheetRenderer */
     protected $styleSheetRenderer;
+    /** @var JavascriptRenderer */
     protected $javascriptRenderer;
 
+    /**
+     */
     public function __construct()
     {
+        $this->serializer         = new Serializer([new GraphNormalizer()],[new JsonEncoder()]);
         $this->formatter          = new Formatter();
         $this->tagRenderer        = new TagRenderer($this->formatter);
         $this->styleSheetRenderer = new StyleSheetRenderer($this->formatter);
@@ -53,7 +66,7 @@ class GraphRenderer
      */
     public function renderJavascript(Graph $graph)
     {
-        $json              = $graph->toJson();
+        $json              = $this->serializer->serialize($graph, 'json', [JsonEncode::OPTIONS => JSON_PRETTY_PRINT]);
         $highChartInitCode = 'Highcharts.chart(' . $this->formatter->renderEscape($graph->getHtmlId()) . ',' . $this->formatter->renderNewline() . $json . $this->formatter->renderNewline() . ')';
         $code              = $this->javascriptRenderer->renderVariable($graph->getJsChartId(), $highChartInitCode);
         $jquery            = $this->formatter->renderJQuery($code);
