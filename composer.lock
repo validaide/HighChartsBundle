@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5d2534bbbf7167ed25b7048cd26d088",
+    "content-hash": "2b0fbfd1ae9030051c76f2f93d67d26d",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -3496,16 +3496,16 @@
         },
         {
             "name": "validaide/html-builder",
-            "version": "dev-development",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "5ca2a5773f693e832ad33e360a07b99195820cfe"
+                "reference": "185f474438b234056ca40f016f70212c26959d6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/5ca2a5773f693e832ad33e360a07b99195820cfe",
-                "reference": "5ca2a5773f693e832ad33e360a07b99195820cfe",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/185f474438b234056ca40f016f70212c26959d6d",
+                "reference": "185f474438b234056ca40f016f70212c26959d6d",
                 "shasum": ""
             },
             "require": {
@@ -5232,9 +5232,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "validaide/html-builder": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
