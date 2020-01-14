@@ -60,10 +60,6 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/validaide/HighChartsBundle.git"
-    },
-    {
-      "type": "vcs",
       "url": "https://github.com/validaide/common.git",
       "no-api": true
     },
