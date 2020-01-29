@@ -76,11 +76,11 @@ class Column extends PlotOptions
         $result = [];
 
         if (!is_null($this->allowPointSelect)) {
-            $result['column']['allowPointSelect'] = $this->allowPointSelect;
+            $result['series']['allowPointSelect'] = $this->allowPointSelect;
         }
 
         if (!is_null($this->color)) {
-            $result['column']['color'] = $this->color;
+            $result['series']['color'] = $this->color;
         }
 
         if (!is_null($this->groupPadding)) {
@@ -92,7 +92,7 @@ class Column extends PlotOptions
         }
 
         if (!is_null($this->stacking)) {
-            $result['column']['stacking'] = $this->stacking;
+            $result['series']['stacking'] = $this->stacking;
         }
 
         return $result;
