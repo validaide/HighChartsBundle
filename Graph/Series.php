@@ -5,6 +5,7 @@ namespace Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**
+ * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Series
@@ -53,6 +54,9 @@ class Series
 
     /** @var DataLabels */
     private $dataLabels;
+
+    /** @var string|null */
+    private $pointPlacement = null;
 
     /**
      * Series constructor.
@@ -307,6 +311,22 @@ class Series
     }
 
     /**
+     * @return string|null
+     */
+    public function getPointPlacement(): ?string
+    {
+        return $this->pointPlacement;
+    }
+
+    /**
+     * @param string $pointPlacement
+     */
+    public function setPointPlacement(string $pointPlacement): void
+    {
+        $this->pointPlacement = $pointPlacement;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -358,8 +378,13 @@ class Series
         if (!is_null($this->zIndex)) {
             $result['zIndex'] = $this->zIndex;
         }
+
         if (!is_null($this->dataLabels)) {
             $result['dataLabels'] = $this->dataLabels->toArray();
+        }
+
+        if (!is_null($this->pointPlacement)) {
+            $result['pointPlacement'] = $this->pointPlacement;
         }
 
         $result['visible'] = $this->visible;

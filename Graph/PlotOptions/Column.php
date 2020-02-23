@@ -5,6 +5,7 @@ namespace Validaide\HighChartsBundle\Graph\PlotOptions;
 use Validaide\HighChartsBundle\Graph\PlotOptions;
 
 /**
+ * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Column extends PlotOptions
@@ -12,10 +13,28 @@ class Column extends PlotOptions
     const STACKING_NORMAL  = 'normal';
     const STACKING_PERCENT = 'percent';
 
-    /**
-     * @var string
-     */
+    /** @var float */
+    protected $groupPadding;
+    /** @var float */
+    protected $pointPadding;
+    /** @var string */
     protected $stacking;
+
+    /**
+     * @return float
+     */
+    public function getGroupPadding(): float
+    {
+        return $this->groupPadding;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPointPadding(): float
+    {
+        return $this->pointPadding;
+    }
 
     /**
      * @return string|null
@@ -23,6 +42,22 @@ class Column extends PlotOptions
     public function getStacking()
     {
         return $this->stacking;
+    }
+
+    /**
+     * @param float $groupPadding
+     */
+    public function setGroupPadding(float $groupPadding): void
+    {
+        $this->groupPadding = $groupPadding;
+    }
+
+    /**
+     * @param float $pointPadding
+     */
+    public function setPointPadding(float $pointPadding): void
+    {
+        $this->pointPadding = $pointPadding;
     }
 
     /**
@@ -40,12 +75,20 @@ class Column extends PlotOptions
     {
         $result = [];
 
+        if (!is_null($this->allowPointSelect)) {
+            $result['series']['allowPointSelect'] = $this->allowPointSelect;
+        }
+
         if (!is_null($this->color)) {
             $result['series']['color'] = $this->color;
         }
 
-        if (!is_null($this->allowPointSelect)) {
-            $result['series']['allowPointSelect'] = $this->allowPointSelect;
+        if (!is_null($this->groupPadding)) {
+            $result['column']['groupPadding'] = $this->groupPadding;
+        }
+
+        if (!is_null($this->pointPadding)) {
+            $result['column']['pointPadding'] = $this->pointPadding;
         }
 
         if (!is_null($this->stacking)) {

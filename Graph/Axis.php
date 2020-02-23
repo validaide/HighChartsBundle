@@ -3,6 +3,7 @@
 namespace Validaide\HighChartsBundle\Graph;
 
 /**
+ * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class Axis
@@ -41,10 +42,16 @@ class Axis
     private $type;
     /** @var DateTimeLabelFormats */
     private $dateTimeLabelFormats;
-    /** @var bool  */
+    /** @var bool */
     private $allowDecimals;
     /** @var int */
     private $rotation;
+    /** @var int|null */
+    private $lineWidth = null;
+    /** @var string|null */
+    private $tickmarkPlacement = null;
+    /** @var string|null */
+    private $gridLineInterpolation = null;
 
     /**
      * Axis constructor.
@@ -356,6 +363,70 @@ class Axis
     }
 
     /**
+     * @return int
+     */
+    public function getRotation(): int
+    {
+        return $this->rotation;
+    }
+
+    /**
+     * @param int $rotation
+     */
+    public function setRotation(int $rotation): void
+    {
+        $this->rotation = $rotation;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getLineWidth(): ?int
+    {
+        return $this->lineWidth;
+    }
+
+    /**
+     * @param int|null $lineWidth
+     */
+    public function setLineWidth(?int $lineWidth): void
+    {
+        $this->lineWidth = $lineWidth;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTickmarkPlacement(): ?string
+    {
+        return $this->tickmarkPlacement;
+    }
+
+    /**
+     * @param string|null $tickmarkPlacement
+     */
+    public function setTickmarkPlacement(?string $tickmarkPlacement): void
+    {
+        $this->tickmarkPlacement = $tickmarkPlacement;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGridLineInterpolation(): ?string
+    {
+        return $this->gridLineInterpolation;
+    }
+
+    /**
+     * @param string|null $gridLineInterpolation
+     */
+    public function setGridLineInterpolation(?string $gridLineInterpolation): void
+    {
+        $this->gridLineInterpolation = $gridLineInterpolation;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -450,6 +521,18 @@ class Axis
 
         if (!is_null($this->rotation)) {
             $result['rotation'] = $this->rotation;
+        }
+
+        if (!is_null($this->lineWidth)) {
+            $result['lineWidth'] = $this->lineWidth;
+        }
+
+        if (!is_null($this->tickmarkPlacement)) {
+            $result['tickmarkPlacement'] = $this->tickmarkPlacement;
+        }
+
+        if (!is_null($this->gridLineInterpolation)) {
+            $result['gridLineInterpolation'] = $this->gridLineInterpolation;
         }
 
         return $result;
