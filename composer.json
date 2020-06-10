@@ -37,21 +37,21 @@
   "require": {
     "php": "7.2.*",
     "ext-json": "*",
-    "symfony/config": "^4.3",
-    "symfony/dependency-injection": "^4.3",
-    "symfony/http-kernel": "^4.3",
-    "symfony/options-resolver": "^4.3",
-    "symfony/process": "^4.3",
-    "symfony/serializer": "^4.3",
-    "symfony/templating": "^4.3",
-    "symfony/twig-bundle": "~4.3",
-    "symfony/yaml": "^4.3",
-    "validaide/html-builder": "^2.2"
+    "symfony/config": "^4.0",
+    "symfony/dependency-injection": "^4.0",
+    "symfony/http-kernel": "^4.0",
+    "symfony/options-resolver": "^4.0",
+    "symfony/process": "^4.0",
+    "symfony/serializer": "^4.0",
+    "symfony/templating": "^4.0",
+    "symfony/twig-bundle": "~4.0",
+    "symfony/yaml": "^4.0",
+    "validaide/html-builder": "dev-chore/symfony-4"
   },
   "require-dev": {
     "brianium/paratest": "^3.0",
     "phpunit/phpunit": "^8.0",
-    "symfony/phpunit-bridge": "^4.3"
+    "symfony/phpunit-bridge": "^4.0"
   },
   "repositories": [
     {
