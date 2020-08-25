@@ -4,8 +4,8 @@ namespace Validaide\HighChartsBundle\Graph\Drilldown;
 
 class DrillUpButton
 {
-    /** @var string|null */
-    private $verticalAlign;
+    /** @var string */
+    private $verticalAlign = 'top';
 
     /**
      * @return string|null
@@ -30,6 +30,8 @@ class DrillUpButton
         if (!is_null($this->verticalAlign)) {
             $result['position']['verticalAlign'] = $this->verticalAlign;
         }
+        
+        $result['relativeTo'] = 'spacingBox';
 
         return $result;
     }
