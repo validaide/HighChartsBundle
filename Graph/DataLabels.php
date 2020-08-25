@@ -545,15 +545,6 @@ class DataLabels
     {
         $result = [];
 
-        if (!is_null($this->enabled)) {
-            $result['enabled'] = $this->enabled;
-        }
-        if (!is_null($this->format)) {
-            $result['format'] = $this->format;
-        }
-        if (!is_null($this->distance)) {
-            $result['distance'] = $this->distance;
-        }
         if (!is_null($this->align)) {
             $result['align'] = $this->align;
         }
@@ -583,6 +574,9 @@ class DataLabels
         }
         if (!is_null($this->defer)) {
             $result['defer'] = $this->defer;
+        }
+        if (!is_null($this->distance)) {
+            $result['distance'] = $this->distance;
         }
         if (!is_null($this->enabled)) {
             $result['enabled'] = $this->enabled;
