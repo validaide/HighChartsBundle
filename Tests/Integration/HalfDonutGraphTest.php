@@ -13,10 +13,10 @@ use Tests\Validaide\HighChartsBundle\IntegrationTestCase;
  */
 class HalfDonutGraphTest extends IntegrationTestCase
 {
-    const TYPE          = 'pie';
-    const TITLE         = 'Temperature<br>Exposure';
-    const CREDITS_TEXT  = 'Validaide';
-    const CREDITS_HREF  = 'validaide.com';
+    const TYPE = 'pie';
+    const TITLE = 'Temperature<br>Exposure';
+    const CREDITS_TEXT = 'Validaide';
+    const CREDITS_HREF = 'validaide.com';
     const SERIES_1_NAME = 'Temperature Exposure';
 
     /**
@@ -28,19 +28,19 @@ class HalfDonutGraphTest extends IntegrationTestCase
     {
         $series[0] = [
             [
-                'y'         => 34.3,
-                'name'      => 'Not Temperature Controlled',
-                'color'     => 'red',
+                'y' => 34.3,
+                'name' => 'Not Temperature Controlled',
+                'color' => 'red',
                 'drilldown' => 'A',
             ],
             [
-                'y'     => 7.7,
-                'name'  => 'Unknown or Optional',
+                'y' => 7.7,
+                'name' => 'Unknown or Optional',
                 'color' => 'orange',
             ],
             [
-                'y'     => 58,
-                'name'  => 'Temperature Controlled',
+                'y' => 58,
+                'name' => 'Temperature Controlled',
                 'color' => 'green',
             ],
         ];
@@ -54,10 +54,10 @@ class HalfDonutGraphTest extends IntegrationTestCase
     public function test_render()
     {
         $replacements = [
-            'TYPE'          => self::TYPE,
-            'TITLE'         => self::TITLE,
-            'CREDITS_TEXT'  => self::CREDITS_TEXT,
-            'CREDITS_HREF'  => self::CREDITS_HREF,
+            'TYPE' => self::TYPE,
+            'TITLE' => self::TITLE,
+            'CREDITS_TEXT' => self::CREDITS_TEXT,
+            'CREDITS_HREF' => self::CREDITS_HREF,
             'SERIES_1_NAME' => self::SERIES_1_NAME,
             'SERIES_1_DATA' => $this->prependSpaces(json_encode(self::getSeriesData(0), JSON_PRETTY_PRINT), 12),
         ];
@@ -118,7 +118,9 @@ class HalfDonutGraph extends Graph
         $drillDownB = new Series('B', []);
         $drillDownB->setId('B');
 
-        $this->addDrilldownSeries($drillDownA);
-        $this->addDrilldownSeries($drillDownB);
+        $drillDown = new Graph\Drilldown();
+        $drillDown->addSeries($drillDownA);
+        $drillDown->addSeries($drillDownB);
+        $this->setDrillDown($drillDown);
     }
 }

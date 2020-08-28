@@ -29,6 +29,13 @@ var graph = Highcharts.chart("graph_container",
         "reversed": false
     },
     "drilldown": {
+        "drillUpButton": {
+            "position": {
+                "align": "right",
+                "verticalAlign": "top"
+            },
+            "relativeTo": "spacingBox"
+        },
         "series": [
             {
                 "name": "A",

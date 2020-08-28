@@ -5,6 +5,7 @@ namespace Validaide\HighChartsBundle;
 use Ivory\JsonBuilder\JsonBuilder;
 use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\Credits;
+use Validaide\HighChartsBundle\Graph\Drilldown;
 use Validaide\HighChartsBundle\Graph\Exporting;
 use Validaide\HighChartsBundle\Graph\Pane;
 use Validaide\HighChartsBundle\Graph\Series;
@@ -46,7 +47,7 @@ class Graph
     private $type = 'line';
 
     /**
-     * @var Series[]
+     * @var Drilldown|null
      */
     private $drilldown;
 
@@ -147,7 +148,7 @@ class Graph
     /**
      * @param string $htmlId
      */
-    public function setHtmlId(string $htmlId)
+    public function setHtmlId(string $htmlId): void
     {
         $this->htmlId = $htmlId;
     }
@@ -163,7 +164,7 @@ class Graph
     /**
      * @param string $jsChartId
      */
-    public function setJsChartId(string $jsChartId)
+    public function setJsChartId(string $jsChartId): void
     {
         $this->jsChartId = $jsChartId;
     }
@@ -187,7 +188,7 @@ class Graph
     /**
      * @param SubTitle $subTitle
      */
-    public function setSubTitle(SubTitle $subTitle)
+    public function setSubTitle(SubTitle $subTitle): void
     {
         $this->subTitle = $subTitle;
     }
@@ -203,7 +204,7 @@ class Graph
     /**
      * @param Axis $axis
      */
-    public function addYAxis(Axis $axis)
+    public function addYAxis(Axis $axis): void
     {
         $this->yAxis[] = $axis;
     }
@@ -219,7 +220,7 @@ class Graph
     /**
      * @param string $width
      */
-    public function setWidth(string $width)
+    public function setWidth(string $width): void
     {
         $this->width = $width;
     }
@@ -235,7 +236,7 @@ class Graph
     /**
      * @param string $height
      */
-    public function setHeight(string $height)
+    public function setHeight(string $height): void
     {
         $this->height = $height;
     }
@@ -267,7 +268,7 @@ class Graph
     /**
      * @param string $type
      */
-    public function setType(string $type)
+    public function setType(string $type): void
     {
         $this->type = $type;
     }
@@ -275,7 +276,7 @@ class Graph
     /**
      * @param Series $series
      */
-    public function addSeries(Series $series)
+    public function addSeries(Series $series): void
     {
         $this->series[] = $series;
     }
@@ -291,7 +292,7 @@ class Graph
     /**
      * @param Credits $credits
      */
-    public function setCredits(Credits $credits)
+    public function setCredits(Credits $credits): void
     {
         $this->credits = $credits;
     }
@@ -299,7 +300,7 @@ class Graph
     /**
      * @return Legend
      */
-    public function getLegend()
+    public function getLegend(): Legend
     {
         return $this->legend;
     }
@@ -307,7 +308,7 @@ class Graph
     /**
      * @param Legend $legend
      */
-    public function setLegend(Legend $legend)
+    public function setLegend(Legend $legend): void
     {
         $this->legend = $legend;
     }
@@ -315,7 +316,7 @@ class Graph
     /**
      * @return array|null
      */
-    public function getMargin()
+    public function getMargin(): ?array
     {
         return $this->margin;
     }
@@ -323,7 +324,7 @@ class Graph
     /**
      * @param array|null $margin
      */
-    public function setMargin($margin)
+    public function setMargin($margin): void
     {
         $this->margin = $margin;
     }
@@ -347,7 +348,7 @@ class Graph
     /**
      * @return Tooltip
      */
-    public function getTooltip()
+    public function getTooltip(): Tooltip
     {
         return $this->tooltip;
     }
@@ -355,7 +356,7 @@ class Graph
     /**
      * @param Tooltip $tooltip
      */
-    public function setTooltip(Tooltip $tooltip)
+    public function setTooltip(Tooltip $tooltip): void
     {
         $this->tooltip = $tooltip;
     }
@@ -371,7 +372,7 @@ class Graph
     /**
      * @param bool $plotShadow
      */
-    public function setPlotShadow(bool $plotShadow)
+    public function setPlotShadow(bool $plotShadow): void
     {
         $this->plotShadow = $plotShadow;
     }
@@ -379,7 +380,7 @@ class Graph
     /**
      * @return PlotOptions
      */
-    public function getPlotOptions()
+    public function getPlotOptions(): PlotOptions
     {
         return $this->plotOptions;
     }
@@ -387,7 +388,7 @@ class Graph
     /**
      * @param PlotOptions $plotOptions
      */
-    public function setPlotOptions(PlotOptions $plotOptions)
+    public function setPlotOptions(PlotOptions $plotOptions): void
     {
         $this->plotOptions = $plotOptions;
     }
@@ -403,31 +404,31 @@ class Graph
     /**
      * @param string $zoomType
      */
-    public function setZoomType(string $zoomType)
+    public function setZoomType(string $zoomType): void
     {
         $this->zoomType = $zoomType;
     }
 
     /**
-     * @param Series $series
+     * @param Drilldown $drilldown
      */
-    public function addDrilldownSeries(Series $series)
+    public function setDrillDown(Drilldown $drilldown): void
     {
-        $this->drilldown[] = $series->toArray();
+        $this->drilldown = $drilldown;
     }
 
     /**
-     * @return Series[]
+     * @return Drilldown|null
      */
-    public function getDrilldown(): array
+    public function getDrillDown(): ?Drilldown
     {
         return $this->drilldown;
     }
 
     /**
-     * @return Exporting
+     * @return Exporting|null
      */
-    public function getExporting()
+    public function getExporting(): ?Exporting
     {
         return $this->exporting;
     }
@@ -435,7 +436,7 @@ class Graph
     /**
      * @param Exporting $exporting
      */
-    public function setExporting(Exporting $exporting)
+    public function setExporting(Exporting $exporting): void
     {
         $this->exporting = $exporting;
     }
@@ -462,7 +463,7 @@ class Graph
         }
 
         if (isset($this->drilldown) && !empty($this->drilldown)) {
-            $builder->setValue('[drilldown][series]', $this->drilldown);
+            $builder->setValue('[drilldown]', $this->drilldown->toArray());
         }
 
         if (isset($this->plotShadow)) {
