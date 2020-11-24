@@ -3,6 +3,7 @@
 namespace Validaide\HighChartsBundle\Graph;
 
 use Validaide\HighChartsBundle\ValueObject\Color;
+use Validaide\HighChartsBundle\ValueObject\DashStyle;
 
 /**
  * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
@@ -12,6 +13,9 @@ class Series
 {
     /** @var string|null */
     private $id;
+
+    /** @var array|null */
+    private $data = null;
 
     /** @var string */
     private $name = '';
@@ -30,9 +34,6 @@ class Series
 
     /** @var int|null */
     private $yAxis = null;
-
-    /** @var array|null */
-    private $data = null;
 
     /** @var null */
     private $tooltip = null;
@@ -58,13 +59,17 @@ class Series
     /** @var string|null */
     private $pointPlacement = null;
 
+    /** @var DashStyle|null */
+    private $dashStyle;
+
+    /** @var bool|null */
+    private $enableMouseTracking;
+
     /**
-     * Series constructor.
-     *
-     * @param $name
-     * @param $data
+     * @param string|null $name
+     * @param array|null  $data
      */
-    public function __construct($name, $data)
+    public function __construct(?string $name, ?array $data)
     {
         $this->name = $name;
         $this->data = $data;
@@ -81,7 +86,7 @@ class Series
     /**
      * @param null|string $id
      */
-    public function setId($id)
+    public function setId(?string $id)
     {
         $this->id = $id;
     }
@@ -327,6 +332,38 @@ class Series
     }
 
     /**
+     * @return DashStyle
+     */
+    public function getDashStyle(): DashStyle
+    {
+        return $this->dashStyle;
+    }
+
+    /**
+     * @param DashStyle $dashStyle
+     */
+    public function setDashStyle(DashStyle $dashStyle)
+    {
+        $this->dashStyle = $dashStyle;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getEnableMouseTracking(): ?bool
+    {
+        return $this->enableMouseTracking;
+    }
+
+    /**
+     * @param bool|null $enableMouseTracking
+     */
+    public function setEnableMouseTracking(?bool $enableMouseTracking): void
+    {
+        $this->enableMouseTracking = $enableMouseTracking;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -385,6 +422,14 @@ class Series
 
         if (!is_null($this->pointPlacement)) {
             $result['pointPlacement'] = $this->pointPlacement;
+        }
+
+        if (!is_null($this->dashStyle)) {
+            $result['dashStyle'] = (string)$this->dashStyle;
+        }
+
+        if (!is_null($this->enableMouseTracking)) {
+            $result['enableMouseTracking'] = $this->enableMouseTracking;
         }
 
         $result['visible'] = $this->visible;
