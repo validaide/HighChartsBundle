@@ -65,6 +65,9 @@ class Series
     /** @var bool|null */
     private $enableMouseTracking;
 
+    /** @var bool|null */
+    private $showInLegend;
+
     /**
      * @param string|null $name
      * @param array|null  $data
@@ -364,6 +367,22 @@ class Series
     }
 
     /**
+     * @return bool|null
+     */
+    public function getShowInLegend(): ?bool
+    {
+        return $this->showInLegend;
+    }
+
+    /**
+     * @param bool|null $showInLegend
+     */
+    public function setShowInLegend(?bool $showInLegend): void
+    {
+        $this->showInLegend = $showInLegend;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -430,6 +449,10 @@ class Series
 
         if (!is_null($this->enableMouseTracking)) {
             $result['enableMouseTracking'] = $this->enableMouseTracking;
+        }
+
+        if (!is_null($this->showInLegend)) {
+            $result['showInLegend'] = $this->showInLegend;
         }
 
         $result['visible'] = $this->visible;
