@@ -2,11 +2,15 @@
 
 namespace Validaide\HighChartsBundle\ValueObject;
 
+use InvalidArgumentException;
+
 /**
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class DashStyle
 {
+    private const ERROR_UNSUPPORTED_DASH_STYLE = "This Dash Style is not allowed: %s";
+
     const DASH_STYLE_SOLID              = "Solid";
     const DASH_STYLE_SHORT_DASH         = "ShortDash";
     const DASH_STYLE_SHORT_DOT          = "ShortDot";
@@ -23,14 +27,12 @@ class DashStyle
     private $dashStyle;
 
     /**
-     * DashStyle constructor.
-     *
      * @param string $dashStyle
      */
     public function __construct(string $dashStyle)
     {
         if (!in_array($dashStyle, $this->getDashStyles())) {
-            throw new \InvalidArgumentException('This Dash Style is not allowed: ' . $dashStyle);
+            throw new InvalidArgumentException(sprintf(self::ERROR_UNSUPPORTED_DASH_STYLE, $dashStyle));
         }
 
         $this->dashStyle = $dashStyle;

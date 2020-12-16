@@ -17,6 +17,7 @@ class Spline extends PlotOptions
 {
     const STACKING_NORMAL  = 'normal';
     const STACKING_PERCENT = 'percent';
+
     /**
      * @var int
      */
@@ -262,7 +263,6 @@ class Spline extends PlotOptions
     {
         $this->className = $className;
     }
-
 
     /**
      * @return int
