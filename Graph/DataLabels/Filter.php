@@ -9,9 +9,9 @@ namespace Validaide\HighChartsBundle\Graph\DataLabels;
 class Filter
 {
     /** @var string|null */
-    private $property;
+    private ?string $property;
     /** @var string|null */
-    private $operator;
+    private ?string $operator;
     /** @var mixed|null */
     private $value;
 
@@ -58,7 +58,7 @@ class Filter
     /**
      * @param mixed|null $value
      */
-    public function setValue(?mixed $value): void
+    public function setValue($value = null): void
     {
         $this->value = $value;
     }
