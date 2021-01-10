@@ -8,12 +8,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@1.7.2
+        uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.2'
-
-      - name: Update composer to version 1.9.3
-        run: sudo composer self-update 1.9.3 --snapshot
+          php-version: '7.4'
+          tools: composer:v1,phpstan
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Access (composer)
         run: composer config -g github-oauth.github.com ${{ secrets.PAT_GITHUB_ACTIONS }}
@@ -26,3 +26,6 @@ jobs:
 # TODO: We can only run the tests if we have the highcharts-export-server installed and available to the CLI
 #      - name: Unit Tests
 #        run: vendor/bin/phpunit
+
+      - name: Static Analysis (phpstan)
+        run: phpstan analyse --memory-limit=-1 --no-progress

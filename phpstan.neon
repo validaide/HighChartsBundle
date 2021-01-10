@@ -1,0 +1,11 @@
+parameters:
+  level: 1
+  paths:
+    - DependencyInjection
+    - Graph
+    - Resources
+    - Templating
+    - Twig
+    - ValueObject
+  scanFiles:
+    - vendor/autoload.php
