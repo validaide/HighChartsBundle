@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6850d80b961b11e5dd52e08390f04d41",
+    "content-hash": "206d63293efdac5795b979ce1f3ffb43",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -4044,20 +4044,20 @@
         },
         {
             "name": "validaide/html-builder",
-            "version": "3.4.0",
+            "version": "dev-development",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "24dc378b19c71f8157a1007fa8e2a625e27dfe47"
+                "reference": "e38b24284aaf3b9f380e2a7b2f800c766b0077c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/24dc378b19c71f8157a1007fa8e2a625e27dfe47",
-                "reference": "24dc378b19c71f8157a1007fa8e2a625e27dfe47",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/e38b24284aaf3b9f380e2a7b2f800c766b0077c5",
+                "reference": "e38b24284aaf3b9f380e2a7b2f800c766b0077c5",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2"
+                "php": "^7.4"
             },
             "require-dev": {
                 "brianium/paratest": "^3.0",
@@ -4084,7 +4084,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2020-11-09T14:59:09+00:00"
+            "time": "2021-01-10T16:47:40+00:00"
         }
     ],
     "packages-dev": [
@@ -5926,7 +5926,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "validaide/html-builder": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
