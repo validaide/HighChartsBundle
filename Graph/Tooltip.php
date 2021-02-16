@@ -2,6 +2,7 @@
 
 namespace Validaide\HighChartsBundle\Graph;
 
+use Validaide\HighChartsBundle\Graph\DataLabels\Style;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**

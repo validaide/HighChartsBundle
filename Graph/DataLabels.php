@@ -582,7 +582,7 @@ class DataLabels
             $result['enabled'] = $this->enabled;
         }
         if (!is_null($this->filter)) {
-            $result['filter'] = $this->filter;
+            $result['filter'] = $this->filter->toArray();
         }
         if (!is_null($this->format)) {
             $result['format'] = $this->format;

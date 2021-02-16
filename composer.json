@@ -21,11 +21,11 @@
   "config": {
     "sort-packages": true,
     "platform": {
-      "php": "7.2.13"
+      "php": "7.4.13"
     }
   },
   "require": {
-    "php": "7.2.*",
+    "php": "^7.4",
     "ext-json": "*",
     "egeloen/json-builder": "^3.0",
     "php-http/guzzle6-adapter": "^1.1",
@@ -40,7 +40,7 @@
     "symfony/templating": "^3.4",
     "symfony/twig-bundle": "~3.4",
     "symfony/yaml": "^3.4",
-    "validaide/html-builder": "3.5.*"
+    "validaide/html-builder": "3.6.*"
   },
   "require-dev": {
     "brianium/paratest": "^3.0",
