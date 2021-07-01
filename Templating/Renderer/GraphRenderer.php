@@ -38,7 +38,7 @@ class GraphRenderer
 
     public function renderJavascript(Graph $graph): string
     {
-        $javascriptVariable = $this->javascriptRenderer->renderVariable($graph->getJsChartId() . '_' . $graph->getHtmlId(), $graph->toJson());
+        $javascriptVariable = $this->javascriptRenderer->renderVariable('graph_' . $graph->getJsChartId(), $graph->toJson());
 
         return $this->tagRenderer->render('script', $javascriptVariable, ['type' => "text/javascript"]);
     }
