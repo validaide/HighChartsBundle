@@ -25,15 +25,9 @@ class ImageRenderer
     const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
 
     /**
-     * @param Graph       $graph
-     * @param array       $options
-     *
-     * @param string|null $outputPath
-     *
-     * @return string
      * @throws RenderingException
      */
-    public function render(Graph $graph, $options = [], string $outputPath = null)
+    public function render(Graph $graph, array $options = [], string $outputPath = null): string
     {
         $this->_sanityCheck();
 
@@ -71,9 +65,6 @@ class ImageRenderer
         return $outfile;
     }
 
-    /**
-     * @return array
-     */
     public static function getAllowedHighChartsExportServerOptions(): array
     {
         return [
@@ -83,9 +74,6 @@ class ImageRenderer
         ];
     }
 
-    /**
-     * @return array
-     */
     public static function getDefaultHighChartsExportServerOptions(): array
     {
         return [

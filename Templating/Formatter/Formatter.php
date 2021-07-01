@@ -7,23 +7,12 @@ namespace Validaide\HighChartsBundle\Templating\Formatter;
  */
 class Formatter
 {
-    /**
-     * @param $argument
-     *
-     * @return string
-     */
-    public function renderEscape($argument)
+    public function renderEscape(string $argument): string
     {
         return json_encode($argument, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * @param string $code
-     * @param bool   $semicolon
-     *
-     * @return string
-     */
-    public function renderCode($code, $semicolon = true)
+    public function renderCode(string $code, $semicolon = true): string
     {
         if ($semicolon) {
             $code .= ';';
@@ -32,28 +21,17 @@ class Formatter
         return $code;
     }
 
-    /**
-     * @return string
-     */
-    public function renderSeparator()
+    public function renderSeparator(): string
     {
         return '';
     }
 
-    /**
-     * @return string
-     */
-    public function renderNewline()
+    public function renderNewline(): string
     {
         return "\n";
     }
 
-    /**
-     * @param $code
-     *
-     * @return string
-     */
-    public function renderJQuery($code)
+    public function renderJQuery(string $code): string
     {
         return $this->renderNewline() . '$(function () {' . $this->renderNewline() .
             $code . $this->renderNewline() .

@@ -11,16 +11,25 @@ use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
  */
 class GraphRendererTest extends TestCase
 {
-    /** @var GraphRenderer */
-    private $graphRenderer;
+    private ?GraphRenderer $graphRenderer = null;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->graphRenderer = new GraphRenderer();
     }
+
+    protected function tearDown(): void
+    {
+        $this->graphRenderer = null;
+
+        parent::tearDown();
+    }
+
+    /*****************************************************************************/
+    /* Tests
+    /*****************************************************************************/
 
     /**
      *

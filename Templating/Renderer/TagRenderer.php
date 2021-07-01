@@ -7,14 +7,7 @@ namespace Validaide\HighChartsBundle\Templating\Renderer;
  */
 class TagRenderer extends AbstractTagRenderer
 {
-    /**
-     * @param string      $name
-     * @param string|null $code
-     * @param string[]    $attributes
-     *
-     * @return string
-     */
-    public function render($name, $code = null, array $attributes = [])
+    public function render(string $name, ?string $code = null, array $attributes = []): string
     {
         $tagAttributes = [];
         foreach ($attributes as $attribute => $value) {
