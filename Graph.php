@@ -58,7 +58,7 @@ class Graph
 
     public function getHtmlId(): string
     {
-        if(is_null($this->htmlId)) {
+        if (is_null($this->htmlId)) {
             return self::toSnakeCase(self::getClassShortName($this));
         }
 
