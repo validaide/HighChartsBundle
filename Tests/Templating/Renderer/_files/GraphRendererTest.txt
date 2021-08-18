@@ -1,4 +1,4 @@
-<script type="text/javascript">var graph_graph_container = {
+<script type="text/javascript">var graph_graph = {
     "chart": {
         "type": "line"
     },
