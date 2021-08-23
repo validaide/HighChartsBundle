@@ -1,8 +1,5 @@
-<div id="graph_container" style="width:100%;height:400px;"></div>
-<script type="text/javascript">
-$(function () {
-var graph = Highcharts.chart("graph_container",
-{
+<div id="spline_graph" style="width:100%;height:400px;"></div>
+<script type="text/javascript">var graph_spline_graph = {
     "chart": {
         "type": "spline",
         "plotShadow": false
@@ -106,7 +103,4 @@ var graph = Highcharts.chart("graph_container",
             ]
         }
     ]
-}
-);
-});
-</script>
+};</script>

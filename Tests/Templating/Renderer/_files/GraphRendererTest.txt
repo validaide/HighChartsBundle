@@ -1,7 +1,4 @@
-<script type="text/javascript">
-$(function () {
-var graph = Highcharts.chart("graph_container",
-{
+<script type="text/javascript">var graph_graph = {
     "chart": {
         "type": "line"
     },
@@ -15,7 +12,4 @@ var graph = Highcharts.chart("graph_container",
     "xAxis": [],
     "yAxis": [],
     "series": []
-}
-);
-});
-</script>
+};</script>
