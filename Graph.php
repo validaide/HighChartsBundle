@@ -274,7 +274,8 @@ class Graph
         $builder->setJsonEncodeOptions($builder->getJsonEncodeOptions() | JSON_PRETTY_PRINT);
         $builder->setValues([
             'chart'   => [
-                'type' => $this->type,
+                'type'   => $this->type,
+                'height' => $this->height,
             ],
             'credits' => $this->credits->toArray(),
             'title'   => $this->title->toArray(),

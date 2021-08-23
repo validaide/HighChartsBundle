@@ -2,6 +2,7 @@
 <script type="text/javascript">var graph_half_donut_graph = {
     "chart": {
         "type": "[TYPE]",
+        "height": "400px",
         "margin": [
             0,
             0,

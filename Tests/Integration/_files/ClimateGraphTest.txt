@@ -2,6 +2,7 @@
 <script type="text/javascript">var graph_climate_graph = {
     "chart": {
         "type": "[TYPE]",
+        "height": "400px",
         "plotShadow": false
     },
     "credits": {
