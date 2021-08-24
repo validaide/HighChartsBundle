@@ -3,8 +3,6 @@
 namespace Tests\Validaide\HighChartsBundle;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
-use ReflectionException;
 use Symfony\Component\Filesystem\Filesystem;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
@@ -16,9 +14,15 @@ use Validaide\HighChartsBundle\Templating\Renderer\RenderingException;
  */
 class IntegrationTestCase extends TestCase
 {
-    protected function assertGraph(Graph $graph, array $replacements): void
+    /**
+     * @param Graph $graph
+     * @param array $replacements
+     *
+     * @throws \ReflectionException
+     */
+    protected function assertGraph(Graph $graph, array $replacements)
     {
-        $reflectionClass   = new ReflectionClass($graph);
+        $reflectionClass   = new \ReflectionClass($graph);
         $expectedInputPath = $this->getTestFilesDirectory() . DIRECTORY_SEPARATOR . $reflectionClass->getShortName() . 'Test.txt';
         $graphRenderer     = new GraphRenderer();
         $expectedOutput    = file_get_contents($expectedInputPath);
@@ -48,7 +52,13 @@ class IntegrationTestCase extends TestCase
         $this->assertSame($expectedOutput, $renderedOutput);
     }
 
-    protected function traverse(string $input, int $repeat = 1): string
+    /**
+     * @param     $input
+     * @param int $repeat
+     *
+     * @return string
+     */
+    protected function traverse($input, $repeat = 1)
     {
         $result    = '';
         $lineCount = 0;
@@ -71,7 +81,13 @@ class IntegrationTestCase extends TestCase
         return $result;
     }
 
-    protected function prependSpaces(string $input, int $repeat = 1): string
+    /**
+     * @param     $input
+     * @param int $repeat
+     *
+     * @return string
+     */
+    protected function prependSpaces($input, $repeat = 1)
     {
         if ($this->containsLineBreaks($input)) {
             $lines     = explode(PHP_EOL, $input);
@@ -98,16 +114,27 @@ class IntegrationTestCase extends TestCase
         }
     }
 
+    /**
+     * @param string $input
+     *
+     * @return bool
+     */
     protected function containsLineBreaks(string $input): bool
     {
         return strpos($input, PHP_EOL) !== false;
     }
 
+    /**
+     * @return string
+     */
     protected function getTestFilesDirectory(): string
     {
         return __DIR__ . DIRECTORY_SEPARATOR . 'Integration' . DIRECTORY_SEPARATOR . '_files';
     }
 
+    /**
+     * @return string
+     */
     protected function getTestOutputDirectory(): string
     {
         return __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'var' . DIRECTORY_SEPARATOR . 'build';

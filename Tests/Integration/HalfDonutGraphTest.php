@@ -7,6 +7,8 @@ use Validaide\HighChartsBundle\Graph\Series;
 use Tests\Validaide\HighChartsBundle\IntegrationTestCase;
 
 /**
+ * Class HalfDonutGraphTest
+ *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class HalfDonutGraphTest extends IntegrationTestCase
@@ -17,7 +19,12 @@ class HalfDonutGraphTest extends IntegrationTestCase
     const CREDITS_HREF = 'validaide.com';
     const SERIES_1_NAME = 'Temperature Exposure';
 
-    public static function getSeriesData(int $seriesIndex = 0): array
+    /**
+     * @param int $seriesIndex
+     *
+     * @return mixed
+     */
+    public static function getSeriesData($seriesIndex = 0)
     {
         $series[0] = [
             [
@@ -61,8 +68,16 @@ class HalfDonutGraphTest extends IntegrationTestCase
     }
 }
 
+/**
+ * Class HalfDonutGraph
+ *
+ * @author Mark Bijl <mark.bijl@validaide.com>
+ */
 class HalfDonutGraph extends Graph
 {
+    /**
+     * HalfDonutGraph constructor.
+     */
     public function __construct()
     {
         parent::__construct();

@@ -3,7 +3,6 @@
 namespace Validaide\HighChartsBundle\Templating\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
-use Twig\TwigFunction;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 
@@ -12,39 +11,70 @@ use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
  */
 class GraphHelper extends Helper
 {
-    private GraphRenderer $graphRender;
+    /**
+     * @var GraphRenderer
+     */
+    private $graphRender;
 
-    public function __construct(GraphRenderer $graphRenderer)
+    /**
+     * GraphHelper constructor.
+     *
+     * @param GraphRenderer $graphRenderer
+     */
+    public function __construct(
+        GraphRenderer $graphRenderer
+    )
     {
         $this->graphRender = $graphRenderer;
     }
 
-    public function getFunctions(): array
+    /**
+     * @return array
+     */
+    public function getFunctions()
     {
         $functions = [];
         foreach ($this->getMapping() as $name => $method) {
-            $functions[] = new TwigFunction($name, [$this, $method], ['is_safe' => ['html']]);
+            $functions[] = new \Twig_SimpleFunction($name, [$this, $method], ['is_safe' => ['html']]);
         }
 
         return $functions;
     }
 
-    public function render(Graph $graph): string
+    /**
+     * @param Graph $graph
+     *
+     * @return string
+     */
+    public function render(Graph $graph)
     {
         return $this->graphRender->render($graph);
     }
 
-    public function renderHtml(Graph $graph): string
+    /**
+     * @param Graph $graph
+     *
+     * @return string
+     */
+    public function renderHtml(Graph $graph)
     {
         return $this->graphRender->renderHtml($graph);
     }
 
-    public function renderJavascript(Graph $graph): string
+    /**
+     * @param Graph $graph
+     *
+     * @return string
+     */
+    public function renderJavascript(Graph $graph)
     {
         return $this->graphRender->renderJavascript($graph);
     }
 
-    public function getName(): string
+    /**
+     * @return string
+     */
+    public function getName()
     {
         return 'highcharts';
     }
@@ -52,7 +82,7 @@ class GraphHelper extends Helper
     /**
      * @return string[]
      */
-    private function getMapping(): array
+    private function getMapping()
     {
         return [
             'highcharts'           => 'render',

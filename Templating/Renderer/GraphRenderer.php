@@ -10,10 +10,10 @@ use Validaide\HighChartsBundle\Templating\Formatter\Formatter;
  */
 class GraphRenderer
 {
-    protected Formatter          $formatter;
-    protected TagRenderer        $tagRenderer;
-    protected StyleSheetRenderer $styleSheetRenderer;
-    protected JavascriptRenderer $javascriptRenderer;
+    protected $formatter;
+    protected $tagRenderer;
+    protected $styleSheetRenderer;
+    protected $javascriptRenderer;
 
     public function __construct()
     {
@@ -23,23 +23,43 @@ class GraphRenderer
         $this->javascriptRenderer = new JavascriptRenderer($this->formatter);
     }
 
-    public function render(Graph $graph): string
+    /**
+     * @param Graph $graph
+     *
+     * @return string
+     */
+    public function render(Graph $graph)
     {
         return $this->renderHtml($graph) . $this->formatter->renderNewline() .
             $this->renderJavascript($graph);
     }
 
-    public function renderHtml(Graph $graph): string
+    /**
+     * @param Graph $graph
+     *
+     * @return string
+     */
+    public function renderHtml(Graph $graph)
     {
         $styleSheet = $this->styleSheetRenderer->render('width', $graph->getWidth()) . $this->styleSheetRenderer->render('height', $graph->getHeight());
 
         return $this->tagRenderer->render('div', null, ['id' => $graph->getHtmlId(), 'style' => $styleSheet]);
     }
 
-    public function renderJavascript(Graph $graph): string
+    /**
+     * @param Graph $graph
+     *
+     * @return string
+     */
+    public function renderJavascript(Graph $graph)
     {
-        $javascriptVariable = $this->javascriptRenderer->renderVariable('graph_' . $graph->getJsChartId(), $graph->toJson());
+        $json              = $graph->toJson();
+        $highChartInitCode = 'Highcharts.chart(' . $this->formatter->renderEscape($graph->getHtmlId()) . ',' . $this->formatter->renderNewline() . $json . $this->formatter->renderNewline() . ')';
+        $code              = $this->javascriptRenderer->renderVariable($graph->getJsChartId(), $highChartInitCode);
+        $jquery            = $this->formatter->renderJQuery($code);
 
-        return $this->tagRenderer->render('script', $javascriptVariable, ['type' => "text/javascript"]);
+//        return $this->tagRenderer->render('script', null, ['src' => 'https://code.highcharts.com/highcharts.js']) .$this->formatter->renderNewline() .
+//            $this->tagRenderer->render('script', $jquery, ['type' => "text/javascript"]);
+        return $this->tagRenderer->render('script', $jquery, ['type' => "text/javascript"]);
     }
 }
