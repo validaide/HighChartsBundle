@@ -32,7 +32,10 @@ class ClimateGraphTest extends IntegrationTestCase
     const SERIES_3_NAME            = 'Rainfall';
     const SERIES_3_Y_AXIS          = 1;
 
-    public static function getXAxisCategories(): array
+    /**
+     * @return array
+     */
+    public static function getXAxisCategories()
     {
         $months = [];
         for ($m = 1; $m <= 12; $m++) {
@@ -42,7 +45,12 @@ class ClimateGraphTest extends IntegrationTestCase
         return $months;
     }
 
-    public static function getSeriesData(int $seriesIndex = 1): array
+    /**
+     * @param int $seriesIndex
+     *
+     * @return mixed
+     */
+    public static function getSeriesData($seriesIndex = 1)
     {
         $series[0] = [5.2, 7.3434, 8.23, 9.976967, 10.8678, 9.75, 8.3453, 7.56, 6.345, 5.345, 4.75685, 4.45];
         $series[1] = [15.678, 17.5, 18.45, 19.247, 20.74645, 19.254, 18.234, 17.678, 16.456, 15.94564, 14.5636, 14.743];
@@ -87,8 +95,16 @@ class ClimateGraphTest extends IntegrationTestCase
     }
 }
 
+/**
+ * Class ClimateGraph
+ *
+ * @author Mark Bijl <mark.bijl@validaide.com>
+ */
 class ClimateGraph extends Graph
 {
+    /**
+     * ClimateGraph constructor.
+     */
     public function __construct()
     {
         parent::__construct();

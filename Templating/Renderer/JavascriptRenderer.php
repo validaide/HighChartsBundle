@@ -7,7 +7,13 @@ namespace Validaide\HighChartsBundle\Templating\Renderer;
  */
 class JavascriptRenderer extends AbstractTagRenderer
 {
-    public function renderVariable(string $variable, string $assignment): string
+    /**
+     * @param $variable
+     * @param $assignment
+     *
+     * @return string
+     */
+    public function renderVariable($variable, $assignment)
     {
         return 'var ' . $variable . ' = ' . $assignment . ';';
     }
