@@ -1,7 +1,6 @@
 <script type="text/javascript">var graph_graph = {
     "chart": {
-        "type": "line",
-        "height": "400px"
+        "type": "line"
     },
     "credits": [],
     "title": [],

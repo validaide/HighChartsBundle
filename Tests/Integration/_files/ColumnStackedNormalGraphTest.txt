@@ -2,7 +2,6 @@
 <script type="text/javascript">var graph_column_stacked_normal_graph = {
     "chart": {
         "type": "[TYPE]",
-        "height": "400px",
         "plotShadow": false
     },
     "credits": [],
