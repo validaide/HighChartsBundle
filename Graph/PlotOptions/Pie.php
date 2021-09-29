@@ -11,35 +11,23 @@ use Validaide\HighChartsBundle\Graph\PlotOptions;
  */
 class Pie extends PlotOptions
 {
-    /**
-     * @var float
-     */
-    public $startAngle = null;
+    public ?float $startAngle = null;
 
-    /**
-     * @var float
-     */
-    public $endAngle = null;
+    public ?float $endAngle = null;
 
     /**
      * @var DataLabels
      */
-    public $dataLabels = null;
+    public $dataLabels;
 
     /**
      * @var int|string|null
      */
-    public $innerSize = null;
+    public $innerSize;
 
-    /**
-     * @var array
-     */
-    public $center = null;
+    public ?array $center = null;
 
-    /**
-     * @var bool|null
-     */
-    public $showInLegend = null;
+    public ?bool $showInLegend = null;
 
     /**
      * Pie constructor.
@@ -52,15 +40,12 @@ class Pie extends PlotOptions
     /**
      * @return float|null
      */
-    public function getStartAngle()
+    public function getStartAngle(): float
     {
         return $this->startAngle;
     }
 
-    /**
-     * @param float|null $startAngle
-     */
-    public function setStartAngle($startAngle)
+    public function setStartAngle(?float $startAngle): void
     {
         $this->startAngle = $startAngle;
     }
@@ -68,31 +53,22 @@ class Pie extends PlotOptions
     /**
      * @return float|null
      */
-    public function getEndAngle()
+    public function getEndAngle(): float
     {
         return $this->endAngle;
     }
 
-    /**
-     * @param float|null $endAngle
-     */
-    public function setEndAngle($endAngle)
+    public function setEndAngle(?float $endAngle): void
     {
         $this->endAngle = $endAngle;
     }
 
-    /**
-     * @return DataLabels
-     */
     public function getDataLabels(): DataLabels
     {
         return $this->dataLabels;
     }
 
-    /**
-     * @param DataLabels $dataLabels
-     */
-    public function setDataLabels(DataLabels $dataLabels)
+    public function setDataLabels(DataLabels $dataLabels): void
     {
         $this->dataLabels = $dataLabels;
     }
@@ -100,15 +76,12 @@ class Pie extends PlotOptions
     /**
      * @return array|null
      */
-    public function getCenter()
+    public function getCenter(): array
     {
         return $this->center;
     }
 
-    /**
-     * @param array|null $center
-     */
-    public function setCenter($center)
+    public function setCenter(?array $center): void
     {
         $this->center = $center;
     }
@@ -124,31 +97,25 @@ class Pie extends PlotOptions
     /**
      * @param int|null|string $innerSize
      */
-    public function setInnerSize($innerSize)
+    public function setInnerSize($innerSize): void
     {
         $this->innerSize = $innerSize;
     }
 
-    /**
-     * @return bool|null
-     */
-    public function getShowInLegend()
+    public function getShowInLegend(): ?bool
     {
         return $this->showInLegend;
     }
 
-    /**
-     * @param bool|null $showInLegend
-     */
-    public function setShowInLegend($showInLegend)
+    public function setShowInLegend(?bool $showInLegend): void
     {
         $this->showInLegend = $showInLegend;
     }
 
     /**
-     * @return array
+     * @return array<string, mixed[]>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result['pie'] = [];
 

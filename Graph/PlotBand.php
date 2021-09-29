@@ -22,186 +22,107 @@ class PlotBand
     /**
      * @var
      */
-    private $className;
+    private ?string $className = null;
 
     /**
      * @var
      */
-    private $color;
+    private ?Color $color = null;
 
-    /**
-     * @var Color
-     */
-    private $borderColor;
+    private ?Color $borderColor = null;
 
-    /**
-     * @var int
-     */
-    private $borderWidth;
+    private ?int $borderWidth = null;
 
-    /**
-     * @var string
-     */
-    private $id;
+    private ?string $id = null;
 
-    /**
-     * @var Label
-     */
-    private $label;
+    private ?Label $label = null;
 
-    /**
-     * @var float
-     */
-    private $from;
+    private ?float $from = null;
 
-    /**
-     * @var float
-     */
-    private $to;
+    private ?float $to = null;
 
-    /**
-     * @var int
-     */
-    private $zIndex;
+    private ?int $zIndex = null;
 
-    /**
-     * PlotBand constructor.
-     */
-    public function __construct()
-    {
-    }
-
-    /**
-     * @return string
-     */
     public function getClassName(): string
     {
         return $this->className;
     }
 
-    /**
-     * @param string $className
-     */
-    public function setClassName(string $className)
+    public function setClassName(string $className): void
     {
         $this->className = $className;
     }
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     */
-    public function setId(string $id)
+    public function setId(string $id): void
     {
         $this->id = $id;
     }
 
-    /**
-     * @return float
-     */
     public function getFrom(): float
     {
         return $this->from;
     }
 
-    /**
-     * @param float $from
-     */
-    public function setFrom(float $from)
+    public function setFrom(float $from): void
     {
         $this->from = $from;
     }
 
-    /**
-     * @return float
-     */
     public function getTo(): float
     {
         return $this->to;
     }
 
-    /**
-     * @param float $to
-     */
-    public function setTo(float $to)
+    public function setTo(float $to): void
     {
         $this->to = $to;
     }
 
-    /**
-     * @return int
-     */
     public function getZIndex(): int
     {
         return $this->zIndex;
     }
 
-    /**
-     * @param int $zIndex
-     */
-    public function setZIndex(int $zIndex)
+    public function setZIndex(int $zIndex): void
     {
         $this->zIndex = $zIndex;
     }
 
-    /**
-     * @return Color
-     */
     public function getColor(): Color
     {
         return $this->color;
     }
 
-    /**
-     * @param Color $color
-     */
-    public function setColor(Color $color)
+    public function setColor(Color $color): void
     {
         $this->color = $color;
     }
 
-    /**
-     * @return Color
-     */
     public function getBorderColor(): Color
     {
         return $this->borderColor;
     }
 
-    /**
-     * @param Color $borderColor
-     */
-    public function setBorderColor(Color $borderColor)
+    public function setBorderColor(Color $borderColor): void
     {
         $this->borderColor = $borderColor;
     }
 
-    /**
-     * @return int
-     */
     public function getBorderWidth(): int
     {
         return $this->borderWidth;
     }
 
-    /**
-     * @param int $borderWidth
-     */
-    public function setBorderWidth(int $borderWidth)
+    public function setBorderWidth(int $borderWidth): void
     {
         $this->borderWidth = $borderWidth;
     }
 
-    /**
-     * @return Label
-     */
     public function getLabel(): Label
     {
         if (is_null($this->label)) {
@@ -211,17 +132,11 @@ class PlotBand
         return $this->label;
     }
 
-    /**
-     * @param Label $label
-     */
-    public function setLabel(Label $label)
+    public function setLabel(Label $label): void
     {
         $this->label = $label;
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
         $result = [];

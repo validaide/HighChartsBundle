@@ -23,12 +23,8 @@ class DashStyle
     const DASH_STYLE_LONG_DASH_DOT      = "LongDashDot";
     const DASH_STYLE_LONG_DASH_DOT_DOT  = "LongDashDotDot";
 
-    /** @var string */
-    private $dashStyle;
+    private string $dashStyle;
 
-    /**
-     * @param string $dashStyle
-     */
     public function __construct(string $dashStyle)
     {
         if (!in_array($dashStyle, $this->getDashStyles())) {
@@ -46,10 +42,7 @@ class DashStyle
         return (string)$this->dashStyle;
     }
 
-    /**
-     * @return array
-     */
-    public function getDashStyles()
+    public function getDashStyles(): array
     {
         return [
             self::DASH_STYLE_SOLID,

@@ -25,15 +25,12 @@ class ImageRenderer
     const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
 
     /**
-     * @param Graph       $graph
-     * @param array       $options
      *
      * @param string|null $outputPath
-     *
-     * @return string
      * @throws RenderingException
+     * @param mixed[] $options
      */
-    public function render(Graph $graph, $options = [], string $outputPath = null)
+    public function render(Graph $graph, array $options = [], string $outputPath = null): string
     {
         $this->_sanityCheck();
 
@@ -50,11 +47,7 @@ class ImageRenderer
         file_put_contents($infile, $graph->toJson());
 
         // Define the output PNG file path
-        if (is_null($outputPath)) {
-            $outfile = $infile . "." . $options[self::HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE];
-        } else {
-            $outfile = $outputPath;
-        }
+        $outfile = is_null($outputPath) ? $infile . "." . $options[self::HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE] : $outputPath;
 
         $optionParts = [];
         foreach ($options as $option => $value) {
@@ -72,7 +65,7 @@ class ImageRenderer
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public static function getAllowedHighChartsExportServerOptions(): array
     {
@@ -84,7 +77,7 @@ class ImageRenderer
     }
 
     /**
-     * @return array
+     * @return array<string, string>|array<string, null>
      */
     public static function getDefaultHighChartsExportServerOptions(): array
     {

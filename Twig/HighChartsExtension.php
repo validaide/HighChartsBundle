@@ -2,6 +2,8 @@
 
 namespace Validaide\HighChartsBundle\Twig;
 
+use Twig_Extension;
+use Twig_SimpleFunction;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Helper\GraphHelper;
 use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
@@ -9,22 +11,12 @@ use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
 /**
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
-class HighChartsExtension extends \Twig_Extension
+class HighChartsExtension extends Twig_Extension
 {
-    /**
-     * @var GraphHelper
-     */
-    private $graphHelper;
+    private GraphHelper $graphHelper;
 
-    /**
-     * @var ImageRenderer
-     */
-    private $imageRenderer;
+    private ImageRenderer $imageRenderer;
 
-    /**
-     * @param GraphHelper   $graphHelper
-     * @param ImageRenderer $imageRenderer
-     */
     public function __construct(GraphHelper $graphHelper, ImageRenderer $imageRenderer)
     {
         $this->graphHelper   = $graphHelper;
@@ -32,64 +24,43 @@ class HighChartsExtension extends \Twig_Extension
     }
 
     /**
-     * @return array
+     * @return Twig_SimpleFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('highcharts', [$this, 'render'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('highcharts_static', [$this, 'renderStatic'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('highcharts_container', [$this, 'renderHtml'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('highcharts_js', [$this, 'renderJavascript'], ['is_safe' => ['html']]),
+            new Twig_SimpleFunction('highcharts', fn(Graph $graph): string => $this->render($graph), ['is_safe' => ['html']]),
+            new Twig_SimpleFunction('highcharts_static', fn(?Graph $graph, $options): string => $this->renderStatic($graph, $options), ['is_safe' => ['html']]),
+            new Twig_SimpleFunction('highcharts_container', fn(Graph $graph): string => $this->renderHtml($graph), ['is_safe' => ['html']]),
+            new Twig_SimpleFunction('highcharts_js', fn(Graph $graph): string => $this->renderJavascript($graph), ['is_safe' => ['html']]),
         ];
     }
 
-    /**
-     * @param Graph $graph
-     *
-     * @return string
-     */
-    public function render(Graph $graph)
+    public function render(Graph $graph): string
     {
         return $this->graphHelper->render($graph);
     }
 
-    /**
-     * @param Graph $graph
-     *
-     * @return string
-     */
-    public function renderStatic(Graph $graph = null, $options = [])
+    public function renderStatic(Graph $graph = null, array $options = []): ?string
     {
-        if (!$graph) {
+        if ($graph === null) {
             return null;
         }
 
         return $this->imageRenderer->render($graph, $options);
     }
 
-    /**
-     * @param Graph $graph
-     *
-     * @return string
-     */
-    public function renderHtml(Graph $graph)
+    public function renderHtml(Graph $graph): string
     {
         return $this->graphHelper->renderHtml($graph);
     }
 
-    /**
-     * @param Graph $graph
-     */
-    public function renderJavascript(Graph $graph)
+    public function renderJavascript(Graph $graph): string
     {
         return $this->graphHelper->renderJavascript($graph);
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'highcharts';
     }

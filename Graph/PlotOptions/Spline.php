@@ -18,42 +18,15 @@ class Spline extends PlotOptions
     const STACKING_NORMAL  = 'normal';
     const STACKING_PERCENT = 'percent';
 
-    /**
-     * @var int
-     */
-    protected $animationLimit;
-    /**
-     * @var int
-     */
-    protected $boostThreshold;
-    /**
-     * @var string
-     */
-    protected $className;
-    /**
-     * @var int
-     */
-    protected $colorIndex;
-    /**
-     * @var boolean
-     */
-    protected $connectEnds;
-    /**
-     * @var boolean
-     */
-    protected $connectNulls;
-    /**
-     * @var int
-     */
-    protected $cropThreshold;
-    /**
-     * @var string
-     */
-    protected $cursor;
-    /**
-     * @var string
-     */
-    protected $dashStyle;
+    protected ?int $animationLimit = null;
+    protected ?int $boostThreshold = null;
+    protected ?string $className = null;
+    protected ?int $colorIndex = null;
+    protected ?bool $connectEnds = null;
+    protected ?bool $connectNulls = null;
+    protected ?int $cropThreshold = null;
+    protected ?string $cursor = null;
+    protected ?string $dashStyle = null;
     /**
      * @var array[]
      */
@@ -62,146 +35,47 @@ class Spline extends PlotOptions
      * @var DataLabels
      */
     protected $dataLabels;
-    /**
-     * @var string
-     */
-    protected $description;
-    /**
-     * @var boolean
-     */
-    protected $enableMouseTracking;
-    /**
-     * @var boolean
-     */
-    protected $exposeElementToA11y;
-    /**
-     * @var string
-     */
-    protected $findNearestPointBy;
-    /**
-     * @var boolean
-     */
-    protected $getExtremesFromAll;
-    /**
-     * @var string
-     */
-    protected $id;
-    /**
-     * @var int
-     */
-    protected $index;
+    protected ?string $description = null;
+    protected ?bool $enableMouseTracking = null;
+    protected ?bool $exposeElementToA11y = null;
+    protected ?string $findNearestPointBy = null;
+    protected ?bool $getExtremesFromAll = null;
+    protected ?string $id = null;
+    protected ?int $index = null;
     /**
      * @var array
      */
     protected $keys;
-    /**
-     * @var Label
-     */
-    protected $label;
-    /**
-     * @var int
-     */
-    protected $legendIndex;
-    /**
-     * @var string
-     */
-    protected $linecap;
-    /**
-     * @var int
-     */
-    protected $lineWidth;
-    /**
-     * @var string
-     */
-    protected $linkedTo;
-    /**
-     * @var Marker
-     */
-    protected $marker;
-    /**
-     * @var string
-     */
-    protected $name;
-    /**
-     * @var Color
-     */
-    protected $negativeColor;
-    /**
-     * @var int
-     */
-    protected $point;
-    /**
-     * @var int
-     */
-    protected $pointInterval;
-    /**
-     * @var string
-     */
-    protected $pointIntervalUnit;
+    protected ?Label $label = null;
+    protected ?int $legendIndex = null;
+    protected ?string $linecap = null;
+    protected ?int $lineWidth = null;
+    protected ?string $linkedTo = null;
+    protected ?Marker $marker = null;
+    protected ?string $name = null;
+    protected ?Color $negativeColor = null;
+    protected ?int $point = null;
+    protected ?int $pointInterval = null;
+    protected ?string $pointIntervalUnit = null;
     /**
      * @var string|int
      */
     protected $pointPlacement;
-    /**
-     * @var int
-     */
-    protected $pointStart;
-    /**
-     * @var boolean
-     */
-    protected $selected;
-    /**
-     * @var Series
-     */
-    protected $series;
-    /**
-     * @var boolean
-     */
-    protected $shadow;
-    /**
-     * @var boolean
-     */
-    protected $showCheckbox;
-    /**
-     * @var boolean
-     */
-    protected $showInLegend;
-    /**
-     * @var boolean
-     */
-    protected $skipKeyboardNavigation;
-    /**
-     * @var boolean
-     */
-    protected $softThreshold;
-    /**
-     * @var string
-     */
-    protected $stack;
-    /**
-     * @var string
-     */
-    protected $stacking;
-    /**
-     * @var boolean
-     */
-    protected $stickyTracking;
-    /**
-     * @var Tooltip
-     */
-    protected $tooltip;
-    /**
-     * @var int
-     */
-    protected $turboThreshold;
-    /**
-     * @var string
-     */
-    protected $type;
-    /**
-     * @var boolean
-     */
-    protected $visible;
+    protected ?int $pointStart = null;
+    protected ?bool $selected = null;
+    protected ?Series $series = null;
+    protected ?bool $shadow = null;
+    protected ?bool $showCheckbox = null;
+    protected ?bool $showInLegend = null;
+    protected ?bool $skipKeyboardNavigation = null;
+    protected ?bool $softThreshold = null;
+    protected ?string $stack = null;
+    protected ?string $stacking = null;
+    protected ?bool $stickyTracking = null;
+    protected ?Tooltip $tooltip = null;
+    protected ?int $turboThreshold = null;
+    protected ?string $type = null;
+    protected ?bool $visible = null;
     /**
      * @var string|int
      */
@@ -210,152 +84,95 @@ class Spline extends PlotOptions
      * @var string|int
      */
     protected $yAxis;
-    /**
-     * @var int
-     */
-    protected $zIndex;
+    protected ?int $zIndex = null;
 
 
-    /**
-     * @return int
-     */
     public function getAnimationLimit(): int
     {
         return $this->animationLimit;
     }
 
-    /**
-     * @param int $animationLimit
-     */
-    public function setAnimationLimit(int $animationLimit)
+    public function setAnimationLimit(int $animationLimit): void
     {
         $this->animationLimit = $animationLimit;
     }
 
-    /**
-     * @return int
-     */
     public function getBoostThreshold(): int
     {
         return $this->boostThreshold;
     }
 
-    /**
-     * @param int $boostThreshold
-     */
-    public function setBoostThreshold(int $boostThreshold)
+    public function setBoostThreshold(int $boostThreshold): void
     {
         $this->boostThreshold = $boostThreshold;
     }
 
-    /**
-     * @return string
-     */
     public function getClassName(): string
     {
         return $this->className;
     }
 
-    /**
-     * @param string $className
-     */
-    public function setClassName(string $className)
+    public function setClassName(string $className): void
     {
         $this->className = $className;
     }
 
-    /**
-     * @return int
-     */
     public function getColorIndex(): int
     {
         return $this->colorIndex;
     }
 
-    /**
-     * @param int $colorIndex
-     */
-    public function setColorIndex(int $colorIndex)
+    public function setColorIndex(int $colorIndex): void
     {
         $this->colorIndex = $colorIndex;
     }
 
-    /**
-     * @return bool
-     */
     public function isConnectEnds(): bool
     {
         return $this->connectEnds;
     }
 
-    /**
-     * @param bool $connectEnds
-     */
-    public function setConnectEnds(bool $connectEnds)
+    public function setConnectEnds(bool $connectEnds): void
     {
         $this->connectEnds = $connectEnds;
     }
 
-    /**
-     * @return bool
-     */
     public function isConnectNulls(): bool
     {
         return $this->connectNulls;
     }
 
-    /**
-     * @param bool $connectNulls
-     */
-    public function setConnectNulls(bool $connectNulls)
+    public function setConnectNulls(bool $connectNulls): void
     {
         $this->connectNulls = $connectNulls;
     }
 
-    /**
-     * @return int
-     */
     public function getCropThreshold(): int
     {
         return $this->cropThreshold;
     }
 
-    /**
-     * @param int $cropThreshold
-     */
-    public function setCropThreshold(int $cropThreshold)
+    public function setCropThreshold(int $cropThreshold): void
     {
         $this->cropThreshold = $cropThreshold;
     }
 
-    /**
-     * @return string
-     */
     public function getCursor(): string
     {
         return $this->cursor;
     }
 
-    /**
-     * @param string $cursor
-     */
-    public function setCursor(string $cursor)
+    public function setCursor(string $cursor): void
     {
         $this->cursor = $cursor;
     }
 
-    /**
-     * @return string
-     */
     public function getDashStyle(): string
     {
         return $this->dashStyle;
     }
 
-    /**
-     * @param string $dashStyle
-     */
-    public function setDashStyle(string $dashStyle)
+    public function setDashStyle(string $dashStyle): void
     {
         $this->dashStyle = $dashStyle;
     }
@@ -371,141 +188,93 @@ class Spline extends PlotOptions
     /**
      * @param array[] $data
      */
-    public function setData(array $data)
+    public function setData(array $data): void
     {
         $this->data = $data;
     }
 
-    /**
-     * @return DataLabels
-     */
     public function getDataLabels(): DataLabels
     {
         return $this->dataLabels;
     }
 
-    /**
-     * @param DataLabels $dataLabels
-     */
-    public function setDataLabels(DataLabels $dataLabels)
+    public function setDataLabels(DataLabels $dataLabels): void
     {
         $this->dataLabels = $dataLabels;
     }
 
-    /**
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $description
-     */
-    public function setDescription(string $description)
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
 
-    /**
-     * @return bool
-     */
     public function isEnableMouseTracking(): bool
     {
         return $this->enableMouseTracking;
     }
 
-    /**
-     * @param bool $enableMouseTracking
-     */
-    public function setEnableMouseTracking(bool $enableMouseTracking)
+    public function setEnableMouseTracking(bool $enableMouseTracking): void
     {
         $this->enableMouseTracking = $enableMouseTracking;
     }
 
-    /**
-     * @return bool
-     */
     public function isExposeElementToA11y(): bool
     {
         return $this->exposeElementToA11y;
     }
 
-    /**
-     * @param bool $exposeElementToA11y
-     */
-    public function setExposeElementToA11y(bool $exposeElementToA11y)
+    public function setExposeElementToA11y(bool $exposeElementToA11y): void
     {
         $this->exposeElementToA11y = $exposeElementToA11y;
     }
 
-    /**
-     * @return string
-     */
     public function getFindNearestPointBy(): string
     {
         return $this->findNearestPointBy;
     }
 
-    /**
-     * @param string $findNearestPointBy
-     */
-    public function setFindNearestPointBy(string $findNearestPointBy)
+    public function setFindNearestPointBy(string $findNearestPointBy): void
     {
         $this->findNearestPointBy = $findNearestPointBy;
     }
 
-    /**
-     * @return bool
-     */
     public function isGetExtremesFromAll(): bool
     {
         return $this->getExtremesFromAll;
     }
 
-    /**
-     * @param bool $getExtremesFromAll
-     */
-    public function setGetExtremesFromAll(bool $getExtremesFromAll)
+    public function setGetExtremesFromAll(bool $getExtremesFromAll): void
     {
         $this->getExtremesFromAll = $getExtremesFromAll;
     }
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     */
-    public function setId(string $id)
+    public function setId(string $id): void
     {
         $this->id = $id;
     }
 
-    /**
-     * @return int
-     */
     public function getIndex(): int
     {
         return $this->index;
     }
 
-    /**
-     * @param int $index
-     */
-    public function setIndex(int $index)
+    public function setIndex(int $index): void
     {
         $this->index = $index;
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getKeys(): array
     {
@@ -513,185 +282,119 @@ class Spline extends PlotOptions
     }
 
     /**
-     * @param array $keys
+     * @param mixed[] $keys
      */
-    public function setKeys(array $keys)
+    public function setKeys(array $keys): void
     {
         $this->keys = $keys;
     }
 
-    /**
-     * @return Label
-     */
     public function getLabel(): Label
     {
         return $this->label;
     }
 
-    /**
-     * @param Label $label
-     */
-    public function setLabel(Label $label)
+    public function setLabel(Label $label): void
     {
         $this->label = $label;
     }
 
-    /**
-     * @return int
-     */
     public function getLegendIndex(): int
     {
         return $this->legendIndex;
     }
 
-    /**
-     * @param int $legendIndex
-     */
-    public function setLegendIndex(int $legendIndex)
+    public function setLegendIndex(int $legendIndex): void
     {
         $this->legendIndex = $legendIndex;
     }
 
-    /**
-     * @return string
-     */
     public function getLinecap(): string
     {
         return $this->linecap;
     }
 
-    /**
-     * @param string $linecap
-     */
-    public function setLinecap(string $linecap)
+    public function setLinecap(string $linecap): void
     {
         $this->linecap = $linecap;
     }
 
-    /**
-     * @return int
-     */
     public function getLineWidth(): int
     {
         return $this->lineWidth;
     }
 
-    /**
-     * @param int $lineWidth
-     */
-    public function setLineWidth(int $lineWidth)
+    public function setLineWidth(int $lineWidth): void
     {
         $this->lineWidth = $lineWidth;
     }
 
-    /**
-     * @return string
-     */
     public function getLinkedTo(): string
     {
         return $this->linkedTo;
     }
 
-    /**
-     * @param string $linkedTo
-     */
-    public function setLinkedTo(string $linkedTo)
+    public function setLinkedTo(string $linkedTo): void
     {
         $this->linkedTo = $linkedTo;
     }
 
-    /**
-     * @return Marker
-     */
     public function getMarker(): Marker
     {
         return $this->marker;
     }
 
-    /**
-     * @param Marker $marker
-     */
-    public function setMarker(Marker $marker)
+    public function setMarker(Marker $marker): void
     {
         $this->marker = $marker;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return Color
-     */
     public function getNegativeColor(): Color
     {
         return $this->negativeColor;
     }
 
-    /**
-     * @param Color $negativeColor
-     */
-    public function setNegativeColor(Color $negativeColor)
+    public function setNegativeColor(Color $negativeColor): void
     {
         $this->negativeColor = $negativeColor;
     }
 
-    /**
-     * @return int
-     */
     public function getPoint(): int
     {
         return $this->point;
     }
 
-    /**
-     * @param int $point
-     */
-    public function setPoint(int $point)
+    public function setPoint(int $point): void
     {
         $this->point = $point;
     }
 
-    /**
-     * @return int
-     */
     public function getPointInterval(): int
     {
         return $this->pointInterval;
     }
 
-    /**
-     * @param int $pointInterval
-     */
-    public function setPointInterval(int $pointInterval)
+    public function setPointInterval(int $pointInterval): void
     {
         $this->pointInterval = $pointInterval;
     }
 
-    /**
-     * @return string
-     */
     public function getPointIntervalUnit(): string
     {
         return $this->pointIntervalUnit;
     }
 
-    /**
-     * @param string $pointIntervalUnit
-     */
-    public function setPointIntervalUnit(string $pointIntervalUnit)
+    public function setPointIntervalUnit(string $pointIntervalUnit): void
     {
         $this->pointIntervalUnit = $pointIntervalUnit;
     }
@@ -707,231 +410,147 @@ class Spline extends PlotOptions
     /**
      * @param int|string $pointPlacement
      */
-    public function setPointPlacement($pointPlacement)
+    public function setPointPlacement($pointPlacement): void
     {
         $this->pointPlacement = $pointPlacement;
     }
 
-    /**
-     * @return int
-     */
     public function getPointStart(): int
     {
         return $this->pointStart;
     }
 
-    /**
-     * @param int $pointStart
-     */
-    public function setPointStart(int $pointStart)
+    public function setPointStart(int $pointStart): void
     {
         $this->pointStart = $pointStart;
     }
 
-    /**
-     * @return bool
-     */
     public function isSelected(): bool
     {
         return $this->selected;
     }
 
-    /**
-     * @param bool $selected
-     */
-    public function setSelected(bool $selected)
+    public function setSelected(bool $selected): void
     {
         $this->selected = $selected;
     }
 
-    /**
-     * @return bool
-     */
     public function isShadow(): bool
     {
         return $this->shadow;
     }
 
-    /**
-     * @param bool $shadow
-     */
-    public function setShadow(bool $shadow)
+    public function setShadow(bool $shadow): void
     {
         $this->shadow = $shadow;
     }
 
-    /**
-     * @return bool
-     */
     public function isShowCheckbox(): bool
     {
         return $this->showCheckbox;
     }
 
-    /**
-     * @param bool $showCheckbox
-     */
-    public function setShowCheckbox(bool $showCheckbox)
+    public function setShowCheckbox(bool $showCheckbox): void
     {
         $this->showCheckbox = $showCheckbox;
     }
 
-    /**
-     * @return bool
-     */
     public function isShowInLegend(): bool
     {
         return $this->showInLegend;
     }
 
-    /**
-     * @param bool $showInLegend
-     */
-    public function setShowInLegend(bool $showInLegend)
+    public function setShowInLegend(bool $showInLegend): void
     {
         $this->showInLegend = $showInLegend;
     }
 
-    /**
-     * @return bool
-     */
     public function isSkipKeyboardNavigation(): bool
     {
         return $this->skipKeyboardNavigation;
     }
 
-    /**
-     * @param bool $skipKeyboardNavigation
-     */
-    public function setSkipKeyboardNavigation(bool $skipKeyboardNavigation)
+    public function setSkipKeyboardNavigation(bool $skipKeyboardNavigation): void
     {
         $this->skipKeyboardNavigation = $skipKeyboardNavigation;
     }
 
-    /**
-     * @return bool
-     */
     public function isSoftThreshold(): bool
     {
         return $this->softThreshold;
     }
 
-    /**
-     * @param bool $softThreshold
-     */
-    public function setSoftThreshold(bool $softThreshold)
+    public function setSoftThreshold(bool $softThreshold): void
     {
         $this->softThreshold = $softThreshold;
     }
 
-    /**
-     * @return string
-     */
     public function getStack(): string
     {
         return $this->stack;
     }
 
-    /**
-     * @param string $stack
-     */
-    public function setStack(string $stack)
+    public function setStack(string $stack): void
     {
         $this->stack = $stack;
     }
 
-    /**
-     * @return string
-     */
     public function getStacking(): string
     {
         return $this->stacking;
     }
 
-    /**
-     * @param string $stacking
-     */
-    public function setStacking(string $stacking)
+    public function setStacking(string $stacking): void
     {
         $this->stacking = $stacking;
     }
 
-    /**
-     * @return bool
-     */
     public function isStickyTracking(): bool
     {
         return $this->stickyTracking;
     }
 
-    /**
-     * @param bool $stickyTracking
-     */
-    public function setStickyTracking(bool $stickyTracking)
+    public function setStickyTracking(bool $stickyTracking): void
     {
         $this->stickyTracking = $stickyTracking;
     }
 
-    /**
-     * @return Tooltip
-     */
     public function getTooltip(): Tooltip
     {
         return $this->tooltip;
     }
 
-    /**
-     * @param Tooltip $tooltip
-     */
-    public function setTooltip(Tooltip $tooltip)
+    public function setTooltip(Tooltip $tooltip): void
     {
         $this->tooltip = $tooltip;
     }
 
-    /**
-     * @return int
-     */
     public function getTurboThreshold(): int
     {
         return $this->turboThreshold;
     }
 
-    /**
-     * @param int $turboThreshold
-     */
-    public function setTurboThreshold(int $turboThreshold)
+    public function setTurboThreshold(int $turboThreshold): void
     {
         $this->turboThreshold = $turboThreshold;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     */
-    public function setType(string $type)
+    public function setType(string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * @return bool
-     */
     public function isVisible(): bool
     {
         return $this->visible;
     }
 
-    /**
-     * @param bool $visible
-     */
-    public function setVisible(bool $visible)
+    public function setVisible(bool $visible): void
     {
         $this->visible = $visible;
     }
@@ -947,7 +566,7 @@ class Spline extends PlotOptions
     /**
      * @param int|string $xAxis
      */
-    public function setXAxis($xAxis)
+    public function setXAxis($xAxis): void
     {
         $this->xAxis = $xAxis;
     }
@@ -963,31 +582,25 @@ class Spline extends PlotOptions
     /**
      * @param int|string $yAxis
      */
-    public function setYAxis($yAxis)
+    public function setYAxis($yAxis): void
     {
         $this->yAxis = $yAxis;
     }
 
-    /**
-     * @return int
-     */
     public function getZIndex(): int
     {
         return $this->zIndex;
     }
 
-    /**
-     * @param int $zIndex
-     */
-    public function setZIndex(int $zIndex)
+    public function setZIndex(int $zIndex): void
     {
         $this->zIndex = $zIndex;
     }
 
     /**
-     * @return array
+     * @return array<string, array<string, mixed[]|bool|int|string|DataLabels|Label|Marker|Tooltip|Color>>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result['spline']  = [];
         $splinePlotOptions = [];

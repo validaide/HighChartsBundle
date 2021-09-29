@@ -61,6 +61,7 @@ class SplineGraphTest extends IntegrationTestCase
 
         $climateGraph = new SplineGraph();
 
+        $this->assertTrue(true);
         $this->assertGraph($climateGraph, $replacements);
     }
 }

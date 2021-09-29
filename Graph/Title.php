@@ -7,111 +7,69 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 class Title
 {
-    /** @var string|null */
-    private $align;
-    /** @var string|null */
-    private $verticalAlign;
-    /** @var int|null */
-    private $y;
-    /** @var string */
-    private $text;
-    /** @var int */
-    private $margin;
-    /** @var bool|null */
-    private $hidden;
+    private ?string $align = null;
+    private ?string $verticalAlign = null;
+    private ?int $y = null;
+    private ?string $text = null;
+    private ?int $margin = null;
+    private ?bool $hidden = null;
 
-    /**
-     * @return string
-     */
     public function getText(): string
     {
         return $this->text;
     }
 
-    /**
-     * @param string $text
-     */
-    public function setText($text)
+    public function setText(string $text): void
     {
         $this->text = $text;
     }
 
-    /**
-     * @return null|string
-     */
-    public function getAlign()
+    public function getAlign(): ?string
     {
         return $this->align;
     }
 
-    /**
-     * @param null|string $align
-     */
-    public function setAlign($align)
+    public function setAlign(?string $align): void
     {
         $this->align = $align;
     }
 
-    /**
-     * @return null|string
-     */
-    public function getVerticalAlign()
+    public function getVerticalAlign(): ?string
     {
         return $this->verticalAlign;
     }
 
-    /**
-     * @param null|string $verticalAlign
-     */
-    public function setVerticalAlign($verticalAlign)
+    public function setVerticalAlign(?string $verticalAlign): void
     {
         $this->verticalAlign = $verticalAlign;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getY()
+    public function getY(): ?int
     {
         return $this->y;
     }
 
-    /**
-     * @param int|null $y
-     */
-    public function setY($y)
+    public function setY(?int $y): void
     {
         $this->y = $y;
     }
 
-    /**
-     * @return int
-     */
     public function getMargin(): int
     {
         return $this->margin;
     }
 
-    /**
-     * @param int $margin
-     */
-    public function setMargin(int $margin)
+    public function setMargin(int $margin): void
     {
         $this->margin = $margin;
     }
 
-    /**
-     * @param bool|null $hidden
-     */
     public function setHidden(?bool $hidden): void
     {
         $this->hidden = $hidden;
     }
 
-    /**
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 

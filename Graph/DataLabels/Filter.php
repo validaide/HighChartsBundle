@@ -9,23 +9,17 @@ namespace Validaide\HighChartsBundle\Graph\DataLabels;
 class Filter
 {
     /** @var string|null */
-    private ?string $property;
+    private ?string $property = null;
     /** @var string|null */
-    private ?string $operator;
+    private ?string $operator = null;
     /** @var mixed|null */
     private $value;
 
-    /**
-     * @return string|null
-     */
     public function getProperty(): ?string
     {
         return $this->property;
     }
 
-    /**
-     * @return string|null
-     */
     public function getOperator(): ?string
     {
         return $this->operator;
@@ -39,17 +33,11 @@ class Filter
         return $this->value;
     }
 
-    /**
-     * @param string|null $property
-     */
     public function setProperty(?string $property): void
     {
         $this->property = $property;
     }
 
-    /**
-     * @param string|null $operator
-     */
     public function setOperator(?string $operator): void
     {
         $this->operator = $operator;
@@ -63,15 +51,12 @@ class Filter
         $this->value = $value;
     }
 
-    /**
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 
         if (!is_null($this->property)) {
-            $result['property'] = (string)$this->property;
+            $result['property'] = $this->property;
         }
         if (!is_null($this->operator)) {
             $result['operator'] = $this->operator;

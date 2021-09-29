@@ -10,143 +10,78 @@ use Validaide\HighChartsBundle\ValueObject\VerticalAlignment;
  */
 class Label
 {
-    /**
-     * @var HorizontalAlignment
-     */
-    private $align;
+    private ?HorizontalAlignment $align = null;
 
-    /**
-     * @var int
-     */
-    private $rotation;
+    private ?int $rotation = null;
 
-    /**
-     * @var string
-     */
-    private $style;
+    private ?string $text = null;
 
-    /**
-     * @var string
-     */
-    private $text;
+    private ?HorizontalAlignment $textAlignment = null;
 
-    /**
-     * @var HorizontalAlignment
-     */
-    private $textAlignment;
+    private ?bool $useHtml = null;
 
-    /**
-     * @var bool
-     */
-    private $useHtml;
+    private ?VerticalAlignment $verticalAlignment = null;
 
-    /**
-     * @var VerticalAlignment
-     */
-    private $verticalAlignment;
+    private ?int $x = null;
 
-    /**
-     * @var int
-     */
-    private $x;
+    private ?int $y = null;
 
-    /**
-     * @var int
-     */
-    private $y;
-
-    /**
-     * @return HorizontalAlignment
-     */
     public function getAlign(): HorizontalAlignment
     {
         return $this->align;
     }
 
-    /**
-     * @param HorizontalAlignment $align
-     */
-    public function setAlign(HorizontalAlignment $align)
+    public function setAlign(HorizontalAlignment $align): void
     {
         $this->align = $align;
     }
 
-    /**
-     * @return int
-     */
     public function getRotation(): int
     {
         return $this->rotation;
     }
 
-    /**
-     * @param int $rotation
-     */
-    public function setRotation(int $rotation)
+    public function setRotation(int $rotation): void
     {
         $this->rotation = $rotation;
     }
 
-    /**
-     * @return string
-     */
     public function getText(): string
     {
         return $this->text;
     }
 
-    /**
-     * @param string $text
-     */
-    public function setText(string $text)
+    public function setText(string $text): void
     {
         $this->text = $text;
     }
 
-    /**
-     * @return HorizontalAlignment
-     */
     public function getTextAlignment(): HorizontalAlignment
     {
         return $this->textAlignment;
     }
 
-    /**
-     * @param HorizontalAlignment $textAlignment
-     */
-    public function setTextAlignment(HorizontalAlignment $textAlignment)
+    public function setTextAlignment(HorizontalAlignment $textAlignment): void
     {
         $this->textAlignment = $textAlignment;
     }
 
-    /**
-     * @return bool
-     */
     public function isUseHtml(): bool
     {
         return $this->useHtml;
     }
 
-    /**
-     * @param bool $useHtml
-     */
-    public function setUseHtml(bool $useHtml)
+    public function setUseHtml(bool $useHtml): void
     {
         $this->useHtml = $useHtml;
     }
 
-    /**
-     * @return VerticalAlignment
-     */
     public function getVerticalAlignment(): VerticalAlignment
     {
         return $this->verticalAlignment;
     }
 
-    /**
-     * @param VerticalAlignment $verticalAlignment
-     */
-    public function setVerticalAlignment(VerticalAlignment $verticalAlignment)
+    public function setVerticalAlignment(VerticalAlignment $verticalAlignment): void
     {
         $this->verticalAlignment = $verticalAlignment;
     }
@@ -154,15 +89,12 @@ class Label
     /**
      * @return int|null
      */
-    public function getX()
+    public function getX(): int
     {
         return $this->x;
     }
 
-    /**
-     * @param int $x
-     */
-    public function setX(int $x)
+    public function setX(int $x): void
     {
         $this->x = $x;
     }
@@ -170,23 +102,20 @@ class Label
     /**
      * @return int|null
      */
-    public function getY()
+    public function getY(): int
     {
         return $this->y;
     }
 
-    /**
-     * @param int $y
-     */
-    public function setY(int $y)
+    public function setY(int $y): void
     {
         $this->y = $y;
     }
 
     /**
-     * @return array
+     * @return array<string, bool>|array<string, int>|array<string, string>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 

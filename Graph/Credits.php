@@ -7,94 +7,58 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 class Credits
 {
-    /**
-     * @var bool
-     */
-    private $enabled;
+    private ?bool $enabled = null;
 
-    /**
-     * @var string
-     */
-    private $text;
+    private ?string $text = null;
 
-    /**
-     * @var string
-     */
-    private $href;
+    private ?string $href = null;
 
-    /**
-     * @var string
-     */
-    private $style;
+    private ?string $style = null;
 
-    /**
-     * @return bool
-     */
     public function isEnabled(): bool
     {
         return $this->enabled;
     }
 
-    /**
-     * @param bool $enabled
-     */
-    public function setEnabled(bool $enabled)
+    public function setEnabled(bool $enabled): void
     {
         $this->enabled = $enabled;
     }
 
-    /**
-     * @return string
-     */
     public function getText(): string
     {
         return $this->text;
     }
 
-    /**
-     * @param string $text
-     */
-    public function setText(string $text)
+    public function setText(string $text): void
     {
         $this->text = $text;
     }
 
-    /**
-     * @return string
-     */
     public function getHref(): string
     {
         return $this->href;
     }
 
-    /**
-     * @param string $href
-     */
-    public function setHref(string $href)
+    public function setHref(string $href): void
     {
         $this->href = $href;
     }
 
-    /**
-     * @return string
-     */
     public function getStyle(): string
     {
         return $this->style;
     }
 
-    /**
-     * @param string $style
-     */
-    public function setStyle(string $style)
+    public function setStyle(string $style): void
     {
         $this->style = $style;
     }
 
     /**
-     * @return string
+     * @return array<string, bool>|array<string, string>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 

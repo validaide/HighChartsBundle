@@ -4,58 +4,41 @@ namespace Validaide\HighChartsBundle\Graph\Drilldown;
 
 class DrillUpButton
 {
-    /** @var string */
-    private $align = 'right';
-    /** @var string */
-    private $verticalAlign = 'top';
-    /** @var string|null */
-    private $x;
-    /** @var string|null */
-    private $y;
-    /** @var string */
-    private $relativeTo = 'spacingBox';
+    private string $align = 'right';
+    private ?string $verticalAlign = 'top';
+    private ?string $x = null;
+    private ?string $y = null;
+    private string $relativeTo = 'spacingBox';
 
-    /**
-     * @param string $align
-     */
     public function setAlign(string $align): void
     {
         $this->align = $align;
     }
 
-    /**
-     * @param string|null $verticalAlign
-     */
     public function setVerticalAlign(?string $verticalAlign): void
     {
         $this->verticalAlign = $verticalAlign;
     }
 
-    /**
-     * @param string|null $x
-     */
     public function setX(?string $x): void
     {
         $this->x = $x;
     }
 
-    /**
-     * @param string|null $y
-     */
     public function setY(?string $y): void
     {
         $this->y = $y;
     }
 
-    /**
-     * @param string $relativeTo
-     */
     public function setRelativeTo(string $relativeTo): void
     {
         $this->relativeTo = $relativeTo;
     }
 
 
+    /**
+     * @return array<string, mixed[]>
+     */
     public function toArray(): array
     {
         $result = [];

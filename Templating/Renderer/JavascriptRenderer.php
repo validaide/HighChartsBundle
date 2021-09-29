@@ -10,10 +10,8 @@ class JavascriptRenderer extends AbstractTagRenderer
     /**
      * @param $variable
      * @param $assignment
-     *
-     * @return string
      */
-    public function renderVariable($variable, $assignment)
+    public function renderVariable($variable, $assignment): string
     {
         return 'var ' . $variable . ' = ' . $assignment . ';';
     }

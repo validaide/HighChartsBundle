@@ -19,44 +19,25 @@ class Marker
     const SYMBOL            = 'symbol';
     const WIDTH             = 'width';
 
-    /** @var null|bool */
-    private $enabled;
+    private ?bool $enabled = null;
 
-    /** @var int */
-    private $enabledThreshold;
+    private ?int $enabledThreshold = null;
 
-    /** @var null|Color */
-    private $fillColor;
+    private ?Color $fillColor = null;
 
-    /** @var null|int */
-    private $height;
+    private ?int $height = null;
 
-    /** @var Color */
-    private $lineColor;
+    private ?Color $lineColor = null;
 
-    /** @var int */
-    private $lineWidth;
+    private ?int $lineWidth = null;
 
-    /** @var int */
-    private $radius;
+    private ?int $radius = null;
 
-    /** @var string */
-    private $symbol;
+    private ?string $symbol = null;
 
-    /** @var int */
-    private $width;
+    private ?int $width = null;
 
-    /**
-     * Marker constructor.
-     */
-    public function __construct()
-    {
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getEnabled(): bool
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
@@ -64,31 +45,22 @@ class Marker
     /**
      * @param bool|null $enabled
      */
-    public function setEnabled(bool $enabled)
+    public function setEnabled(bool $enabled): void
     {
         $this->enabled = $enabled;
     }
 
-    /**
-     * @return int
-     */
     public function getEnabledThreshold(): int
     {
         return $this->enabledThreshold;
     }
 
-    /**
-     * @param int $enabledThreshold
-     */
-    public function setEnabledThreshold(int $enabledThreshold)
+    public function setEnabledThreshold(int $enabledThreshold): void
     {
         $this->enabledThreshold = $enabledThreshold;
     }
 
-    /**
-     * @return null|Color
-     */
-    public function getFillColor(): Color
+    public function getFillColor(): ?Color
     {
         return $this->fillColor;
     }
@@ -96,15 +68,12 @@ class Marker
     /**
      * @param null|Color $fillColor
      */
-    public function setFillColor(Color $fillColor)
+    public function setFillColor(Color $fillColor): void
     {
         $this->fillColor = $fillColor;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getHeight(): int
+    public function getHeight(): ?int
     {
         return $this->height;
     }
@@ -112,94 +81,61 @@ class Marker
     /**
      * @param int|null $height
      */
-    public function setHeight(int $height)
+    public function setHeight(int $height): void
     {
         $this->height = $height;
     }
 
-    /**
-     * @return Color
-     */
     public function getLineColor(): Color
     {
         return $this->lineColor;
     }
 
-    /**
-     * @param Color $lineColor
-     */
-    public function setLineColor(Color $lineColor)
+    public function setLineColor(Color $lineColor): void
     {
         $this->lineColor = $lineColor;
     }
 
-    /**
-     * @return int
-     */
     public function getLineWidth(): int
     {
         return $this->lineWidth;
     }
 
-    /**
-     * @param int $lineWidth
-     */
-    public function setLineWidth(int $lineWidth)
+    public function setLineWidth(int $lineWidth): void
     {
         $this->lineWidth = $lineWidth;
     }
 
-    /**
-     * @return int
-     */
     public function getRadius(): int
     {
         return $this->radius;
     }
 
-    /**
-     * @param int $radius
-     */
-    public function setRadius(int $radius)
+    public function setRadius(int $radius): void
     {
         $this->radius = $radius;
     }
 
-    /**
-     * @return string
-     */
     public function getSymbol(): string
     {
         return $this->symbol;
     }
 
-    /**
-     * @param string $symbol
-     */
-    public function setSymbol(string $symbol)
+    public function setSymbol(string $symbol): void
     {
         $this->symbol = $symbol;
     }
 
-    /**
-     * @return int
-     */
     public function getWidth(): int
     {
         return $this->width;
     }
 
-    /**
-     * @param int $width
-     */
-    public function setWidth(int $width)
+    public function setWidth(int $width): void
     {
         $this->width = $width;
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
         $result = [];

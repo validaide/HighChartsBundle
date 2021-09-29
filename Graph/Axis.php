@@ -8,50 +8,30 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 class Axis
 {
-    /** @var Title */
-    private $title;
-    /** @var bool */
-    private $opposite;
-    /** @var bool */
-    private $crosshair;
-    /** @var array|null */
-    private $categories = null;
-    /** @var float */
-    private $min;
-    /** @var float */
-    private $max;
-    /** @var Labels */
-    public $labels;
+    private Title $title;
+    private ?bool $opposite = null;
+    private ?bool $crosshair = null;
+    private ?array $categories = null;
+    private ?float $min = null;
+    private ?float $max = null;
+    public Labels $labels;
     /** @var PlotBand[] */
     private $plotBands;
     /** @var PlotLine[] */
     private $plotLines;
-    /** @var float */
-    private $tickInterval;
-    /** @var bool */
-    private $startOnTick;
-    /** @var bool */
-    private $endOnTick;
-    /** @var bool */
-    private $alignTicks;
-    /** @var float */
-    private $softMin;
-    /** @var float */
-    private $softMax;
-    /** @var string */
-    private $type;
-    /** @var DateTimeLabelFormats */
-    private $dateTimeLabelFormats;
-    /** @var bool */
-    private $allowDecimals;
-    /** @var int */
-    private $rotation;
-    /** @var int|null */
-    private $lineWidth = null;
-    /** @var string|null */
-    private $tickmarkPlacement = null;
-    /** @var string|null */
-    private $gridLineInterpolation = null;
+    private ?float $tickInterval = null;
+    private ?bool $startOnTick = null;
+    private ?bool $endOnTick = null;
+    private ?bool $alignTicks = null;
+    private ?float $softMin = null;
+    private ?float $softMax = null;
+    private ?string $type = null;
+    private ?DateTimeLabelFormats $dateTimeLabelFormats = null;
+    private ?bool $allowDecimals = null;
+    private ?int $rotation = null;
+    private ?int $lineWidth = null;
+    private ?string $tickmarkPlacement = null;
+    private ?string $gridLineInterpolation = null;
 
     /**
      * Axis constructor.
@@ -62,106 +42,67 @@ class Axis
         $this->labels = new Labels();
     }
 
-    /**
-     * @return Title
-     */
-    public function getTitle()
+    public function getTitle(): Title
     {
         return $this->title;
     }
 
-    /**
-     * @param Title $title
-     */
-    public function setTitle($title)
+    public function setTitle(Title $title): void
     {
         $this->title = $title;
     }
 
-    /**
-     * @return bool
-     */
     public function getOpposite(): bool
     {
         return $this->opposite;
     }
 
-    /**
-     * @param bool $opposite
-     */
-    public function setOpposite(bool $opposite)
+    public function setOpposite(bool $opposite): void
     {
         $this->opposite = $opposite;
     }
 
-    /**
-     * @return bool
-     */
     public function isCrosshair(): bool
     {
         return $this->crosshair;
     }
 
-    /**
-     * @param bool $crosshair
-     */
-    public function setCrosshair(bool $crosshair)
+    public function setCrosshair(bool $crosshair): void
     {
         $this->crosshair = $crosshair;
     }
 
-    /**
-     * @return array|null
-     */
-    public function getCategories()
+    public function getCategories(): ?array
     {
         return $this->categories;
     }
 
-    /**
-     * @param array|null $categories
-     */
-    public function setCategories($categories)
+    public function setCategories(?array $categories): void
     {
         $this->categories = $categories;
     }
 
-    /**
-     * @return float
-     */
     public function getMin(): float
     {
         return $this->min;
     }
 
-    /**
-     * @param float $min
-     */
-    public function setMin(float $min)
+    public function setMin(float $min): void
     {
         $this->min = $min;
     }
 
-    /**
-     * @return float
-     */
     public function getMax(): float
     {
         return $this->max;
     }
 
-    /**
-     * @param float $max
-     */
-    public function setMax(float $max)
+    public function setMax(float $max): void
     {
         $this->max = $max;
     }
 
-    /**
-     * @param PlotBand $plotBand
-     */
-    public function addPlotBand(PlotBand $plotBand)
+    public function addPlotBand(PlotBand $plotBand): void
     {
         $this->plotBands[] = $plotBand;
     }
@@ -177,15 +118,12 @@ class Axis
     /**
      * @param PlotBand[] $plotBands
      */
-    public function setPlotBands(array $plotBands)
+    public function setPlotBands(array $plotBands): void
     {
         $this->plotBands = $plotBands;
     }
 
-    /**
-     * @param PlotLine $plotLine
-     */
-    public function addPlotLine(PlotLine $plotLine)
+    public function addPlotLine(PlotLine $plotLine): void
     {
         $this->plotLines[] = $plotLine;
     }
@@ -201,103 +139,67 @@ class Axis
     /**
      * @param PlotLine[] $plotLines
      */
-    public function setPlotLines(array $plotLines)
+    public function setPlotLines(array $plotLines): void
     {
         $this->plotLines = $plotLines;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     */
-    public function setType(string $type)
+    public function setType(string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * @return float
-     */
     public function getTickInterval(): float
     {
         return $this->tickInterval;
     }
 
-    /**
-     * @param float $tickInterval
-     */
-    public function setTickInterval(float $tickInterval)
+    public function setTickInterval(float $tickInterval): void
     {
         $this->tickInterval = $tickInterval;
     }
 
-    /**
-     * @return bool
-     */
     public function isEndOnTick(): bool
     {
         return $this->endOnTick;
     }
 
-    /**
-     * @param bool $endOnTick
-     */
-    public function setEndOnTick(bool $endOnTick)
+    public function setEndOnTick(bool $endOnTick): void
     {
         $this->endOnTick = $endOnTick;
     }
 
-    /**
-     * @return bool
-     */
     public function isAlignTicks(): bool
     {
         return $this->alignTicks;
     }
 
-    /**
-     * @param bool $alignTicks
-     */
-    public function setAlignTicks(bool $alignTicks)
+    public function setAlignTicks(bool $alignTicks): void
     {
         $this->alignTicks = $alignTicks;
     }
 
-    /**
-     * @return Labels
-     */
     public function getLabels(): Labels
     {
         return $this->labels;
     }
 
-    /**
-     * @param Labels $labels
-     */
-    public function setLabels(Labels $labels)
+    public function setLabels(Labels $labels): void
     {
         $this->labels = $labels;
     }
 
-    /**
-     * @return bool
-     */
     public function isStartOnTick(): bool
     {
         return $this->startOnTick;
     }
 
-    /**
-     * @param bool $startOnTick
-     */
-    public function setStartOnTick(bool $startOnTick)
+    public function setStartOnTick(bool $startOnTick): void
     {
         $this->startOnTick = $startOnTick;
     }
@@ -305,15 +207,12 @@ class Axis
     /**
      * @return float|null
      */
-    public function getSoftMin()
+    public function getSoftMin(): float
     {
         return $this->softMin;
     }
 
-    /**
-     * @param float $softMin
-     */
-    public function setSoftMin(float $softMin = null)
+    public function setSoftMin(float $softMin = null): void
     {
         $this->softMin = $softMin;
     }
@@ -321,22 +220,16 @@ class Axis
     /**
      * @return float|null
      */
-    public function getSoftMax()
+    public function getSoftMax(): float
     {
         return $this->softMax;
     }
 
-    /**
-     * @param float $softMax
-     */
-    public function setSoftMax(float $softMax = null)
+    public function setSoftMax(float $softMax = null): void
     {
         $this->softMax = $softMax;
     }
 
-    /**
-     * @return DateTimeLabelFormats
-     */
     public function getDateTimeLabelFormats(): DateTimeLabelFormats
     {
         if (is_null($this->dateTimeLabelFormats)) {
@@ -346,90 +239,57 @@ class Axis
         return $this->dateTimeLabelFormats;
     }
 
-    /**
-     * @return bool
-     */
     public function getAllowDecimals(): bool
     {
         return $this->allowDecimals;
     }
 
-    /**
-     * @param bool $allowDecimals
-     */
-    public function setAllowDecimals(bool $allowDecimals)
+    public function setAllowDecimals(bool $allowDecimals): void
     {
         $this->allowDecimals = $allowDecimals;
     }
 
-    /**
-     * @return int
-     */
     public function getRotation(): int
     {
         return $this->rotation;
     }
 
-    /**
-     * @param int $rotation
-     */
     public function setRotation(int $rotation): void
     {
         $this->rotation = $rotation;
     }
 
-    /**
-     * @return int|null
-     */
     public function getLineWidth(): ?int
     {
         return $this->lineWidth;
     }
 
-    /**
-     * @param int|null $lineWidth
-     */
     public function setLineWidth(?int $lineWidth): void
     {
         $this->lineWidth = $lineWidth;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTickmarkPlacement(): ?string
     {
         return $this->tickmarkPlacement;
     }
 
-    /**
-     * @param string|null $tickmarkPlacement
-     */
     public function setTickmarkPlacement(?string $tickmarkPlacement): void
     {
         $this->tickmarkPlacement = $tickmarkPlacement;
     }
 
-    /**
-     * @return string|null
-     */
     public function getGridLineInterpolation(): ?string
     {
         return $this->gridLineInterpolation;
     }
 
-    /**
-     * @param string|null $gridLineInterpolation
-     */
     public function setGridLineInterpolation(?string $gridLineInterpolation): void
     {
         $this->gridLineInterpolation = $gridLineInterpolation;
     }
 
-    /**
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 

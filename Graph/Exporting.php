@@ -11,173 +11,117 @@ class Exporting
      * DISCLAIMER: The HTML is rendered in a foreignObject tag in the generated SVG.
      * The official export server is based on PhantomJS, which supports this, but other SVG clients, like Batik, does not support it.
      * This also applies to downloaded SVG that you want to open in a desktop client.
-     *
-     * @var boolean
      */
-    private $allowHTML = false;
+    private bool $allowHTML = false;
 
     /**
      * Whether to enable the exporting module.
      * Disabling the module will hide the context button, but API methods will still be available.
-     *
-     * @var boolean
      */
-    private $enabled = true;
+    private bool $enabled = true;
 
     /**
      * The filename, without extension, to use for the exported chart.
-     *
-     * @var string
      */
-    private $filename = 'chart';
+    private string $filename = 'chart';
 
     /**
      * Defines the scale or zoom factor for the exported image compared to the on-screen display.
      * While for instance a 600px wide chart may look good on a website, it will look bad in print.
      * The default scale of 2 makes this chart export to a 1200px PNG or JPG.
-     *
-     * @var int
      */
-    private $scale = 2;
+    private int $scale = 2;
 
     /**
      * Analogous to sourceWidth.
-     *
-     * @var int
      */
-    private $sourceHeight = null;
+    private ?int $sourceHeight = null;
 
     /**
      * The width of the original chart when exported, unless an explicit width is set, or a pixel width is set on the container.
      * The width exported raster image is then multiplied by scale.
-     *
-     * @var int
      */
-    private $sourceWidth = null;
+    private ?int $sourceWidth = null;
 
     /**
      * The pixel width of charts exported to PNG or JPG.
-     *
-     * @var int
      */
-    private $width = null;
+    private ?int $width = null;
 
-    /**
-     * @return bool
-     */
     public function isAllowHTML(): bool
     {
         return $this->allowHTML;
     }
 
-    /**
-     * @param bool $allowHTML
-     */
-    public function setAllowHTML(bool $allowHTML)
+    public function setAllowHTML(bool $allowHTML): void
     {
         $this->allowHTML = $allowHTML;
     }
 
-    /**
-     * @return bool
-     */
     public function isEnabled(): bool
     {
         return $this->enabled;
     }
 
-    /**
-     * @param bool $enabled
-     */
-    public function setEnabled(bool $enabled)
+    public function setEnabled(bool $enabled): void
     {
         $this->enabled = $enabled;
     }
 
-    /**
-     * @return string
-     */
     public function getFilename(): string
     {
         return $this->filename;
     }
 
-    /**
-     * @param string $filename
-     */
-    public function setFilename(string $filename)
+    public function setFilename(string $filename): void
     {
         $this->filename = $filename;
     }
 
-    /**
-     * @return int
-     */
     public function getScale(): int
     {
         return $this->scale;
     }
 
-    /**
-     * @param int $scale
-     */
-    public function setScale(int $scale)
+    public function setScale(int $scale): void
     {
         $this->scale = $scale;
     }
 
-    /**
-     * @return int
-     */
     public function getSourceHeight(): int
     {
         return $this->sourceHeight;
     }
 
-    /**
-     * @param int $sourceHeight
-     */
-    public function setSourceHeight(int $sourceHeight)
+    public function setSourceHeight(int $sourceHeight): void
     {
         $this->sourceHeight = $sourceHeight;
     }
 
-    /**
-     * @return int
-     */
     public function getSourceWidth(): int
     {
         return $this->sourceWidth;
     }
 
-    /**
-     * @param int $sourceWidth
-     */
-    public function setSourceWidth(int $sourceWidth)
+    public function setSourceWidth(int $sourceWidth): void
     {
         $this->sourceWidth = $sourceWidth;
     }
 
-    /**
-     * @return int
-     */
     public function getWidth(): int
     {
         return $this->width;
     }
 
-    /**
-     * @param int $width
-     */
-    public function setWidth(int $width)
+    public function setWidth(int $width): void
     {
         $this->width = $width;
     }
 
     /**
-     * @return array
+     * @return array<string, bool>|array<string, int>|array<string, string>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [
             'allowHTML' => (bool)$this->allowHTML,

@@ -11,85 +11,57 @@ use Validaide\HighChartsBundle\ValueObject\DashStyle;
  */
 class Series
 {
-    /** @var string|null */
-    private $id;
+    private ?string $id = null;
 
-    /** @var array|null */
-    private $data = null;
+    private ?array $data = null;
 
-    /** @var string */
-    private $name = '';
+    private ?string $name = '';
 
-    /** @var Color */
-    private $color = null;
+    private ?Color $color = null;
 
-    /** @var string */
-    private $drilldown = null;
+    private ?string $drilldown = null;
 
-    /** @var string */
-    private $innerSize = null;
+    private ?string $innerSize = null;
 
-    /** @var string|null */
-    private $type = null;
+    private ?string $type = null;
 
-    /** @var int|null */
-    private $yAxis = null;
+    private ?int $yAxis = null;
 
-    /** @var null */
-    private $tooltip = null;
+    private ?array $tooltip = null;
 
-    /** @var int|null */
-    private $turboThreshold = null;
+    private ?int $turboThreshold = null;
 
-    /** @var int */
-    private $pointInterval;
+    private ?int $pointInterval = null;
 
-    /** @var true */
-    private $visible = true;
+    private bool $visible = true;
 
-    /** @var Marker */
-    private $marker;
+    private ?Marker $marker = null;
 
-    /** @var null|int */
-    private $zIndex;
+    private ?int $zIndex = null;
 
     /** @var DataLabels */
     private $dataLabels;
 
-    /** @var string|null */
-    private $pointPlacement = null;
+    private ?string $pointPlacement = null;
 
-    /** @var DashStyle|null */
-    private $dashStyle;
+    private ?DashStyle $dashStyle = null;
 
-    /** @var bool|null */
-    private $enableMouseTracking;
+    private ?bool $enableMouseTracking = null;
 
-    /** @var bool|null */
-    private $showInLegend;
+    private ?bool $showInLegend = null;
 
-    /**
-     * @param string|null $name
-     * @param array|null  $data
-     */
     public function __construct(?string $name, ?array $data)
     {
         $this->name = $name;
         $this->data = $data;
     }
 
-    /**
-     * @return null|string
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param null|string $id
-     */
-    public function setId(?string $id)
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -97,47 +69,32 @@ class Series
     /**
      * @return string|null
      */
-    public function getDrilldown()
+    public function getDrilldown(): string
     {
         return $this->drilldown;
     }
 
-    /**
-     * @param string $drilldown
-     */
-    public function setDrilldown(string $drilldown)
+    public function setDrilldown(string $drilldown): void
     {
         $this->drilldown = $drilldown;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return array|null
-     */
-    public function getData()
+    public function getData(): ?array
     {
         return $this->data;
     }
 
-    /**
-     * @param array|null $data
-     */
-    public function setData($data)
+    public function setData(?array $data): void
     {
         $this->data = $data;
     }
@@ -150,106 +107,67 @@ class Series
         return $this->tooltip;
     }
 
-    /**
-     * @param array|null $tooltip
-     */
-    public function setTooltip($tooltip)
+    public function setTooltip(?array $tooltip): void
     {
         $this->tooltip = $tooltip;
     }
 
-    /**
-     * @return string
-     */
     public function getInnerSize(): string
     {
         return $this->innerSize;
     }
 
-    /**
-     * @param string $innerSize
-     */
-    public function setInnerSize(string $innerSize)
+    public function setInnerSize(string $innerSize): void
     {
         $this->innerSize = $innerSize;
     }
 
-    /**
-     * @return null|string
-     */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param null|string $type
-     */
-    public function setType($type)
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getTurboThreshold()
+    public function getTurboThreshold(): ?int
     {
         return $this->turboThreshold;
     }
 
-    /**
-     * @param int|null $turboThreshold
-     */
-    public function setTurboThreshold($turboThreshold)
+    public function setTurboThreshold(?int $turboThreshold): void
     {
         $this->turboThreshold = $turboThreshold;
     }
 
-    /**
-     * @return null|Color
-     */
-    public function getColor()
+    public function getColor(): Color
     {
         return $this->color;
     }
 
-    /**
-     * @param Color $color
-     */
-    public function setColor(Color $color)
+    public function setColor(Color $color): void
     {
         $this->color = $color;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getYAxis()
+    public function getYAxis(): ?int
     {
         return $this->yAxis;
     }
 
-    /**
-     * @param int|null $yAxis
-     */
-    public function setYAxis($yAxis)
+    public function setYAxis(?int $yAxis): void
     {
         $this->yAxis = $yAxis;
     }
 
-    /**
-     * @return bool
-     */
     public function getVisible(): bool
     {
         return $this->visible;
     }
 
-    /**
-     * @param bool $visible
-     */
-    public function setVisible(bool $visible)
+    public function setVisible(bool $visible): void
     {
         $this->visible = $visible;
     }
@@ -257,7 +175,7 @@ class Series
     /**
      * @return int|null
      */
-    public function getPointInterval()
+    public function getPointInterval(): int
     {
         return $this->pointInterval;
     }
@@ -265,14 +183,11 @@ class Series
     /**
      * @param int|null $pointInterval
      */
-    public function setPointInterval(int $pointInterval = null)
+    public function setPointInterval(int $pointInterval = null): void
     {
         $this->pointInterval = $pointInterval;
     }
 
-    /**
-     * @return Marker
-     */
     public function getMarker(): Marker
     {
         if (is_null($this->marker)) {
@@ -282,10 +197,7 @@ class Series
         return $this->marker;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getZIndex()
+    public function getZIndex(): ?int
     {
         return $this->zIndex;
     }
@@ -293,14 +205,11 @@ class Series
     /**
      * @param int|null $zIndex
      */
-    public function setZIndex(int $zIndex)
+    public function setZIndex(int $zIndex): void
     {
         $this->zIndex = $zIndex;
     }
 
-    /**
-     * @return DataLabels
-     */
     public function getDataLabels(): DataLabels
     {
         if (is_null($this->dataLabels)) {
@@ -310,82 +219,52 @@ class Series
         return $this->dataLabels;
     }
 
-    /**
-     * @param DataLabels $dataLabels
-     */
-    public function setDataLabels(DataLabels $dataLabels)
+    public function setDataLabels(DataLabels $dataLabels): void
     {
         $this->dataLabels = $dataLabels;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPointPlacement(): ?string
     {
         return $this->pointPlacement;
     }
 
-    /**
-     * @param string $pointPlacement
-     */
     public function setPointPlacement(string $pointPlacement): void
     {
         $this->pointPlacement = $pointPlacement;
     }
 
-    /**
-     * @return DashStyle
-     */
-    public function getDashStyle(): DashStyle
+    public function getDashStyle(): ?DashStyle
     {
         return $this->dashStyle;
     }
 
-    /**
-     * @param DashStyle $dashStyle
-     */
-    public function setDashStyle(DashStyle $dashStyle)
+    public function setDashStyle(DashStyle $dashStyle): void
     {
         $this->dashStyle = $dashStyle;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getEnableMouseTracking(): ?bool
     {
         return $this->enableMouseTracking;
     }
 
-    /**
-     * @param bool|null $enableMouseTracking
-     */
     public function setEnableMouseTracking(?bool $enableMouseTracking): void
     {
         $this->enableMouseTracking = $enableMouseTracking;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getShowInLegend(): ?bool
     {
         return $this->showInLegend;
     }
 
-    /**
-     * @param bool|null $showInLegend
-     */
     public function setShowInLegend(?bool $showInLegend): void
     {
         $this->showInLegend = $showInLegend;
     }
 
-    /**
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [
             'name' => $this->name,

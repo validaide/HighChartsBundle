@@ -9,10 +9,9 @@ use Validaide\HighChartsBundle\Graph\Drilldown\DrillUpButton;
  */
 class Drilldown
 {
-    /** @var DrillUpButton */
-    private $drillUpButton;
+    private DrillUpButton $drillUpButton;
     /** @var Series[]|array */
-    private $series = [];
+    private array $series = [];
 
     /**
      * I am a constructor bot *BEEP* *BOOP*
@@ -23,17 +22,11 @@ class Drilldown
         $this->series = [];
     }
 
-    /**
-     * @return DrillUpButton
-     */
     public function getDrillUpButton(): DrillUpButton
     {
         return $this->drillUpButton;
     }
 
-    /**
-     * @param Series $series
-     */
     public function addSeries(Series $series): void
     {
         $this->series[] = $series->toArray();
@@ -42,15 +35,15 @@ class Drilldown
     /**
      * @return array|Series[]
      */
-    public function getSeries()
+    public function getSeries(): array
     {
         return $this->series;
     }
 
     /**
-     * @return array
+     * @return array<string, mixed[]>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 

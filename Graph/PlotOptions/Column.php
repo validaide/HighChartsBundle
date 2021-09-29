@@ -14,36 +14,23 @@ class Column extends PlotOptions
     const STACKING_NORMAL  = 'normal';
     const STACKING_PERCENT = 'percent';
 
-    /** @var float */
-    protected $groupPadding;
-    /** @var float */
-    protected $pointPadding;
-    /** @var int */
-    protected $minPointLength;
-    /** @var string */
-    protected $stacking;
+    protected ?float $groupPadding = null;
+    protected ?float $pointPadding = null;
+    protected ?int $minPointLength = null;
+    protected ?string $stacking = null;
     /** @var DataLabels|null */
     protected $dataLabels;
 
-    /**
-     * @return float
-     */
     public function getGroupPadding(): float
     {
         return $this->groupPadding;
     }
 
-    /**
-     * @return float
-     */
     public function getPointPadding(): float
     {
         return $this->pointPadding;
     }
 
-    /**
-     * @return int
-     */
     public function getMinPointLength(): int
     {
         return $this->minPointLength;
@@ -52,63 +39,45 @@ class Column extends PlotOptions
     /**
      * @return string|null
      */
-    public function getStacking()
+    public function getStacking(): string
     {
         return $this->stacking;
     }
 
-    /**
-     * @return DataLabels
-     */
     public function getDataLabels(): DataLabels
     {
         return $this->dataLabels;
     }
 
-    /**
-     * @param float $groupPadding
-     */
     public function setGroupPadding(float $groupPadding): void
     {
         $this->groupPadding = $groupPadding;
     }
 
-    /**
-     * @param float $pointPadding
-     */
     public function setPointPadding(float $pointPadding): void
     {
         $this->pointPadding = $pointPadding;
     }
 
-    /**
-     * @param int $minPointLength
-     */
     public function setMinPointLength(int $minPointLength): void
     {
         $this->minPointLength = $minPointLength;
     }
 
-    /**
-     * @param string $stacking
-     */
-    public function setStacking(string $stacking)
+    public function setStacking(string $stacking): void
     {
         $this->stacking = $stacking;
     }
 
-    /**
-     * @param DataLabels $dataLabels
-     */
     public function setDataLabels(DataLabels $dataLabels): void
     {
         $this->dataLabels = $dataLabels;
     }
 
     /**
-     * @return array
+     * @return array<string, mixed[]>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 

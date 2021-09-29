@@ -9,35 +9,23 @@ class Labels
 {
     const DEFAULT_FORMAT = "{value}";
 
-    /** @var string|null */
-    private $format;
+    private ?string $format = null;
 
-    /** @var string|null */
-    private $formatter;
+    private ?string $formatter = null;
 
-    /** @var bool|null */
-    private $enabled;
+    private ?bool $enabled = null;
 
-    /**
-     * @return null|string
-     */
-    public function getFormat()
+    public function getFormat(): ?string
     {
         return $this->format;
     }
 
-    /**
-     * @param string $format
-     */
-    public function setFormat(string $format)
+    public function setFormat(string $format): void
     {
         $this->format = $format;
     }
 
-    /**
-     * @return null|string
-     */
-    public function getFormatter(): string
+    public function getFormatter(): ?string
     {
         return $this->formatter;
     }
@@ -45,31 +33,25 @@ class Labels
     /**
      * @param null|string $formatter
      */
-    public function setFormatter(string $formatter)
+    public function setFormatter(string $formatter): void
     {
         $this->formatter = $formatter;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
-    /**
-     * @param bool|null $enabled
-     */
     public function setEnabled(?bool $enabled): void
     {
         $this->enabled = $enabled;
     }
 
     /**
-     * @return array
+     * @return array<string, bool>|array<string, string>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 

@@ -2,6 +2,7 @@
 
 namespace Validaide\HighChartsBundle\ValueObject;
 
+use InvalidArgumentException;
 /**
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
@@ -11,18 +12,15 @@ class VerticalAlignment
     const ALIGN_MIDDLE = "middle";
     const ALIGN_BOTTOM = "bottom";
 
-    /** @var string */
-    private $align;
+    private string $align;
 
     /**
      * VerticalAlignment constructor.
-     *
-     * @param string $align
      */
     public function __construct(string $align)
     {
         if (!in_array($align, $this->getAlignments())) {
-            throw new \InvalidArgumentException('This vertical alignment is not allowed: ' . $align);
+            throw new InvalidArgumentException('This vertical alignment is not allowed: ' . $align);
         }
 
         $this->align = $align;
@@ -37,9 +35,9 @@ class VerticalAlignment
     }
 
     /**
-     * @return array
+     * @return string[]
      */
-    public function getAlignments()
+    public function getAlignments(): array
     {
         return [
             self::ALIGN_TOP,

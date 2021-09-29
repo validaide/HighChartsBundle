@@ -10,20 +10,14 @@ class Formatter
     /**
      * @param $argument
      *
-     * @return string
+     * @return string|bool
      */
     public function renderEscape($argument)
     {
         return json_encode($argument, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * @param string $code
-     * @param bool   $semicolon
-     *
-     * @return string
-     */
-    public function renderCode($code, $semicolon = true)
+    public function renderCode(string $code, bool $semicolon = true): string
     {
         if ($semicolon) {
             $code .= ';';
@@ -32,28 +26,20 @@ class Formatter
         return $code;
     }
 
-    /**
-     * @return string
-     */
-    public function renderSeparator()
+    public function renderSeparator(): string
     {
         return '';
     }
 
-    /**
-     * @return string
-     */
-    public function renderNewline()
+    public function renderNewline(): string
     {
         return "\n";
     }
 
     /**
      * @param $code
-     *
-     * @return string
      */
-    public function renderJQuery($code)
+    public function renderJQuery($code): string
     {
         return $this->renderNewline() . '$(function () {' . $this->renderNewline() .
             $code . $this->renderNewline() .
