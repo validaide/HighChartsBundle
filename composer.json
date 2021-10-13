@@ -27,7 +27,6 @@
   "require": {
     "php": "^7.4",
     "ext-json": "*",
-    "egeloen/json-builder": "^3.0",
     "php-http/guzzle6-adapter": "^1.1",
     "php-http/httplug": "^1.1",
     "php-http/httplug-bundle": "^1.7",
@@ -38,14 +37,15 @@
     "symfony/options-resolver": "^3.4",
     "symfony/process": "^3.4",
     "symfony/templating": "^3.4",
-    "symfony/twig-bundle": "~3.4",
+    "symfony/twig-bundle": "^3.4",
     "symfony/yaml": "^3.4",
+    "validaide/common": "dev-development",
     "validaide/html-builder": "4.3.*"
   },
   "require-dev": {
     "brianium/paratest": "^3.0",
     "phpunit/phpunit": "^8.0",
-    "symfony/phpunit-bridge": "^3.3"
+    "symfony/phpunit-bridge": "^3.4"
   },
   "autoload": {
     "psr-4": {
