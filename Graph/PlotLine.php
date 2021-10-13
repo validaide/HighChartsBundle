@@ -10,21 +10,14 @@ use Validaide\HighChartsBundle\ValueObject\DashStyle;
  */
 class PlotLine
 {
-    private ?string $className = null;
-
-    private ?Color $color = null;
-
+    private ?float     $value     = null;
+    private ?Label     $label     = null;
+    private ?string    $className = null;
+    private ?Color     $color     = null;
     private ?DashStyle $dashStyle = null;
-
-    private ?string $id = null;
-
-    private ?Label $label = null;
-
-    private ?float $value = null;
-
-    private ?int $width = null;
-
-    private ?int $zIndex = null;
+    private ?string    $id        = null;
+    private ?int       $width     = null;
+    private ?int       $zIndex    = null;
 
     public function getClassName(): string
     {
@@ -138,7 +131,6 @@ class PlotLine
         if (!is_null($this->zIndex)) {
             $result['zIndex'] = $this->zIndex;
         }
-
 
         return $result;
     }

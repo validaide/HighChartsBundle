@@ -11,34 +11,33 @@ use Validaide\HighChartsBundle\ValueObject\Color;
  */
 class Tooltip
 {
-    private ?string $pointFormat = null;
-    private ?string $animation = null;
-    private ?Color $backgroundColor = null;
-    private ?int $borderRadius = null;
-    private ?int $borderColor = null;
-    private ?int $borderWidth = null;
-    /** @var mixed|null */
-    private $crosshairs;
+    private ?string               $pointFormat          = null;
+    private ?string               $animation            = null;
+    private ?Color                $backgroundColor      = null;
+    private ?int                  $borderRadius         = null;
+    private ?int                  $borderColor          = null;
+    private ?int                  $borderWidth          = null;
+    private ?string               $crosshairs           = null;
     private ?DateTimeLabelFormats $dateTimeLabelFormats = null;
-    private ?bool $enabled = null;
-    private ?bool $followPointer = null;
-    private ?bool $followTouchMove = null;
-    private ?string $footerFormat = null;
-    private ?string $headerFormat = null;
-    private ?int $hideDelay = null;
-    private ?bool $outside = null;
-    private ?int $padding = null;
-    private ?Style $style = null;
-    private ?bool $shadow = null;
-    private ?string $shape = null;
-    private ?int $snap = null;
-    private ?bool $split = null;
-    private ?bool $useHTML = null;
-    private ?int $valueDecimals = null;
-    private ?string $valuePrefix = null;
-    private ?string $valueSuffix = null;
-    private ?string $xDateFormat = null;
-    private ?bool $shared = null;
+    private ?bool                 $enabled              = null;
+    private ?bool                 $followPointer        = null;
+    private ?bool                 $followTouchMove      = null;
+    private ?string               $footerFormat         = null;
+    private ?string               $headerFormat         = null;
+    private ?int                  $hideDelay            = null;
+    private ?bool                 $outside              = null;
+    private ?int                  $padding              = null;
+    private ?Style                $style                = null;
+    private ?bool                 $shadow               = null;
+    private ?string               $shape                = null;
+    private ?int                  $snap                 = null;
+    private ?bool                 $split                = null;
+    private ?bool                 $useHTML              = null;
+    private ?int                  $valueDecimals        = null;
+    private ?string               $valuePrefix          = null;
+    private ?string               $valueSuffix          = null;
+    private ?string               $xDateFormat          = null;
+    private ?bool                 $shared               = null;
 
     public function getAnimation(): string
     {
@@ -90,18 +89,12 @@ class Tooltip
         $this->borderWidth = $borderWidth;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCrosshairs()
+    public function getCrosshairs(): ?string
     {
         return $this->crosshairs;
     }
 
-    /**
-     * @param mixed $crosshairs
-     */
-    public function setCrosshairs($crosshairs)
+    public function setCrosshairs(?string $crosshairs): void
     {
         $this->crosshairs = $crosshairs;
     }
@@ -319,10 +312,7 @@ class Tooltip
         $this->style = $style;
     }
 
-    /**
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 

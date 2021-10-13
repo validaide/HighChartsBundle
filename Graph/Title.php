@@ -7,12 +7,12 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 class Title
 {
-    private ?string $align = null;
+    private ?string $text          = null;
+    private ?string $align         = null;
     private ?string $verticalAlign = null;
-    private ?int $y = null;
-    private ?string $text = null;
-    private ?int $margin = null;
-    private ?bool $hidden = null;
+    private ?int    $y             = null;
+    private ?int    $margin        = null;
+    private ?bool   $hidden        = null;
 
     public function getText(): string
     {
