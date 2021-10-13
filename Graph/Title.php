@@ -14,12 +14,12 @@ class Title
     private ?int    $margin        = null;
     private ?bool   $hidden        = null;
 
-    public function getText(): string
+    public function getText(): ?string
     {
         return $this->text;
     }
 
-    public function setText(string $text): void
+    public function setText(?string $text): void
     {
         $this->text = $text;
     }

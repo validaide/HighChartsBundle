@@ -25,10 +25,7 @@ class ImageRenderer
     const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
 
     /**
-     *
-     * @param string|null $outputPath
      * @throws RenderingException
-     * @param mixed[] $options
      */
     public function render(Graph $graph, array $options = [], string $outputPath = null): string
     {
