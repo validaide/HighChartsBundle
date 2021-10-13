@@ -11,49 +11,33 @@ use Validaide\HighChartsBundle\ValueObject\DashStyle;
  */
 class Series
 {
-    private ?string $id = null;
+    private ?array  $data;
+    private ?string $name;
 
-    private ?array $data = null;
+    private ?string    $id                  = null;
+    private ?Color     $color               = null;
+    private ?string    $drilldown           = null;
+    private ?string    $innerSize           = null;
+    private ?string    $type                = null;
+    private ?int       $yAxis               = null;
+    private ?array     $tooltip             = null;
+    private ?int       $turboThreshold      = null;
+    private ?int       $pointInterval       = null;
+    private bool       $visible             = true;
+    private ?Marker    $marker              = null;
+    private ?int       $zIndex              = null;
+    private ?string    $pointPlacement      = null;
+    private ?DashStyle $dashStyle           = null;
+    private ?bool      $enableMouseTracking = null;
+    private ?bool      $showInLegend        = null;
 
-    private ?string $name = '';
-
-    private ?Color $color = null;
-
-    private ?string $drilldown = null;
-
-    private ?string $innerSize = null;
-
-    private ?string $type = null;
-
-    private ?int $yAxis = null;
-
-    private ?array $tooltip = null;
-
-    private ?int $turboThreshold = null;
-
-    private ?int $pointInterval = null;
-
-    private bool $visible = true;
-
-    private ?Marker $marker = null;
-
-    private ?int $zIndex = null;
-
-    /** @var DataLabels */
-    private $dataLabels;
-
-    private ?string $pointPlacement = null;
-
-    private ?DashStyle $dashStyle = null;
-
-    private ?bool $enableMouseTracking = null;
-
-    private ?bool $showInLegend = null;
+    private DataLabels $dataLabels;
 
     public function __construct(?string $name, ?array $data)
     {
-        $this->name = $name;
-        $this->data = $data;
+        $this->name       = $name;
+        $this->data       = $data;
+        $this->dataLabels = new DataLabels();
     }
 
     public function getId(): ?string
@@ -66,15 +50,12 @@ class Series
         $this->id = $id;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getDrilldown(): string
+    public function getDrilldown(): ?string
     {
         return $this->drilldown;
     }
 
-    public function setDrilldown(string $drilldown): void
+    public function setDrilldown(?string $drilldown): void
     {
         $this->drilldown = $drilldown;
     }
@@ -99,10 +80,7 @@ class Series
         $this->data = $data;
     }
 
-    /**
-     * @return array|null
-     */
-    public function getTooltip()
+    public function getTooltip(): ?array
     {
         return $this->tooltip;
     }
@@ -172,18 +150,12 @@ class Series
         $this->visible = $visible;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getPointInterval(): int
+    public function getPointInterval(): ?int
     {
         return $this->pointInterval;
     }
 
-    /**
-     * @param int|null $pointInterval
-     */
-    public function setPointInterval(int $pointInterval = null): void
+    public function setPointInterval(?int $pointInterval = null): void
     {
         $this->pointInterval = $pointInterval;
     }
@@ -202,20 +174,13 @@ class Series
         return $this->zIndex;
     }
 
-    /**
-     * @param int|null $zIndex
-     */
-    public function setZIndex(int $zIndex): void
+    public function setZIndex(?int $zIndex): void
     {
         $this->zIndex = $zIndex;
     }
 
     public function getDataLabels(): DataLabels
     {
-        if (is_null($this->dataLabels)) {
-            $this->dataLabels = new Label();
-        }
-
         return $this->dataLabels;
     }
 
@@ -229,7 +194,7 @@ class Series
         return $this->pointPlacement;
     }
 
-    public function setPointPlacement(string $pointPlacement): void
+    public function setPointPlacement(?string $pointPlacement): void
     {
         $this->pointPlacement = $pointPlacement;
     }
@@ -239,7 +204,7 @@ class Series
         return $this->dashStyle;
     }
 
-    public function setDashStyle(DashStyle $dashStyle): void
+    public function setDashStyle(?DashStyle $dashStyle): void
     {
         $this->dashStyle = $dashStyle;
     }
@@ -314,7 +279,7 @@ class Series
             $result['zIndex'] = $this->zIndex;
         }
 
-        if (!is_null($this->dataLabels)) {
+        if (!is_null($this->dataLabels) && $this->dataLabels->isEnabled()) {
             $result['dataLabels'] = $this->dataLabels->toArray();
         }
 

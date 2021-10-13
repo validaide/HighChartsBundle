@@ -7,12 +7,7 @@ namespace Validaide\HighChartsBundle\Templating\Formatter;
  */
 class Formatter
 {
-    /**
-     * @param $argument
-     *
-     * @return string|bool
-     */
-    public function renderEscape($argument)
+    public function renderEscape(string $argument): string
     {
         return json_encode($argument, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     }
@@ -36,10 +31,7 @@ class Formatter
         return "\n";
     }
 
-    /**
-     * @param $code
-     */
-    public function renderJQuery($code): string
+    public function renderJQuery(string $code): string
     {
         return $this->renderNewline() . '$(function () {' . $this->renderNewline() .
             $code . $this->renderNewline() .

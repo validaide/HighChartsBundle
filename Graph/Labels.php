@@ -7,20 +7,18 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 class Labels
 {
-    const DEFAULT_FORMAT = "{value}";
+    public const DEFAULT_FORMAT = "{value}";
 
-    private ?string $format = null;
-
+    private ?string $format    = null;
     private ?string $formatter = null;
-
-    private ?bool $enabled = null;
+    private ?bool   $enabled   = null;
 
     public function getFormat(): ?string
     {
         return $this->format;
     }
 
-    public function setFormat(string $format): void
+    public function setFormat(?string $format): void
     {
         $this->format = $format;
     }
@@ -30,10 +28,7 @@ class Labels
         return $this->formatter;
     }
 
-    /**
-     * @param null|string $formatter
-     */
-    public function setFormatter(string $formatter): void
+    public function setFormatter(?string $formatter): void
     {
         $this->formatter = $formatter;
     }

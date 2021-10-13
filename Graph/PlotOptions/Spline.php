@@ -18,74 +18,54 @@ class Spline extends PlotOptions
     const STACKING_NORMAL  = 'normal';
     const STACKING_PERCENT = 'percent';
 
-    protected ?int $animationLimit = null;
-    protected ?int $boostThreshold = null;
-    protected ?string $className = null;
-    protected ?int $colorIndex = null;
-    protected ?bool $connectEnds = null;
-    protected ?bool $connectNulls = null;
-    protected ?int $cropThreshold = null;
-    protected ?string $cursor = null;
-    protected ?string $dashStyle = null;
-    /**
-     * @var array[]
-     */
-    protected $data;
-    /**
-     * @var DataLabels
-     */
-    protected $dataLabels;
-    protected ?string $description = null;
-    protected ?bool $enableMouseTracking = null;
-    protected ?bool $exposeElementToA11y = null;
-    protected ?string $findNearestPointBy = null;
-    protected ?bool $getExtremesFromAll = null;
-    protected ?string $id = null;
-    protected ?int $index = null;
-    /**
-     * @var array
-     */
-    protected $keys;
-    protected ?Label $label = null;
-    protected ?int $legendIndex = null;
-    protected ?string $linecap = null;
-    protected ?int $lineWidth = null;
-    protected ?string $linkedTo = null;
-    protected ?Marker $marker = null;
-    protected ?string $name = null;
-    protected ?Color $negativeColor = null;
-    protected ?int $point = null;
-    protected ?int $pointInterval = null;
-    protected ?string $pointIntervalUnit = null;
-    /**
-     * @var string|int
-     */
-    protected $pointPlacement;
-    protected ?int $pointStart = null;
-    protected ?bool $selected = null;
-    protected ?Series $series = null;
-    protected ?bool $shadow = null;
-    protected ?bool $showCheckbox = null;
-    protected ?bool $showInLegend = null;
-    protected ?bool $skipKeyboardNavigation = null;
-    protected ?bool $softThreshold = null;
-    protected ?string $stack = null;
-    protected ?string $stacking = null;
-    protected ?bool $stickyTracking = null;
-    protected ?Tooltip $tooltip = null;
-    protected ?int $turboThreshold = null;
-    protected ?string $type = null;
-    protected ?bool $visible = null;
-    /**
-     * @var string|int
-     */
-    protected $xAxis;
-    /**
-     * @var string|int
-     */
-    protected $yAxis;
-    protected ?int $zIndex = null;
-
+    protected ?int     $animationLimit         = null;
+    protected ?int     $boostThreshold         = null;
+    protected ?string  $className              = null;
+    protected ?int     $colorIndex             = null;
+    protected ?bool    $connectEnds            = null;
+    protected ?bool    $connectNulls           = null;
+    protected ?int     $cropThreshold          = null;
+    protected ?string  $cursor                 = null;
+    protected ?string  $dashStyle              = null;
+    protected ?array   $data                   = null;
+    protected ?string  $description            = null;
+    protected ?bool    $enableMouseTracking    = null;
+    protected ?bool    $exposeElementToA11y    = null;
+    protected ?string  $findNearestPointBy     = null;
+    protected ?bool    $getExtremesFromAll     = null;
+    protected ?string  $id                     = null;
+    protected ?int     $index                  = null;
+    protected ?array   $keys                   = null;
+    protected ?Label   $label                  = null;
+    protected ?int     $legendIndex            = null;
+    protected ?string  $linecap                = null;
+    protected ?int     $lineWidth              = null;
+    protected ?string  $linkedTo               = null;
+    protected ?Marker  $marker                 = null;
+    protected ?string  $name                   = null;
+    protected ?Color   $negativeColor          = null;
+    protected ?int     $point                  = null;
+    protected ?int     $pointInterval          = null;
+    protected ?string  $pointIntervalUnit      = null;
+    protected ?string  $pointPlacement         = null;
+    protected ?int     $pointStart             = null;
+    protected ?bool    $selected               = null;
+    protected ?Series  $series                 = null;
+    protected ?bool    $shadow                 = null;
+    protected ?bool    $showCheckbox           = null;
+    protected ?bool    $showInLegend           = null;
+    protected ?bool    $skipKeyboardNavigation = null;
+    protected ?bool    $softThreshold          = null;
+    protected ?string  $stack                  = null;
+    protected ?string  $stacking               = null;
+    protected ?bool    $stickyTracking         = null;
+    protected ?Tooltip $tooltip                = null;
+    protected ?int     $turboThreshold         = null;
+    protected ?string  $type                   = null;
+    protected ?bool    $visible                = null;
+    protected ?string  $xAxis                  = null;
+    protected ?string  $yAxis                  = null;
+    protected ?int     $zIndex                 = null;
 
     public function getAnimationLimit(): int
     {
@@ -177,30 +157,14 @@ class Spline extends PlotOptions
         $this->dashStyle = $dashStyle;
     }
 
-    /**
-     * @return array[]
-     */
-    public function getData(): array
+    public function getData(): ?array
     {
         return $this->data;
     }
 
-    /**
-     * @param array[] $data
-     */
-    public function setData(array $data): void
+    public function setData(?array $data): void
     {
         $this->data = $data;
-    }
-
-    public function getDataLabels(): DataLabels
-    {
-        return $this->dataLabels;
-    }
-
-    public function setDataLabels(DataLabels $dataLabels): void
-    {
-        $this->dataLabels = $dataLabels;
     }
 
     public function getDescription(): string
@@ -273,18 +237,12 @@ class Spline extends PlotOptions
         $this->index = $index;
     }
 
-    /**
-     * @return mixed[]
-     */
-    public function getKeys(): array
+    public function getKeys(): ?array
     {
         return $this->keys;
     }
 
-    /**
-     * @param mixed[] $keys
-     */
-    public function setKeys(array $keys): void
+    public function setKeys(?array $keys): void
     {
         $this->keys = $keys;
     }
@@ -399,18 +357,12 @@ class Spline extends PlotOptions
         $this->pointIntervalUnit = $pointIntervalUnit;
     }
 
-    /**
-     * @return int|string
-     */
-    public function getPointPlacement()
+    public function getPointPlacement(): ?string
     {
         return $this->pointPlacement;
     }
 
-    /**
-     * @param int|string $pointPlacement
-     */
-    public function setPointPlacement($pointPlacement): void
+    public function setPointPlacement(?string $pointPlacement): void
     {
         $this->pointPlacement = $pointPlacement;
     }
@@ -555,34 +507,22 @@ class Spline extends PlotOptions
         $this->visible = $visible;
     }
 
-    /**
-     * @return int|string
-     */
-    public function getXAxis()
+    public function getXAxis(): ?string
     {
         return $this->xAxis;
     }
 
-    /**
-     * @param int|string $xAxis
-     */
-    public function setXAxis($xAxis): void
+    public function setXAxis(?string $xAxis): void
     {
         $this->xAxis = $xAxis;
     }
 
-    /**
-     * @return int|string
-     */
-    public function getYAxis()
+    public function getYAxis(): ?string
     {
         return $this->yAxis;
     }
 
-    /**
-     * @param int|string $yAxis
-     */
-    public function setYAxis($yAxis): void
+    public function setYAxis(?string $yAxis): void
     {
         $this->yAxis = $yAxis;
     }
@@ -598,11 +538,10 @@ class Spline extends PlotOptions
     }
 
     /**
-     * @return array<string, array<string, mixed[]|bool|int|string|DataLabels|Label|Marker|Tooltip|Color>>
+     * @return array<string, mixed>
      */
     public function toArray(): array
     {
-        $result['spline']  = [];
         $splinePlotOptions = [];
 
         if (!is_null($this->color)) {
@@ -647,7 +586,7 @@ class Spline extends PlotOptions
         if (!is_null($this->data)) {
             $splinePlotOptions['data'] = $this->data;
         }
-        if (!is_null($this->dataLabels)) {
+        if (!is_null($this->dataLabels) && $this->dataLabels->isEnabled()) {
             $splinePlotOptions['dataLabels'] = $this->dataLabels;
         }
         if (!is_null($this->className)) {
@@ -773,6 +712,7 @@ class Spline extends PlotOptions
         if (!is_null($this->series)) {
             $splinePlotOptions['series'] = $this->series->toArray();
         }
+
         $result['spline'] = $splinePlotOptions;
 
         return $result;

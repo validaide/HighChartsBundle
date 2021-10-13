@@ -11,35 +11,30 @@ use Validaide\HighChartsBundle\Graph\PlotOptions;
  */
 class Column extends PlotOptions
 {
-    const STACKING_NORMAL  = 'normal';
-    const STACKING_PERCENT = 'percent';
+    public const STACKING_NORMAL  = 'normal';
+    public const STACKING_PERCENT = 'percent';
 
-    protected ?float $groupPadding = null;
-    protected ?float $pointPadding = null;
-    protected ?int $minPointLength = null;
-    protected ?string $stacking = null;
-    /** @var DataLabels|null */
-    protected $dataLabels;
+    protected ?float      $groupPadding   = null;
+    protected ?float      $pointPadding   = null;
+    protected ?int        $minPointLength = null;
+    protected ?string     $stacking       = null;
 
-    public function getGroupPadding(): float
+    public function getGroupPadding(): ?float
     {
         return $this->groupPadding;
     }
 
-    public function getPointPadding(): float
+    public function getPointPadding(): ?float
     {
         return $this->pointPadding;
     }
 
-    public function getMinPointLength(): int
+    public function getMinPointLength(): ?int
     {
         return $this->minPointLength;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getStacking(): string
+    public function getStacking(): ?string
     {
         return $this->stacking;
     }
@@ -49,7 +44,7 @@ class Column extends PlotOptions
         return $this->dataLabels;
     }
 
-    public function setGroupPadding(float $groupPadding): void
+    public function setGroupPadding(?float $groupPadding): void
     {
         $this->groupPadding = $groupPadding;
     }
@@ -105,7 +100,7 @@ class Column extends PlotOptions
             $result['series']['stacking'] = $this->stacking;
         }
 
-        if (!is_null($this->dataLabels)) {
+        if (!is_null($this->dataLabels) && $this->dataLabels->isEnabled()) {
             $result['series']['dataLabels'] = $this->dataLabels->toArray();
         }
 

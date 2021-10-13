@@ -8,22 +8,18 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 class Legend
 {
-    private bool $enabled = true;
-
-    private bool $reversed = false;
-
-    private ?string $align = null;
-
-    private ?string $layout = null;
-
+    private bool    $enabled       = true;
+    private bool    $reversed      = false;
+    private ?string $align         = null;
+    private ?string $layout        = null;
     private ?string $verticalAlign = null;
 
-    public function isEnabled(): Bool
+    public function isEnabled(): bool
     {
         return $this->enabled;
     }
 
-    public function setEnabled(Bool $enabled): void
+    public function setEnabled(bool $enabled): void
     {
         $this->enabled = $enabled;
     }
@@ -38,26 +34,17 @@ class Legend
         $this->reversed = $reversed;
     }
 
-    /**
-     * @param string|null $align
-     */
-    public function setAlign(string $align): void
+    public function setAlign(?string $align): void
     {
         $this->align = $align;
     }
 
-    /**
-     * @param string|null $layout
-     */
-    public function setLayout(string $layout): void
+    public function setLayout(?string $layout): void
     {
         $this->layout = $layout;
     }
 
-    /**
-     * @param string|null $verticalAlign
-     */
-    public function setVerticalAlign(string $verticalAlign): void
+    public function setVerticalAlign(?string $verticalAlign): void
     {
         $this->verticalAlign = $verticalAlign;
     }

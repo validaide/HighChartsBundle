@@ -11,34 +11,34 @@ use Validaide\HighChartsBundle\ValueObject\Color;
  */
 class DataLabels
 {
-    const DEFAULT_FORMAT = "{value}";
+    public const DEFAULT_FORMAT = "{value}";
 
-    private ?string $align = null;
-    private ?bool $allowOverlap = null;
-    private ?Color $backgroundColor = null;
-    private ?Color $borderColor = null;
-    private ?int $borderRadius = null;
-    private ?int $borderWidth = null;
-    private ?string $className = null;
-    private ?Color $color = null;
-    private ?bool $crop = null;
-    private ?bool $defer = null;
-    private ?Filter $filter = null;
-    private ?bool $inside = null;
-    private ?string $overflow = null;
-    private ?int $padding = null;
-    private ?int $rotation = null;
-    private ?bool $shadow = null;
-    private ?string $shape = null;
-    private ?Style $style = null;
-    private ?bool $useHTML = null;
-    private ?string $verticalAlign = null;
-    private ?int $x = null;
-    private ?int $y = null;
-    private ?int $zIndex = null;
-    private ?int $distance = null;
-    private ?bool $enabled = null;
-    private ?string $format = null;
+    private ?string $align           = null;
+    private ?bool   $allowOverlap    = null;
+    private ?Color  $backgroundColor = null;
+    private ?Color  $borderColor     = null;
+    private ?int    $borderRadius    = null;
+    private ?int    $borderWidth     = null;
+    private ?string $className       = null;
+    private ?Color  $color           = null;
+    private ?bool   $crop            = null;
+    private ?bool   $defer           = null;
+    private ?Filter $filter          = null;
+    private ?bool   $inside          = null;
+    private ?string $overflow        = null;
+    private ?int    $padding         = null;
+    private ?int    $rotation        = null;
+    private ?bool   $shadow          = null;
+    private ?string $shape           = null;
+    private ?Style  $style           = null;
+    private ?bool   $useHTML         = null;
+    private ?string $verticalAlign   = null;
+    private ?int    $x               = null;
+    private ?int    $y               = null;
+    private ?int    $zIndex          = null;
+    private ?int    $distance        = null;
+    private bool    $enabled         = false;
+    private ?string $format          = null;
 
     public function getDistance(): ?int
     {
@@ -50,9 +50,6 @@ class DataLabels
         $this->distance = $distance;
     }
 
-    /**
-     * @return bool|null
-     */
     public function isEnabled(): bool
     {
         return $this->enabled;
@@ -63,10 +60,7 @@ class DataLabels
         $this->enabled = $enabled;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getFormat(): string
+    public function getFormat(): ?string
     {
         return $this->format;
     }

@@ -10,7 +10,7 @@ use Validaide\HighChartsBundle\Graph\PlotOptions;
 class Bar extends PlotOptions
 {
     /**
-     * @return array<string, array<string, bool|string>>
+     * @return array<string, mixed>
      */
     public function toArray(): array
     {

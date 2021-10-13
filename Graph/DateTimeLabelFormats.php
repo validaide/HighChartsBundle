@@ -8,23 +8,20 @@ namespace Validaide\HighChartsBundle\Graph;
 class DateTimeLabelFormats
 {
     private ?string $millisecond = null;
-    private ?string $second = null;
-    private ?string $minute = null;
-    private ?string $hour = null;
-    private ?string $day = null;
-    private ?string $week = null;
-    private ?string $month = null;
-    private ?string $year = null;
+    private ?string $second      = null;
+    private ?string $minute      = null;
+    private ?string $hour        = null;
+    private ?string $day         = null;
+    private ?string $week        = null;
+    private ?string $month       = null;
+    private ?string $year        = null;
 
     public function getMillisecond(): ?string
     {
         return $this->millisecond;
     }
 
-    /**
-     * @param null|string $millisecond
-     */
-    public function setMillisecond(string $millisecond): void
+    public function setMillisecond(?string $millisecond): void
     {
         $this->millisecond = $millisecond;
     }
@@ -34,10 +31,7 @@ class DateTimeLabelFormats
         return $this->second;
     }
 
-    /**
-     * @param null|string $second
-     */
-    public function setSecond(string $second): void
+    public function setSecond(?string $second): void
     {
         $this->second = $second;
     }
@@ -47,10 +41,7 @@ class DateTimeLabelFormats
         return $this->minute;
     }
 
-    /**
-     * @param null|string $minute
-     */
-    public function setMinute(string $minute): void
+    public function setMinute(?string $minute): void
     {
         $this->minute = $minute;
     }
@@ -60,10 +51,7 @@ class DateTimeLabelFormats
         return $this->hour;
     }
 
-    /**
-     * @param null|string $hour
-     */
-    public function setHour(string $hour): void
+    public function setHour(?string $hour): void
     {
         $this->hour = $hour;
     }
@@ -73,10 +61,7 @@ class DateTimeLabelFormats
         return $this->day;
     }
 
-    /**
-     * @param null|string $day
-     */
-    public function setDay(string $day): void
+    public function setDay(?string $day): void
     {
         $this->day = $day;
     }
@@ -86,10 +71,7 @@ class DateTimeLabelFormats
         return $this->week;
     }
 
-    /**
-     * @param null|string $week
-     */
-    public function setWeek(string $week): void
+    public function setWeek(?string $week): void
     {
         $this->week = $week;
     }
@@ -99,10 +81,7 @@ class DateTimeLabelFormats
         return $this->month;
     }
 
-    /**
-     * @param null|string $month
-     */
-    public function setMonth(string $month): void
+    public function setMonth(?string $month): void
     {
         $this->month = $month;
     }
@@ -112,10 +91,7 @@ class DateTimeLabelFormats
         return $this->year;
     }
 
-    /**
-     * @param null|string $year
-     */
-    public function setYear(string $year): void
+    public function setYear(?string $year): void
     {
         $this->year = $year;
     }

@@ -11,36 +11,13 @@ use Validaide\HighChartsBundle\Graph\PlotOptions;
  */
 class Pie extends PlotOptions
 {
-    public ?float $startAngle = null;
+    public ?float  $startAngle   = null;
+    public ?float  $endAngle     = null;
+    public ?string $innerSize    = null;
+    public ?array  $center       = null;
+    public ?bool   $showInLegend = null;
 
-    public ?float $endAngle = null;
-
-    /**
-     * @var DataLabels
-     */
-    public $dataLabels;
-
-    /**
-     * @var int|string|null
-     */
-    public $innerSize;
-
-    public ?array $center = null;
-
-    public ?bool $showInLegend = null;
-
-    /**
-     * Pie constructor.
-     */
-    public function __construct()
-    {
-        $this->dataLabels = new DataLabels();
-    }
-
-    /**
-     * @return float|null
-     */
-    public function getStartAngle(): float
+    public function getStartAngle(): ?float
     {
         return $this->startAngle;
     }
@@ -50,10 +27,7 @@ class Pie extends PlotOptions
         $this->startAngle = $startAngle;
     }
 
-    /**
-     * @return float|null
-     */
-    public function getEndAngle(): float
+    public function getEndAngle(): ?float
     {
         return $this->endAngle;
     }
@@ -63,20 +37,7 @@ class Pie extends PlotOptions
         $this->endAngle = $endAngle;
     }
 
-    public function getDataLabels(): DataLabels
-    {
-        return $this->dataLabels;
-    }
-
-    public function setDataLabels(DataLabels $dataLabels): void
-    {
-        $this->dataLabels = $dataLabels;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getCenter(): array
+    public function getCenter(): ?array
     {
         return $this->center;
     }
@@ -86,18 +47,12 @@ class Pie extends PlotOptions
         $this->center = $center;
     }
 
-    /**
-     * @return int|null|string
-     */
-    public function getInnerSize()
+    public function getInnerSize(): ?string
     {
         return $this->innerSize;
     }
 
-    /**
-     * @param int|null|string $innerSize
-     */
-    public function setInnerSize($innerSize): void
+    public function setInnerSize(?string $innerSize): void
     {
         $this->innerSize = $innerSize;
     }
@@ -117,8 +72,6 @@ class Pie extends PlotOptions
      */
     public function toArray(): array
     {
-        $result['pie'] = [];
-
         $piePlotOptions = [];
 
         if (!is_null($this->allowPointSelect)) {
@@ -137,7 +90,7 @@ class Pie extends PlotOptions
             $piePlotOptions['series']['color'] = $this->color;
         }
 
-        if (!is_null($this->dataLabels) && !empty($this->dataLabels->toArray())) {
+        if (!is_null($this->dataLabels) && $this->dataLabels->isEnabled()) {
             $piePlotOptions['dataLabels'] = $this->dataLabels->toArray();
         }
 

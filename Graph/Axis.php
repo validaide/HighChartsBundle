@@ -204,10 +204,7 @@ class Axis
         $this->startOnTick = $startOnTick;
     }
 
-    /**
-     * @return float|null
-     */
-    public function getSoftMin(): float
+    public function getSoftMin(): ?float
     {
         return $this->softMin;
     }
@@ -217,10 +214,7 @@ class Axis
         $this->softMin = $softMin;
     }
 
-    /**
-     * @return float|null
-     */
-    public function getSoftMax(): float
+    public function getSoftMax(): ?float
     {
         return $this->softMax;
     }

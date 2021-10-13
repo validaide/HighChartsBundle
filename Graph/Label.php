@@ -10,28 +10,21 @@ use Validaide\HighChartsBundle\ValueObject\VerticalAlignment;
  */
 class Label
 {
-    private ?HorizontalAlignment $align = null;
-
-    private ?int $rotation = null;
-
-    private ?string $text = null;
-
-    private ?HorizontalAlignment $textAlignment = null;
-
-    private ?bool $useHtml = null;
-
-    private ?VerticalAlignment $verticalAlignment = null;
-
-    private ?int $x = null;
-
-    private ?int $y = null;
+    private ?HorizontalAlignment $align             = null;
+    private ?int                 $rotation          = null;
+    private ?string              $text              = null;
+    private ?HorizontalAlignment $textAlignment     = null;
+    private ?bool                $useHtml           = null;
+    private ?VerticalAlignment   $verticalAlignment = null;
+    private ?int                 $x                 = null;
+    private ?int                 $y                 = null;
 
     public function getAlign(): HorizontalAlignment
     {
         return $this->align;
     }
 
-    public function setAlign(HorizontalAlignment $align): void
+    public function setAlign(?HorizontalAlignment $align): void
     {
         $this->align = $align;
     }
@@ -41,7 +34,7 @@ class Label
         return $this->rotation;
     }
 
-    public function setRotation(int $rotation): void
+    public function setRotation(?int $rotation): void
     {
         $this->rotation = $rotation;
     }
@@ -51,63 +44,57 @@ class Label
         return $this->text;
     }
 
-    public function setText(string $text): void
+    public function setText(?string $text): void
     {
         $this->text = $text;
     }
 
-    public function getTextAlignment(): HorizontalAlignment
+    public function getTextAlignment(): ?HorizontalAlignment
     {
         return $this->textAlignment;
     }
 
-    public function setTextAlignment(HorizontalAlignment $textAlignment): void
+    public function setTextAlignment(?HorizontalAlignment $textAlignment): void
     {
         $this->textAlignment = $textAlignment;
     }
 
-    public function isUseHtml(): bool
+    public function isUseHtml(): ?bool
     {
         return $this->useHtml;
     }
 
-    public function setUseHtml(bool $useHtml): void
+    public function setUseHtml(?bool $useHtml): void
     {
         $this->useHtml = $useHtml;
     }
 
-    public function getVerticalAlignment(): VerticalAlignment
+    public function getVerticalAlignment(): ?VerticalAlignment
     {
         return $this->verticalAlignment;
     }
 
-    public function setVerticalAlignment(VerticalAlignment $verticalAlignment): void
+    public function setVerticalAlignment(?VerticalAlignment $verticalAlignment): void
     {
         $this->verticalAlignment = $verticalAlignment;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getX(): int
+    public function getX(): ?int
     {
         return $this->x;
     }
 
-    public function setX(int $x): void
+    public function setX(?int $x): void
     {
         $this->x = $x;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getY(): int
+    public function getY(): ?int
     {
         return $this->y;
     }
 
-    public function setY(int $y): void
+    public function setY(?int $y): void
     {
         $this->y = $y;
     }
@@ -146,5 +133,4 @@ class Label
 
         return $result;
     }
-
 }

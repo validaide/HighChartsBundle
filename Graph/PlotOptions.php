@@ -7,14 +7,15 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 abstract class PlotOptions
 {
-    protected bool $allowPointSelect = false;
+    protected DataLabels $dataLabels;
 
-    protected ?string $color = null;
+    protected bool    $allowPointSelect = false;
+    protected ?string $color            = null;
 
-    /**
-     * @var DataLabels
-     */
-    private $dataLabels;
+    public function __construct()
+    {
+        $this->dataLabels = new DataLabels();
+    }
 
     public function getAllowPointSelect(): bool
     {
@@ -38,10 +39,6 @@ abstract class PlotOptions
 
     public function getDataLabels(): DataLabels
     {
-        if (is_null($this->dataLabels)) {
-            $this->dataLabels = new Label();
-        }
-
         return $this->dataLabels;
     }
 
@@ -49,7 +46,6 @@ abstract class PlotOptions
     {
         $this->dataLabels = $dataLabels;
     }
-
 
     abstract function toArray();
 }

@@ -4,11 +4,11 @@ namespace Validaide\HighChartsBundle\Graph\Drilldown;
 
 class DrillUpButton
 {
-    private string $align = 'right';
+    private string  $align         = 'right';
     private ?string $verticalAlign = 'top';
-    private ?string $x = null;
-    private ?string $y = null;
-    private string $relativeTo = 'spacingBox';
+    private ?string $x             = null;
+    private ?string $y             = null;
+    private string  $relativeTo    = 'spacingBox';
 
     public function setAlign(string $align): void
     {
@@ -35,9 +35,8 @@ class DrillUpButton
         $this->relativeTo = $relativeTo;
     }
 
-
     /**
-     * @return array<string, mixed[]>
+     * @return array<string, mixed>
      */
     public function toArray(): array
     {

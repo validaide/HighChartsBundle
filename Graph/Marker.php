@@ -9,53 +9,42 @@ use Validaide\HighChartsBundle\ValueObject\Color;
  */
 class Marker
 {
-    const ENABLED           = 'enabled';
-    const ENABLED_THRESHOLD = 'enabledThreshold';
-    const FILL_COLOR        = 'fillColor';
-    const HEIGHT            = 'height';
-    const LINE_COLOR        = 'lineColor';
-    const LINE_WIDTH        = 'lineWidth';
-    const RADIUS            = 'radius';
-    const SYMBOL            = 'symbol';
-    const WIDTH             = 'width';
+    public const ENABLED           = 'enabled';
+    public const ENABLED_THRESHOLD = 'enabledThreshold';
+    public const FILL_COLOR        = 'fillColor';
+    public const HEIGHT            = 'height';
+    public const LINE_COLOR        = 'lineColor';
+    public const LINE_WIDTH        = 'lineWidth';
+    public const RADIUS            = 'radius';
+    public const SYMBOL            = 'symbol';
+    public const WIDTH             = 'width';
 
-    private ?bool $enabled = null;
-
-    private ?int $enabledThreshold = null;
-
-    private ?Color $fillColor = null;
-
-    private ?int $height = null;
-
-    private ?Color $lineColor = null;
-
-    private ?int $lineWidth = null;
-
-    private ?int $radius = null;
-
-    private ?string $symbol = null;
-
-    private ?int $width = null;
+    private ?bool   $enabled          = null;
+    private ?int    $enabledThreshold = null;
+    private ?Color  $fillColor        = null;
+    private ?int    $height           = null;
+    private ?Color  $lineColor        = null;
+    private ?int    $lineWidth        = null;
+    private ?int    $radius           = null;
+    private ?string $symbol           = null;
+    private ?int    $width            = null;
 
     public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
-    /**
-     * @param bool|null $enabled
-     */
-    public function setEnabled(bool $enabled): void
+    public function setEnabled(?bool $enabled): void
     {
         $this->enabled = $enabled;
     }
 
-    public function getEnabledThreshold(): int
+    public function getEnabledThreshold(): ?int
     {
         return $this->enabledThreshold;
     }
 
-    public function setEnabledThreshold(int $enabledThreshold): void
+    public function setEnabledThreshold(?int $enabledThreshold): void
     {
         $this->enabledThreshold = $enabledThreshold;
     }
@@ -65,10 +54,7 @@ class Marker
         return $this->fillColor;
     }
 
-    /**
-     * @param null|Color $fillColor
-     */
-    public function setFillColor(Color $fillColor): void
+    public function setFillColor(?Color $fillColor): void
     {
         $this->fillColor = $fillColor;
     }
@@ -78,60 +64,57 @@ class Marker
         return $this->height;
     }
 
-    /**
-     * @param int|null $height
-     */
-    public function setHeight(int $height): void
+    public function setHeight(?int $height): void
     {
         $this->height = $height;
     }
 
-    public function getLineColor(): Color
+    public function getLineColor(): ?Color
     {
         return $this->lineColor;
     }
 
-    public function setLineColor(Color $lineColor): void
+    public function setLineColor(?Color $lineColor): void
     {
         $this->lineColor = $lineColor;
     }
 
-    public function getLineWidth(): int
+    public function getLineWidth(): ?int
     {
         return $this->lineWidth;
     }
 
-    public function setLineWidth(int $lineWidth): void
+    public function setLineWidth(?int $lineWidth): void
     {
         $this->lineWidth = $lineWidth;
     }
 
-    public function getRadius(): int
+    public function getRadius(): ?int
     {
         return $this->radius;
     }
 
-    public function setRadius(int $radius): void
+    public function setRadius(?int $radius): void
     {
         $this->radius = $radius;
     }
 
-    public function getSymbol(): string
+    public function getSymbol(): ?string
     {
         return $this->symbol;
     }
 
-    public function setSymbol(string $symbol): void
+    public function setSymbol(?string $symbol): void
     {
         $this->symbol = $symbol;
     }
 
-    public function getWidth(): int
+    public function getWidth(): ?int
     {
         return $this->width;
     }
 
-    public function setWidth(int $width): void
+    public function setWidth(?int $width): void
     {
         $this->width = $width;
     }
