@@ -18,6 +18,7 @@ jobs:
       - name: Install PHP Dependencies
         run: composer install --optimize-autoloader --prefer-dist
         env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{secrets.COMPOSER_GITHUB_ACTIONS }}"} }'
           SYMFONY_ENV: test
 
 # TODO: We can only run the tests if we have the highcharts-export-server installed and available to the CLI
