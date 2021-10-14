@@ -4,7 +4,6 @@ namespace Validaide\HighChartsBundle\Twig;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-use Twig_SimpleFunction;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Helper\GraphHelper;
 use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
@@ -29,10 +28,10 @@ class HighChartsExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('highcharts', fn(Graph $graph): string => $this->render($graph), ['is_safe' => ['html']]),
-            new TwigFunction('highcharts_static', fn(?Graph $graph, ?array $options): string => $this->renderStatic($graph, $options), ['is_safe' => ['html']]),
-            new TwigFunction('highcharts_container', fn(Graph $graph): string => $this->renderHtml($graph), ['is_safe' => ['html']]),
-            new TwigFunction('highcharts_js', fn(Graph $graph): string => $this->renderJavascript($graph), ['is_safe' => ['html']]),
+            new TwigFunction('highcharts', [$this, 'render'], ['is_safe' => ['html']]),
+            new TwigFunction('highcharts_static', [$this, 'renderStatic'], ['is_safe' => ['html']]),
+            new TwigFunction('highcharts_container', [$this, 'renderHtml'], ['is_safe' => ['html']]),
+            new TwigFunction('highcharts_js', [$this, 'renderJavascript'], ['is_safe' => ['html']]),
         ];
     }
 
