@@ -8,91 +8,51 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 class Legend
 {
-    /**
-     * @var bool
-     */
-    private $enabled = true;
+    private bool    $enabled       = true;
+    private bool    $reversed      = false;
+    private ?string $align         = null;
+    private ?string $layout        = null;
+    private ?string $verticalAlign = null;
 
-    /**
-     * @var bool
-     */
-    private $reversed = false;
-
-    /**
-     * @var string
-     */
-    private $align;
-
-    /**
-     * @var string
-     */
-    private $layout;
-
-    /**
-     * @var string
-     */
-    private $verticalAlign;
-
-    /**
-     * @return boolean
-     */
-    public function isEnabled(): Bool
+    public function isEnabled(): bool
     {
         return $this->enabled;
     }
 
-    /**
-     * @param boolean $enabled
-     */
-    public function setEnabled(Bool $enabled)
+    public function setEnabled(bool $enabled): void
     {
         $this->enabled = $enabled;
     }
 
-    /**
-     * @return bool
-     */
     public function isReversed(): bool
     {
         return $this->reversed;
     }
 
-    /**
-     * @param bool $reversed
-     */
-    public function setReversed(bool $reversed)
+    public function setReversed(bool $reversed): void
     {
         $this->reversed = $reversed;
     }
 
-    /**
-     * @param string|null $align
-     */
-    public function setAlign(string $align): void
+    public function setAlign(?string $align): void
     {
         $this->align = $align;
     }
 
-    /**
-     * @param string|null $layout
-     */
-    public function setLayout(string $layout): void
+    public function setLayout(?string $layout): void
     {
         $this->layout = $layout;
     }
 
-    /**
-     * @param string|null $verticalAlign
-     */
-    public function setVerticalAlign(string $verticalAlign): void
+    public function setVerticalAlign(?string $verticalAlign): void
     {
         $this->verticalAlign = $verticalAlign;
     }
 
     /**
-     * @return array
+     * @return array<string, bool>|array<string, string>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 

@@ -10,84 +10,53 @@ use Validaide\HighChartsBundle\ValueObject\Color;
  */
 class Style
 {
-    /** @var Color|null  */
-    private $color;
-    /** @var string|null */
-    private $fontSize;
-    /** @var string|null */
-    private $fontWeight;
-    /** @var string|null */
-    private $textOutline;
+    private ?Color $color = null;
+    private ?string $fontSize = null;
+    private ?string $fontWeight = null;
+    private ?string $textOutline = null;
 
-    /**
-     * @return Color|null
-     */
     public function getColor(): ?Color
     {
         return $this->color;
     }
 
-    /**
-     * @param Color|null $color
-     */
     public function setColor(?Color $color): void
     {
         $this->color = $color;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFontSize(): ?string
     {
         return $this->fontSize;
     }
 
-    /**
-     * @param string|null $fontSize
-     */
     public function setFontSize(?string $fontSize): void
     {
         $this->fontSize = $fontSize;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFontWeight(): ?string
     {
         return $this->fontWeight;
     }
 
-    /**
-     * @param string|null $fontWeight
-     */
     public function setFontWeight(?string $fontWeight): void
     {
         $this->fontWeight = $fontWeight;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTextOutline(): ?string
     {
         return $this->textOutline;
     }
 
-    /**
-     * @param string|null $textOutline
-     */
     public function setTextOutline(?string $textOutline): void
     {
         $this->textOutline = $textOutline;
     }
 
 
-    /**
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 

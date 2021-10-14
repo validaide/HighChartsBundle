@@ -10,10 +10,10 @@ use Validaide\HighChartsBundle\Templating\Formatter\Formatter;
  */
 class GraphRenderer
 {
-    protected $formatter;
-    protected $tagRenderer;
-    protected $styleSheetRenderer;
-    protected $javascriptRenderer;
+    protected Formatter $formatter;
+    protected TagRenderer $tagRenderer;
+    protected StyleSheetRenderer $styleSheetRenderer;
+    protected JavascriptRenderer $javascriptRenderer;
 
     public function __construct()
     {
@@ -23,35 +23,20 @@ class GraphRenderer
         $this->javascriptRenderer = new JavascriptRenderer($this->formatter);
     }
 
-    /**
-     * @param Graph $graph
-     *
-     * @return string
-     */
-    public function render(Graph $graph)
+    public function render(Graph $graph): string
     {
         return $this->renderHtml($graph) . $this->formatter->renderNewline() .
             $this->renderJavascript($graph);
     }
 
-    /**
-     * @param Graph $graph
-     *
-     * @return string
-     */
-    public function renderHtml(Graph $graph)
+    public function renderHtml(Graph $graph): string
     {
         $styleSheet = $this->styleSheetRenderer->render('width', $graph->getWidth()) . $this->styleSheetRenderer->render('height', $graph->getHeight());
 
         return $this->tagRenderer->render('div', null, ['id' => $graph->getHtmlId(), 'style' => $styleSheet]);
     }
 
-    /**
-     * @param Graph $graph
-     *
-     * @return string
-     */
-    public function renderJavascript(Graph $graph)
+    public function renderJavascript(Graph $graph): string
     {
         $json              = $graph->toJson();
         $highChartInitCode = 'Highcharts.chart(' . $this->formatter->renderEscape($graph->getHtmlId()) . ',' . $this->formatter->renderNewline() . $json . $this->formatter->renderNewline() . ')';
