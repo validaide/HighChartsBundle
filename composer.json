@@ -31,22 +31,22 @@
     "php-http/httplug": "^1.1",
     "php-http/httplug-bundle": "^1.7",
     "php-http/message": "^1.6",
-    "symfony/console": "^3.4",
-    "symfony/dependency-injection": "~3.4",
-    "symfony/framework-bundle": "^3.4",
-    "symfony/options-resolver": "^3.4",
-    "symfony/process": "^3.4",
-    "symfony/templating": "^3.4",
-    "symfony/twig-bundle": "^3.4",
-    "symfony/yaml": "^3.4",
-    "validaide/common": "dev-development",
+    "symfony/console": "^4.4",
+    "symfony/dependency-injection": "^4.4",
+    "symfony/framework-bundle": "^4.4",
+    "symfony/options-resolver": "^4.4",
+    "symfony/process": "^4.4",
+    "symfony/templating": "^4.4",
+    "symfony/twig-bundle": "^4.4",
+    "symfony/yaml": "^4.4",
+    "validaide/common": "dev-chore/symfony-4",
     "validaide/html-builder": "4.3.*"
   },
   "require-dev": {
-    "brianium/paratest": "^3.0",
+    "brianium/paratest": "^4.0",
     "phpstan/phpstan": "^0.12.99",
-    "phpunit/phpunit": "^8.0",
-    "symfony/phpunit-bridge": "^3.4"
+    "phpunit/phpunit": "^9.0",
+    "symfony/phpunit-bridge": "^4.4"
   },
   "autoload": {
     "psr-4": {

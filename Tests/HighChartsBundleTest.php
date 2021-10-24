@@ -16,9 +16,7 @@ class HighChartsBundleTest extends TestCase
      */
     private $bundle;
 
-    /**
-     * {@inheritdoc}
-     */
+
     protected function setUp(): void
     {
         $this->bundle = new HighChartsBundle();

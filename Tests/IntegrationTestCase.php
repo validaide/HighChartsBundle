@@ -3,6 +3,8 @@
 namespace Tests\Validaide\HighChartsBundle;
 
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use ReflectionException;
 use Symfony\Component\Filesystem\Filesystem;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
@@ -18,11 +20,11 @@ class IntegrationTestCase extends TestCase
      * @param Graph $graph
      * @param array $replacements
      *
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected function assertGraph(Graph $graph, array $replacements)
     {
-        $reflectionClass   = new \ReflectionClass($graph);
+        $reflectionClass   = new ReflectionClass($graph);
         $expectedInputPath = $this->getTestFilesDirectory() . DIRECTORY_SEPARATOR . $reflectionClass->getShortName() . 'Test.txt';
         $graphRenderer     = new GraphRenderer();
         $expectedOutput    = file_get_contents($expectedInputPath);

@@ -2,54 +2,42 @@
 
 namespace Tests\Validaide\HighChartsBundle\Integration;
 
+use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
+use Validaide\HighChartsBundle\HighChartsBundle;
 
 /**
- * Class AppKernel
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class AppKernel extends Kernel
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function registerBundles()
+    public function registerBundles(): array
     {
         $bundles = [
-
-            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new \Validaide\HighChartsBundle\HighChartsBundle(),
+            new FrameworkBundle(),
+            new HighChartsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['test'])) {
-
+            // noop
         }
 
         return $bundles;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function registerContainerConfiguration(LoaderInterface $loader)
+    public function registerContainerConfiguration(LoaderInterface $loader): void
     {
         $loader->load(__DIR__ . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'config.yml');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getCacheDir()
+    public function getCacheDir(): string
     {
         return dirname(__DIR__).'/../../var/'.$this->environment.'/cache';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getLogDir()
+
+    public function getLogDir(): string
     {
         return dirname(__DIR__).'/../../var/'.$this->environment.'/logs';
     }
