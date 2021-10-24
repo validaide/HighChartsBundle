@@ -2,8 +2,8 @@
 
 namespace Validaide\HighChartsBundle\Templating\Helper;
 
-use Twig_SimpleFunction;
 use Symfony\Component\Templating\Helper\Helper;
+use Twig\TwigFunction;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 
@@ -14,28 +14,27 @@ class GraphHelper extends Helper
 {
     private GraphRenderer $graphRender;
 
-    /**
-     * GraphHelper constructor.
-     */
-    public function __construct(
-        GraphRenderer $graphRenderer
-    )
+    public function __construct(GraphRenderer $graphRenderer)
     {
         $this->graphRender = $graphRenderer;
     }
 
     /**
-     * @return Twig_SimpleFunction[]
+     * @return TwigFunction[]
      */
     public function getFunctions(): array
     {
         $functions = [];
         foreach ($this->getMapping() as $name => $method) {
-            $functions[] = new Twig_SimpleFunction($name, [$this, $method], ['is_safe' => ['html']]);
+            $functions[] = new TwigFunction($name, [$this, $method], ['is_safe' => ['html']]);
         }
 
         return $functions;
     }
+
+    /*****************************************************************************/
+    /* Functions
+    /*****************************************************************************/
 
     public function render(Graph $graph): string
     {
