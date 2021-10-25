@@ -9,197 +9,116 @@ use Validaide\HighChartsBundle\ValueObject\Color;
  */
 class Marker
 {
-    const ENABLED           = 'enabled';
-    const ENABLED_THRESHOLD = 'enabledThreshold';
-    const FILL_COLOR        = 'fillColor';
-    const HEIGHT            = 'height';
-    const LINE_COLOR        = 'lineColor';
-    const LINE_WIDTH        = 'lineWidth';
-    const RADIUS            = 'radius';
-    const SYMBOL            = 'symbol';
-    const WIDTH             = 'width';
+    public const ENABLED           = 'enabled';
+    public const ENABLED_THRESHOLD = 'enabledThreshold';
+    public const FILL_COLOR        = 'fillColor';
+    public const HEIGHT            = 'height';
+    public const LINE_COLOR        = 'lineColor';
+    public const LINE_WIDTH        = 'lineWidth';
+    public const RADIUS            = 'radius';
+    public const SYMBOL            = 'symbol';
+    public const WIDTH             = 'width';
 
-    /** @var null|bool */
-    private $enabled;
+    private ?bool   $enabled          = null;
+    private ?int    $enabledThreshold = null;
+    private ?Color  $fillColor        = null;
+    private ?int    $height           = null;
+    private ?Color  $lineColor        = null;
+    private ?int    $lineWidth        = null;
+    private ?int    $radius           = null;
+    private ?string $symbol           = null;
+    private ?int    $width            = null;
 
-    /** @var int */
-    private $enabledThreshold;
-
-    /** @var null|Color */
-    private $fillColor;
-
-    /** @var null|int */
-    private $height;
-
-    /** @var Color */
-    private $lineColor;
-
-    /** @var int */
-    private $lineWidth;
-
-    /** @var int */
-    private $radius;
-
-    /** @var string */
-    private $symbol;
-
-    /** @var int */
-    private $width;
-
-    /**
-     * Marker constructor.
-     */
-    public function __construct()
-    {
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getEnabled(): bool
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
-    /**
-     * @param bool|null $enabled
-     */
-    public function setEnabled(bool $enabled)
+    public function setEnabled(?bool $enabled): void
     {
         $this->enabled = $enabled;
     }
 
-    /**
-     * @return int
-     */
-    public function getEnabledThreshold(): int
+    public function getEnabledThreshold(): ?int
     {
         return $this->enabledThreshold;
     }
 
-    /**
-     * @param int $enabledThreshold
-     */
-    public function setEnabledThreshold(int $enabledThreshold)
+    public function setEnabledThreshold(?int $enabledThreshold): void
     {
         $this->enabledThreshold = $enabledThreshold;
     }
 
-    /**
-     * @return null|Color
-     */
-    public function getFillColor(): Color
+    public function getFillColor(): ?Color
     {
         return $this->fillColor;
     }
 
-    /**
-     * @param null|Color $fillColor
-     */
-    public function setFillColor(Color $fillColor)
+    public function setFillColor(?Color $fillColor): void
     {
         $this->fillColor = $fillColor;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getHeight(): int
+    public function getHeight(): ?int
     {
         return $this->height;
     }
 
-    /**
-     * @param int|null $height
-     */
-    public function setHeight(int $height)
+    public function setHeight(?int $height): void
     {
         $this->height = $height;
     }
 
-    /**
-     * @return Color
-     */
-    public function getLineColor(): Color
+    public function getLineColor(): ?Color
     {
         return $this->lineColor;
     }
 
-    /**
-     * @param Color $lineColor
-     */
-    public function setLineColor(Color $lineColor)
+    public function setLineColor(?Color $lineColor): void
     {
         $this->lineColor = $lineColor;
     }
 
-    /**
-     * @return int
-     */
-    public function getLineWidth(): int
+    public function getLineWidth(): ?int
     {
         return $this->lineWidth;
     }
 
-    /**
-     * @param int $lineWidth
-     */
-    public function setLineWidth(int $lineWidth)
+    public function setLineWidth(?int $lineWidth): void
     {
         $this->lineWidth = $lineWidth;
     }
 
-    /**
-     * @return int
-     */
-    public function getRadius(): int
+    public function getRadius(): ?int
     {
         return $this->radius;
     }
 
-    /**
-     * @param int $radius
-     */
-    public function setRadius(int $radius)
+    public function setRadius(?int $radius): void
     {
         $this->radius = $radius;
     }
 
-    /**
-     * @return string
-     */
-    public function getSymbol(): string
+    public function getSymbol(): ?string
     {
         return $this->symbol;
     }
 
-    /**
-     * @param string $symbol
-     */
-    public function setSymbol(string $symbol)
+    public function setSymbol(?string $symbol): void
     {
         $this->symbol = $symbol;
     }
 
-    /**
-     * @return int
-     */
-    public function getWidth(): int
+    public function getWidth(): ?int
     {
         return $this->width;
     }
 
-    /**
-     * @param int $width
-     */
-    public function setWidth(int $width)
+    public function setWidth(?int $width): void
     {
         $this->width = $width;
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
         $result = [];

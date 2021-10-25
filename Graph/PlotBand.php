@@ -9,199 +9,106 @@ use Validaide\HighChartsBundle\ValueObject\Color;
  */
 class PlotBand
 {
-    const COLOR        = 'color';
-    const BORDER_COLOR = 'borderColor';
-    const BORDER_WIDTH = 'borderWidth';
-    const CLASS_NAME   = 'className';
-    const FROM         = 'from';
-    const ID           = 'id';
-    const LABEL        = 'label';
-    const TO           = 'to';
-    const Z_INDEX      = 'zIndex';
+    public const COLOR        = 'color';
+    public const BORDER_COLOR = 'borderColor';
+    public const BORDER_WIDTH = 'borderWidth';
+    public const CLASS_NAME   = 'className';
+    public const FROM         = 'from';
+    public const ID           = 'id';
+    public const LABEL        = 'label';
+    public const TO           = 'to';
+    public const Z_INDEX      = 'zIndex';
 
-    /**
-     * @var
-     */
-    private $className;
+    private ?string $className   = null;
+    private ?Color  $color       = null;
+    private ?Color  $borderColor = null;
+    private ?int    $borderWidth = null;
+    private ?string $id          = null;
+    private ?Label  $label       = null;
+    private ?float  $from        = null;
+    private ?float  $to          = null;
+    private ?int    $zIndex      = null;
 
-    /**
-     * @var
-     */
-    private $color;
-
-    /**
-     * @var Color
-     */
-    private $borderColor;
-
-    /**
-     * @var int
-     */
-    private $borderWidth;
-
-    /**
-     * @var string
-     */
-    private $id;
-
-    /**
-     * @var Label
-     */
-    private $label;
-
-    /**
-     * @var float
-     */
-    private $from;
-
-    /**
-     * @var float
-     */
-    private $to;
-
-    /**
-     * @var int
-     */
-    private $zIndex;
-
-    /**
-     * PlotBand constructor.
-     */
-    public function __construct()
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getClassName(): string
+    public function getClassName(): ?string
     {
         return $this->className;
     }
 
-    /**
-     * @param string $className
-     */
-    public function setClassName(string $className)
+    public function setClassName(?string $className): void
     {
         $this->className = $className;
     }
 
-    /**
-     * @return string
-     */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     */
-    public function setId(string $id)
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
 
-    /**
-     * @return float
-     */
-    public function getFrom(): float
+    public function getFrom(): ?float
     {
         return $this->from;
     }
 
-    /**
-     * @param float $from
-     */
-    public function setFrom(float $from)
+    public function setFrom(?float $from): void
     {
         $this->from = $from;
     }
 
-    /**
-     * @return float
-     */
-    public function getTo(): float
+    public function getTo(): ?float
     {
         return $this->to;
     }
 
-    /**
-     * @param float $to
-     */
-    public function setTo(float $to)
+    public function setTo(?float $to): void
     {
         $this->to = $to;
     }
 
-    /**
-     * @return int
-     */
-    public function getZIndex(): int
+    public function getZIndex(): ?int
     {
         return $this->zIndex;
     }
 
-    /**
-     * @param int $zIndex
-     */
-    public function setZIndex(int $zIndex)
+    public function setZIndex(?int $zIndex): void
     {
         $this->zIndex = $zIndex;
     }
 
-    /**
-     * @return Color
-     */
-    public function getColor(): Color
+    public function getColor(): ?Color
     {
         return $this->color;
     }
 
-    /**
-     * @param Color $color
-     */
-    public function setColor(Color $color)
+    public function setColor(?Color $color): void
     {
         $this->color = $color;
     }
 
-    /**
-     * @return Color
-     */
-    public function getBorderColor(): Color
+    public function getBorderColor(): ?Color
     {
         return $this->borderColor;
     }
 
-    /**
-     * @param Color $borderColor
-     */
-    public function setBorderColor(Color $borderColor)
+    public function setBorderColor(?Color $borderColor): void
     {
         $this->borderColor = $borderColor;
     }
 
-    /**
-     * @return int
-     */
-    public function getBorderWidth(): int
+    public function getBorderWidth(): ?int
     {
         return $this->borderWidth;
     }
 
-    /**
-     * @param int $borderWidth
-     */
-    public function setBorderWidth(int $borderWidth)
+    public function setBorderWidth(?int $borderWidth): void
     {
         $this->borderWidth = $borderWidth;
     }
 
-    /**
-     * @return Label
-     */
     public function getLabel(): Label
     {
         if (is_null($this->label)) {
@@ -211,17 +118,11 @@ class PlotBand
         return $this->label;
     }
 
-    /**
-     * @param Label $label
-     */
-    public function setLabel(Label $label)
+    public function setLabel(Label $label): void
     {
         $this->label = $label;
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
         $result = [];

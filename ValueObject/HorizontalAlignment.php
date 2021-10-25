@@ -2,6 +2,7 @@
 
 namespace Validaide\HighChartsBundle\ValueObject;
 
+use InvalidArgumentException;
 /**
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
@@ -11,18 +12,15 @@ class HorizontalAlignment
     const ALIGN_RIGHT  = "right";
     const ALIGN_CENTER = "center";
 
-    /** @var string */
-    private $align;
+    private string $align;
 
     /**
      * HorizontalAlignment constructor.
-     *
-     * @param string $align
      */
     public function __construct(string $align)
     {
         if (!in_array($align, $this->getAlignments())) {
-            throw new \InvalidArgumentException('This horizontal alignment is not allowed: ' . $align);
+            throw new InvalidArgumentException('This horizontal alignment is not allowed: ' . $align);
         }
 
         $this->align = $align;
@@ -37,9 +35,9 @@ class HorizontalAlignment
     }
 
     /**
-     * @return array
+     * @return string[]
      */
-    public function getAlignments()
+    public function getAlignments(): array
     {
         return [
             self::ALIGN_LEFT,
