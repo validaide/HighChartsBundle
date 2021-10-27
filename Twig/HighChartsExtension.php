@@ -37,9 +37,9 @@ class HighChartsExtension extends AbstractExtension
         return $this->graphHelper->render($graph);
     }
 
-    public function renderStatic(Graph $graph = null, $options = []): ?string
+    public function renderStatic(Graph $graph = null, array $options = []): ?string
     {
-        if (!$graph) {
+        if (is_null($graph)) {
             return null;
         }
 

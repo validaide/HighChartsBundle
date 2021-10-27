@@ -9,48 +9,38 @@ use Validaide\HighChartsBundle\Graph\Drilldown\DrillUpButton;
  */
 class Drilldown
 {
-    /** @var DrillUpButton */
-    private $drillUpButton;
-    /** @var Series[]|array */
-    private $series = [];
+    private DrillUpButton $drillUpButton;
+    /** @var Series[] */
+    private array $series;
 
-    /**
-     * I am a constructor bot *BEEP* *BOOP*
-     */
     public function __construct()
     {
         $this->drillUpButton = new DrillUpButton();
-        $this->series = [];
+        $this->series        = [];
     }
 
-    /**
-     * @return DrillUpButton
-     */
     public function getDrillUpButton(): DrillUpButton
     {
         return $this->drillUpButton;
     }
 
-    /**
-     * @param Series $series
-     */
     public function addSeries(Series $series): void
     {
-        $this->series[] = $series->toArray();
+        $this->series[] = $series;
     }
 
     /**
-     * @return array|Series[]
+     * @return Series[]
      */
-    public function getSeries()
+    public function getSeries(): array
     {
         return $this->series;
     }
 
     /**
-     * @return array
+     * @return array<string, mixed[]>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 
@@ -59,7 +49,13 @@ class Drilldown
         }
 
         if (!is_null($this->series)) {
-            $result['series'] = $this->series;
+            $seriesData = [];
+
+            foreach ($this->series as $series) {
+                $seriesData[] = $series->toArray();
+            }
+
+            $result['series'] = $seriesData;
         }
 
         ksort($result);

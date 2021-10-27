@@ -44,11 +44,7 @@ class ImageRenderer
         file_put_contents($infile, $graph->toJson());
 
         // Define the output PNG file path
-        if (is_null($outputPath)) {
-            $outfile = $infile . "." . $options[self::HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE];
-        } else {
-            $outfile = $outputPath;
-        }
+        $outfile = is_null($outputPath) ? $infile . "." . $options[self::HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE] : $outputPath;
 
         $optionParts = [];
         foreach ($options as $option => $value) {

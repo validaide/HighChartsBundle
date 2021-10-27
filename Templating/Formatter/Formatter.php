@@ -12,7 +12,7 @@ class Formatter
         return json_encode($argument, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     }
 
-    public function renderCode(string $code, $semicolon = true): string
+    public function renderCode(string $code, bool $semicolon = true): string
     {
         if ($semicolon) {
             $code .= ';';

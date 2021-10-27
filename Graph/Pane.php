@@ -7,28 +7,14 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 class Pane
 {
-    // background object
-    // center array
+    public ?int    $startAngle = null;
+    public ?int    $endAngle   = null;
+    public ?string $size       = null;
 
     /**
-     * @var int
+     * @return array<string, string>
      */
-    public $endAngle;
-
-    /**
-     * @var string
-     */
-    public $size;
-
-    /**
-     * @var int
-     */
-    public $startAngle;
-
-    /**
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 
@@ -44,5 +30,4 @@ class Pane
 
         return $result;
     }
-
 }

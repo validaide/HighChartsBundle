@@ -2,7 +2,7 @@
 
 namespace Validaide\HighChartsBundle;
 
-use Ivory\JsonBuilder\JsonBuilder;
+use Validaide\Common\JsonBuilder\JsonBuilder;
 use ReflectionClass;
 use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\Credits;

@@ -10,167 +10,85 @@ use Validaide\HighChartsBundle\ValueObject\DashStyle;
  */
 class PlotLine
 {
-    /**
-     * @var string
-     */
-    private $className;
+    private ?float     $value     = null;
+    private ?Label     $label     = null;
+    private ?string    $className = null;
+    private ?Color     $color     = null;
+    private ?DashStyle $dashStyle = null;
+    private ?string    $id        = null;
+    private ?int       $width     = null;
+    private ?int       $zIndex    = null;
 
-    /**
-     * @var Color
-     */
-    private $color;
-
-    /**
-     * @var DashStyle
-     */
-    private $dashStyle;
-
-    // private $events;
-
-    /**
-     * @var string
-     */
-    private $id;
-
-    /**
-     * @var Label
-     */
-    private $label;
-
-    /**
-     * @var float
-     */
-    private $value;
-
-    /**
-     * @var int
-     */
-    private $width;
-
-    /**
-     * @var int
-     */
-    private $zIndex;
-
-    public function __construct()
-    {
-    }
-
-    /**
-     * @return string
-     */
     public function getClassName(): string
     {
         return $this->className;
     }
 
-    /**
-     * @param string $className
-     */
-    public function setClassName(string $className)
+    public function setClassName(string $className): void
     {
         $this->className = $className;
     }
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     */
-    public function setId(string $id)
+    public function setId(string $id): void
     {
         $this->id = $id;
     }
 
-    /**
-     * @return float
-     */
     public function getValue(): float
     {
         return $this->value;
     }
 
-    /**
-     * @param float $value
-     */
-    public function setValue(float $value)
+    public function setValue(float $value): void
     {
         $this->value = $value;
     }
 
-    /**
-     * @return int
-     */
     public function getWidth(): int
     {
         return $this->width;
     }
 
-    /**
-     * @param int $width
-     */
-    public function setWidth(int $width)
+    public function setWidth(int $width): void
     {
         $this->width = $width;
     }
 
-    /**
-     * @return int
-     */
     public function getZIndex(): int
     {
         return $this->zIndex;
     }
 
-    /**
-     * @param int $zIndex
-     */
-    public function setZIndex(int $zIndex)
+    public function setZIndex(int $zIndex): void
     {
         $this->zIndex = $zIndex;
     }
 
-    /**
-     * @return Color
-     */
     public function getColor(): Color
     {
         return $this->color;
     }
 
-    /**
-     * @param Color $color
-     */
-    public function setColor(Color $color)
+    public function setColor(Color $color): void
     {
         $this->color = $color;
     }
 
-    /**
-     * @return DashStyle
-     */
     public function getDashStyle(): DashStyle
     {
         return $this->dashStyle;
     }
 
-    /**
-     * @param DashStyle $dashStyle
-     */
-    public function setDashStyle(DashStyle $dashStyle)
+    public function setDashStyle(DashStyle $dashStyle): void
     {
         $this->dashStyle = $dashStyle;
     }
 
-    /**
-     * @return Label
-     */
     public function getLabel(): Label
     {
         if (is_null($this->label)) {
@@ -180,18 +98,12 @@ class PlotLine
         return $this->label;
     }
 
-    /**
-     * @param Label $label
-     */
-    public function setLabel(Label $label)
+    public function setLabel(Label $label): void
     {
         $this->label = $label;
     }
 
-    /**
-     * @return string
-     */
-    public function toArray()
+    public function toArray(): array
     {
         $result = [];
 
@@ -219,7 +131,6 @@ class PlotLine
         if (!is_null($this->zIndex)) {
             $result['zIndex'] = $this->zIndex;
         }
-
 
         return $result;
     }
