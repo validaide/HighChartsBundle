@@ -11,14 +11,25 @@ use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
  */
 class GraphRendererTest extends TestCase
 {
-    /** @var GraphRenderer */
-    private $graphRenderer;
-
+    private ?GraphRenderer $graphRenderer = null;
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->graphRenderer = new GraphRenderer();
     }
+
+    protected function tearDown(): void
+    {
+        $this->graphRenderer = null;
+
+        parent::tearDown();
+    }
+
+    /*****************************************************************************/
+    /* Tests
+    /*****************************************************************************/
 
     /**
      *
@@ -36,7 +47,7 @@ class GraphRendererTest extends TestCase
         $graph = new Graph();
 
         $this->assertSame(
-            '<div id="graph_container" style="width:100%;height:400px;"></div>',
+            '<div id="graph" style="width:100%;height:400px;"></div>',
             $this->graphRenderer->renderHtml($graph)
         );
     }

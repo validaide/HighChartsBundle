@@ -5,6 +5,7 @@ var graph = Highcharts.chart("graph_container",
 {
     "chart": {
         "type": "spline",
+        "height": "400px",
         "plotShadow": false
     },
     "credits": [],

@@ -22,9 +22,6 @@ class HighChartsExtension extends AbstractExtension
         $this->imageRenderer = $imageRenderer;
     }
 
-    /**
-     * @return TwigFunction[]
-     */
     public function getFunctions(): array
     {
         return [
@@ -42,7 +39,7 @@ class HighChartsExtension extends AbstractExtension
 
     public function renderStatic(Graph $graph = null, array $options = []): ?string
     {
-        if ($graph === null) {
+        if (is_null($graph)) {
             return null;
         }
 

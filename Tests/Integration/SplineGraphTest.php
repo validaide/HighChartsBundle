@@ -13,8 +13,6 @@ use Validaide\HighChartsBundle\ValueObject\Color;
 use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;
 
 /**
- * Class ClimateGraphTest
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class SplineGraphTest extends IntegrationTestCase
@@ -26,19 +24,17 @@ class SplineGraphTest extends IntegrationTestCase
     const SERIES_1_NAME   = 'SERIES';
     const SERIES_1_Y_AXIS = 0;
 
-
-    /**
-     * @param int $seriesIndex
-     *
-     * @return mixed
-     */
-    public static function getSeriesData($seriesIndex = 1)
+    public static function getSeriesData(int $seriesIndex = 1): array
     {
         $series[0] = [0, 1, 2, 3, 4, 5];
         $series[1] = [0, 1, 2, 3, 4, 5];
 
         return $series[$seriesIndex];
     }
+
+    /*****************************************************************************/
+    /* Tests
+    /*****************************************************************************/
 
     /**
      *
@@ -67,15 +63,10 @@ class SplineGraphTest extends IntegrationTestCase
 }
 
 /**
- * Class ClimateGraph
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class SplineGraph extends Graph
 {
-    /**
-     * ClimateGraph constructor.
-     */
     public function __construct()
     {
         parent::__construct();

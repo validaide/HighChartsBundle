@@ -61,9 +61,6 @@ class ImageRenderer
         return $outfile;
     }
 
-    /**
-     * @return string[]
-     */
     public static function getAllowedHighChartsExportServerOptions(): array
     {
         return [
@@ -73,9 +70,6 @@ class ImageRenderer
         ];
     }
 
-    /**
-     * @return array<string, string>|array<string, null>
-     */
     public static function getDefaultHighChartsExportServerOptions(): array
     {
         return [
