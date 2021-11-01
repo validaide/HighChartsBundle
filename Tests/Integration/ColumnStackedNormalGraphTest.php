@@ -10,8 +10,6 @@ use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
 /**
- * Class ColumnGraphTest
- *
  * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class ColumnStackedNormalGraphTest extends IntegrationTestCase
@@ -28,20 +26,12 @@ class ColumnStackedNormalGraphTest extends IntegrationTestCase
     const SERIES_3_NAME      = 'Plot 3';
     const SERIES_3_Y_AXIS    = 0;
 
-    /**
-     * @return array
-     */
-    public static function getXAxisCategories()
+    public static function getXAxisCategories(): array
     {
         return ['apples', 'pears', 'oranges'];
     }
 
-    /**
-     * @param int $seriesIndex
-     *
-     * @return mixed
-     */
-    public static function getSeriesData($seriesIndex = 1)
+    public static function getSeriesData(int $seriesIndex = 1): array
     {
         $series[0] = [1, 2, 3];
         $series[1] = [2, 2, 3];
