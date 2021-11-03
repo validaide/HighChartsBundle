@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef2b407e84f782f780c0781f9d10fb5a",
+    "content-hash": "233e037bf265fce16a3959e300829c18",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -5645,16 +5645,16 @@
         },
         {
             "name": "validaide/common",
-            "version": "4.4.0",
+            "version": "4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/common.git",
-                "reference": "be03fbc57f60b23769caa423ece234b43d010224"
+                "reference": "5da68e49e6dab30c56976ee0fcda7bd91399a747"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/common/zipball/be03fbc57f60b23769caa423ece234b43d010224",
-                "reference": "be03fbc57f60b23769caa423ece234b43d010224",
+                "url": "https://api.github.com/repos/validaide/common/zipball/5da68e49e6dab30c56976ee0fcda7bd91399a747",
+                "reference": "5da68e49e6dab30c56976ee0fcda7bd91399a747",
                 "shasum": ""
             },
             "require": {
@@ -5671,7 +5671,8 @@
             "require-dev": {
                 "brianium/paratest": "^3.0",
                 "phpunit/phpunit": "^8.1",
-                "rector/rector": "^0.11.60"
+                "rector/rector": "^0.11.60",
+                "symplify/easy-coding-standard": "^9.4"
             },
             "type": "library",
             "autoload": {
@@ -5694,20 +5695,20 @@
                 }
             ],
             "description": "Common Library for Validaide projects",
-            "time": "2021-10-25T12:11:03+00:00"
+            "time": "2021-11-03T09:49:29+00:00"
         },
         {
             "name": "validaide/html-builder",
-            "version": "4.4.0",
+            "version": "4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "779b1dc239b9cbb6d8882ba85118d5b2257b96ad"
+                "reference": "a69c8af947fdf661d8513c426c912930a1ccc8cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/779b1dc239b9cbb6d8882ba85118d5b2257b96ad",
-                "reference": "779b1dc239b9cbb6d8882ba85118d5b2257b96ad",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/a69c8af947fdf661d8513c426c912930a1ccc8cf",
+                "reference": "a69c8af947fdf661d8513c426c912930a1ccc8cf",
                 "shasum": ""
             },
             "require": {
@@ -5738,7 +5739,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2021-10-25T12:11:47+00:00"
+            "time": "2021-11-03T09:50:12+00:00"
         }
     ],
     "packages-dev": [
@@ -6786,6 +6787,67 @@
                 }
             ],
             "time": "2021-03-17T07:27:54+00:00"
+        },
+        {
+            "name": "rector/rector",
+            "version": "0.11.60",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rectorphp/rector.git",
+                "reference": "428f593818f8c50fe12c543e8c0a107f9bd899ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/428f593818f8c50fe12c543e8c0a107f9bd899ae",
+                "reference": "428f593818f8c50fe12c543e8c0a107f9bd899ae",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^8.0",
+                "phpstan/phpstan": "0.12.99"
+            },
+            "conflict": {
+                "phpstan/phpdoc-parser": "<=0.5.3",
+                "phpstan/phpstan": "<=0.12.82",
+                "rector/rector-cakephp": "*",
+                "rector/rector-doctrine": "*",
+                "rector/rector-laravel": "*",
+                "rector/rector-nette": "*",
+                "rector/rector-phpoffice": "*",
+                "rector/rector-phpunit": "*",
+                "rector/rector-prefixed": "*",
+                "rector/rector-symfony": "*"
+            },
+            "bin": [
+                "bin/rector"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "0.11-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Prefixed and PHP 7.1 downgraded version of rector/rector",
+            "support": {
+                "issues": "https://github.com/rectorphp/rector/issues",
+                "source": "https://github.com/rectorphp/rector/tree/0.11.60"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-10-20T13:08:22+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

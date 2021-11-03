@@ -10,8 +10,8 @@ use Validaide\HighChartsBundle\Templating\Formatter\Formatter;
  */
 class GraphRenderer
 {
-    protected Formatter $formatter;
-    protected TagRenderer $tagRenderer;
+    protected Formatter          $formatter;
+    protected TagRenderer        $tagRenderer;
     protected StyleSheetRenderer $styleSheetRenderer;
     protected JavascriptRenderer $javascriptRenderer;
 
@@ -38,13 +38,8 @@ class GraphRenderer
 
     public function renderJavascript(Graph $graph): string
     {
-        $json              = $graph->toJson();
-        $highChartInitCode = 'Highcharts.chart(' . $this->formatter->renderEscape($graph->getHtmlId()) . ',' . $this->formatter->renderNewline() . $json . $this->formatter->renderNewline() . ')';
-        $code              = $this->javascriptRenderer->renderVariable($graph->getJsChartId(), $highChartInitCode);
-        $jquery            = $this->formatter->renderJQuery($code);
+        $javascriptVariable = $this->javascriptRenderer->renderVariable('graph_' . $graph->getJsChartId(), $graph->toJson());
 
-//        return $this->tagRenderer->render('script', null, ['src' => 'https://code.highcharts.com/highcharts.js']) .$this->formatter->renderNewline() .
-//            $this->tagRenderer->render('script', $jquery, ['type' => "text/javascript"]);
-        return $this->tagRenderer->render('script', $jquery, ['type' => "text/javascript"]);
+        return $this->tagRenderer->render('script', $javascriptVariable, ['type' => "text/javascript"]);
     }
 }
