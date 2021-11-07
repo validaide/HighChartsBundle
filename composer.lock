@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "901ef097e2cf431407d8e69d25fc58ca",
+    "content-hash": "590954840d360783317cf33cbbda3863",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -8268,7 +8268,14 @@
             "time": "2021-03-09T10:59:23+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "validaide/common",
+            "version": "dev-chore/symfony-4",
+            "alias": "4.5.0",
+            "alias_normalized": "4.5.0.0"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
         "validaide/common": 20
