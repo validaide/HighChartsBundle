@@ -41,7 +41,7 @@
     "twig/twig": "^2 | ^3.0.4",
     "symfony/yaml": "^4.4",
     "validaide/common": "dev-chore/symfony-4 as 4.6.0",
-    "validaide/html-builder": "dev-development as 4.6.0"
+    "validaide/html-builder": "dev-chore/symfony-4 as 4.6.0"
   },
   "require-dev": {
     "brianium/paratest": "^4.0",
