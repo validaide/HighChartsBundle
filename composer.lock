@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "590954840d360783317cf33cbbda3863",
+    "content-hash": "cc2a0aad4ae4a60cd8a2597b38a113c1",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -5953,24 +5953,26 @@
         },
         {
             "name": "validaide/html-builder",
-            "version": "4.5.0",
+            "version": "dev-development",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "a69c8af947fdf661d8513c426c912930a1ccc8cf"
+                "reference": "54472943c5bcda473748d1cf07bc0427d6cf9d4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/a69c8af947fdf661d8513c426c912930a1ccc8cf",
-                "reference": "a69c8af947fdf661d8513c426c912930a1ccc8cf",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/54472943c5bcda473748d1cf07bc0427d6cf9d4f",
+                "reference": "54472943c5bcda473748d1cf07bc0427d6cf9d4f",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4"
             },
             "require-dev": {
-                "brianium/paratest": "^3.0",
-                "phpunit/phpunit": "^8.0"
+                "brianium/paratest": "^4.0",
+                "ext-tidy": "*",
+                "phpunit/phpunit": "^9.0",
+                "rector/rector": "^0.11"
             },
             "type": "library",
             "autoload": {
@@ -5993,7 +5995,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2021-11-03T09:50:12+00:00"
+            "time": "2021-12-15T13:27:25+00:00"
         }
     ],
     "packages-dev": [
@@ -8272,13 +8274,20 @@
         {
             "package": "validaide/common",
             "version": "dev-chore/symfony-4",
-            "alias": "4.5.0",
-            "alias_normalized": "4.5.0.0"
+            "alias": "4.6.0",
+            "alias_normalized": "4.6.0.0"
+        },
+        {
+            "package": "validaide/html-builder",
+            "version": "dev-development",
+            "alias": "4.6.0",
+            "alias_normalized": "4.6.0.0"
         }
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "validaide/common": 20
+        "validaide/common": 20,
+        "validaide/html-builder": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
