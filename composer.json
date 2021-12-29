@@ -27,10 +27,8 @@
   "require": {
     "php": "^7.4",
     "ext-json": "*",
-    "php-http/guzzle6-adapter": "^1.1",
-    "php-http/httplug": "^1.1",
-    "php-http/httplug-bundle": "^1.7",
-    "php-http/message": "^1.6",
+    "php-http/guzzle6-adapter": "^2.0",
+    "php-http/httplug-bundle": "^1.25",
     "symfony/console": "^4.4",
     "symfony/dependency-injection": "^4.4",
     "symfony/framework-bundle": "^4.4",
@@ -38,8 +36,8 @@
     "symfony/process": "^4.4",
     "symfony/templating": "^4.4",
     "symfony/twig-bundle": "^4.4",
-    "twig/twig": "^2 | ^3.0.4",
     "symfony/yaml": "^4.4",
+    "twig/twig": "^2 | ^3.0.4",
     "validaide/common": "dev-chore/symfony-4 as 4.6.0",
     "validaide/html-builder": "dev-chore/symfony-4 as 4.6.0"
   },
