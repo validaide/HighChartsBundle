@@ -19,6 +19,9 @@ class GraphHelper extends Helper
         $this->graphRender = $graphRenderer;
     }
 
+    /**
+     * @return TwigFunction[]
+     */
     public function getFunctions(): array
     {
         $functions = [];
@@ -28,6 +31,10 @@ class GraphHelper extends Helper
 
         return $functions;
     }
+
+    /*****************************************************************************/
+    /* Functions
+    /*****************************************************************************/
 
     public function render(Graph $graph): string
     {

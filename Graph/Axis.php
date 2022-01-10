@@ -8,34 +8,32 @@ namespace Validaide\HighChartsBundle\Graph;
  */
 class Axis
 {
-    private Title $title;
-    private ?bool $opposite = null;
-    private ?bool $crosshair = null;
+    private Title  $title;
+    private ?bool  $opposite   = null;
+    private ?bool  $crosshair  = null;
     private ?array $categories = null;
-    private ?float $min = null;
-    private ?float $max = null;
-    public Labels $labels;
+    private ?float $min        = null;
+    private ?float $max        = null;
+    public Labels  $labels;
     /** @var PlotBand[] */
     private $plotBands;
     /** @var PlotLine[] */
-    private $plotLines;
-    private ?float $tickInterval = null;
-    private ?bool $startOnTick = null;
-    private ?bool $endOnTick = null;
-    private ?bool $alignTicks = null;
-    private ?float $softMin = null;
-    private ?float $softMax = null;
-    private ?string $type = null;
-    private ?DateTimeLabelFormats $dateTimeLabelFormats = null;
-    private ?bool $allowDecimals = null;
-    private ?int $rotation = null;
-    private ?int $lineWidth = null;
-    private ?string $tickmarkPlacement = null;
-    private ?string $gridLineInterpolation = null;
+    private                       $plotLines;
+    private ?float                $tickInterval          = null;
+    private ?bool                 $startOnTick           = null;
+    private ?bool                 $endOnTick             = null;
+    private ?bool                 $alignTicks            = null;
+    private ?float                $softMin               = null;
+    private ?float                $softMax               = null;
+    private ?string               $type                  = null;
+    private ?DateTimeLabelFormats $dateTimeLabelFormats  = null;
+    private ?bool                 $allowDecimals         = null;
+    private ?int                  $rotation              = null;
+    private ?int                  $lineWidth             = null;
+    private ?string               $tickmarkPlacement     = null;
+    private ?string               $gridLineInterpolation = null;
+    private ?bool $reversedStacks = null;
 
-    /**
-     * Axis constructor.
-     */
     public function __construct()
     {
         $this->title  = new Title();
@@ -283,6 +281,16 @@ class Axis
         $this->gridLineInterpolation = $gridLineInterpolation;
     }
 
+    public function getReversedStacks(): ?bool
+    {
+        return $this->reversedStacks;
+    }
+
+    public function setReversedStacks(?bool $reversedStacks): void
+    {
+        $this->reversedStacks = $reversedStacks;
+    }
+
     public function toArray(): array
     {
         $result = [];
@@ -387,6 +395,10 @@ class Axis
 
         if (!is_null($this->gridLineInterpolation)) {
             $result['gridLineInterpolation'] = $this->gridLineInterpolation;
+        }
+
+        if (!is_null($this->reversedStacks)) {
+            $result['reversedStacks'] = $this->reversedStacks;
         }
 
         return $result;

@@ -15,9 +15,7 @@ class GraphTest extends TestCase
      */
     private $graph;
 
-    /**
-     * {@inheritdoc}
-     */
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -25,9 +23,7 @@ class GraphTest extends TestCase
         $this->graph = new Graph();
     }
 
-    /**
-     * {@inheritdoc}
-     */
+
     protected function tearDown(): void
     {
         $this->graph = null;
