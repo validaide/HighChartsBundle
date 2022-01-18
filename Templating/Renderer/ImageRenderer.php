@@ -23,6 +23,7 @@ class ImageRenderer
     const HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE            = 'type';
     const HIGHCHARTS_EXPORT_SERVER_OPTION_LOG_LEVEL       = 'logLevel';
     const HIGHCHARTS_EXPORT_SERVER_OPTION_LOG_DESTINATION = 'logDest';
+    const HIGHCHARTS_EXPORT_SERVER_OPTION_WORKERS         = 'workers';
 
     const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
 
@@ -80,6 +81,7 @@ class ImageRenderer
             self::HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE            => 'png',
             self::HIGHCHARTS_EXPORT_SERVER_OPTION_LOG_LEVEL       => null,
             self::HIGHCHARTS_EXPORT_SERVER_OPTION_LOG_DESTINATION => null,
+            self::HIGHCHARTS_EXPORT_SERVER_OPTION_WORKERS         => null,
         ];
     }
 
