@@ -1,27 +1,22 @@
 services:
-  ########################
-  # RENDERERS            #
-  ########################
-
-  Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer: ~
-
-  Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer: ~
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
 
   ########################
   # HELPERS              #
   ########################
 
-  Validaide\HighChartsBundle\Templating\Helper\GraphHelper:
-    arguments:
-      - '@Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer'
+  Validaide\HighChartsBundle\Templating\:
+    resource: '../../Templating/*'
 
   ########################
   # TWIG EXTENSIONS      #
   ########################
 
-  Validaide\HighChartsBundle\Twig\HighChartsExtension:
-    arguments:
-      - '@Validaide\HighChartsBundle\Templating\Helper\GraphHelper'
-      - '@Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer'
+  Validaide\HighChartsBundle\Twig\:
+    resource: '../../Twig/*'
     tags:
       - { name: twig.extension }
+
