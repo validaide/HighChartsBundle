@@ -38,8 +38,8 @@
     "symfony/twig-bundle": "^4.4",
     "symfony/yaml": "^4.4",
     "twig/twig": "^2 | ^3.0.4",
-    "validaide/common": "5.0.*",
-    "validaide/html-builder": "5.0.*"
+    "validaide/common": "5.1.*",
+    "validaide/html-builder": "5.1.*"
   },
   "require-dev": {
     "brianium/paratest": "^4.0",
