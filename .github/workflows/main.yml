@@ -31,9 +31,8 @@ jobs:
         env:
           ACCEPT_HIGHCHARTS_LICENSE: 1
 
-# TODO: We can only run the tests if we have the highcharts-export-server installed and available to the CLI
-#      - name: Unit Tests
-#        run: vendor/bin/phpunit
+      - name: Unit Tests
+        run: vendor/bin/phpunit
 
       - name: Static Analysis (phpstan)
         run: phpstan analyse --memory-limit=-1 --no-progress
