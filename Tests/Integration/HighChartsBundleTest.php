@@ -7,9 +7,6 @@ use Validaide\HighChartsBundle\Templating\Helper\GraphHelper;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 use Validaide\HighChartsBundle\Twig\HighChartsExtension;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class HighChartsBundleTest extends TestCase
 {
     private ?AppKernel $kernel;

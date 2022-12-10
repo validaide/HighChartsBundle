@@ -6,16 +6,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Validaide\HighChartsBundle\HighChartsBundle;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class HighChartsBundleTest extends TestCase
 {
-    /**
-     * @var HighChartsBundle
-     */
-    private $bundle;
-
+    private HighChartsBundle $bundle;
 
     protected function setUp(): void
     {

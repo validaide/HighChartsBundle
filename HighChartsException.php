@@ -2,10 +2,9 @@
 
 namespace Validaide\HighChartsBundle;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
-class HighChartsException extends \Exception
+use Exception;
+
+class HighChartsException extends Exception
 {
 
 }

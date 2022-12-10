@@ -7,9 +7,6 @@ use Twig\TwigFunction;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class GraphHelper extends Helper
 {
     private GraphRenderer $graphRender;

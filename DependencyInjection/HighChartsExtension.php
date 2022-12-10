@@ -11,8 +11,6 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  * This is the class that loads and manages your bundle configuration.
  *
  * @link   http://symfony.com/doc/current/cookbook/bundles/extension.html
- *
- * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
  */
 class HighChartsExtension extends Extension
 {

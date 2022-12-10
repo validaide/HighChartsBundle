@@ -6,9 +6,6 @@ use Validaide\HighChartsBundle\Graph\DataLabels\Filter;
 use Validaide\HighChartsBundle\Graph\DataLabels\Style;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class DataLabels
 {
     public const DEFAULT_FORMAT = "{value}";

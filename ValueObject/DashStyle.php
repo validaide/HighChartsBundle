@@ -4,24 +4,21 @@ namespace Validaide\HighChartsBundle\ValueObject;
 
 use InvalidArgumentException;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class DashStyle
 {
     private const ERROR_UNSUPPORTED_DASH_STYLE = "This Dash Style is not allowed: %s";
 
-    const DASH_STYLE_SOLID              = "Solid";
-    const DASH_STYLE_SHORT_DASH         = "ShortDash";
-    const DASH_STYLE_SHORT_DOT          = "ShortDot";
-    const DASH_STYLE_SHORT_DASH_DOT     = "ShortDashDot";
-    const DASH_STYLE_SHORT_DASH_DOT_DOT = "ShortDashDotDot";
-    const DASH_STYLE_DOT                = "Dot";
-    const DASH_STYLE_DASH               = "Dash";
-    const DASH_STYLE_LONG_DASH          = "LongDash";
-    const DASH_STYLE_DASH_DOT           = "DashDot";
-    const DASH_STYLE_LONG_DASH_DOT      = "LongDashDot";
-    const DASH_STYLE_LONG_DASH_DOT_DOT  = "LongDashDotDot";
+    public const DASH_STYLE_SOLID              = "Solid";
+    public const DASH_STYLE_SHORT_DASH         = "ShortDash";
+    public const DASH_STYLE_SHORT_DOT          = "ShortDot";
+    public const DASH_STYLE_SHORT_DASH_DOT     = "ShortDashDot";
+    public const DASH_STYLE_SHORT_DASH_DOT_DOT = "ShortDashDotDot";
+    public const DASH_STYLE_DOT                = "Dot";
+    public const DASH_STYLE_DASH               = "Dash";
+    public const DASH_STYLE_LONG_DASH          = "LongDash";
+    public const DASH_STYLE_DASH_DOT           = "DashDot";
+    public const DASH_STYLE_LONG_DASH_DOT      = "LongDashDot";
+    public const DASH_STYLE_LONG_DASH_DOT_DOT  = "LongDashDotDot";
 
     private string $dashStyle;
 

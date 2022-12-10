@@ -10,22 +10,19 @@ use Validaide\HighChartsBundle\Graph;
  * Render an image of a given Graph
  *
  * This class will output a PNG file for a given Graph. It first converts the Graph to a temporary JSON file, which is then used as input for the highcharts-export-server.
- *
- * @author Daniel Attevelt <daniel.attevelt@validaide.com>
- * @author Mark Bijl <mark.bijl@validaide.com>
  */
 class ImageRenderer
 {
-    const CMD_HIGHCHARTS_EXPORT_SERVER = 'highcharts-export-server';
+    public const CMD_HIGHCHARTS_EXPORT_SERVER = 'highcharts-export-server';
 
-    const HIGHCHARTS_EXPORT_SERVER_OPTION_WIDTH           = 'width';
-    const HIGHCHARTS_EXPORT_SERVER_OPTION_SCALE           = 'scale';
-    const HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE            = 'type';
-    const HIGHCHARTS_EXPORT_SERVER_OPTION_LOG_LEVEL       = 'logLevel';
-    const HIGHCHARTS_EXPORT_SERVER_OPTION_LOG_DESTINATION = 'logDest';
-    const HIGHCHARTS_EXPORT_SERVER_OPTION_WORKERS         = 'workers';
+    public const HIGHCHARTS_EXPORT_SERVER_OPTION_WIDTH           = 'width';
+    public const HIGHCHARTS_EXPORT_SERVER_OPTION_SCALE           = 'scale';
+    public const HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE            = 'type';
+    public const HIGHCHARTS_EXPORT_SERVER_OPTION_LOG_LEVEL       = 'logLevel';
+    public const HIGHCHARTS_EXPORT_SERVER_OPTION_LOG_DESTINATION = 'logDest';
+    public const HIGHCHARTS_EXPORT_SERVER_OPTION_WORKERS         = 'workers';
 
-    const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
+    public const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
 
     /**
      * @throws RenderingException

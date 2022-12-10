@@ -16,10 +16,6 @@ use Validaide\HighChartsBundle\Graph\SubTitle;
 use Validaide\HighChartsBundle\Graph\Title;
 use Validaide\HighChartsBundle\Graph\Tooltip;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
- */
 class Graph
 {
     private ?string     $jsChartId   = null;

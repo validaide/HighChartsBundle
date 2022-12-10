@@ -2,10 +2,6 @@
 
 namespace Validaide\HighChartsBundle\Graph;
 
-/**
- * @author   Marcel Tuinstra <marcel.tuinstra@validaide.com>
- * @author   Marian Miczka <marian.miczka@validaide.com>
- */
 class Legend
 {
     private bool    $enabled       = true;

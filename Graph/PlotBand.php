@@ -4,9 +4,6 @@ namespace Validaide\HighChartsBundle\Graph;
 
 use Validaide\HighChartsBundle\ValueObject\Color;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class PlotBand
 {
     public const COLOR        = 'color';

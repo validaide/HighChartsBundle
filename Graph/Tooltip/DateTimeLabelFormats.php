@@ -4,9 +4,6 @@ namespace Validaide\HighChartsBundle\Graph\Tooltip;
 
 use Validaide\HighChartsBundle\Graph\Tooltip;
 
-/**
- * @author Marian Miczka <marian.miczka@validaide.com>
- */
 class DateTimeLabelFormats extends Tooltip
 {
     protected ?string $day = null;
