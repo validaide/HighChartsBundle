@@ -7,8 +7,8 @@ use Validaide\HighChartsBundle\Graph\PlotOptions;
 
 class Column extends PlotOptions
 {
-    public const STACKING_NORMAL  = 'normal';
-    public const STACKING_PERCENT = 'percent';
+    final public const STACKING_NORMAL  = 'normal';
+    final public const STACKING_PERCENT = 'percent';
 
     protected ?float      $groupPadding   = null;
     protected ?float      $pointPadding   = null;

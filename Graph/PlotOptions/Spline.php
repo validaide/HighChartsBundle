@@ -12,8 +12,8 @@ use Validaide\HighChartsBundle\ValueObject\Color;
 
 class Spline extends PlotOptions
 {
-    public const STACKING_NORMAL  = 'normal';
-    public const STACKING_PERCENT = 'percent';
+    final public const STACKING_NORMAL  = 'normal';
+    final public const STACKING_PERCENT = 'percent';
 
     protected ?int     $animationLimit         = null;
     protected ?int     $boostThreshold         = null;

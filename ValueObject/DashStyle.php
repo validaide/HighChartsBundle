@@ -2,25 +2,26 @@
 
 namespace Validaide\HighChartsBundle\ValueObject;
 
+use Stringable;
 use InvalidArgumentException;
 
-class DashStyle
+class DashStyle implements Stringable
 {
     private const ERROR_UNSUPPORTED_DASH_STYLE = "This Dash Style is not allowed: %s";
 
-    public const DASH_STYLE_SOLID              = "Solid";
-    public const DASH_STYLE_SHORT_DASH         = "ShortDash";
-    public const DASH_STYLE_SHORT_DOT          = "ShortDot";
-    public const DASH_STYLE_SHORT_DASH_DOT     = "ShortDashDot";
-    public const DASH_STYLE_SHORT_DASH_DOT_DOT = "ShortDashDotDot";
-    public const DASH_STYLE_DOT                = "Dot";
-    public const DASH_STYLE_DASH               = "Dash";
-    public const DASH_STYLE_LONG_DASH          = "LongDash";
-    public const DASH_STYLE_DASH_DOT           = "DashDot";
-    public const DASH_STYLE_LONG_DASH_DOT      = "LongDashDot";
-    public const DASH_STYLE_LONG_DASH_DOT_DOT  = "LongDashDotDot";
+    final public const DASH_STYLE_SOLID              = "Solid";
+    final public const DASH_STYLE_SHORT_DASH         = "ShortDash";
+    final public const DASH_STYLE_SHORT_DOT          = "ShortDot";
+    final public const DASH_STYLE_SHORT_DASH_DOT     = "ShortDashDot";
+    final public const DASH_STYLE_SHORT_DASH_DOT_DOT = "ShortDashDotDot";
+    final public const DASH_STYLE_DOT                = "Dot";
+    final public const DASH_STYLE_DASH               = "Dash";
+    final public const DASH_STYLE_LONG_DASH          = "LongDash";
+    final public const DASH_STYLE_DASH_DOT           = "DashDot";
+    final public const DASH_STYLE_LONG_DASH_DOT      = "LongDashDot";
+    final public const DASH_STYLE_LONG_DASH_DOT_DOT  = "LongDashDotDot";
 
-    private string $dashStyle;
+    private readonly string $dashStyle;
 
     public function __construct(string $dashStyle)
     {
@@ -31,10 +32,7 @@ class DashStyle
         $this->dashStyle = $dashStyle;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return (string)$this->dashStyle;
     }

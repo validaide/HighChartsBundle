@@ -2,8 +2,8 @@
 
 namespace Validaide\HighChartsBundle;
 
-use Validaide\Common\JsonBuilder\JsonBuilder;
 use ReflectionClass;
+use Validaide\Common\JsonBuilder\JsonBuilder;
 use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\Credits;
 use Validaide\HighChartsBundle\Graph\Drilldown;
@@ -18,25 +18,25 @@ use Validaide\HighChartsBundle\Graph\Tooltip;
 
 class Graph
 {
-    private ?string     $jsChartId   = null;
-    private ?string     $htmlId      = null;
-    private string      $width       = '100%';
-    private string      $height      = '400px';
-    private string      $type        = 'line';
-    private ?Drilldown  $drilldown   = null;
-    private ?bool       $plotShadow  = null;
-    private Title       $title;
-    private ?SubTitle   $subTitle    = null;
-    private Axis        $xAxis;
-    private Credits     $credits;
-    public Tooltip      $tooltip;
-    public Legend       $legend;
-    public ?array       $margin      = null;
-    public ?Pane        $pane        = null;
-    public ?PlotOptions $plotOptions = null;
-    public ?bool        $polar       = null;
-    public ?Exporting   $exporting   = null;
-    private ?string     $zoomType    = null;
+    private ?string        $jsChartId   = null;
+    private ?string        $htmlId      = null;
+    private string         $width       = '100%';
+    private string         $height      = '400px';
+    private string         $type        = 'line';
+    private ?Drilldown     $drilldown   = null;
+    private ?bool          $plotShadow  = null;
+    private readonly Title $title;
+    private ?SubTitle      $subTitle    = null;
+    private readonly Axis  $xAxis;
+    private Credits        $credits;
+    public Tooltip         $tooltip;
+    public Legend          $legend;
+    public ?array          $margin      = null;
+    public ?Pane           $pane        = null;
+    public ?PlotOptions    $plotOptions = null;
+    public ?bool           $polar       = null;
+    public ?Exporting      $exporting   = null;
+    private ?string        $zoomType    = null;
 
     /** @var Axis[] */
     private array $yAxis = [];
@@ -261,6 +261,7 @@ class Graph
     public static function getClassShortName(object $object): string
     {
         $reflection = new ReflectionClass($object);
+
         return $reflection->getShortName();
     }
 

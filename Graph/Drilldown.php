@@ -6,7 +6,7 @@ use Validaide\HighChartsBundle\Graph\Drilldown\DrillUpButton;
 
 class Drilldown
 {
-    private DrillUpButton $drillUpButton;
+    private readonly DrillUpButton $drillUpButton;
     /** @var Series[] */
     private array $series = [];
 

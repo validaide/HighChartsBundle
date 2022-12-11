@@ -2,15 +2,16 @@
 
 namespace Validaide\HighChartsBundle\ValueObject;
 
+use Stringable;
 use InvalidArgumentException;
 
-class HorizontalAlignment
+class HorizontalAlignment implements Stringable
 {
-    public const ALIGN_LEFT   = "left";
-    public const ALIGN_RIGHT  = "right";
-    public const ALIGN_CENTER = "center";
+    final public const ALIGN_LEFT   = "left";
+    final public const ALIGN_RIGHT  = "right";
+    final public const ALIGN_CENTER = "center";
 
-    private string $align;
+    private readonly string $align;
 
     public function __construct(string $align)
     {
@@ -21,10 +22,7 @@ class HorizontalAlignment
         $this->align = $align;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->align;
     }
