@@ -5,15 +5,9 @@ namespace Tests\Validaide\HighChartsBundle;
 use PHPUnit\Framework\TestCase;
 use Validaide\HighChartsBundle\Graph;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class GraphTest extends TestCase
 {
-    /**
-     * @var Graph
-     */
-    private $graph;
+    private ?Graph $graph = null;
 
 
     protected function setUp(): void

@@ -4,9 +4,6 @@ namespace Validaide\HighChartsBundle\Graph\PlotOptions;
 
 use Validaide\HighChartsBundle\Graph\PlotOptions;
 
-/**
- * @author   Marcel Tuinstra <marcel.tuinstra@validaide.com>
- */
 class Bar extends PlotOptions
 {
     /**

@@ -10,13 +10,10 @@ use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\Graph\Tooltip;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class Spline extends PlotOptions
 {
-    const STACKING_NORMAL  = 'normal';
-    const STACKING_PERCENT = 'percent';
+    public const STACKING_NORMAL  = 'normal';
+    public const STACKING_PERCENT = 'percent';
 
     protected ?int     $animationLimit         = null;
     protected ?int     $boostThreshold         = null;
@@ -542,6 +539,7 @@ class Spline extends PlotOptions
      */
     public function toArray(): array
     {
+        $result = [];
         $splinePlotOptions = [];
 
         if (!is_null($this->color)) {

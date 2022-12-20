@@ -2,23 +2,23 @@
 
 namespace Tests\Validaide\HighChartsBundle\Integration;
 
+use Validaide\HighChartsBundle\Graph\PlotOptions\Pie;
+use Validaide\HighChartsBundle\Graph\Drilldown;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Graph\Series;
 use Tests\Validaide\HighChartsBundle\IntegrationTestCase;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class HalfDonutGraphTest extends IntegrationTestCase
 {
-    const TYPE = 'pie';
-    const TITLE = 'Temperature<br>Exposure';
-    const CREDITS_TEXT = 'Validaide';
-    const CREDITS_HREF = 'validaide.com';
-    const SERIES_1_NAME = 'Temperature Exposure';
+    public const TYPE = 'pie';
+    public const TITLE = 'Temperature<br>Exposure';
+    public const CREDITS_TEXT = 'Validaide';
+    public const CREDITS_HREF = 'validaide.com';
+    public const SERIES_1_NAME = 'Temperature Exposure';
 
     public static function getSeriesData(int $seriesIndex = 0): array
     {
+        $series = [];
         $series[0] = [
             [
                 'y' => 34.3,
@@ -68,7 +68,7 @@ class HalfDonutGraph extends Graph
         parent::__construct();
 
         // Define pie plot options
-        $piePlotOptions = new Graph\PlotOptions\Pie();
+        $piePlotOptions = new Pie();
         $piePlotOptions->setStartAngle(-90);
         $piePlotOptions->setCenter(['50%', '75%']);
         $piePlotOptions->setEndAngle(90);
@@ -103,7 +103,7 @@ class HalfDonutGraph extends Graph
         $drillDownB = new Series('B', []);
         $drillDownB->setId('B');
 
-        $drillDown = new Graph\Drilldown();
+        $drillDown = new Drilldown();
         $drillDown->addSeries($drillDownA);
         $drillDown->addSeries($drillDownB);
         $this->setDrillDown($drillDown);

@@ -2,9 +2,6 @@
 
 namespace Validaide\HighChartsBundle\Graph;
 
-/**
- * @author   Marcel Tuinstra <marcel.tuinstra@validaide.com>
- */
 abstract class PlotOptions
 {
     protected DataLabels $dataLabels;

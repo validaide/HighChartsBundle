@@ -8,9 +8,6 @@ use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Helper\GraphHelper;
 use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class HighChartsExtension extends AbstractExtension
 {
     private GraphHelper   $graphHelper;

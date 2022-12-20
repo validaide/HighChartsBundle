@@ -3,20 +3,15 @@
 namespace Validaide\HighChartsBundle\ValueObject;
 
 use InvalidArgumentException;
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
+
 class HorizontalAlignment
 {
-    const ALIGN_LEFT   = "left";
-    const ALIGN_RIGHT  = "right";
-    const ALIGN_CENTER = "center";
+    public const ALIGN_LEFT   = "left";
+    public const ALIGN_RIGHT  = "right";
+    public const ALIGN_CENTER = "center";
 
     private string $align;
 
-    /**
-     * HorizontalAlignment constructor.
-     */
     public function __construct(string $align)
     {
         if (!in_array($align, $this->getAlignments())) {
@@ -31,7 +26,7 @@ class HorizontalAlignment
      */
     public function __toString()
     {
-        return (string)$this->align;
+        return $this->align;
     }
 
     /**

@@ -11,9 +11,6 @@ use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
 use Validaide\HighChartsBundle\Templating\Renderer\RenderingException;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class IntegrationTestCase extends TestCase
 {
     protected function assertGraph(Graph $graph, array $replacements): void
@@ -52,7 +49,7 @@ class IntegrationTestCase extends TestCase
     {
         $result    = '';
         $lineCount = 0;
-        $numLines  = count(preg_split('/\n|\r/', $input));
+        $numLines  = is_countable(preg_split('/\n|\r/', $input)) ? count(preg_split('/\n|\r/', $input)) : 0;
         foreach (preg_split("/((\r?\n)|(\r\n?))/", $input) as $line) {
             $lineCount++;
             if ($lineCount == 1) {

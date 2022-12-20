@@ -1,13 +1,9 @@
 <?php
 
-
 namespace Validaide\HighChartsBundle\Graph\DataLabels;
 
 use Validaide\HighChartsBundle\ValueObject\Color;
 
-/**
- * @author Marian Miczka <marian.miczka@validaide.com>
- */
 class Style
 {
     private ?Color $color = null;

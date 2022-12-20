@@ -2,10 +2,6 @@
 
 namespace Validaide\HighChartsBundle\Graph;
 
-/**
- * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class Axis
 {
     private Title  $title;
@@ -15,10 +11,10 @@ class Axis
     private ?float $min        = null;
     private ?float $max        = null;
     public Labels  $labels;
-    /** @var PlotBand[] */
-    private $plotBands;
-    /** @var PlotLine[] */
-    private                       $plotLines;
+    /** @var PlotBand[]|null */
+    private ?array $plotBands = null;
+    /** @var PlotLine[]|null */
+    private ?array                $plotLines             = null;
     private ?float                $tickInterval          = null;
     private ?bool                 $startOnTick           = null;
     private ?bool                 $endOnTick             = null;
@@ -32,7 +28,7 @@ class Axis
     private ?int                  $lineWidth             = null;
     private ?string               $tickmarkPlacement     = null;
     private ?string               $gridLineInterpolation = null;
-    private ?bool $reversedStacks = null;
+    private ?bool                 $reversedStacks        = null;
 
     public function __construct()
     {

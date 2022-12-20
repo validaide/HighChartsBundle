@@ -5,10 +5,6 @@ namespace Validaide\HighChartsBundle\Graph\PlotOptions;
 use Validaide\HighChartsBundle\Graph\DataLabels;
 use Validaide\HighChartsBundle\Graph\PlotOptions;
 
-/**
- * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class Column extends PlotOptions
 {
     public const STACKING_NORMAL  = 'normal';

@@ -6,9 +6,6 @@ use PHPUnit\Framework\TestCase;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class GraphRendererTest extends TestCase
 {
     private ?GraphRenderer $graphRenderer = null;

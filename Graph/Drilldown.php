@@ -4,19 +4,15 @@ namespace Validaide\HighChartsBundle\Graph;
 
 use Validaide\HighChartsBundle\Graph\Drilldown\DrillUpButton;
 
-/**
- * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
- */
 class Drilldown
 {
     private DrillUpButton $drillUpButton;
     /** @var Series[] */
-    private array $series;
+    private array $series = [];
 
     public function __construct()
     {
         $this->drillUpButton = new DrillUpButton();
-        $this->series        = [];
     }
 
     public function getDrillUpButton(): DrillUpButton

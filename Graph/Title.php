@@ -2,9 +2,6 @@
 
 namespace Validaide\HighChartsBundle\Graph;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class Title
 {
     private ?string $text          = null;

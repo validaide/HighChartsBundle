@@ -7,9 +7,6 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use Validaide\HighChartsBundle\HighChartsBundle;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class AppKernel extends Kernel
 {
     public function registerBundles(): array

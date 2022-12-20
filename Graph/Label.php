@@ -5,9 +5,6 @@ namespace Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;
 use Validaide\HighChartsBundle\ValueObject\VerticalAlignment;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class Label
 {
     private ?HorizontalAlignment $align             = null;

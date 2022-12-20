@@ -13,24 +13,21 @@ use Validaide\HighChartsBundle\ValueObject\DashStyle;
 use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;
 use Validaide\HighChartsBundle\ValueObject\VerticalAlignment;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class ClimateGraphTest extends IntegrationTestCase
 {
-    const TYPE                     = 'column';
-    const TITLE                    = 'Climate Graph: Rio de Janeiro';
-    const CREDITS_TEXT             = 'Validaide';
-    const CREDITS_HREF             = 'validaide.com';
-    const Y_AXIS_TEMPERATURE_TITLE = 'Temperature';
-    const Y_AXIS_RAINFALL_TITLE    = 'Rainfall (mm)';
-    const X_AXIS_TITLE             = 'Months';
-    const SERIES_1_NAME            = 'Minimum Temperature';
-    const SERIES_1_Y_AXIS          = 0;
-    const SERIES_2_NAME            = 'Maximum Temperature';
-    const SERIES_2_Y_AXIS          = 0;
-    const SERIES_3_NAME            = 'Rainfall';
-    const SERIES_3_Y_AXIS          = 1;
+    public const TYPE                     = 'column';
+    public const TITLE                    = 'Climate Graph: Rio de Janeiro';
+    public const CREDITS_TEXT             = 'Validaide';
+    public const CREDITS_HREF             = 'validaide.com';
+    public const Y_AXIS_TEMPERATURE_TITLE = 'Temperature';
+    public const Y_AXIS_RAINFALL_TITLE    = 'Rainfall (mm)';
+    public const X_AXIS_TITLE             = 'Months';
+    public const SERIES_1_NAME            = 'Minimum Temperature';
+    public const SERIES_1_Y_AXIS          = 0;
+    public const SERIES_2_NAME            = 'Maximum Temperature';
+    public const SERIES_2_Y_AXIS          = 0;
+    public const SERIES_3_NAME            = 'Rainfall';
+    public const SERIES_3_Y_AXIS          = 1;
 
     public static function getXAxisCategories(): array
     {
@@ -44,6 +41,7 @@ class ClimateGraphTest extends IntegrationTestCase
 
     public static function getSeriesData(int $seriesIndex = 1): array
     {
+        $series = [];
         $series[0] = [5.2, 7.3434, 8.23, 9.976967, 10.8678, 9.75, 8.3453, 7.56, 6.345, 5.345, 4.75685, 4.45];
         $series[1] = [15.678, 17.5, 18.45, 19.247, 20.74645, 19.254, 18.234, 17.678, 16.456, 15.94564, 14.5636, 14.743];
         $series[2] = [100, 80, 60, 20, 20, 19, 20, 60, 60, 80, 90, 100];

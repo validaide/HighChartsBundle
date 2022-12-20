@@ -2,6 +2,9 @@
 
 namespace Tests\Validaide\HighChartsBundle\Integration;
 
+use Validaide\HighChartsBundle\Graph\PlotOptions\Spline;
+use Validaide\HighChartsBundle\Graph\Tooltip;
+use Validaide\HighChartsBundle\Graph\DataLabels;
 use Tests\Validaide\HighChartsBundle\IntegrationTestCase;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Graph\Axis;
@@ -12,20 +15,18 @@ use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\ValueObject\Color;
 use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class SplineGraphTest extends IntegrationTestCase
 {
-    const TYPE            = 'spline';
-    const TITLE           = 'TITLE';
-    const Y_AXIS_TITLE    = 'YYYYYY';
-    const X_AXIS_TITLE    = 'XXXXXX';
-    const SERIES_1_NAME   = 'SERIES';
-    const SERIES_1_Y_AXIS = 0;
+    public const TYPE            = 'spline';
+    public const TITLE           = 'TITLE';
+    public const Y_AXIS_TITLE    = 'YYYYYY';
+    public const X_AXIS_TITLE    = 'XXXXXX';
+    public const SERIES_1_NAME   = 'SERIES';
+    public const SERIES_1_Y_AXIS = 0;
 
     public static function getSeriesData(int $seriesIndex = 1): array
     {
+        $series = [];
         $series[0] = [0, 1, 2, 3, 4, 5];
         $series[1] = [0, 1, 2, 3, 4, 5];
 
@@ -62,17 +63,14 @@ class SplineGraphTest extends IntegrationTestCase
     }
 }
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class SplineGraph extends Graph
 {
     public function __construct()
     {
         parent::__construct();
 
-        $splinePlotOptions = new Graph\PlotOptions\Spline();
-        $splinePlotOptions->setStacking(Graph\PlotOptions\Spline::STACKING_NORMAL);
+        $splinePlotOptions = new Spline();
+        $splinePlotOptions->setStacking(Spline::STACKING_NORMAL);
         $this->setPlotOptions($splinePlotOptions);
 
         $this->setType(SplineGraphTest::TYPE);
@@ -80,7 +78,7 @@ class SplineGraph extends Graph
         $this->getTitle()->setText(SplineGraphTest::TITLE);
         $this->getLegend()->setEnabled(true);
 
-        $tooltip = new Graph\Tooltip();
+        $tooltip = new Tooltip();
         $tooltip->setBackgroundColor(new Color('#FFFFFFF'));
         $tooltip->setSplit(true);
         $tooltip->setBorderRadius(5);
@@ -127,7 +125,7 @@ class SplineGraph extends Graph
         $seriesPlotOne->setType('line');
         $seriesPlotOne->setYAxis(SplineGraphTest::SERIES_1_Y_AXIS);
         $seriesPlotOne->setColor(new Color('#0000FF'));
-        $dataLabels = new Graph\DataLabels();
+        $dataLabels = new DataLabels();
         $dataLabels->setEnabled(true);
         $dataLabels->setBorderWidth(3);
         $dataLabels->setBorderColor(new Color('#AAA'));

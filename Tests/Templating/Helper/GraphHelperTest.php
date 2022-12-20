@@ -7,15 +7,9 @@ use PHPUnit\Framework\TestCase;
 use Validaide\HighChartsBundle\Templating\Helper\GraphHelper;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class GraphHelperTest extends TestCase
 {
-    /**
-     * @var GraphHelper
-     */
-    private $graphHelper;
+    private GraphHelper $graphHelper;
 
 
     protected function setUp(): void
