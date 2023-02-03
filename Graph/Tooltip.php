@@ -6,9 +6,6 @@ use Validaide\HighChartsBundle\Graph\Tooltip\DateTimeLabelFormats;
 use Validaide\HighChartsBundle\Graph\DataLabels\Style;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class Tooltip
 {
     private ?string               $pointFormat          = null;

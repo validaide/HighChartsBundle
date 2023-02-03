@@ -2,9 +2,6 @@
 
 namespace Validaide\HighChartsBundle\Templating\Renderer;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class TagRenderer extends AbstractTagRenderer
 {
     public function render(string $name, ?string $code = null, array $attributes = []): string

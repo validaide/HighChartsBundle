@@ -5,9 +5,6 @@ namespace Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\ValueObject\Color;
 use Validaide\HighChartsBundle\ValueObject\DashStyle;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class PlotLine
 {
     private ?float     $value     = null;

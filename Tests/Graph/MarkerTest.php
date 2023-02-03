@@ -5,9 +5,6 @@ namespace Tests\Validaide\HighChartsBundle\Graph;
 use PHPUnit\Framework\TestCase;
 use Validaide\HighChartsBundle\Graph\Marker;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class MarkerTest extends TestCase
 {
     /*****************************************************************************/

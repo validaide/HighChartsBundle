@@ -1,8 +1,13 @@
 name: Build & Test Library
-on: [push]
+on: [ push ]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-latest ]
+        php-versions: [ '7.4','8.1' ]
+    name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -10,7 +15,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: ${{ matrix.php-versions }}
           tools: composer:v2,phpstan
         env:
           COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -21,9 +26,13 @@ jobs:
           COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{secrets.COMPOSER_GITHUB_ACTIONS }}"} }'
           SYMFONY_ENV: test
 
-# TODO: We can only run the tests if we have the highcharts-export-server installed and available to the CLI
-#      - name: Unit Tests
-#        run: vendor/bin/phpunit
+      - name: Highcharts install
+        run: npm install highcharts-export-server -g --max-old-space-size=4096
+        env:
+          ACCEPT_HIGHCHARTS_LICENSE: 1
+
+      - name: Unit Tests
+        run: vendor/bin/phpunit
 
       - name: Static Analysis (phpstan)
         run: phpstan analyse --memory-limit=-1 --no-progress

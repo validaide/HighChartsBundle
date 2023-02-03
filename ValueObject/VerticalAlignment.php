@@ -3,20 +3,15 @@
 namespace Validaide\HighChartsBundle\ValueObject;
 
 use InvalidArgumentException;
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
+
 class VerticalAlignment
 {
-    const ALIGN_TOP    = "top";
-    const ALIGN_MIDDLE = "middle";
-    const ALIGN_BOTTOM = "bottom";
+    public const ALIGN_TOP    = "top";
+    public const ALIGN_MIDDLE = "middle";
+    public const ALIGN_BOTTOM = "bottom";
 
     private string $align;
 
-    /**
-     * VerticalAlignment constructor.
-     */
     public function __construct(string $align)
     {
         if (!in_array($align, $this->getAlignments())) {

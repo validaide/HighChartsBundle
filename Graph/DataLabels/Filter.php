@@ -3,9 +3,6 @@
 
 namespace Validaide\HighChartsBundle\Graph\DataLabels;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class Filter
 {
     /** @var string|null */

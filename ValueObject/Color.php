@@ -3,16 +3,11 @@
 namespace Validaide\HighChartsBundle\ValueObject;
 
 use InvalidArgumentException;
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
+
 class Color
 {
     private string $color;
 
-    /**
-     * Color constructor.
-     */
     public function __construct(string $color)
     {
         if (is_null($color)) {

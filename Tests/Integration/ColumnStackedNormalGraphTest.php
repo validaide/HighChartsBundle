@@ -2,6 +2,7 @@
 
 namespace Tests\Validaide\HighChartsBundle\Integration;
 
+use Validaide\HighChartsBundle\Graph\SubTitle;
 use Tests\Validaide\HighChartsBundle\IntegrationTestCase;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Graph\Axis;
@@ -9,22 +10,19 @@ use Validaide\HighChartsBundle\Graph\PlotOptions\Column;
 use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\ValueObject\Color;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class ColumnStackedNormalGraphTest extends IntegrationTestCase
 {
-    const TYPE               = 'column';
-    const TITLE              = 'Test';
-    const SUB_TITLE          = 'Sub Test';
-    const Y_AXIS_TITLE_FRUIT = 'Fruit';
-    const X_AXIS_TITLE       = 'Months';
-    const SERIES_1_NAME      = 'Plot 1';
-    const SERIES_1_Y_AXIS    = 0;
-    const SERIES_2_NAME      = 'Plot 2';
-    const SERIES_2_Y_AXIS    = 0;
-    const SERIES_3_NAME      = 'Plot 3';
-    const SERIES_3_Y_AXIS    = 0;
+    public const TYPE               = 'column';
+    public const TITLE              = 'Test';
+    public const SUB_TITLE          = 'Sub Test';
+    public const Y_AXIS_TITLE_FRUIT = 'Fruit';
+    public const X_AXIS_TITLE       = 'Months';
+    public const SERIES_1_NAME      = 'Plot 1';
+    public const SERIES_1_Y_AXIS    = 0;
+    public const SERIES_2_NAME      = 'Plot 2';
+    public const SERIES_2_Y_AXIS    = 0;
+    public const SERIES_3_NAME      = 'Plot 3';
+    public const SERIES_3_Y_AXIS    = 0;
 
     public static function getXAxisCategories(): array
     {
@@ -33,6 +31,7 @@ class ColumnStackedNormalGraphTest extends IntegrationTestCase
 
     public static function getSeriesData(int $seriesIndex = 1): array
     {
+        $series = [];
         $series[0] = [1, 2, 3];
         $series[1] = [2, 2, 3];
         $series[2] = [1, 2, 2];
@@ -117,14 +116,8 @@ class ColumnStackedNormalGraphTest extends IntegrationTestCase
     }
 }
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- */
 class ColumnStackedNormalGraph extends Graph
 {
-    /**
-     * I am a constructor bot *BEEP* *BOOP*
-     */
     public function __construct()
     {
         parent::__construct();
@@ -172,32 +165,20 @@ class ColumnStackedNormalGraph extends Graph
     }
 }
 
-/**
- * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
- */
 class ColumnStackedNormalWithSubTitleGraph extends ColumnStackedNormalGraph
 {
-    /**
-     * I am a constructor bot *BEEP* *BOOP*
-     */
     public function __construct()
     {
         parent::__construct();
 
-        $subTitle = new Graph\SubTitle();
+        $subTitle = new SubTitle();
         $subTitle->setText(ColumnStackedNormalGraphTest::SUB_TITLE);
         $this->setSubTitle($subTitle);
     }
 }
 
-/**
- * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
- */
 class ColumnStackedNormalWithHiddenTitleGraph extends ColumnStackedNormalGraph
 {
-    /**
-     * I am a constructor bot *BEEP* *BOOP*
-     */
     public function __construct()
     {
         parent::__construct();

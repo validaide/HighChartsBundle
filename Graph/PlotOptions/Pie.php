@@ -5,10 +5,6 @@ namespace Validaide\HighChartsBundle\Graph\PlotOptions;
 use Validaide\HighChartsBundle\Graph\DataLabels;
 use Validaide\HighChartsBundle\Graph\PlotOptions;
 
-/**
- * @author Mark Bijl <mark.bijl@validaide.com>
- * @author Marcel Tuinstra <marcel.tuinstra@validaide.com>
- */
 class Pie extends PlotOptions
 {
     public ?float  $startAngle   = null;
@@ -72,6 +68,7 @@ class Pie extends PlotOptions
      */
     public function toArray(): array
     {
+        $result = [];
         $piePlotOptions = [];
 
         if (!is_null($this->allowPointSelect)) {
