@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8adeeebe2fb39c32e6eea7fc6eb29d7",
+    "content-hash": "095207d29b4d41bce8738615c63ccbdf",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -6023,16 +6023,16 @@
         },
         {
             "name": "validaide/common",
-            "version": "5.6.0",
+            "version": "5.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/common.git",
-                "reference": "47819cf0f8bce27a91323714ee822f301d024e50"
+                "reference": "43b349ef8a6330871d8e52371c2de9628b5ab7f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/common/zipball/47819cf0f8bce27a91323714ee822f301d024e50",
-                "reference": "47819cf0f8bce27a91323714ee822f301d024e50",
+                "url": "https://api.github.com/repos/validaide/common/zipball/43b349ef8a6330871d8e52371c2de9628b5ab7f1",
+                "reference": "43b349ef8a6330871d8e52371c2de9628b5ab7f1",
                 "shasum": ""
             },
             "require": {
@@ -6073,20 +6073,20 @@
                 }
             ],
             "description": "Common Library for Validaide projects",
-            "time": "2023-02-03T09:54:43+00:00"
+            "time": "2023-03-09T09:36:42+00:00"
         },
         {
             "name": "validaide/html-builder",
-            "version": "5.6.0",
+            "version": "5.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "3448dcb2b6c70886b2c8d3d0a2adfeb77035ebc9"
+                "reference": "9c171d544f0c123745d4e07c2fc9e5d558cc3219"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/3448dcb2b6c70886b2c8d3d0a2adfeb77035ebc9",
-                "reference": "3448dcb2b6c70886b2c8d3d0a2adfeb77035ebc9",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/9c171d544f0c123745d4e07c2fc9e5d558cc3219",
+                "reference": "9c171d544f0c123745d4e07c2fc9e5d558cc3219",
                 "shasum": ""
             },
             "require": {
@@ -6122,7 +6122,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2023-02-03T09:56:15+00:00"
+            "time": "2023-03-09T09:38:19+00:00"
         }
     ],
     "packages-dev": [
