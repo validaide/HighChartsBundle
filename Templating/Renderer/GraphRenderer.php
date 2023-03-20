@@ -22,7 +22,8 @@ class GraphRenderer
 
     public function render(Graph $graph): string
     {
-        return $this->renderHtml($graph) . $this->formatter->renderNewline() .
+        return $this->renderHtml($graph) .
+            $this->formatter->renderNewline() .
             $this->renderJavascript($graph);
     }
 

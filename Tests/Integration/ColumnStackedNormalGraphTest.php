@@ -12,17 +12,17 @@ use Validaide\HighChartsBundle\ValueObject\Color;
 
 class ColumnStackedNormalGraphTest extends IntegrationTestCase
 {
-    public const TYPE               = 'column';
-    public const TITLE              = 'Test';
-    public const SUB_TITLE          = 'Sub Test';
-    public const Y_AXIS_TITLE_FRUIT = 'Fruit';
-    public const X_AXIS_TITLE       = 'Months';
-    public const SERIES_1_NAME      = 'Plot 1';
-    public const SERIES_1_Y_AXIS    = 0;
-    public const SERIES_2_NAME      = 'Plot 2';
-    public const SERIES_2_Y_AXIS    = 0;
-    public const SERIES_3_NAME      = 'Plot 3';
-    public const SERIES_3_Y_AXIS    = 0;
+    final public const TYPE               = 'column';
+    final public const TITLE              = 'Test';
+    final public const SUB_TITLE          = 'Sub Test';
+    final public const Y_AXIS_TITLE_FRUIT = 'Fruit';
+    final public const X_AXIS_TITLE       = 'Months';
+    final public const SERIES_1_NAME      = 'Plot 1';
+    final public const SERIES_1_Y_AXIS    = 0;
+    final public const SERIES_2_NAME      = 'Plot 2';
+    final public const SERIES_2_Y_AXIS    = 0;
+    final public const SERIES_3_NAME      = 'Plot 3';
+    final public const SERIES_3_Y_AXIS    = 0;
 
     public static function getXAxisCategories(): array
     {

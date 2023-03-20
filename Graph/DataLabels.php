@@ -8,7 +8,7 @@ use Validaide\HighChartsBundle\ValueObject\Color;
 
 class DataLabels
 {
-    public const DEFAULT_FORMAT = "{value}";
+    final public const DEFAULT_FORMAT = "{value}";
 
     private ?string $align           = null;
     private ?bool   $allowOverlap    = null;

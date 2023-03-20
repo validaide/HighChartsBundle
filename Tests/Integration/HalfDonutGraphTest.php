@@ -10,11 +10,11 @@ use Tests\Validaide\HighChartsBundle\IntegrationTestCase;
 
 class HalfDonutGraphTest extends IntegrationTestCase
 {
-    public const TYPE = 'pie';
-    public const TITLE = 'Temperature<br>Exposure';
-    public const CREDITS_TEXT = 'Validaide';
-    public const CREDITS_HREF = 'validaide.com';
-    public const SERIES_1_NAME = 'Temperature Exposure';
+    final public const TYPE = 'pie';
+    final public const TITLE = 'Temperature<br>Exposure';
+    final public const CREDITS_TEXT = 'Validaide';
+    final public const CREDITS_HREF = 'validaide.com';
+    final public const SERIES_1_NAME = 'Temperature Exposure';
 
     public static function getSeriesData(int $seriesIndex = 0): array
     {

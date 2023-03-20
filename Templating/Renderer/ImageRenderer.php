@@ -13,16 +13,16 @@ use Validaide\HighChartsBundle\Graph;
  */
 class ImageRenderer
 {
-    public const CMD_HIGHCHARTS_EXPORT_SERVER = 'highcharts-export-server';
+    final public const CMD_HIGHCHARTS_EXPORT_SERVER = 'highcharts-export-server';
 
-    public const HIGHCHARTS_EXPORT_SERVER_OPTION_WIDTH           = 'width';
-    public const HIGHCHARTS_EXPORT_SERVER_OPTION_SCALE           = 'scale';
-    public const HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE            = 'type';
-    public const HIGHCHARTS_EXPORT_SERVER_OPTION_LOG_LEVEL       = 'logLevel';
-    public const HIGHCHARTS_EXPORT_SERVER_OPTION_LOG_DESTINATION = 'logDest';
-    public const HIGHCHARTS_EXPORT_SERVER_OPTION_WORKERS         = 'workers';
+    final public const HIGHCHARTS_EXPORT_SERVER_OPTION_WIDTH           = 'width';
+    final public const HIGHCHARTS_EXPORT_SERVER_OPTION_SCALE           = 'scale';
+    final public const HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE            = 'type';
+    final public const HIGHCHARTS_EXPORT_SERVER_OPTION_LOG_LEVEL       = 'logLevel';
+    final public const HIGHCHARTS_EXPORT_SERVER_OPTION_LOG_DESTINATION = 'logDest';
+    final public const HIGHCHARTS_EXPORT_SERVER_OPTION_WORKERS         = 'workers';
 
-    public const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
+    final public const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
 
     /**
      * @throws RenderingException
