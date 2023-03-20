@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fde3c1b23f1040b201e16bcf68339b82",
+    "content-hash": "7c449ce78efcc23aee59cbdb609eff11",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -5900,16 +5900,16 @@
         },
         {
             "name": "validaide/common",
-            "version": "dev-chore/184007845_drop_php74",
+            "version": "dev-development",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/common.git",
-                "reference": "16562422c6a7217c6c89e06d9e7ce1f2bedb36fa"
+                "reference": "0b94bf336cbc2607dc2ea66cca1172a4f6e6c102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/common/zipball/16562422c6a7217c6c89e06d9e7ce1f2bedb36fa",
-                "reference": "16562422c6a7217c6c89e06d9e7ce1f2bedb36fa",
+                "url": "https://api.github.com/repos/validaide/common/zipball/0b94bf336cbc2607dc2ea66cca1172a4f6e6c102",
+                "reference": "0b94bf336cbc2607dc2ea66cca1172a4f6e6c102",
                 "shasum": ""
             },
             "require": {
@@ -5929,6 +5929,7 @@
                 "rector/rector": "^0.15.0",
                 "symplify/easy-coding-standard": "^9.4"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -5950,7 +5951,7 @@
                 }
             ],
             "description": "Common Library for Validaide projects",
-            "time": "2023-03-02T10:16:13+00:00"
+            "time": "2023-03-20T15:00:11+00:00"
         }
     ],
     "packages-dev": [
@@ -6276,16 +6277,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.3",
+            "version": "1.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "5419375b5891add97dc74be71e6c1c34baaddf64"
+                "reference": "d03bccee595e2146b7c9d174486b84f4dc61b0f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/5419375b5891add97dc74be71e6c1c34baaddf64",
-                "reference": "5419375b5891add97dc74be71e6c1c34baaddf64",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d03bccee595e2146b7c9d174486b84f4dc61b0f2",
+                "reference": "d03bccee595e2146b7c9d174486b84f4dc61b0f2",
                 "shasum": ""
             },
             "require": {
@@ -6315,7 +6316,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.10.3"
+                "source": "https://github.com/phpstan/phpstan/tree/1.9.4"
             },
             "funding": [
                 {
@@ -6331,7 +6332,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-25T14:47:13+00:00"
+            "time": "2022-12-17T13:33:52+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -6755,25 +6756,26 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.15.19",
+            "version": "0.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "4b3a85382e890963a6d00e0ace8d09465f96e370"
+                "reference": "bf5297204f7d46b8a74c1cc01b54341cbf00b74c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/4b3a85382e890963a6d00e0ace8d09465f96e370",
-                "reference": "4b3a85382e890963a6d00e0ace8d09465f96e370",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/bf5297204f7d46b8a74c1cc01b54341cbf00b74c",
+                "reference": "bf5297204f7d46b8a74c1cc01b54341cbf00b74c",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2|^8.0",
-                "phpstan/phpstan": "^1.10.1"
+                "phpstan/phpstan": "^1.9.3"
             },
             "conflict": {
                 "rector/rector-doctrine": "*",
                 "rector/rector-downgrade-php": "*",
+                "rector/rector-php-parser": "*",
                 "rector/rector-phpunit": "*",
                 "rector/rector-symfony": "*"
             },
@@ -6783,7 +6785,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "0.15-dev"
+                    "dev-main": "0.14-dev"
                 }
             },
             "autoload": {
@@ -6798,7 +6800,7 @@
             "description": "Instant Upgrade and Automated Refactoring of any PHP code",
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.15.19"
+                "source": "https://github.com/rectorphp/rector/tree/0.15.1"
             },
             "funding": [
                 {
@@ -6806,7 +6808,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-28T10:47:53+00:00"
+            "time": "2022-12-14T15:53:50+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -7908,7 +7910,7 @@
     "aliases": [
         {
             "package": "validaide/common",
-            "version": "dev-chore/184007845_drop_php74",
+            "version": "dev-development",
             "alias": "5.6.0",
             "alias_normalized": "5.6.0.0"
         }
@@ -7920,7 +7922,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4 | ^8.1",
+        "php": "^8.1",
         "ext-json": "*"
     },
     "platform-dev": [],
