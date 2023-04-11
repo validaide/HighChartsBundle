@@ -2,26 +2,16 @@
 
 namespace Validaide\HighChartsBundle\ValueObject;
 
-use InvalidArgumentException;
+use Stringable;
 
-class Color
+class Color implements Stringable
 {
-    private string $color;
-
-    public function __construct(string $color)
+    public function __construct(private readonly string $color)
     {
-        if (is_null($color)) {
-            throw new InvalidArgumentException('NULL objects are not allowed');
-        }
-
-        $this->color = $color;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
-        return (string)$this->color;
+        return $this->color;
     }
 }

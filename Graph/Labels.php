@@ -4,7 +4,7 @@ namespace Validaide\HighChartsBundle\Graph;
 
 class Labels
 {
-    public const DEFAULT_FORMAT = "{value}";
+    final public const DEFAULT_FORMAT = "{value}";
 
     private ?string $format    = null;
     private ?string $formatter = null;

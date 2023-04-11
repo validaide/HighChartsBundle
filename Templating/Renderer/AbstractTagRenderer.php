@@ -6,10 +6,7 @@ use Validaide\HighChartsBundle\Templating\Formatter\Formatter;
 
 class AbstractTagRenderer
 {
-    protected Formatter $formatter;
-
-    public function __construct(Formatter $formatter)
+    public function __construct(protected Formatter $formatter)
     {
-        $this->formatter = $formatter;
     }
 }

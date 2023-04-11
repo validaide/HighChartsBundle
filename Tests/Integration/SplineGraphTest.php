@@ -17,12 +17,12 @@ use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;
 
 class SplineGraphTest extends IntegrationTestCase
 {
-    public const TYPE            = 'spline';
-    public const TITLE           = 'TITLE';
-    public const Y_AXIS_TITLE    = 'YYYYYY';
-    public const X_AXIS_TITLE    = 'XXXXXX';
-    public const SERIES_1_NAME   = 'SERIES';
-    public const SERIES_1_Y_AXIS = 0;
+    final public const TYPE            = 'spline';
+    final public const TITLE           = 'TITLE';
+    final public const Y_AXIS_TITLE    = 'YYYYYY';
+    final public const X_AXIS_TITLE    = 'XXXXXX';
+    final public const SERIES_1_NAME   = 'SERIES';
+    final public const SERIES_1_Y_AXIS = 0;
 
     public static function getSeriesData(int $seriesIndex = 1): array
     {

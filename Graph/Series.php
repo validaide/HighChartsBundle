@@ -7,9 +7,6 @@ use Validaide\HighChartsBundle\ValueObject\DashStyle;
 
 class Series
 {
-    private ?array  $data;
-    private ?string $name;
-
     private ?string    $id                  = null;
     private ?Color     $color               = null;
     private ?string    $drilldown           = null;
@@ -29,10 +26,8 @@ class Series
 
     private DataLabels $dataLabels;
 
-    public function __construct(?string $name, ?array $data)
+    public function __construct(private ?string $name, private ?array $data)
     {
-        $this->name       = $name;
-        $this->data       = $data;
         $this->dataLabels = new DataLabels();
     }
 
