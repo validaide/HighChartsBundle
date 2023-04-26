@@ -15,19 +15,19 @@ use Validaide\HighChartsBundle\ValueObject\VerticalAlignment;
 
 class ClimateGraphTest extends IntegrationTestCase
 {
-    public const TYPE                     = 'column';
-    public const TITLE                    = 'Climate Graph: Rio de Janeiro';
-    public const CREDITS_TEXT             = 'Validaide';
-    public const CREDITS_HREF             = 'validaide.com';
-    public const Y_AXIS_TEMPERATURE_TITLE = 'Temperature';
-    public const Y_AXIS_RAINFALL_TITLE    = 'Rainfall (mm)';
-    public const X_AXIS_TITLE             = 'Months';
-    public const SERIES_1_NAME            = 'Minimum Temperature';
-    public const SERIES_1_Y_AXIS          = 0;
-    public const SERIES_2_NAME            = 'Maximum Temperature';
-    public const SERIES_2_Y_AXIS          = 0;
-    public const SERIES_3_NAME            = 'Rainfall';
-    public const SERIES_3_Y_AXIS          = 1;
+    final public const TYPE                     = 'column';
+    final public const TITLE                    = 'Climate Graph: Rio de Janeiro';
+    final public const CREDITS_TEXT             = 'Validaide';
+    final public const CREDITS_HREF             = 'validaide.com';
+    final public const Y_AXIS_TEMPERATURE_TITLE = 'Temperature';
+    final public const Y_AXIS_RAINFALL_TITLE    = 'Rainfall (mm)';
+    final public const X_AXIS_TITLE             = 'Months';
+    final public const SERIES_1_NAME            = 'Minimum Temperature';
+    final public const SERIES_1_Y_AXIS          = 0;
+    final public const SERIES_2_NAME            = 'Maximum Temperature';
+    final public const SERIES_2_Y_AXIS          = 0;
+    final public const SERIES_3_NAME            = 'Rainfall';
+    final public const SERIES_3_Y_AXIS          = 1;
 
     public static function getXAxisCategories(): array
     {

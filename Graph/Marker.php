@@ -6,15 +6,15 @@ use Validaide\HighChartsBundle\ValueObject\Color;
 
 class Marker
 {
-    public const ENABLED           = 'enabled';
-    public const ENABLED_THRESHOLD = 'enabledThreshold';
-    public const FILL_COLOR        = 'fillColor';
-    public const HEIGHT            = 'height';
-    public const LINE_COLOR        = 'lineColor';
-    public const LINE_WIDTH        = 'lineWidth';
-    public const RADIUS            = 'radius';
-    public const SYMBOL            = 'symbol';
-    public const WIDTH             = 'width';
+    final public const ENABLED           = 'enabled';
+    final public const ENABLED_THRESHOLD = 'enabledThreshold';
+    final public const FILL_COLOR        = 'fillColor';
+    final public const HEIGHT            = 'height';
+    final public const LINE_COLOR        = 'lineColor';
+    final public const LINE_WIDTH        = 'lineWidth';
+    final public const RADIUS            = 'radius';
+    final public const SYMBOL            = 'symbol';
+    final public const WIDTH             = 'width';
 
     private ?bool   $enabled          = null;
     private ?int    $enabledThreshold = null;

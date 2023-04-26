@@ -87,7 +87,7 @@ class Pie extends PlotOptions
             $piePlotOptions['series']['color'] = $this->color;
         }
 
-        if (!is_null($this->dataLabels) && $this->dataLabels->isEnabled()) {
+        if (!is_null($this->dataLabels)) {
             $piePlotOptions['dataLabels'] = $this->dataLabels->toArray();
         }
 

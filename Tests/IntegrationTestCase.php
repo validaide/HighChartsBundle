@@ -61,7 +61,7 @@ class IntegrationTestCase extends TestCase
                 continue;
             }
 
-            $line   = trim($line);
+            $line   = trim((string) $line);
             $result .= $this->prependSpaces($line, $repeat) . "\n";
         }
 
@@ -74,10 +74,10 @@ class IntegrationTestCase extends TestCase
             $lines     = explode(PHP_EOL, $input);
             $prepended = '';
             foreach ($lines as $item) {
-                if (strpos($item, '[') === false) {
+                if (!str_contains($item, '[')) {
                     $prepended .= $this->prependSpaces($item, $repeat);
 
-                    if (strpos($item, ']') === false) {
+                    if (!str_contains($item, ']')) {
                         $prepended .= PHP_EOL;
                     }
                 } elseif ($item !== '') {
@@ -97,7 +97,7 @@ class IntegrationTestCase extends TestCase
 
     protected function containsLineBreaks(string $input): bool
     {
-        return strpos($input, PHP_EOL) !== false;
+        return str_contains($input, PHP_EOL);
     }
 
     protected function getTestFilesDirectory(): string

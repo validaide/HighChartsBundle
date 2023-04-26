@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "095207d29b4d41bce8738615c63ccbdf",
+    "content-hash": "8c6a2a7ecbef696b7836a57c90cdd09a",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -6023,23 +6023,23 @@
         },
         {
             "name": "validaide/common",
-            "version": "5.7.0",
+            "version": "5.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/common.git",
-                "reference": "43b349ef8a6330871d8e52371c2de9628b5ab7f1"
+                "reference": "3098bdde06449d127cfcc7ffaadcf0c3974635f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/common/zipball/43b349ef8a6330871d8e52371c2de9628b5ab7f1",
-                "reference": "43b349ef8a6330871d8e52371c2de9628b5ab7f1",
+                "url": "https://api.github.com/repos/validaide/common/zipball/3098bdde06449d127cfcc7ffaadcf0c3974635f5",
+                "reference": "3098bdde06449d127cfcc7ffaadcf0c3974635f5",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^2.5",
                 "doctrine/orm": "^2.5",
                 "ext-json": "*",
-                "php": "^7.4 | ^8.1",
+                "php": "^8.1",
                 "symfony/console": "^4.4",
                 "symfony/filesystem": "^4.4",
                 "symfony/intl": "^4.4",
@@ -6073,25 +6073,25 @@
                 }
             ],
             "description": "Common Library for Validaide projects",
-            "time": "2023-03-09T09:36:42+00:00"
+            "time": "2023-04-26T09:29:54+00:00"
         },
         {
             "name": "validaide/html-builder",
-            "version": "5.7.0",
+            "version": "5.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "9c171d544f0c123745d4e07c2fc9e5d558cc3219"
+                "reference": "e1677ed37b7403898b2318b4e14dd28f98f56687"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/9c171d544f0c123745d4e07c2fc9e5d558cc3219",
-                "reference": "9c171d544f0c123745d4e07c2fc9e5d558cc3219",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/e1677ed37b7403898b2318b4e14dd28f98f56687",
+                "reference": "e1677ed37b7403898b2318b4e14dd28f98f56687",
                 "shasum": ""
             },
             "require": {
                 "exercise/htmlpurifier-bundle": "^4.0",
-                "php": "^7.4 | ^8.1"
+                "php": "^8.1"
             },
             "require-dev": {
                 "brianium/paratest": "^6.4",
@@ -6122,7 +6122,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2023-03-09T09:38:19+00:00"
+            "time": "2023-04-26T09:31:04+00:00"
         }
     ],
     "packages-dev": [
@@ -8084,7 +8084,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4 | ^8.1",
+        "php": "^8.1",
         "ext-json": "*"
     },
     "platform-dev": [],
