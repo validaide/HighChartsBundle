@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c449ce78efcc23aee59cbdb609eff11",
+    "content-hash": "8c6a2a7ecbef696b7836a57c90cdd09a",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -1007,6 +1007,129 @@
                 }
             ],
             "time": "2022-12-19T13:58:18+00:00"
+        },
+        {
+            "name": "exercise/htmlpurifier-bundle",
+            "version": "4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Exercise/HTMLPurifierBundle.git",
+                "reference": "153e71b36d90060b5ba52efdec75d6b4bf0fe9bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Exercise/HTMLPurifierBundle/zipball/153e71b36d90060b5ba52efdec75d6b4bf0fe9bd",
+                "reference": "153e71b36d90060b5ba52efdec75d6b4bf0fe9bd",
+                "shasum": ""
+            },
+            "require": {
+                "ezyang/htmlpurifier": "~4.14",
+                "php": "^7.1.3 || ^8.0.0",
+                "symfony/config": "~4.4 || ^5.0 || ^6.0",
+                "symfony/dependency-injection": "^4.4 || ^5.0 || ^6.0",
+                "symfony/http-kernel": "^4.4 || ^5.0 || ^6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "symfony/form": "^4.4 || ^5.0 || ^6.0",
+                "symfony/phpunit-bridge": "^6.0",
+                "twig/twig": "^1.35.0 || ^2.4.4 || ^3.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Exercise\\HTMLPurifierBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "contributors",
+                    "homepage": "https://github.com/Exercise/HTMLPurifierBundle/contributors"
+                }
+            ],
+            "description": "HTMLPurifier integration for your Symfony project",
+            "homepage": "https://github.com/Exercise/HTMLPurifierBundle",
+            "keywords": [
+                "Purifier",
+                "html",
+                "htmlpurifier",
+                "symfony"
+            ],
+            "support": {
+                "issues": "https://github.com/Exercise/HTMLPurifierBundle/issues",
+                "source": "https://github.com/Exercise/HTMLPurifierBundle/tree/4.1.1"
+            },
+            "time": "2022-08-29T10:31:19+00:00"
+        },
+        {
+            "name": "ezyang/htmlpurifier",
+            "version": "v4.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "523407fb06eb9e5f3d59889b3978d5bfe94299c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/523407fb06eb9e5f3d59889b3978d5bfe94299c8",
+                "reference": "523407fb06eb9e5f3d59889b3978d5bfe94299c8",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~5.6.0 || ~7.0.0 || ~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0"
+            },
+            "require-dev": {
+                "cerdic/css-tidy": "^1.7 || ^2.0",
+                "simpletest/simpletest": "dev-master"
+            },
+            "suggest": {
+                "cerdic/css-tidy": "If you want to use the filter 'Filter.ExtractStyleBlocks'.",
+                "ext-bcmath": "Used for unit conversion and imagecrash protection",
+                "ext-iconv": "Converts text to and from non-UTF-8 encodings",
+                "ext-tidy": "Used for pretty-printing HTML"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "library/HTMLPurifier.composer.php"
+                ],
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                },
+                "exclude-from-classmap": [
+                    "/library/HTMLPurifier/Language/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Edward Z. Yang",
+                    "email": "admin@htmlpurifier.org",
+                    "homepage": "http://ezyang.com"
+                }
+            ],
+            "description": "Standards compliant HTML filter written in PHP",
+            "homepage": "http://htmlpurifier.org/",
+            "keywords": [
+                "html"
+            ],
+            "support": {
+                "issues": "https://github.com/ezyang/htmlpurifier/issues",
+                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.16.0"
+            },
+            "time": "2022-09-18T07:06:19+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -5900,16 +6023,16 @@
         },
         {
             "name": "validaide/common",
-            "version": "dev-development",
+            "version": "5.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/common.git",
-                "reference": "0b94bf336cbc2607dc2ea66cca1172a4f6e6c102"
+                "reference": "3098bdde06449d127cfcc7ffaadcf0c3974635f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/common/zipball/0b94bf336cbc2607dc2ea66cca1172a4f6e6c102",
-                "reference": "0b94bf336cbc2607dc2ea66cca1172a4f6e6c102",
+                "url": "https://api.github.com/repos/validaide/common/zipball/3098bdde06449d127cfcc7ffaadcf0c3974635f5",
+                "reference": "3098bdde06449d127cfcc7ffaadcf0c3974635f5",
                 "shasum": ""
             },
             "require": {
@@ -5929,7 +6052,6 @@
                 "rector/rector": "^0.15.0",
                 "symplify/easy-coding-standard": "^9.4"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -5951,7 +6073,56 @@
                 }
             ],
             "description": "Common Library for Validaide projects",
-            "time": "2023-03-20T15:00:11+00:00"
+            "time": "2023-04-26T09:29:54+00:00"
+        },
+        {
+            "name": "validaide/html-builder",
+            "version": "5.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/validaide/html-builder.git",
+                "reference": "e1677ed37b7403898b2318b4e14dd28f98f56687"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/e1677ed37b7403898b2318b4e14dd28f98f56687",
+                "reference": "e1677ed37b7403898b2318b4e14dd28f98f56687",
+                "shasum": ""
+            },
+            "require": {
+                "exercise/htmlpurifier-bundle": "^4.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "brianium/paratest": "^6.4",
+                "ext-tidy": "*",
+                "jetbrains/phpstorm-attributes": "^1.0",
+                "phpstan/phpstan": "^1.9",
+                "phpunit/phpunit": "^9.0",
+                "rector/rector": "^0.15.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "lib/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Bijl",
+                    "email": "mark.bijl@validaide.com"
+                }
+            ],
+            "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
+            "time": "2023-04-26T09:31:04+00:00"
         }
     ],
     "packages-dev": [
@@ -7907,18 +8078,9 @@
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "validaide/common",
-            "version": "dev-development",
-            "alias": "5.6.0",
-            "alias_normalized": "5.6.0.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "validaide/common": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
@@ -7926,5 +8088,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.1.0"
 }
