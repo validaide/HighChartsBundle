@@ -6,15 +6,15 @@ use Validaide\HighChartsBundle\ValueObject\Color;
 
 class PlotBand
 {
-    public const COLOR        = 'color';
-    public const BORDER_COLOR = 'borderColor';
-    public const BORDER_WIDTH = 'borderWidth';
-    public const CLASS_NAME   = 'className';
-    public const FROM         = 'from';
-    public const ID           = 'id';
-    public const LABEL        = 'label';
-    public const TO           = 'to';
-    public const Z_INDEX      = 'zIndex';
+    final public const COLOR        = 'color';
+    final public const BORDER_COLOR = 'borderColor';
+    final public const BORDER_WIDTH = 'borderWidth';
+    final public const CLASS_NAME   = 'className';
+    final public const FROM         = 'from';
+    final public const ID           = 'id';
+    final public const LABEL        = 'label';
+    final public const TO           = 'to';
+    final public const Z_INDEX      = 'zIndex';
 
     private ?string $className   = null;
     private ?Color  $color       = null;

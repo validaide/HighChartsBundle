@@ -9,11 +9,8 @@ use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 
 class GraphHelper extends Helper
 {
-    private GraphRenderer $graphRender;
-
-    public function __construct(GraphRenderer $graphRenderer)
+    public function __construct(private readonly GraphRenderer $graphRender)
     {
-        $this->graphRender = $graphRenderer;
     }
 
     /**

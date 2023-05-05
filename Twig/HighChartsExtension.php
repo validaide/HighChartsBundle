@@ -10,22 +10,17 @@ use Validaide\HighChartsBundle\Templating\Renderer\ImageRenderer;
 
 class HighChartsExtension extends AbstractExtension
 {
-    private GraphHelper   $graphHelper;
-    private ImageRenderer $imageRenderer;
-
-    public function __construct(GraphHelper $graphHelper, ImageRenderer $imageRenderer)
+    public function __construct(private readonly GraphHelper $graphHelper, private readonly ImageRenderer $imageRenderer)
     {
-        $this->graphHelper   = $graphHelper;
-        $this->imageRenderer = $imageRenderer;
     }
 
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('highcharts', [$this, 'render'], ['is_safe' => ['html']]),
-            new TwigFunction('highcharts_static', [$this, 'renderStatic'], ['is_safe' => ['html']]),
-            new TwigFunction('highcharts_container', [$this, 'renderHtml'], ['is_safe' => ['html']]),
-            new TwigFunction('highcharts_js', [$this, 'renderJavascript'], ['is_safe' => ['html']]),
+            new TwigFunction('highcharts', $this->render(...), ['is_safe' => ['html']]),
+            new TwigFunction('highcharts_static', $this->renderStatic(...), ['is_safe' => ['html']]),
+            new TwigFunction('highcharts_container', $this->renderHtml(...), ['is_safe' => ['html']]),
+            new TwigFunction('highcharts_js', $this->renderJavascript(...), ['is_safe' => ['html']]),
         ];
     }
 

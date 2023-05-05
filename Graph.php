@@ -2,8 +2,8 @@
 
 namespace Validaide\HighChartsBundle;
 
-use Validaide\Common\JsonBuilder\JsonBuilder;
 use ReflectionClass;
+use Validaide\Common\JsonBuilder\JsonBuilder;
 use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\Credits;
 use Validaide\HighChartsBundle\Graph\Drilldown;
@@ -18,30 +18,30 @@ use Validaide\HighChartsBundle\Graph\Tooltip;
 
 class Graph
 {
-    private ?string     $jsChartId   = null;
-    private ?string     $htmlId      = null;
-    private string      $width       = '100%';
-    private string      $height      = '400px';
-    private string      $type        = 'line';
-    private ?Drilldown  $drilldown   = null;
-    private ?bool       $plotShadow  = null;
-    private Title       $title;
-    private ?SubTitle   $subTitle    = null;
-    private Axis        $xAxis;
-    private Credits     $credits;
-    public Tooltip      $tooltip;
-    public Legend       $legend;
-    public ?array       $margin      = null;
-    public ?Pane        $pane        = null;
-    public ?PlotOptions $plotOptions = null;
-    public ?bool        $polar       = null;
-    public ?Exporting   $exporting   = null;
-    private ?string     $zoomType    = null;
+    protected ?string      $jsChartId   = null;
+    protected ?string      $htmlId      = null;
+    protected string       $width       = '100%';
+    protected string       $height      = '400px';
+    protected string       $type        = 'line';
+    protected ?Drilldown   $drilldown   = null;
+    protected ?bool        $plotShadow  = null;
+    protected Title        $title;
+    protected ?SubTitle    $subTitle    = null;
+    protected Axis         $xAxis;
+    protected Credits      $credits;
+    protected Tooltip      $tooltip;
+    protected Legend       $legend;
+    protected ?array       $margin      = null;
+    protected ?Pane        $pane        = null;
+    protected ?PlotOptions $plotOptions = null;
+    protected ?bool        $polar       = null;
+    protected ?Exporting   $exporting   = null;
+    protected ?string      $zoomType    = null;
 
     /** @var Axis[] */
-    private array $yAxis = [];
+    protected array $yAxis = [];
     /** @var Series[] */
-    private array $series = [];
+    protected array $series = [];
 
     public function __construct()
     {
@@ -175,10 +175,7 @@ class Graph
         return $this->margin;
     }
 
-    /**
-     * @param array|null $margin
-     */
-    public function setMargin($margin): void
+    public function setMargin(array|null $margin): void
     {
         $this->margin = $margin;
     }
@@ -261,6 +258,7 @@ class Graph
     public static function getClassShortName(object $object): string
     {
         $reflection = new ReflectionClass($object);
+
         return $reflection->getShortName();
     }
 
