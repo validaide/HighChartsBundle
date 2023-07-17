@@ -16,8 +16,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('high_charts');
+        $treeBuilder = new TreeBuilder('high_charts');
+        $treeBuilder->getRootNode();
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
