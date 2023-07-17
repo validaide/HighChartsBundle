@@ -38,7 +38,7 @@
         "symfony/twig-bundle": "^5.4",
         "symfony/yaml": "^5.4",
         "twig/twig": "^3.0.4",
-        "validaide/common": "dev-chore/184011118_symfony5 as 5.9.0",
+        "validaide/common": "dev-development as 5.9.0",
         "validaide/html-builder": "dev-development as 5.9.0"
     },
     "require-dev": {
