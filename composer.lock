@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29fc8536b1e806e4d150cfb9bd42e34a",
+    "content-hash": "1a18550957ba1310c89c54759c72ce8a",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -5988,16 +5988,16 @@
         },
         {
             "name": "validaide/common",
-            "version": "dev-development",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/common.git",
-                "reference": "64614fedfc73dc699a9a4a7c4acbd88bf5ef8f22"
+                "reference": "a5cb22b6fbd026e78339e100efa2fc13a09e249b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/common/zipball/64614fedfc73dc699a9a4a7c4acbd88bf5ef8f22",
-                "reference": "64614fedfc73dc699a9a4a7c4acbd88bf5ef8f22",
+                "url": "https://api.github.com/repos/validaide/common/zipball/a5cb22b6fbd026e78339e100efa2fc13a09e249b",
+                "reference": "a5cb22b6fbd026e78339e100efa2fc13a09e249b",
                 "shasum": ""
             },
             "require": {
@@ -6017,7 +6017,6 @@
                 "rector/rector": "^0.15.0",
                 "symplify/easy-coding-standard": "^9.4"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -6039,20 +6038,20 @@
                 }
             ],
             "description": "Common Library for Validaide projects",
-            "time": "2023-07-17T09:00:05+00:00"
+            "time": "2023-10-02T11:09:57+00:00"
         },
         {
             "name": "validaide/html-builder",
-            "version": "dev-development",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "5acabb38257f252a34140d66f7f55cbbb07cc58a"
+                "reference": "46bb8f2020911be70eb9a9a378f732a4d7f8d76f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/5acabb38257f252a34140d66f7f55cbbb07cc58a",
-                "reference": "5acabb38257f252a34140d66f7f55cbbb07cc58a",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/46bb8f2020911be70eb9a9a378f732a4d7f8d76f",
+                "reference": "46bb8f2020911be70eb9a9a378f732a4d7f8d76f",
                 "shasum": ""
             },
             "require": {
@@ -6063,9 +6062,9 @@
                 "brianium/paratest": "^6.4",
                 "ext-tidy": "*",
                 "jetbrains/phpstorm-attributes": "^1.0",
-                "phpstan/phpstan": "^1.9",
+                "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^9.0",
-                "rector/rector": "^0.15.0"
+                "rector/rector": "^0.17.7"
             },
             "type": "library",
             "autoload": {
@@ -6088,7 +6087,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2023-06-29T08:18:29+00:00"
+            "time": "2023-10-02T11:11:16+00:00"
         }
     ],
     "packages-dev": [
@@ -8172,25 +8171,9 @@
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "validaide/common",
-            "version": "dev-development",
-            "alias": "5.9.0",
-            "alias_normalized": "5.9.0.0"
-        },
-        {
-            "package": "validaide/html-builder",
-            "version": "dev-development",
-            "alias": "5.9.0",
-            "alias_normalized": "5.9.0.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "validaide/common": 20,
-        "validaide/html-builder": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
