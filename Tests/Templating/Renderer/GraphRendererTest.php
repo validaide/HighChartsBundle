@@ -42,6 +42,8 @@ class GraphRendererTest extends TestCase
     public function test_render_html()
     {
         $graph = new Graph();
+        $graph->setHeight('400px');
+        $graph->setWidth('100%');
 
         $this->assertSame(
             '<div id="graph" style="width:100%;height:400px;"></div>',
@@ -52,9 +54,24 @@ class GraphRendererTest extends TestCase
     /**
      *
      */
+    public function test_render_html_without_style_tag()
+    {
+        $graph = new Graph();
+
+        $this->assertSame(
+            '<div id="graph"></div>',
+            $this->graphRenderer->renderHtml($graph)
+        );
+    }
+
+    /**
+     *
+     */
     public function test_render_javascript()
     {
         $graph = new Graph();
+        $graph->setHeight('400px');
+        $graph->setWidth('100%');
 
         $expected  = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'GraphRendererTest.txt');
         $generated = $this->graphRenderer->renderJavascript($graph);

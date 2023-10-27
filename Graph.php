@@ -20,8 +20,8 @@ class Graph
 {
     protected ?string      $jsChartId   = null;
     protected ?string      $htmlId      = null;
-    protected string       $width       = '100%';
-    protected string       $height      = '400px';
+    protected ?string      $width       = null;
+    protected ?string      $height      = null;
     protected string       $type        = 'line';
     protected ?Drilldown   $drilldown   = null;
     protected ?bool        $plotShadow  = null;
@@ -105,22 +105,22 @@ class Graph
         $this->yAxis[] = $axis;
     }
 
-    public function getWidth(): string
+    public function getWidth(): ?string
     {
         return $this->width;
     }
 
-    public function setWidth(string $width): void
+    public function setWidth(?string $width): void
     {
         $this->width = $width;
     }
 
-    public function getHeight(): string
+    public function getHeight(): ?string
     {
         return $this->height;
     }
 
-    public function setHeight(string $height): void
+    public function setHeight(?string $height): void
     {
         $this->height = $height;
     }

@@ -95,6 +95,9 @@ class ClimateGraph extends Graph
         $this->setPlotShadow(false);
         $this->getTitle()->setText(ClimateGraphTest::TITLE);
 
+        $this->setHeight('400px');
+        $this->setWidth('100%');
+
         // Credits
         $this->getCredits()->setEnabled(true);
         $this->getCredits()->setText(ClimateGraphTest::CREDITS_TEXT);

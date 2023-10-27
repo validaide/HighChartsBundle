@@ -29,9 +29,12 @@ class GraphRenderer
 
     public function renderHtml(Graph $graph): string
     {
-        $styleSheet = $this->styleSheetRenderer->render('width', $graph->getWidth()) . $this->styleSheetRenderer->render('height', $graph->getHeight());
+        $renderOptions = ['id' => $graph->getHtmlId()];
+        if (!is_null($graph->getHeight()) || !is_null($graph->getWidth())) {
+            $renderOptions['style'] = $this->styleSheetRenderer->render('width', $graph->getWidth()) . $this->styleSheetRenderer->render('height', $graph->getHeight());
+        }
 
-        return $this->tagRenderer->render('div', null, ['id' => $graph->getHtmlId(), 'style' => $styleSheet]);
+        return $this->tagRenderer->render('div', null, $renderOptions);
     }
 
     public function renderJavascript(Graph $graph): string

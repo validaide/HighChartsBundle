@@ -131,6 +131,9 @@ class ColumnStackedNormalGraph extends Graph
         $this->getTitle()->setText(ColumnStackedNormalGraphTest::TITLE);
         $this->getLegend()->setEnabled(true);
 
+        $this->setHeight('400px');
+        $this->setWidth('100%');
+
         // xAxis
         $this->getXAxis()->getTitle()->setText(ColumnStackedNormalGraphTest::X_AXIS_TITLE);
         $this->getXAxis()->setCategories(ColumnStackedNormalGraphTest::getXAxisCategories());
