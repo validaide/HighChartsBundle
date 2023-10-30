@@ -20,6 +20,7 @@ class Graph
 {
     protected ?string      $jsChartId   = null;
     protected ?string      $htmlId      = null;
+    protected ?string      $cssClass    = null;
     protected ?string      $width       = null;
     protected ?string      $height      = null;
     protected string       $type        = 'line';
@@ -103,6 +104,16 @@ class Graph
     public function addYAxis(Axis $axis): void
     {
         $this->yAxis[] = $axis;
+    }
+
+    public function getCssClass(): ?string
+    {
+        return $this->cssClass;
+    }
+
+    public function setCssClass(?string $cssClass): void
+    {
+        $this->cssClass = $cssClass;
     }
 
     public function getWidth(): ?string

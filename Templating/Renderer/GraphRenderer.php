@@ -33,6 +33,10 @@ class GraphRenderer
         if (!is_null($graph->getHeight()) || !is_null($graph->getWidth())) {
             $renderOptions['style'] = $this->styleSheetRenderer->render('width', $graph->getWidth()) . $this->styleSheetRenderer->render('height', $graph->getHeight());
         }
+        
+        if (!is_null($graph->getCssClass())) {
+            $renderOptions['class'] = $graph->getCssClass();
+        }
 
         return $this->tagRenderer->render('div', null, $renderOptions);
     }

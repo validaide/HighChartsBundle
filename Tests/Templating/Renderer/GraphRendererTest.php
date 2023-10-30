@@ -42,11 +42,23 @@ class GraphRendererTest extends TestCase
     public function test_render_html()
     {
         $graph = new Graph();
-        $graph->setHeight('400px');
-        $graph->setWidth('100%');
 
         $this->assertSame(
-            '<div id="graph" style="width:100%;height:400px;"></div>',
+            '<div id="graph"></div>',
+            $this->graphRenderer->renderHtml($graph)
+        );
+    }
+
+    /**
+     *
+     */
+    public function test_render_html_with_class()
+    {
+        $graph = new Graph();
+        $graph->setCssClass('graph-test');
+
+        $this->assertSame(
+            '<div id="graph" class="graph-test"></div>',
             $this->graphRenderer->renderHtml($graph)
         );
     }
@@ -68,12 +80,15 @@ class GraphRendererTest extends TestCase
     /**
      *
      */
-    public function test_render_html_without_style_tag()
+    public function test_render_html_with_style_and_class_tag()
     {
         $graph = new Graph();
+        $graph->setCssClass('graph-test');
+        $graph->setHeight('400px');
+        $graph->setWidth('100%');
 
         $this->assertSame(
-            '<div id="graph"></div>',
+            '<div id="graph" style="width:100%;height:400px;" class="graph-test"></div>',
             $this->graphRenderer->renderHtml($graph)
         );
     }
