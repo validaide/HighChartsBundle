@@ -54,6 +54,20 @@ class GraphRendererTest extends TestCase
     /**
      *
      */
+    public function test_render_html_with_partial_style_tag()
+    {
+        $graph = new Graph();
+        $graph->setHeight('400px');
+
+        $this->assertSame(
+            '<div id="graph" style="height:400px;"></div>',
+            $this->graphRenderer->renderHtml($graph)
+        );
+    }
+
+    /**
+     *
+     */
     public function test_render_html_without_style_tag()
     {
         $graph = new Graph();
