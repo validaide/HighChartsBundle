@@ -44,7 +44,51 @@ class GraphRendererTest extends TestCase
         $graph = new Graph();
 
         $this->assertSame(
-            '<div id="graph" style="width:100%;height:400px;"></div>',
+            '<div id="graph"></div>',
+            $this->graphRenderer->renderHtml($graph)
+        );
+    }
+
+    /**
+     *
+     */
+    public function test_render_html_with_class()
+    {
+        $graph = new Graph();
+        $graph->setCssClass('graph-test');
+
+        $this->assertSame(
+            '<div id="graph" class="graph-test"></div>',
+            $this->graphRenderer->renderHtml($graph)
+        );
+    }
+
+    /**
+     *
+     */
+    public function test_render_html_with_partial_style_tag()
+    {
+        $graph = new Graph();
+        $graph->setHeight('400px');
+
+        $this->assertSame(
+            '<div id="graph" style="height:400px;"></div>',
+            $this->graphRenderer->renderHtml($graph)
+        );
+    }
+
+    /**
+     *
+     */
+    public function test_render_html_with_style_and_class_tag()
+    {
+        $graph = new Graph();
+        $graph->setCssClass('graph-test');
+        $graph->setHeight('400px');
+        $graph->setWidth('100%');
+
+        $this->assertSame(
+            '<div id="graph" style="width:100%;height:400px;" class="graph-test"></div>',
             $this->graphRenderer->renderHtml($graph)
         );
     }
@@ -55,6 +99,8 @@ class GraphRendererTest extends TestCase
     public function test_render_javascript()
     {
         $graph = new Graph();
+        $graph->setHeight('400px');
+        $graph->setWidth('100%');
 
         $expected  = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'GraphRendererTest.txt');
         $generated = $this->graphRenderer->renderJavascript($graph);
