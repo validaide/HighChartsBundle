@@ -86,6 +86,9 @@ class HalfDonutGraph extends Graph
         $this->getTitle()->setVerticalAlign('middle');
         $this->getTitle()->setY(60);
 
+        $this->setHeight('400px');
+        $this->setWidth('100%');
+
         // Legend
         $this->getLegend()->setEnabled(true);
 

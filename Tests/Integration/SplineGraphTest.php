@@ -78,6 +78,9 @@ class SplineGraph extends Graph
         $this->getTitle()->setText(SplineGraphTest::TITLE);
         $this->getLegend()->setEnabled(true);
 
+        $this->setHeight('400px');
+        $this->setWidth('100%');
+
         $tooltip = new Tooltip();
         $tooltip->setBackgroundColor(new Color('#FFFFFFF'));
         $tooltip->setSplit(true);
