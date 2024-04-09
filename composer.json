@@ -34,11 +34,11 @@
         "symfony/framework-bundle": "^5.4",
         "symfony/options-resolver": "^5.4",
         "symfony/process": "^5.4",
+        "symfony/property-access": "5.4",
         "symfony/templating": "^5.4",
         "symfony/twig-bundle": "^5.4",
         "symfony/yaml": "^5.4",
         "twig/twig": "^3.0.4",
-        "validaide/common": "6.2.*",
         "validaide/html-builder": "6.2.*"
     },
     "require-dev": {
@@ -59,11 +59,6 @@
         }
     },
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/validaide/common.git",
-            "no-api": true
-        },
         {
             "type": "vcs",
             "url": "https://github.com/validaide/html-builder.git",
