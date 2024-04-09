@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad6130ba074bd3e4e384f1a70f0a6145",
+    "content-hash": "961556b851f8a2c59d2a021b70091ec8",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -3705,16 +3705,16 @@
         },
         {
             "name": "symfony/property-access",
-            "version": "v5.4.0",
+            "version": "v5.4.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/property-access.git",
-                "reference": "07db4e9d1f0bf4b8a0c60a25b2672f20ab8f3562"
+                "reference": "b58ea319e56b440b4daaa38201ee63ba9efa44d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/property-access/zipball/07db4e9d1f0bf4b8a0c60a25b2672f20ab8f3562",
-                "reference": "07db4e9d1f0bf4b8a0c60a25b2672f20ab8f3562",
+                "url": "https://api.github.com/repos/symfony/property-access/zipball/b58ea319e56b440b4daaa38201ee63ba9efa44d5",
+                "reference": "b58ea319e56b440b4daaa38201ee63ba9efa44d5",
                 "shasum": ""
             },
             "require": {
@@ -3762,11 +3762,11 @@
                 "injection",
                 "object",
                 "property",
-                "property path",
+                "property-path",
                 "reflection"
             ],
             "support": {
-                "source": "https://github.com/symfony/property-access/tree/v5.4.0"
+                "source": "https://github.com/symfony/property-access/tree/v5.4.38"
             },
             "funding": [
                 {
@@ -3782,7 +3782,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-28T15:25:38+00:00"
+            "time": "2024-03-18T16:56:51+00:00"
         },
         {
             "name": "symfony/property-info",
