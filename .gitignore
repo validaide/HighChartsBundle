@@ -11,3 +11,5 @@ vendor/
 # Ignore Bower repositories
 bower_components/
 
+# Generated Files
+graph_renderer_test_generated.txt
