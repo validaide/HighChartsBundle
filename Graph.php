@@ -3,7 +3,6 @@
 namespace Validaide\HighChartsBundle;
 
 use ReflectionClass;
-use Validaide\Common\JsonBuilder\JsonBuilder;
 use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\Credits;
 use Validaide\HighChartsBundle\Graph\Drilldown;
@@ -15,6 +14,7 @@ use Validaide\HighChartsBundle\Graph\Series;
 use Validaide\HighChartsBundle\Graph\SubTitle;
 use Validaide\HighChartsBundle\Graph\Title;
 use Validaide\HighChartsBundle\Graph\Tooltip;
+use Validaide\HighChartsBundle\Templating\Helper\JsonBuilder;
 
 class Graph
 {
