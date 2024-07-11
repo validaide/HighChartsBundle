@@ -53,6 +53,13 @@ class ImageRenderer
             }
         }
 
+        // this is required by the upgrade to highcharts-export-server v3.1.1
+        // which is not creating the missing folders automatically anymore :(
+        $dirPath = dirname($outfile);
+        if (!is_dir($dirPath)) {
+            mkdir($dirPath, 0775, true);
+        }
+
         $command = sprintf('%s -infile %s -outfile %s %s', self::CMD_HIGHCHARTS_EXPORT_SERVER, $infile, $outfile, implode(" ", $optionParts));
 
         $process = Process::fromShellCommandline($command);
