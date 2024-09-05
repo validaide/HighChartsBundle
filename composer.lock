@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "315a580768032f477a5e3133b1e585e6",
+    "content-hash": "7de12ea4d1b90b6502aeb6570d498026",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -4507,16 +4507,16 @@
         },
         {
             "name": "validaide/html-builder",
-            "version": "7.2.0",
+            "version": "7.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "6ce042113b9d0d0c1782b890e6775b60c8f5bae8"
+                "reference": "6a75bb032d41532ebe193d537ce1ffa21ac8879d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/6ce042113b9d0d0c1782b890e6775b60c8f5bae8",
-                "reference": "6ce042113b9d0d0c1782b890e6775b60c8f5bae8",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/6a75bb032d41532ebe193d537ce1ffa21ac8879d",
+                "reference": "6a75bb032d41532ebe193d537ce1ffa21ac8879d",
                 "shasum": ""
             },
             "require": {
@@ -4552,7 +4552,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2024-07-26T06:37:43+00:00"
+            "time": "2024-09-05T07:48:07+00:00"
         }
     ],
     "packages-dev": [
@@ -6721,5 +6721,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
