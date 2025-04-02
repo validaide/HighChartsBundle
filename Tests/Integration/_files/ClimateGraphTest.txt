@@ -121,6 +121,19 @@
             "name": "[SERIES_3_NAME]",
             "color": "lightblue",
             "yAxis": [SERIES_3_Y_AXIS],
+            "zones": [
+                {
+                    "color": "blue",
+                    "value": 4
+                },
+                {
+                    "color": "green",
+                    "value": 20
+                },
+                {
+                    "color": "red"
+                }
+            ],
             "visible": true,
             "data": [SERIES_3_DATA]
         }
