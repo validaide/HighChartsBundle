@@ -23,6 +23,7 @@ class Series
     private ?DashStyle $dashStyle           = null;
     private ?bool      $enableMouseTracking = null;
     private ?bool      $showInLegend        = null;
+    private ?array     $zones               = null;
 
     private DataLabels $dataLabels;
 
@@ -220,6 +221,23 @@ class Series
         $this->showInLegend = $showInLegend;
     }
 
+    public function addZone(Zone $zone): void
+    {
+        if (is_null($this->zones)) {
+            $this->zones = [];
+        }
+
+        $this->zones[] = $zone;
+    }
+
+    /**
+     * @return Zone[]|null
+     */
+    public function getZones(): ?array
+    {
+        return $this->zones;
+    }
+
     public function toArray(): array
     {
         $result = [
@@ -288,6 +306,15 @@ class Series
 
         if (!is_null($this->showInLegend)) {
             $result['showInLegend'] = $this->showInLegend;
+        }
+
+        if (!is_null($this->getZones())) {
+            $zones = [];
+            foreach ($this->getZones() as $zone) {
+                $zones[] = $zone->toArray();
+            }
+
+            $result['zones'] = $zones;
         }
 
         $result['visible'] = $this->visible;

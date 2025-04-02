@@ -8,6 +8,7 @@ use Validaide\HighChartsBundle\Graph\Axis;
 use Validaide\HighChartsBundle\Graph\PlotBand;
 use Validaide\HighChartsBundle\Graph\PlotLine;
 use Validaide\HighChartsBundle\Graph\Series;
+use Validaide\HighChartsBundle\Graph\Zone;
 use Validaide\HighChartsBundle\ValueObject\Color;
 use Validaide\HighChartsBundle\ValueObject\DashStyle;
 use Validaide\HighChartsBundle\ValueObject\HorizontalAlignment;
@@ -41,10 +42,10 @@ class ClimateGraphTest extends IntegrationTestCase
 
     public static function getSeriesData(int $seriesIndex = 1): array
     {
-        $series = [];
+        $series    = [];
         $series[0] = [5.2, 7.3434, 8.23, 9.976967, 10.8678, 9.75, 8.3453, 7.56, 6.345, 5.345, 4.75685, 4.45];
         $series[1] = [15.678, 17.5, 18.45, 19.247, 20.74645, 19.254, 18.234, 17.678, 16.456, 15.94564, 14.5636, 14.743];
-        $series[2] = [100, 80, 60, 20, 20, 19, 20, 60, 60, 80, 90, 100];
+        $series[2] = [100, 80, 60, 20, 16, 2, 16, 60, 60, 80, 90, 100];
 
         return $series[$seriesIndex];
     }
@@ -192,6 +193,13 @@ class ClimateGraph extends Graph
         $rainSeries = new Series(ClimateGraphTest::SERIES_3_NAME, ClimateGraphTest::getSeriesData(2));
         $rainSeries->setYAxis(ClimateGraphTest::SERIES_3_Y_AXIS);
         $rainSeries->setColor(new Color('lightblue'));
+
+        $zoneOne   = new Zone(4, new Color('blue'));
+        $zoneTwo   = new Zone(20, new Color('green'));
+        $zoneThree = new Zone(null, new Color('red'));
+        $rainSeries->addZone($zoneOne);
+        $rainSeries->addZone($zoneTwo);
+        $rainSeries->addZone($zoneThree);
 
         $this->addSeries($tempSeriesMax);
         $this->addSeries($tempSeriesMin);
