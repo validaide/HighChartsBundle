@@ -26,6 +26,9 @@ jobs:
           COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{secrets.COMPOSER_GITHUB_ACTIONS }}"} }'
           SYMFONY_ENV: test
 
+      - name: Puppeteer configuration
+        run: puppeteer browsers install chrome@121.0.6167.85
+
       # Disabled due to the code.highcharts.com rate limit - it uses only one instance now as a workaround (PT#188912263)
 #      - name: Highcharts install
 #        run: npm install highcharts-export-server -g --max-old-space-size=4096
