@@ -1,69 +1,86 @@
 {
-    "name": "validaide/highchartsbundle",
-    "license": "MIT",
-    "type": "symfony-bundle",
-    "description": "HighCharts integration for your Symfony 5 project.",
-    "keywords": [
-        "highcharts",
-        "symfony",
-        "bundle"
-    ],
-    "authors": [
-        {
-            "name": "Marcel Tuinstra",
-            "email": "marcel.tuinstra@validaide.com"
-        },
-        {
-            "name": "Mark Bijl",
-            "email": "mark.bijl@validaide.com"
-        }
-    ],
-    "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "php-http/discovery": true
-        }
+  "name"        : "validaide/highchartsbundle",
+  "license"     : "MIT",
+  "type"        : "symfony-bundle",
+  "description" : "HighCharts integration for your Symfony 5 project.",
+  "keywords"    : [
+    "highcharts",
+    "symfony",
+    "bundle"
+  ],
+  "authors"     : [
+    {
+      "name" : "Marcel Tuinstra",
+      "email": "marcel.tuinstra@validaide.com"
     },
-    "require": {
-        "php": "^8.1",
-        "ext-json": "*",
-        "nyholm/psr7": "^1.8",
-        "php-http/httplug-bundle": "^1.25",
-        "symfony/console": "^5.4",
-        "symfony/dependency-injection": "^5.4",
-        "symfony/framework-bundle": "^5.4",
-        "symfony/http-client": "^5.4",
-        "symfony/options-resolver": "^5.4",
-        "symfony/process": "^5.4",
-        "symfony/property-access": "^5.4",
-        "symfony/templating": "^5.4",
-        "symfony/twig-bundle": "^5.4",
-        "symfony/yaml": "^5.4",
-        "twig/twig": "^3.0.4",
-        "validaide/html-builder": "7.5.*"
+    {
+      "name" : "Mark Bijl",
+      "email": "mark.bijl@validaide.com"
     },
-    "require-dev": {
-        "brianium/paratest": "^6.0",
-        "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^9.5",
-        "rector/rector": "^0.15.2",
-        "symfony/phpunit-bridge": "^5.4"
-    },
-    "autoload": {
-        "psr-4": {
-            "Validaide\\HighChartsBundle\\": ""
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\Validaide\\HighChartsBundle\\": "Tests/"
-        }
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/validaide/html-builder.git",
-            "no-api": true
-        }
-    ]
+    {
+      "name" : "Yakup Arslan",
+      "email": "yakup.arslan@validaide.com"
+    }
+  ],
+  "config"      : {
+    "sort-packages": true,
+    "allow-plugins": {
+      "php-http/discovery": true,
+      "symfony/flex"      : true
+    }
+  },
+  "require"     : {
+    "php"                         : "^8.1",
+    "ext-json"                    : "*",
+    "nyholm/psr7"                 : "^1.8",
+    "php-http/httplug-bundle"     : "^1.25",
+    "symfony/console"             : "*",
+    "symfony/dependency-injection": "*",
+    "symfony/flex"                : "^2.5",
+    "symfony/framework-bundle"    : "*",
+    "symfony/http-client"         : "*",
+    "symfony/options-resolver"    : "*",
+    "symfony/process"             : "*",
+    "symfony/property-access"     : "*",
+    "symfony/templating"          : "*",
+    "symfony/twig-bundle"         : "*",
+    "symfony/yaml"                : "*",
+    "twig/twig"                   : "^3.0.4",
+    "validaide/html-builder"      : "7.5.*"
+  },
+  "require-dev" : {
+    "brianium/paratest"     : "^6.0",
+    "phpstan/phpstan"       : "^1.10",
+    "phpunit/phpunit"       : "^9.5",
+    "rector/rector"         : "^0.15.2",
+    "symfony/phpunit-bridge": "*"
+  },
+  "autoload"    : {
+    "psr-4": {
+      "Validaide\\HighChartsBundle\\": ""
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Validaide\\HighChartsBundle\\": "Tests/"
+    }
+  },
+  "repositories": [
+    {
+      "type"  : "vcs",
+      "url"   : "https://github.com/validaide/html-builder.git",
+      "no-api": true
+    }
+  ],
+  "scripts"     : {
+    "auto-scripts": {
+      "cache:clear"                : "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    }
+  },
+  "extra"       : {
+    "symfony": {
+      "require": "6.4.*"
+    }
+  }
 }
