@@ -68,11 +68,13 @@ jobs:
           npm config set prefix ~/.npm-global
           echo "$HOME/.npm-global/bin" >> $GITHUB_PATH
 
-      - name: Install Puppeteer (for Chrome install)
-        run: npm install puppeteer@21.11.0 -g
+      - name: Puppeteer install
+        run: npm install puppeteer -g
 
-      - name: Install Chrome for Puppeteer
-        run: npx puppeteer@21.11.0 browsers install chrome@121.0.6167.85
+      - name: Puppeteer configuration
+        run: |
+          export PUPPETEER_CACHE_DIR=~/.cache/puppeteer
+          puppeteer browsers install chrome@121.0.6167.85
 
       - name: Extract highcharts-export-server
         run: |
