@@ -2,10 +2,10 @@ name: Build & Test Library
 on: [ push ]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
-        operating-system: [ ubuntu-latest ]
+        operating-system: [ ubuntu-22.04 ]
         php-versions: [ '8.1' ]
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     steps:
@@ -26,10 +26,22 @@ jobs:
           COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{secrets.COMPOSER_GITHUB_ACTIONS }}"} }'
           SYMFONY_ENV: test
 
-#      - name: Highcharts install
-#        run: npm install highcharts-export-server@3.1.1 -g
-#        env:
-#          ACCEPT_HIGHCHARTS_LICENSE: 1
+      - name: Puppeteer install
+        run: npm install puppeteer -g
+
+      - name: Puppeteer configuration
+        run: puppeteer browsers install chrome@121.0.6167.85
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm' # Optional: caches node_modules based on lockfile
+
+      - name: Highcharts install
+        run: npm install highcharts-export-server@3.1.1 -g
+        env:
+          ACCEPT_HIGHCHARTS_LICENSE: 1
 
       - name: Unit Tests
         run: vendor/bin/phpunit
