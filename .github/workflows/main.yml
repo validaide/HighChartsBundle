@@ -26,40 +26,6 @@ jobs:
           COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{secrets.COMPOSER_GITHUB_ACTIONS }}"} }'
           SYMFONY_ENV: test
 
-#      - name: Install system dependencies for Puppeteer/Chromium
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get install -y \
-#            libx11-xcb1 \
-#            libxcomposite1 \
-#            libasound2 \
-#            libatk1.0-0 \
-#            libatk-bridge2.0-0 \
-#            libcairo2 \
-#            libcups2 \
-#            libdbus-1-3 \
-#            libexpat1 \
-#            libfontconfig1 \
-#            libgbm1 \
-#            libgcc1 \
-#            libglib2.0-0 \
-#            libgtk-3-0 \
-#            libnspr4 \
-#            libpango-1.0-0 \
-#            libpangocairo-1.0-0 \
-#            libstdc++6 \
-#            libx11-6 \
-#            libxcb1 \
-#            libxcursor1 \
-#            libxdamage1 \
-#            libxext6 \
-#            libxfixes3 \
-#            libxi6 \
-#            libxrandr2 \
-#            libxrender1 \
-#            libxss1 \
-#            libxtst6
-
       - name: Create .npm-global bin directory
         run: mkdir -p ~/.npm-global/bin
 
@@ -82,9 +48,6 @@ jobs:
           tar -xzf "${{ github.workspace }}/.github/workflows/highcharts-export-server.tar.gz" -C ~/.npm-global/lib/node_modules/
           ln -s ~/.npm-global/lib/node_modules/highcharts-export-server/bin/cli.js ~/.npm-global/bin/highcharts-export-server
 
-#      - name: Install PHP Dependencies
-#        run: ls -l -R ~/.npm-global/lib/node_modules/
-
       - name: Create symlink
         run: |
           chmod +x ~/.npm-global/lib/node_modules/highcharts-export-server/bin/cli.js
@@ -95,11 +58,10 @@ jobs:
         with:
           node-version: '20'
 
-#      - name: Install highcharts-export-server without downloading Chromium
-#        run: npm install -g highcharts-export-server@3.1.1
-
       - name: Unit Tests
         run: vendor/bin/phpunit
+        env:
+          SYMFONY_DEPRECATIONS_HELPER: disabled
 
       - name: Static Analysis (phpstan)
         run: phpstan analyse --memory-limit=-1 --no-progress
