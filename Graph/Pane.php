@@ -11,7 +11,7 @@ class Pane
     public ?array  $center     = null;
 
     /**
-     * @return array<string, string>
+     * @return array<string, array|int|string|null>
      */
     public function toArray(): array
     {
