@@ -68,6 +68,12 @@ jobs:
           npm config set prefix ~/.npm-global
           echo "$HOME/.npm-global/bin" >> $GITHUB_PATH
 
+      - name: Install Puppeteer (for Chrome install)
+        run: npm install puppeteer@21.11.0 -g
+
+      - name: Install Chrome for Puppeteer
+        run: npx puppeteer@21.11.0 browsers install chrome@121.0.6167.85
+
       - name: Extract highcharts-export-server
         run: |
           mkdir -p ~/.npm-global/lib/node_modules/highcharts-export-server
@@ -84,12 +90,6 @@ jobs:
 
       - name: Check highcharts-export-server
         run: which highcharts-export-server && highcharts-export-server --help
-
-      - name: Install Puppeteer (for Chrome install)
-        run: npm install puppeteer@21.11.0 -g
-
-      - name: Install Chrome for Puppeteer
-        run: npx puppeteer@21.11.0 browsers install chrome@121.0.6167.85
 
       - name: Set up Node.js 20
         uses: actions/setup-node@v4
