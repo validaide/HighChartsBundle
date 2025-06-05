@@ -82,16 +82,13 @@ jobs:
           tar -xzf "${{ github.workspace }}/.github/workflows/highcharts-export-server.tar.gz" -C ~/.npm-global/lib/node_modules/
           ln -s ~/.npm-global/lib/node_modules/highcharts-export-server/bin/cli.js ~/.npm-global/bin/highcharts-export-server
 
-      - name: Install PHP Dependencies
-        run: ls -l -R ~/.npm-global/lib/node_modules/
+#      - name: Install PHP Dependencies
+#        run: ls -l -R ~/.npm-global/lib/node_modules/
 
       - name: Create symlink
         run: |
           chmod +x ~/.npm-global/lib/node_modules/highcharts-export-server/bin/cli.js
           ln -sf ~/.npm-global/lib/node_modules/highcharts-export-server/bin/cli.js ~/.npm-global/bin/highcharts-export-server
-
-      - name: Check highcharts-export-server
-        run: which highcharts-export-server && highcharts-export-server --help
 
       - name: Set up Node.js 20
         uses: actions/setup-node@v4
