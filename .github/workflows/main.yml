@@ -12,19 +12,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-versions }}
-          tools: composer,phpstan
-        env:
-          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install PHP Dependencies
-        run: composer install --optimize-autoloader --prefer-dist
-        env:
-          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{secrets.COMPOSER_GITHUB_ACTIONS }}"} }'
-          SYMFONY_ENV: test
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: ${{ matrix.php-versions }}
+#          tools: composer,phpstan
+#        env:
+#          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#
+#      - name: Install PHP Dependencies
+#        run: composer install --optimize-autoloader --prefer-dist
+#        env:
+#          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{secrets.COMPOSER_GITHUB_ACTIONS }}"} }'
+#          SYMFONY_ENV: test
 
 #      - name: Install system dependencies for Puppeteer/Chromium
 #        run: |
@@ -78,11 +78,6 @@ jobs:
         run: ls -l -R ~/.npm-global/lib/node_modules/
 
       - name: Create symlink
-        run: |
-          chmod +x ~/.npm-global/lib/node_modules/highcharts-export-server/cli.js
-          ln -sf ~/.npm-global/lib/node_modules/highcharts-export-server/cli.js ~/.npm-global/bin/highcharts-export-server
-
-      - name: Make cli.js executable and symlink it
         run: |
           chmod +x ~/.npm-global/lib/node_modules/highcharts-export-server/bin/cli.js
           ln -sf ~/.npm-global/lib/node_modules/highcharts-export-server/bin/cli.js ~/.npm-global/bin/highcharts-export-server
