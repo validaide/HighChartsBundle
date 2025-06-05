@@ -26,6 +26,40 @@ jobs:
           COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{secrets.COMPOSER_GITHUB_ACTIONS }}"} }'
           SYMFONY_ENV: test
 
+      - name: Install system dependencies for Puppeteer/Chromium
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libx11-xcb1 \
+            libxcomposite1 \
+            libasound2 \
+            libatk1.0-0 \
+            libatk-bridge2.0-0 \
+            libcairo2 \
+            libcups2 \
+            libdbus-1-3 \
+            libexpat1 \
+            libfontconfig1 \
+            libgbm1 \
+            libgcc1 \
+            libglib2.0-0 \
+            libgtk-3-0 \
+            libnspr4 \
+            libpango-1.0-0 \
+            libpangocairo-1.0-0 \
+            libstdc++6 \
+            libx11-6 \
+            libxcb1 \
+            libxcursor1 \
+            libxdamage1 \
+            libxext6 \
+            libxfixes3 \
+            libxi6 \
+            libxrandr2 \
+            libxrender1 \
+            libxss1 \
+            libxtst6
+
       - name: Puppeteer install
         run: npm install puppeteer -g
 
@@ -37,11 +71,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Highcharts install
-        run: npm install highcharts-export-server@3.0.0-rc.2 -g
-        env:
-          ACCEPT_HIGHCHARTS_LICENSE: 1
-          PUPPETEER_SKIP_DOWNLOAD: "true"
+      - name: Install highcharts-export-server without downloading Chromium
+        run: npm install -g highcharts-export-server@3.1.1
 
       - name: Unit Tests
         run: vendor/bin/phpunit
