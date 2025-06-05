@@ -85,8 +85,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install highcharts-export-server without downloading Chromium
-        run: npm install -g highcharts-export-server@3.1.1
+#      - name: Install highcharts-export-server without downloading Chromium
+#        run: npm install -g highcharts-export-server@3.1.1
 
       - name: Unit Tests
         run: vendor/bin/phpunit
