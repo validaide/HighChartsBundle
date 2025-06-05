@@ -9,8 +9,8 @@ jobs:
         php-versions: [ '8.1' ]
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -60,16 +60,16 @@ jobs:
 #            libxss1 \
 #            libxtst6
 
+      - name: Setup npm global path
+        run: |
+          npm config set prefix ~/.npm-global
+          echo "$HOME/.npm-global/bin" >> $GITHUB_PATH
+
       - name: Extract highcharts-export-server
         run: |
           mkdir -p ~/.npm-global/lib/node_modules/highcharts-export-server
           tar -xzf .github/workflows/highcharts-export-server.tar.gz -C ~/.npm-global/lib/node_modules/highcharts-export-server
           ln -s ~/.npm-global/lib/node_modules/highcharts-export-server/bin/cli.js ~/.npm-global/bin/highcharts-export-server
-
-      - name: Setup npm global path
-        run: |
-          npm config set prefix ~/.npm-global
-          echo "$HOME/.npm-global/bin" >> $GITHUB_PATH
 
       - name: Puppeteer install
         run: npm install puppeteer -g
