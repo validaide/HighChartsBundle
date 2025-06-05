@@ -41,6 +41,7 @@ jobs:
         run: npm install highcharts-export-server@3.0.0-rc.2 -g
         env:
           ACCEPT_HIGHCHARTS_LICENSE: 1
+          PUPPETEER_SKIP_DOWNLOAD: "true"
 
       - name: Unit Tests
         run: vendor/bin/phpunit
