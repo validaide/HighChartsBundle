@@ -26,16 +26,10 @@ jobs:
           COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{secrets.COMPOSER_GITHUB_ACTIONS }}"} }'
           SYMFONY_ENV: test
 
-      - name: Highcharts install
-        run: npm install highcharts-export-server@3.1.1 -g
-        env:
-          ACCEPT_HIGHCHARTS_LICENSE: 1
-
-      - name: Set Highcharts Export Server CDN with Fallback
-        run: |
-          echo "HIGHCHARTS_CACHE_PATH=/home/gitrunner/cache-highcharts" >> $GITHUB_ENV
-          echo "HIGHCHARTS_CDN=https://cdn.jsdelivr.net/npm/highcharts@11.4.6/" >> $GITHUB_ENV
-          echo "HIGHCHARTS_RESOURCES={\"files\": [\"https://code.highcharts.com/stock/indicators/indicators-all.js\", \"https://code.highcharts.com/maps/modules/map.js\", \"https://code.highcharts.com/modules/pictorial.js\"]}" >> $GITHUB_ENV
+#      - name: Highcharts install
+#        run: npm install highcharts-export-server@3.1.1 -g
+#        env:
+#          ACCEPT_HIGHCHARTS_LICENSE: 1
 
       - name: Unit Tests
         run: vendor/bin/phpunit
