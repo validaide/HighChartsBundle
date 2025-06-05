@@ -12,9 +12,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: List contents of workspace
-        run: ls -a -R "${{ github.workspace }}"
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -62,6 +59,9 @@ jobs:
 #            libxrender1 \
 #            libxss1 \
 #            libxtst6
+
+      - name: Create .npm-global bin directory
+        run: mkdir -p ~/.npm-global/bin
 
       - name: Setup npm global path
         run: |
