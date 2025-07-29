@@ -2,15 +2,15 @@ name: Build & Test Library
 on: [ push ]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
-        operating-system: [ ubuntu-latest ]
+        operating-system: [ ubuntu-22.04 ]
         php-versions: [ '8.1' ]
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -20,19 +20,48 @@ jobs:
         env:
           COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Install PHP Dependencies
         run: composer install --optimize-autoloader --prefer-dist
         env:
           COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{secrets.COMPOSER_GITHUB_ACTIONS }}"} }'
           SYMFONY_ENV: test
 
-      - name: Highcharts install
-        run: npm install highcharts-export-server -g --max-old-space-size=4096
-        env:
-          ACCEPT_HIGHCHARTS_LICENSE: 1
+      - name: Create .npm-global bin directory
+        run: mkdir -p ~/.npm-global/bin
+
+      - name: Setup npm global path
+        run: |
+          npm config set prefix ~/.npm-global
+          echo "$HOME/.npm-global/bin" >> $GITHUB_PATH
+
+      - name: Puppeteer install
+        run: npm install puppeteer -g
+
+      - name: Puppeteer configuration
+        run: |
+          export PUPPETEER_CACHE_DIR=~/.cache/puppeteer
+          puppeteer browsers install chrome@121.0.6167.85
+
+      - name: Extract highcharts-export-server
+        run: |
+          mkdir -p ~/.npm-global/lib/node_modules/highcharts-export-server
+          tar -xzf "${{ github.workspace }}/.github/workflows/highcharts-export-server.tar.gz" -C ~/.npm-global/lib/node_modules/
+          ln -s ~/.npm-global/lib/node_modules/highcharts-export-server/bin/cli.js ~/.npm-global/bin/highcharts-export-server
+
+      - name: Create symlink
+        run: |
+          chmod +x ~/.npm-global/lib/node_modules/highcharts-export-server/bin/cli.js
+          ln -sf ~/.npm-global/lib/node_modules/highcharts-export-server/bin/cli.js ~/.npm-global/bin/highcharts-export-server
 
       - name: Unit Tests
         run: vendor/bin/phpunit
+        env:
+          SYMFONY_DEPRECATIONS_HELPER: disabled
 
       - name: Static Analysis (phpstan)
         run: phpstan analyse --memory-limit=-1 --no-progress

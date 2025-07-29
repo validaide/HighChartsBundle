@@ -17,7 +17,7 @@ class HighChartsExtension extends Extension
     /**
      * General information about method
      *
-     * @param string[] $configs
+     * array<array<mixed> $configs
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
