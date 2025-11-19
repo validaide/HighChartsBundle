@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a04269722087ea06516abae663df5fb4",
+    "content-hash": "d8bc23da653938a7784b919828d1b662",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -4529,21 +4529,21 @@
         },
         {
             "name": "validaide/html-builder",
-            "version": "7.7.0",
+            "version": "7.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/validaide/html-builder.git",
-                "reference": "0df3461c1967324361f51fb33faf5168337ab612"
+                "reference": "f2b38dc159693405ff51b7cf4fe6e9afb64bc25b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/validaide/html-builder/zipball/0df3461c1967324361f51fb33faf5168337ab612",
-                "reference": "0df3461c1967324361f51fb33faf5168337ab612",
+                "url": "https://api.github.com/repos/validaide/html-builder/zipball/f2b38dc159693405ff51b7cf4fe6e9afb64bc25b",
+                "reference": "f2b38dc159693405ff51b7cf4fe6e9afb64bc25b",
                 "shasum": ""
             },
             "require": {
                 "exercise/htmlpurifier-bundle": "^4.0",
-                "php": "^8.1"
+                "php": "^8.4"
             },
             "require-dev": {
                 "brianium/paratest": "^6.4",
@@ -4574,7 +4574,7 @@
                 }
             ],
             "description": "PHP Library providing a fluent interface to generate small snippets of HTML",
-            "time": "2025-07-29T15:10:51+00:00"
+            "time": "2025-11-19T15:11:52+00:00"
         }
     ],
     "packages-dev": [
