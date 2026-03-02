@@ -13,6 +13,7 @@ use Validaide\HighChartsBundle\Graph;
  */
 class ImageRenderer
 {
+    final public const string ENV_HIGHCHARTS_LOADCONFIG = 'HIGHCHARTS_LOADCONFIG';
     final public const CMD_HIGHCHARTS_EXPORT_SERVER = 'highcharts-export-server';
 
     final public const HIGHCHARTS_EXPORT_SERVER_OPTION_WIDTH           = 'width';
@@ -60,7 +61,14 @@ class ImageRenderer
             mkdir($dirPath, 0775, true);
         }
 
-        $command = sprintf('%s -infile %s -outfile %s %s', self::CMD_HIGHCHARTS_EXPORT_SERVER, $infile, $outfile, implode(" ", $optionParts));
+        $loadConfigPath = getenv(self::ENV_HIGHCHARTS_LOADCONFIG);
+
+        $loadConfigArg = '';
+        if (!empty($loadConfigPath)) {
+            $loadConfigArg = ' --loadConfig ' . escapeshellarg($loadConfigPath);
+        }
+
+        $command = sprintf('%s -infile %s -outfile %s %s %s', self::CMD_HIGHCHARTS_EXPORT_SERVER, $infile, $outfile, $loadConfigArg, implode(" ", $optionParts));
 
         $process = Process::fromShellCommandline($command);
         $process->mustRun();
