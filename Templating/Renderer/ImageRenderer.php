@@ -28,7 +28,7 @@ class ImageRenderer
     /**
      * @throws RenderingException
      */
-    public function render(Graph $graph, array $options = [], string $outputPath = null): string
+    public function render(Graph $graph, array $options = [], ?string $outputPath = null): string
     {
         $this->_sanityCheck();
 
