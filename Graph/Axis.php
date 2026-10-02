@@ -203,7 +203,7 @@ class Axis
         return $this->softMin;
     }
 
-    public function setSoftMin(float $softMin = null): void
+    public function setSoftMin(?float $softMin = null): void
     {
         $this->softMin = $softMin;
     }
@@ -213,7 +213,7 @@ class Axis
         return $this->softMax;
     }
 
-    public function setSoftMax(float $softMax = null): void
+    public function setSoftMax(?float $softMax = null): void
     {
         $this->softMax = $softMax;
     }

@@ -29,7 +29,7 @@ class HighChartsExtension extends AbstractExtension
         return $this->graphHelper->render($graph);
     }
 
-    public function renderStatic(Graph $graph = null, array $options = []): ?string
+    public function renderStatic(?Graph $graph = null, array $options = []): ?string
     {
         if (is_null($graph)) {
             return null;
