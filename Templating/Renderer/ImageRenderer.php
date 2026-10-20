@@ -15,6 +15,10 @@ class ImageRenderer
 {
     final public const string ENV_HIGHCHARTS_LOADCONFIG = 'HIGHCHARTS_LOADCONFIG';
     final public const CMD_HIGHCHARTS_EXPORT_SERVER = 'highcharts-export-server';
+    final public const CMD_TIMEOUT                  = 'timeout';
+
+    final public const int TIMEOUT_SECONDS    = 60;
+    final public const int KILL_AFTER_SECONDS = 10;
 
     final public const HIGHCHARTS_EXPORT_SERVER_OPTION_WIDTH           = 'width';
     final public const HIGHCHARTS_EXPORT_SERVER_OPTION_SCALE           = 'scale';
@@ -24,6 +28,10 @@ class ImageRenderer
     final public const HIGHCHARTS_EXPORT_SERVER_OPTION_WORKERS         = 'workers';
 
     final public const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
+
+    public function __construct(private readonly int $timeoutSeconds = self::TIMEOUT_SECONDS)
+    {
+    }
 
     /**
      * @throws RenderingException
@@ -47,10 +55,10 @@ class ImageRenderer
         // Define the output PNG file path
         $outfile = is_null($outputPath) ? $infile . "." . $options[self::HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE] : $outputPath;
 
-        $optionParts = [];
+        $optionArguments = [];
         foreach ($options as $option => $value) {
             if (!is_null($value)) {
-                $optionParts[] = "-$option $value";
+                array_push($optionArguments, "-$option", $value);
             }
         }
 
@@ -63,14 +71,12 @@ class ImageRenderer
 
         $loadConfigPath = getenv(self::ENV_HIGHCHARTS_LOADCONFIG);
 
-        $loadConfigArg = '';
+        $loadConfigArguments = [];
         if (!empty($loadConfigPath)) {
-            $loadConfigArg = ' --loadConfig ' . escapeshellarg($loadConfigPath);
+            $loadConfigArguments = ['--loadConfig', $loadConfigPath];
         }
 
-        $command = sprintf('%s -infile %s -outfile %s %s %s', self::CMD_HIGHCHARTS_EXPORT_SERVER, $infile, $outfile, $loadConfigArg, implode(" ", $optionParts));
-
-        $process = Process::fromShellCommandline($command);
+        $process = $this->createExportServerProcess(['-infile', $infile, '-outfile', $outfile, ...$loadConfigArguments, ...$optionArguments]);
         $process->mustRun();
 
         return $outfile;
@@ -102,12 +108,25 @@ class ImageRenderer
      */
     private function _sanityCheck(): void
     {
-        $process = Process::fromShellCommandline(self::CMD_HIGHCHARTS_EXPORT_SERVER);
+        $process = $this->createExportServerProcess();
         $process->run();
         $code = $process->getExitCode();
 
         if ($code != 0) {
             throw new RenderingException(sprintf(self::ERROR_HIGHCHARTS_RENDERED_NOT_FOUND, $code));
         }
+    }
+
+    /**
+     * Starts the export server under timeout, which stops the export server itself when it runs too long, also after PHP is gone.
+     */
+    private function createExportServerProcess(array $arguments = []): Process
+    {
+        $process = new Process([self::CMD_TIMEOUT, '-k', self::KILL_AFTER_SECONDS, $this->timeoutSeconds, self::CMD_HIGHCHARTS_EXPORT_SERVER, ...$arguments]);
+
+        // A fallback in case timeout itself does not end
+        $process->setTimeout($this->timeoutSeconds + self::KILL_AFTER_SECONDS + 5);
+
+        return $process;
     }
 }
