@@ -3,6 +3,8 @@
 namespace Validaide\HighChartsBundle\Templating\Renderer;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Exception\ProcessSignaledException;
 use Symfony\Component\Process\Process;
 use Validaide\HighChartsBundle\Graph;
 
@@ -16,9 +18,13 @@ class ImageRenderer
     final public const string ENV_HIGHCHARTS_LOADCONFIG = 'HIGHCHARTS_LOADCONFIG';
     final public const CMD_HIGHCHARTS_EXPORT_SERVER = 'highcharts-export-server';
     final public const CMD_TIMEOUT                  = 'timeout';
+    final public const CMD_SHELL                    = 'sh';
 
     final public const int TIMEOUT_SECONDS    = 60;
     final public const int KILL_AFTER_SECONDS = 10;
+
+    // Enough for the whole output of a normal failure, while a runaway output cannot use up the memory
+    final public const int ERROR_OUTPUT_MAX_BYTES = 20000;
 
     final public const HIGHCHARTS_EXPORT_SERVER_OPTION_WIDTH           = 'width';
     final public const HIGHCHARTS_EXPORT_SERVER_OPTION_SCALE           = 'scale';
@@ -76,8 +82,16 @@ class ImageRenderer
             $loadConfigArguments = ['--loadConfig', $loadConfigPath];
         }
 
-        $process = $this->createExportServerProcess(['-infile', $infile, '-outfile', $outfile, ...$loadConfigArguments, ...$optionArguments]);
-        $process->mustRun();
+        $outputFile = tempnam("/tmp/", $prefix . "-output");
+        $process    = $this->createExportServerProcess($outputFile, ['-infile', $infile, '-outfile', $outfile, ...$loadConfigArguments, ...$optionArguments]);
+
+        try {
+            $process->mustRun();
+        } catch (ProcessFailedException|ProcessSignaledException) {
+            throw new ExportServerFailedException($process, $this->readEndOfOutput($outputFile));
+        } finally {
+            unlink($outputFile);
+        }
 
         return $outfile;
     }
@@ -108,7 +122,7 @@ class ImageRenderer
      */
     private function _sanityCheck(): void
     {
-        $process = $this->createExportServerProcess();
+        $process = $this->createExportServerProcess('/dev/null');
         $process->run();
         $code = $process->getExitCode();
 
@@ -120,13 +134,36 @@ class ImageRenderer
     /**
      * Starts the export server under timeout, which stops the export server itself when it runs too long, also after PHP is gone.
      */
-    private function createExportServerProcess(array $arguments = []): Process
+    private function createExportServerProcess(string $outputFile, array $arguments = []): Process
     {
-        $process = new Process([self::CMD_TIMEOUT, '-k', self::KILL_AFTER_SECONDS, $this->timeoutSeconds, self::CMD_HIGHCHARTS_EXPORT_SERVER, ...$arguments]);
+        // The shell sends the output to the file and replaces itself with timeout. Unlike a pipe to PHP, the file stays writable when PHP is gone, so the export server can still log and close its browser
+        $process = new Process([self::CMD_SHELL, '-c', 'exec "$@" > "$0" 2>&1', $outputFile, self::CMD_TIMEOUT, '-k', self::KILL_AFTER_SECONDS, $this->timeoutSeconds, self::CMD_HIGHCHARTS_EXPORT_SERVER, ...$arguments]);
 
         // A fallback in case timeout itself does not end
         $process->setTimeout($this->timeoutSeconds + self::KILL_AFTER_SECONDS + 5);
 
+        // The output is read from the file instead
+        $process->disableOutput();
+
         return $process;
+    }
+
+    private function readEndOfOutput(string $outputFile): string
+    {
+        $handle = fopen($outputFile, 'r');
+        $size   = fstat($handle)['size'];
+
+        if ($size <= self::ERROR_OUTPUT_MAX_BYTES) {
+            $output = stream_get_contents($handle);
+        } else {
+            fseek($handle, -self::ERROR_OUTPUT_MAX_BYTES, SEEK_END);
+            // Starts at the next full line
+            fgets($handle);
+            $output = sprintf("[Only the last part of %d bytes of output]\n%s", $size, stream_get_contents($handle));
+        }
+
+        fclose($handle);
+
+        return (string)$output;
     }
 }
