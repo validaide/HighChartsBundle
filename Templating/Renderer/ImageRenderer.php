@@ -20,8 +20,9 @@ class ImageRenderer
     final public const CMD_TIMEOUT                  = 'timeout';
     final public const CMD_SHELL                    = 'sh';
 
-    final public const int TIMEOUT_SECONDS    = 60;
-    final public const int KILL_AFTER_SECONDS = 10;
+    final public const int TIMEOUT_SECONDS         = 60;
+    final public const int KILL_AFTER_SECONDS      = 10;
+    final public const int FALLBACK_MARGIN_SECONDS = 5;
 
     // Enough for the whole output of a normal failure, while a runaway output cannot use up the memory
     final public const int ERROR_OUTPUT_MAX_BYTES = 20000;
@@ -131,16 +132,13 @@ class ImageRenderer
         }
     }
 
-    /**
-     * Starts the export server under timeout, which stops the export server itself when it runs too long, also after PHP is gone.
-     */
     private function createExportServerProcess(string $outputFile, array $arguments = []): Process
     {
-        // The shell sends the output to the file and replaces itself with timeout. Unlike a pipe to PHP, the file stays writable when PHP is gone, so the export server can still log and close its browser
+        // Unlike a pipe to PHP, the file stays writable when PHP is gone, so the export server can still log and close its browser
         $process = new Process([self::CMD_SHELL, '-c', 'exec "$@" > "$0" 2>&1', $outputFile, self::CMD_TIMEOUT, '-k', self::KILL_AFTER_SECONDS, $this->timeoutSeconds, self::CMD_HIGHCHARTS_EXPORT_SERVER, ...$arguments]);
 
         // A fallback in case timeout itself does not end
-        $process->setTimeout($this->timeoutSeconds + self::KILL_AFTER_SECONDS + 5);
+        $process->setTimeout($this->timeoutSeconds + self::KILL_AFTER_SECONDS + self::FALLBACK_MARGIN_SECONDS);
 
         // The output is read from the file instead
         $process->disableOutput();
