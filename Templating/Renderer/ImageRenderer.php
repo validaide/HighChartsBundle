@@ -3,6 +3,8 @@
 namespace Validaide\HighChartsBundle\Templating\Renderer;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Exception\ProcessSignaledException;
 use Symfony\Component\Process\Process;
 use Validaide\HighChartsBundle\Graph;
 
@@ -13,7 +15,17 @@ use Validaide\HighChartsBundle\Graph;
  */
 class ImageRenderer
 {
+    final public const string ENV_HIGHCHARTS_LOADCONFIG = 'HIGHCHARTS_LOADCONFIG';
     final public const CMD_HIGHCHARTS_EXPORT_SERVER = 'highcharts-export-server';
+    final public const CMD_TIMEOUT                  = 'timeout';
+    final public const CMD_SHELL                    = 'sh';
+
+    final public const int TIMEOUT_SECONDS         = 60;
+    final public const int KILL_AFTER_SECONDS      = 10;
+    final public const int FALLBACK_MARGIN_SECONDS = 5;
+
+    // Enough for the whole output of a normal failure, while a runaway output cannot use up the memory
+    final public const int ERROR_OUTPUT_MAX_BYTES = 20000;
 
     final public const HIGHCHARTS_EXPORT_SERVER_OPTION_WIDTH           = 'width';
     final public const HIGHCHARTS_EXPORT_SERVER_OPTION_SCALE           = 'scale';
@@ -24,10 +36,14 @@ class ImageRenderer
 
     final public const ERROR_HIGHCHARTS_RENDERED_NOT_FOUND = "An error occurred while running the HighCharts conversion tool. Did you install it? Code: %s";
 
+    public function __construct(private readonly int $timeoutSeconds = self::TIMEOUT_SECONDS)
+    {
+    }
+
     /**
      * @throws RenderingException
      */
-    public function render(Graph $graph, array $options = [], string $outputPath = null): string
+    public function render(Graph $graph, array $options = [], ?string $outputPath = null): string
     {
         $this->_sanityCheck();
 
@@ -46,10 +62,10 @@ class ImageRenderer
         // Define the output PNG file path
         $outfile = is_null($outputPath) ? $infile . "." . $options[self::HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE] : $outputPath;
 
-        $optionParts = [];
+        $optionArguments = [];
         foreach ($options as $option => $value) {
             if (!is_null($value)) {
-                $optionParts[] = "-$option $value";
+                array_push($optionArguments, "-$option", $value);
             }
         }
 
@@ -60,10 +76,23 @@ class ImageRenderer
             mkdir($dirPath, 0775, true);
         }
 
-        $command = sprintf('%s -infile %s -outfile %s %s', self::CMD_HIGHCHARTS_EXPORT_SERVER, $infile, $outfile, implode(" ", $optionParts));
+        $loadConfigPath = getenv(self::ENV_HIGHCHARTS_LOADCONFIG);
 
-        $process = Process::fromShellCommandline($command);
-        $process->mustRun();
+        $loadConfigArguments = [];
+        if (!empty($loadConfigPath)) {
+            $loadConfigArguments = ['--loadConfig', $loadConfigPath];
+        }
+
+        $outputFile = tempnam("/tmp/", $prefix . "-output");
+        $process    = $this->createExportServerProcess($outputFile, ['-infile', $infile, '-outfile', $outfile, ...$loadConfigArguments, ...$optionArguments]);
+
+        try {
+            $process->mustRun();
+        } catch (ProcessFailedException|ProcessSignaledException) {
+            throw new ExportServerFailedException($process, $this->readEndOfOutput($outputFile));
+        } finally {
+            unlink($outputFile);
+        }
 
         return $outfile;
     }
@@ -94,12 +123,45 @@ class ImageRenderer
      */
     private function _sanityCheck(): void
     {
-        $process = Process::fromShellCommandline(self::CMD_HIGHCHARTS_EXPORT_SERVER);
+        $process = $this->createExportServerProcess('/dev/null');
         $process->run();
         $code = $process->getExitCode();
 
         if ($code != 0) {
             throw new RenderingException(sprintf(self::ERROR_HIGHCHARTS_RENDERED_NOT_FOUND, $code));
         }
+    }
+
+    private function createExportServerProcess(string $outputFile, array $arguments = []): Process
+    {
+        // Unlike a pipe to PHP, the file stays writable when PHP is gone, so the export server can still log and close its browser
+        $process = new Process([self::CMD_SHELL, '-c', 'exec "$@" > "$0" 2>&1', $outputFile, self::CMD_TIMEOUT, '-k', self::KILL_AFTER_SECONDS, $this->timeoutSeconds, self::CMD_HIGHCHARTS_EXPORT_SERVER, ...$arguments]);
+
+        // A fallback in case timeout itself does not end
+        $process->setTimeout($this->timeoutSeconds + self::KILL_AFTER_SECONDS + self::FALLBACK_MARGIN_SECONDS);
+
+        // The output is read from the file instead
+        $process->disableOutput();
+
+        return $process;
+    }
+
+    private function readEndOfOutput(string $outputFile): string
+    {
+        $handle = fopen($outputFile, 'r');
+        $size   = fstat($handle)['size'];
+
+        if ($size <= self::ERROR_OUTPUT_MAX_BYTES) {
+            $output = stream_get_contents($handle);
+        } else {
+            fseek($handle, -self::ERROR_OUTPUT_MAX_BYTES, SEEK_END);
+            // Starts at the next full line
+            fgets($handle);
+            $output = sprintf("[Only the last part of %d bytes of output]\n%s", $size, stream_get_contents($handle));
+        }
+
+        fclose($handle);
+
+        return (string)$output;
     }
 }
