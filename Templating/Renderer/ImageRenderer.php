@@ -44,6 +44,8 @@ class ImageRenderer
     public function __construct(
         private readonly int $timeoutSeconds = self::TIMEOUT_SECONDS,
         private readonly int $batchTimeoutSeconds = self::BATCH_TIMEOUT_SECONDS,
+        private readonly string $exportServerCommand = self::CMD_HIGHCHARTS_EXPORT_SERVER,
+        private readonly ?string $loadConfigPath = null,
     )
     {
     }
@@ -70,7 +72,7 @@ class ImageRenderer
         // which is not creating the missing folders automatically anymore :(
         $this->createDirectory(dirname($outfile));
 
-        $loadConfigPath = getenv(self::ENV_HIGHCHARTS_LOADCONFIG);
+        $loadConfigPath = $this->getLoadConfigPath();
 
         $loadConfigArguments = [];
         if (!empty($loadConfigPath)) {
@@ -202,11 +204,11 @@ class ImageRenderer
     }
 
     /**
-     * The export server reads only one config file, so the batch limits are added to the one of HIGHCHARTS_LOADCONFIG
+     * The export server reads only one config file, so the batch limits are added to the load config file
      */
     private function getBatchConfig(int $graphCount): array
     {
-        $loadConfigPath = getenv(self::ENV_HIGHCHARTS_LOADCONFIG);
+        $loadConfigPath = $this->getLoadConfigPath();
         $config         = !empty($loadConfigPath) && is_readable($loadConfigPath) ? json_decode((string)file_get_contents($loadConfigPath), true) : [];
 
         return array_replace_recursive(is_array($config) ? $config : [], [
@@ -214,6 +216,11 @@ class ImageRenderer
             'pool'   => ['acquireTimeout' => $this->batchTimeoutSeconds * 1000, 'queueLimit' => $graphCount],
             'export' => ['rasterizationTimeout' => self::BATCH_SCREENSHOT_TIMEOUT_MILLISECONDS],
         ]);
+    }
+
+    private function getLoadConfigPath(): ?string
+    {
+        return $this->loadConfigPath ?? (getenv(self::ENV_HIGHCHARTS_LOADCONFIG) ?: null);
     }
 
     /**
@@ -263,7 +270,7 @@ class ImageRenderer
     private function createExportServerProcess(string $outputFile, int $timeoutSeconds, array $arguments): Process
     {
         // Unlike a pipe to PHP, the file stays writable when PHP is gone, so the export server can still log and close its browser
-        $process = new Process([self::CMD_SHELL, '-c', 'exec "$@" > "$0" 2>&1', $outputFile, self::CMD_TIMEOUT, '-k', self::KILL_AFTER_SECONDS, $timeoutSeconds, self::CMD_HIGHCHARTS_EXPORT_SERVER, ...$arguments]);
+        $process = new Process([self::CMD_SHELL, '-c', 'exec "$@" > "$0" 2>&1', $outputFile, self::CMD_TIMEOUT, '-k', self::KILL_AFTER_SECONDS, $timeoutSeconds, $this->exportServerCommand, ...$arguments]);
 
         // A fallback in case timeout itself does not end
         $process->setTimeout($timeoutSeconds + self::KILL_AFTER_SECONDS + self::FALLBACK_MARGIN_SECONDS);
