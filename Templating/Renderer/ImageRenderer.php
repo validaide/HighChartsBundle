@@ -83,15 +83,7 @@ class ImageRenderer
         $process    = $this->createExportServerProcess($outputFile, $this->timeoutSeconds, ['-infile', $infile, '-outfile', $outfile, ...$loadConfigArguments, ...$this->getOptionArguments($options)]);
 
         try {
-            $process->mustRun();
-        } catch (ProcessFailedException|ProcessSignaledException) {
-            $exception = new ExportServerFailedException($process, $this->readEndOfOutput($outputFile));
-
-            if ($this->hasBeenStopped($process)) {
-                throw $exception;
-            }
-
-            throw new RenderingException($exception->getMessage(), 0, $exception);
+            $this->runExportServer($process, $outputFile);
         } finally {
             unlink($outputFile);
         }
@@ -106,6 +98,7 @@ class ImageRenderer
      *
      * @return string[] The output paths that got an image
      *
+     * @throws RenderingException          When the export server ends with an error
      * @throws ExportServerFailedException When the export server has to be stopped
      */
     public function renderBatch(array $graphs, array $options = []): array
@@ -143,16 +136,8 @@ class ImageRenderer
                 '--maxWorkers', self::BATCH_PAGES,
             ]);
 
-            try {
-                $process->mustRun();
-            } catch (ProcessFailedException|ProcessSignaledException) {
-                if ($this->hasBeenStopped($process)) {
-                    throw new ExportServerFailedException($process, $this->readEndOfOutput($outputFile));
-                }
-
-                // An export server that ends with an error can leave blank images of the charts it was still rendering
-                return [];
-            }
+            // No image is used when the export server ends with an error, since it can leave blank images of the charts it was still rendering
+            $this->runExportServer($process, $outputFile);
 
             // A failed chart can also end the call without an error, so only the images tell which graphs were rendered
             return $this->moveImages($images);
@@ -260,6 +245,21 @@ class ImageRenderer
         }
 
         rmdir($directory);
+    }
+
+    private function runExportServer(Process $process, string $outputFile): void
+    {
+        try {
+            $process->mustRun();
+        } catch (ProcessFailedException|ProcessSignaledException) {
+            $exception = new ExportServerFailedException($process, $this->readEndOfOutput($outputFile));
+
+            if ($this->hasBeenStopped($process)) {
+                throw $exception;
+            }
+
+            throw new RenderingException($exception->getMessage(), 0, $exception);
+        }
     }
 
     private function hasBeenStopped(Process $process): bool
