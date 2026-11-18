@@ -39,6 +39,8 @@ class BatchRenderTest extends IntegrationTestCase
 
         foreach ($outputPaths as $outputPath) {
             $this->assertStringStartsWith("\x89PNG", file_get_contents($outputPath));
+            // The export server's default width of 600 px and the graphs' height of 400 px, at scale 1.5
+            $this->assertSame([900, 600], array_slice(getimagesize($outputPath), 0, 2));
         }
     }
 }
