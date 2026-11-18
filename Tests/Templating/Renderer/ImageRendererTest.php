@@ -214,14 +214,29 @@ class ImageRendererTest extends TestCase
         $this->createExportServer(1);
 
         // Act
-        $outputPaths = (new ImageRenderer(1, 1))->renderBatch([
-            $this->getOutputPath('rendered.png') => $this->createGraph('Rendered'),
-            $this->getOutputPath('failed.png')   => $this->createGraph(self::TITLE_WITHOUT_IMAGE),
-        ]);
+        try {
+            (new ImageRenderer(1, 1))->renderBatch([
+                $this->getOutputPath('rendered.png') => $this->createGraph('Rendered'),
+                $this->getOutputPath('failed.png')   => $this->createGraph(self::TITLE_WITHOUT_IMAGE),
+            ]);
+            $this->fail('The batch render did not fail.');
+        } catch (RenderingException) {
+            // Assert
+            $this->assertFileDoesNotExist($this->getOutputPath('rendered.png'));
+        }
+    }
+
+    public function test_render_batch_fails_with_the_output_of_the_export_server(): void
+    {
+        // Arrange
+        $this->createExportServerThatFails('The charts could not be rendered');
 
         // Assert
-        $this->assertSame([], $outputPaths);
-        $this->assertFileDoesNotExist($this->getOutputPath('rendered.png'));
+        $this->expectException(RenderingException::class);
+        $this->expectExceptionMessage('The charts could not be rendered');
+
+        // Act
+        (new ImageRenderer(1, 1))->renderBatch([$this->getOutputPath('graph.png') => $this->createGraph('Graph')]);
     }
 
     public function test_render_batch_fails_when_the_export_server_has_to_be_stopped(): void
