@@ -16,6 +16,8 @@ class ImageRendererTest extends TestCase
 {
     private const string TITLE_WITHOUT_IMAGE    = 'A chart that gets no image';
     private const string TITLE_WITH_EMPTY_IMAGE = 'A chart that gets an empty image';
+    // Not on the PATH under the default name, like the export server installed in an app's node_modules
+    private const string GIVEN_EXPORT_SERVER = 'export-server-of-the-app';
 
     private string       $binDirectory;
     private ?string      $path;
@@ -116,6 +118,31 @@ class ImageRendererTest extends TestCase
 
         // Assert
         $this->assertCount(1, $this->getExportServerCalls());
+    }
+
+    public function test_render_starts_the_given_export_server(): void
+    {
+        // Arrange
+        $this->createExportServer(0, self::GIVEN_EXPORT_SERVER);
+
+        // Act
+        (new ImageRenderer(1, 1, $this->getOutputPath(self::GIVEN_EXPORT_SERVER)))->render(new Graph(), [], $this->getOutputPath('graph.png'));
+
+        // Assert
+        $this->assertCount(1, $this->getExportServerCalls());
+    }
+
+    public function test_render_gives_the_export_server_the_given_load_config_file(): void
+    {
+        // Arrange
+        $this->createExportServer();
+        $loadConfigPath = $this->createLoadConfigFile('given.json', ['puppeteer' => ['args' => ['--no-sandbox']]]);
+
+        // Act
+        (new ImageRenderer(1, 1, ImageRenderer::CMD_HIGHCHARTS_EXPORT_SERVER, $loadConfigPath))->render(new Graph(), [], $this->getOutputPath('graph.png'));
+
+        // Assert
+        $this->assertSame(['--no-sandbox'], $this->getExportServerConfig()['puppeteer']['args']);
     }
 
     public function test_render_fails_with_the_output_of_the_export_server(): void
@@ -300,6 +327,49 @@ class ImageRendererTest extends TestCase
         $this->assertSame(7000, $config['pool']['acquireTimeout']);
     }
 
+    public function test_render_batch_starts_the_given_export_server(): void
+    {
+        // Arrange
+        $this->createExportServer(0, self::GIVEN_EXPORT_SERVER);
+
+        // Act
+        $outputPaths = (new ImageRenderer(1, 1, $this->getOutputPath(self::GIVEN_EXPORT_SERVER)))->renderBatch([$this->getOutputPath('graph.png') => $this->createGraph('Graph')]);
+
+        // Assert
+        $this->assertCount(1, $this->getExportServerCalls());
+        $this->assertSame([$this->getOutputPath('graph.png')], $outputPaths);
+    }
+
+    public function test_render_batch_keeps_the_settings_of_the_given_load_config_file(): void
+    {
+        // Arrange
+        $this->createExportServer();
+        $loadConfigPath = $this->createLoadConfigFile('given.json', ['puppeteer' => ['args' => ['--no-sandbox']], 'pool' => ['workLimit' => 10]]);
+
+        // Act
+        (new ImageRenderer(1, 7, ImageRenderer::CMD_HIGHCHARTS_EXPORT_SERVER, $loadConfigPath))->renderBatch([$this->getOutputPath('graph.png') => $this->createGraph('Graph')]);
+
+        // Assert
+        $config = $this->getExportServerConfig();
+        $this->assertSame(['--no-sandbox'], $config['puppeteer']['args']);
+        $this->assertSame(10, $config['pool']['workLimit']);
+        $this->assertSame(7000, $config['pool']['acquireTimeout']);
+    }
+
+    public function test_render_batch_uses_the_given_load_config_file_instead_of_the_highcharts_loadconfig_one(): void
+    {
+        // Arrange
+        $this->createExportServer();
+        putenv(ImageRenderer::ENV_HIGHCHARTS_LOADCONFIG . '=' . $this->createLoadConfigFile('environment.json', ['pool' => ['workLimit' => 10]]));
+        $loadConfigPath = $this->createLoadConfigFile('given.json', ['pool' => ['workLimit' => 20]]);
+
+        // Act
+        (new ImageRenderer(1, 7, ImageRenderer::CMD_HIGHCHARTS_EXPORT_SERVER, $loadConfigPath))->renderBatch([$this->getOutputPath('graph.png') => $this->createGraph('Graph')]);
+
+        // Assert
+        $this->assertSame(20, $this->getExportServerConfig()['pool']['workLimit']);
+    }
+
     public function test_render_batch_removes_its_temporary_files(): void
     {
         // Arrange
@@ -336,9 +406,9 @@ class ImageRendererTest extends TestCase
     /**
      * Writes the chart's input as its image, alone or in a batch, and records its arguments and config file.
      */
-    private function createExportServer(int $exitCode = 0): void
+    private function createExportServer(int $exitCode = 0, string $name = ImageRenderer::CMD_HIGHCHARTS_EXPORT_SERVER): void
     {
-        $script = $this->binDirectory . DIRECTORY_SEPARATOR . ImageRenderer::CMD_HIGHCHARTS_EXPORT_SERVER;
+        $script = $this->binDirectory . DIRECTORY_SEPARATOR . $name;
 
         file_put_contents($script, implode(PHP_EOL, [
             '#!/bin/sh',
@@ -483,6 +553,14 @@ class ImageRendererTest extends TestCase
     private function getExportServerConfig(): array
     {
         return json_decode(file_get_contents($this->binDirectory . DIRECTORY_SEPARATOR . 'config.json'), true);
+    }
+
+    private function createLoadConfigFile(string $name, array $config): string
+    {
+        $loadConfigPath = $this->getOutputPath($name);
+        file_put_contents($loadConfigPath, json_encode($config));
+
+        return $loadConfigPath;
     }
 
     private function getOutputPath(string $name): string
