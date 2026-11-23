@@ -10,6 +10,7 @@ services:
 
   Validaide\HighChartsBundle\Templating\:
     resource: '../../Templating/*'
+    exclude: '../../Templating/Renderer/*Exception.php'
 
   ########################
   # TWIG EXTENSIONS      #
