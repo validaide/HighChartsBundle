@@ -58,37 +58,37 @@ class ImageRenderer
     {
         $options = $this->resolveOptions($options);
 
-        // Define the temporary file path for the JSON content
-        $prefix = "highcharts";
-        $infile = tempnam("/tmp/", $prefix);
-
-        // Write the JSON to the JSON file
-        file_put_contents($infile, $graph->toJson());
-
-        // Define the output PNG file path
-        $outfile = is_null($outputPath) ? $infile . "." . $options[self::HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE] : $outputPath;
-
-        // this is required by the upgrade to highcharts-export-server v3.1.1
-        // which is not creating the missing folders automatically anymore :(
-        $this->createDirectory(dirname($outfile));
-
-        $loadConfigPath = $this->getLoadConfigPath();
-
-        $loadConfigArguments = [];
-        if (!empty($loadConfigPath)) {
-            $loadConfigArguments = ['--loadConfig', $loadConfigPath];
-        }
-
+        // Define the temporary file paths for the JSON content and the output of the export server
+        $prefix     = "highcharts";
+        $infile     = tempnam("/tmp/", $prefix);
         $outputFile = tempnam("/tmp/", $prefix . "-output");
-        $process    = $this->createExportServerProcess($outputFile, $this->timeoutSeconds, ['-infile', $infile, '-outfile', $outfile, ...$loadConfigArguments, ...$this->getOptionArguments($options)]);
 
         try {
+            // Write the JSON to the JSON file
+            file_put_contents($infile, $graph->toJson());
+
+            // Define the output PNG file path
+            $outfile = is_null($outputPath) ? $infile . "." . $options[self::HIGHCHARTS_EXPORT_SERVER_OPTION_TYPE] : $outputPath;
+
+            // this is required by the upgrade to highcharts-export-server v3.1.1
+            // which is not creating the missing folders automatically anymore :(
+            $this->createDirectory(dirname($outfile));
+
+            $loadConfigPath = $this->getLoadConfigPath();
+
+            $loadConfigArguments = [];
+            if (!empty($loadConfigPath)) {
+                $loadConfigArguments = ['--loadConfig', $loadConfigPath];
+            }
+
+            $process = $this->createExportServerProcess($outputFile, $this->timeoutSeconds, ['-infile', $infile, '-outfile', $outfile, ...$loadConfigArguments, ...$this->getOptionArguments($options)]);
             $this->runExportServer($process, $outputFile);
+
+            return $outfile;
         } finally {
             unlink($outputFile);
+            unlink($infile);
         }
-
-        return $outfile;
     }
 
     /**
