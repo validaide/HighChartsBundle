@@ -187,6 +187,34 @@ class ImageRendererTest extends TestCase
         }
     }
 
+    public function test_render_removes_the_chart_data_file(): void
+    {
+        // Arrange
+        $this->createExportServer();
+
+        // Act
+        (new ImageRenderer(1))->render(new Graph(), [], $this->getOutputPath('graph.png'));
+
+        // Assert
+        $this->assertFileExists($this->getOutputPath('graph.png'));
+        $this->assertFileDoesNotExist($this->getChartDataFile());
+    }
+
+    public function test_render_removes_the_chart_data_file_when_the_render_fails(): void
+    {
+        // Arrange
+        $this->createExportServer(1);
+
+        // Act
+        try {
+            (new ImageRenderer(1))->render(new Graph(), [], $this->getOutputPath('graph.png'));
+            $this->fail('The render did not fail.');
+        } catch (RenderingException) {
+            // Assert
+            $this->assertFileDoesNotExist($this->getChartDataFile());
+        }
+    }
+
     public function test_render_batch_renders_every_graph_in_one_export_server_call(): void
     {
         // Arrange
@@ -548,6 +576,16 @@ class ImageRendererTest extends TestCase
         $calls = $this->binDirectory . DIRECTORY_SEPARATOR . 'calls';
 
         return is_file($calls) ? file($calls, FILE_IGNORE_NEW_LINES) : [];
+    }
+
+    /**
+     * The chart data file the export server got in its first call
+     */
+    private function getChartDataFile(): string
+    {
+        preg_match('/-infile (\S+)/', $this->getExportServerCalls()[0], $matches);
+
+        return $matches[1];
     }
 
     private function getExportServerConfig(): array
