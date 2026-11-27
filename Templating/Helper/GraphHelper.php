@@ -2,12 +2,11 @@
 
 namespace Validaide\HighChartsBundle\Templating\Helper;
 
-use Symfony\Component\Templating\Helper\Helper;
 use Twig\TwigFunction;
 use Validaide\HighChartsBundle\Graph;
 use Validaide\HighChartsBundle\Templating\Renderer\GraphRenderer;
 
-class GraphHelper extends Helper
+class GraphHelper
 {
     public function __construct(private readonly GraphRenderer $graphRender)
     {
